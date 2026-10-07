@@ -1,0 +1,22 @@
+{
+  "name": "idea6-nb-en-story",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vue-tsc --noEmit && vite build",
+    "preview": "vite preview",
+    "parse-stories": "node scripts/parseStory.mjs"
+  },
+  "dependencies": {
+    "@fontsource/fredoka": "^5.2.8",
+    "vue": "^3.5.22"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^6.0.1",
+    "typescript": "~5.9.3",
+    "vite": "^7.1.9",
+    "vue-tsc": "^3.1.1"
+  }
+}

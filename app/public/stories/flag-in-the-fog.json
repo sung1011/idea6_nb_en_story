@@ -1,0 +1,372 @@
+{
+  "id": "flag-in-the-fog",
+  "title": "Flag in the Fog",
+  "titleZh": "雾里的旗",
+  "version": "v2",
+  "label": "故事 B",
+  "scene": "海盗湾浅滩 → 薄雾 → 洞穴 → 湾边分享（白天 / 描边软陶）",
+  "structure": "寻宝 → 真偷（有动机）→ 短追 → 假线索 → 对峙 → 请求分享 → 交换 → 开箱闭环 → 暖收",
+  "notes": "篇幅：22 页 · 语法为主、词为辅 · v2：降难词、拆 P06 信息、收紧英文",
+  "source": "stories/flag-in-the-fog.md",
+  "pageCount": 22,
+  "pages": [
+    {
+      "id": "P01",
+      "index": 1,
+      "en": "There is an old **flag** by the sand.",
+      "zh": "沙滩边有一面旧旗子。",
+      "pattern": "There is a ___ .",
+      "focusWord": "flag",
+      "focusNote": "第8章 第2课「字母 F · see blue」",
+      "focusRaw": "flag（第8章 第2课「字母 F · see blue」）",
+      "knowledge": "There is 存在句；flag 词包 flag/fog/fin/frog",
+      "highlights": [
+        "flag"
+      ],
+      "image": null,
+      "audioEn": null,
+      "audioZh": null
+    },
+    {
+      "id": "P02",
+      "index": 2,
+      "en": "The flag says, “Find the box!”",
+      "zh": "旗上写着：“找到盒子！”",
+      "pattern": "The ___ says, “___!”",
+      "focusWord": "",
+      "focusNote": "承接 flag；雾与大石用画面表现",
+      "focusRaw": "—（承接 flag；雾与大石用画面表现）",
+      "knowledge": "读标志 / 引语；寻宝钩子（不堆三个名词）",
+      "highlights": [],
+      "image": null,
+      "audioEn": null,
+      "audioZh": null
+    },
+    {
+      "id": "P03",
+      "index": 3,
+      "en": "**Fog** is on the sand. Where is the way?",
+      "zh": "雾在沙子上。路在哪里？",
+      "pattern": "Where is the ___?",
+      "focusWord": "fog",
+      "focusNote": "第8章 第2课",
+      "focusRaw": "fog（第8章 第2课）",
+      "knowledge": "Where 疑问；fog 与 flag 同课",
+      "highlights": [
+        "Fog"
+      ],
+      "image": null,
+      "audioEn": null,
+      "audioZh": null
+    },
+    {
+      "id": "P04",
+      "index": 4,
+      "en": "Mia feels the **sand**. “We can walk!”",
+      "zh": "米娅摸到沙子。“我们能走！”",
+      "pattern": "We can ___ .",
+      "focusWord": "sand",
+      "focusNote": "第11章 第3课「霍普的地图」",
+      "focusRaw": "sand（第11章 第3课「霍普的地图」）",
+      "knowledge": "can + 动词；sand 方位线索",
+      "highlights": [
+        "sand"
+      ],
+      "image": null,
+      "audioEn": null,
+      "audioZh": null
+    },
+    {
+      "id": "P05",
+      "index": 5,
+      "en": "Look! A box is on a big **rock**. It has a lock.",
+      "zh": "看！大石头上有个盒子。盒子有锁。",
+      "pattern": "It is on the ___ .",
+      "focusWord": "rock / box 道具",
+      "focusNote": "第3章 第4课「好多好多」；第2章 第2课词包，不加粗",
+      "focusRaw": "rock（第3章 第4课「好多好多」）；box 道具（第2章 第2课词包，不加粗）",
+      "knowledge": "介词 on；状态 It has…",
+      "highlights": [
+        "rock"
+      ],
+      "image": null,
+      "audioEn": null,
+      "audioZh": null
+    },
+    {
+      "id": "P06",
+      "index": 6,
+      "en": "A little **tin** goes ding! Ding!",
+      "zh": "小铁盒叮咚！叮咚！",
+      "pattern": "There is a ___ . / 听辨",
+      "focusWord": "tin",
+      "focusNote": "第2章 第2课「回收小书」",
+      "focusRaw": "tin（第2章 第2课「回收小书」）",
+      "knowledge": "单拍聚焦响声（偷因之一）",
+      "highlights": [
+        "tin"
+      ],
+      "image": null,
+      "audioEn": null,
+      "audioZh": null
+    },
+    {
+      "id": "P07",
+      "index": 7,
+      "en": "Yum! A **rat** sniffs. Who is that?",
+      "zh": "真香！一只小老鼠在闻。那是谁？",
+      "pattern": "Who is that?",
+      "focusWord": "rat",
+      "focusNote": "第5章 第3课「谁住在小屋」",
+      "focusRaw": "rat（第5章 第3课「谁住在小屋」）",
+      "knowledge": "Who 疑问；闻味而来（屑用画面/中文，不写 crumbs）",
+      "highlights": [
+        "rat"
+      ],
+      "image": null,
+      "audioEn": null,
+      "audioZh": null
+    },
+    {
+      "id": "P08",
+      "index": 8,
+      "en": "Ben puts the tin in his **bag**. Oh no! The rat has my bag!",
+      "zh": "本把铁盒放进袋子。糟了！老鼠叼走了我的袋子！",
+      "pattern": "___ puts the ___ in the ___ . / He has my ___ !",
+      "focusWord": "bag / tin 回调",
+      "focusNote": "第2章 第2课",
+      "focusRaw": "bag（第2章 第2课）；tin 回调",
+      "knowledge": "put…in… 紧接失窃；物主 my + has",
+      "highlights": [
+        "bag"
+      ],
+      "image": null,
+      "audioEn": null,
+      "audioZh": null
+    },
+    {
+      "id": "P09",
+      "index": 9,
+      "en": "“Stop!” they yell. The fog lifts. Still no bag—only prints to a **hill**.",
+      "zh": "他们喊：“停下！”雾散了。还是没有袋子——只有通向小山的脚印。",
+      "pattern": "Stop! / Still no ___ !",
+      "focusWord": "fog / hill",
+      "focusNote": "回调；第8章 第3课「卡姆和帕特」",
+      "focusRaw": "fog（回调）；hill（第8章 第3课「卡姆和帕特」）",
+      "knowledge": "祈使 Stop；Still + 否定；短追",
+      "highlights": [
+        "hill"
+      ],
+      "image": null,
+      "audioEn": null,
+      "audioZh": null
+    },
+    {
+      "id": "P10",
+      "index": 10,
+      "en": "There is a dark **den** at the hill.",
+      "zh": "山脚有一个黑黑的洞。",
+      "pattern": "There is a ___ .",
+      "focusWord": "den",
+      "focusNote": "第2章 第1课「小豹子」",
+      "focusRaw": "den（第2章 第1课「小豹子」）",
+      "knowledge": "There is 再练；洞穴场景",
+      "highlights": [
+        "den"
+      ],
+      "image": null,
+      "audioEn": null,
+      "audioZh": null
+    },
+    {
+      "id": "P11",
+      "index": 11,
+      "en": "“Can we go in?” says Mia. They go in.",
+      "zh": "米娅说：“我们能进去吗？”他们进去了。",
+      "pattern": "Can we ___ ?",
+      "focusWord": "",
+      "focusNote": "",
+      "focusRaw": "—",
+      "knowledge": "Can we 请求/商量",
+      "highlights": [],
+      "image": null,
+      "audioEn": null,
+      "audioZh": null
+    },
+    {
+      "id": "P12",
+      "index": 12,
+      "en": "Ding! Where is the **tin**?",
+      "zh": "叮咚！铁盒在哪里？",
+      "pattern": "Where is the ___ ?",
+      "focusWord": "tin",
+      "focusNote": "",
+      "focusRaw": "tin",
+      "knowledge": "Where 在行动中复现；听觉线索",
+      "highlights": [
+        "tin"
+      ],
+      "image": null,
+      "audioEn": null,
+      "audioZh": null
+    },
+    {
+      "id": "P13",
+      "index": 13,
+      "en": "Is it the rat? No—it is an empty **sack**, not the bag.",
+      "zh": "是老鼠吗？不——是空袋子，不是他们的包。",
+      "pattern": "It is a ___, not the ___ .",
+      "focusWord": "sack",
+      "focusNote": "第8章 第3课",
+      "focusRaw": "sack（第8章 第3课）",
+      "knowledge": "肯定/否定对比；假线索",
+      "highlights": [
+        "sack"
+      ],
+      "image": null,
+      "audioEn": null,
+      "audioZh": null
+    },
+    {
+      "id": "P14",
+      "index": 14,
+      "en": "Deep in the den, the rat has the **tin**!",
+      "zh": "洞的深处，老鼠抱着铁盒！",
+      "pattern": "He has the ___ !",
+      "focusWord": "rat / tin",
+      "focusNote": "",
+      "focusRaw": "rat / tin",
+      "knowledge": "has 冲突顶格；对峙开始",
+      "highlights": [
+        "tin"
+      ],
+      "image": null,
+      "audioEn": null,
+      "audioZh": null
+    },
+    {
+      "id": "P15",
+      "index": 15,
+      "en": "“Give it back!” says Ben. The rat shakes his head.",
+      "zh": "本说：“还回来！”老鼠摇头。",
+      "pattern": "Give it back!",
+      "focusWord": "",
+      "focusNote": "",
+      "focusRaw": "—",
+      "knowledge": "祈使；拒绝 → 冲突未解",
+      "highlights": [],
+      "image": null,
+      "audioEn": null,
+      "audioZh": null
+    },
+    {
+      "id": "P16",
+      "index": 16,
+      "en": "The rat wants a bun. “Can we share?” asks Mia.",
+      "zh": "老鼠想要小面包。米娅问：“我们能分享吗？”",
+      "pattern": "Can we ___ ?",
+      "focusWord": "",
+      "focusNote": "bun 下页加粗",
+      "focusRaw": "—（bun 下页加粗）",
+      "knowledge": "Can we 用于和解；动机用 wants（不写 tummy）",
+      "highlights": [],
+      "image": null,
+      "audioEn": null,
+      "audioZh": null
+    },
+    {
+      "id": "P17",
+      "index": 17,
+      "en": "Mia holds a warm **bun**. “Please share.”",
+      "zh": "米娅拿出热乎乎的小面包。“请分享。”",
+      "pattern": "Please share.",
+      "focusWord": "bun",
+      "focusNote": "第2章 第4课「我想吃」",
+      "focusRaw": "bun（第2章 第4课「我想吃」）",
+      "knowledge": "Please + 祈使；礼貌请求",
+      "highlights": [
+        "bun"
+      ],
+      "image": null,
+      "audioEn": null,
+      "audioZh": null
+    },
+    {
+      "id": "P18",
+      "index": 18,
+      "en": "Yes! Here is the tin. Here is the bag. The rat takes the bun.",
+      "zh": "好！铁盒在这儿。袋子在这儿。老鼠接过面包。",
+      "pattern": "Here is the ___ . / We can ___ .",
+      "focusWord": "tin / bag / bun",
+      "focusNote": "",
+      "focusRaw": "tin / bag / bun",
+      "knowledge": "Here is 交接；交换成交（可见）",
+      "highlights": [],
+      "image": null,
+      "audioEn": null,
+      "audioZh": null
+    },
+    {
+      "id": "P19",
+      "index": 19,
+      "en": "In the sun, they open the tin. There is a key in the tin!",
+      "zh": "阳光下，他们打开铁盒。铁盒里有一把钥匙！",
+      "pattern": "There is a ___ in the ___ .",
+      "focusWord": "tin",
+      "focusNote": "",
+      "focusRaw": "tin",
+      "knowledge": "There is + 介词短语；开箱前奏",
+      "highlights": [],
+      "image": null,
+      "audioEn": null,
+      "audioZh": null
+    },
+    {
+      "id": "P20",
+      "index": 20,
+      "en": "Click! Look! A little **flag**!",
+      "zh": "咔哒！看！一面小小的旗！",
+      "pattern": "Look! It is a ___ !",
+      "focusWord": "flag",
+      "focusNote": "与 P01 闭环；贴纸仅画面/中文，不强读",
+      "focusRaw": "flag（与 P01 闭环；贴纸仅画面/中文，不强读）",
+      "knowledge": "Look 感叹发现；开头旗 ↔ 小旗配件",
+      "highlights": [
+        "flag"
+      ],
+      "image": null,
+      "audioEn": null,
+      "audioZh": null
+    },
+    {
+      "id": "P21",
+      "index": 21,
+      "en": "Friends sit on the sand. The rat eats the bun. Yum!",
+      "zh": "朋友们坐在沙子上。老鼠啃着面包。真香！",
+      "pattern": "Friends share a ___ .",
+      "focusWord": "bun / sand",
+      "focusNote": "",
+      "focusRaw": "bun / sand",
+      "knowledge": "分享可见结果；暖收不说教",
+      "highlights": [],
+      "image": null,
+      "audioEn": null,
+      "audioZh": null
+    },
+    {
+      "id": "P22",
+      "index": 22,
+      "en": "They set the flag by the box. What a day!",
+      "zh": "他们把旗插在盒子旁。多么棒的一天！",
+      "pattern": "What a ___ !",
+      "focusWord": "flag",
+      "focusNote": "",
+      "focusRaw": "flag",
+      "knowledge": "What a…! 收束感叹",
+      "highlights": [],
+      "image": null,
+      "audioEn": null,
+      "audioZh": null
+    }
+  ]
+}
