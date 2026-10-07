@@ -26,6 +26,12 @@ function stripReloadParam() {
   history.replaceState(null, '', next)
 }
 
+export function hardReload() {
+  const url = new URL(window.location.href)
+  url.searchParams.set(RELOAD_PARAM, String(Date.now()))
+  window.location.replace(url.toString())
+}
+
 export function useAppVersions() {
   const versions = ref<AppVersion[]>([])
   const current = computed(() => versions.value[0] ?? null)
@@ -56,9 +62,23 @@ export function useAppVersions() {
   function applyUpdate() {
     const newest = versions.value[0]
     if (newest) writeAcked(newest.id)
-    const url = new URL(window.location.href)
-    url.searchParams.set(RELOAD_PARAM, String(Date.now()))
-    window.location.replace(url.toString())
+    hardReload()
+  }
+
+  async function clearCaches() {
+    try {
+      if ('serviceWorker' in navigator) {
+        const registrations = await navigator.serviceWorker.getRegistrations()
+        await Promise.all(registrations.map((reg) => reg.unregister()))
+      }
+      if ('caches' in window) {
+        const keys = await caches.keys()
+        await Promise.all(keys.map((key) => caches.delete(key)))
+      }
+    } catch {
+      // still reload so the shell and story assets refetch
+    }
+    hardReload()
   }
 
   let timer = 0
@@ -81,5 +101,6 @@ export function useAppVersions() {
     pending,
     refresh,
     applyUpdate,
+    clearCaches,
   }
 }

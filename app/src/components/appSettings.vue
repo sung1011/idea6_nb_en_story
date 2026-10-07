@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { onMounted, onUnmounted, ref } from 'vue'
-import { useAppVersions } from '@/composables/useAppVersions'
+import { hardReload, useAppVersions } from '@/composables/useAppVersions'
 import { clearAppStorage } from '@/utils/appStorage'
 import VersionRow from './versionRow.vue'
 
@@ -9,7 +9,7 @@ type SettingsTab = 'version' | 'gm'
 const open = ref(false)
 const tab = ref<SettingsTab>('version')
 const gmConfirming = ref(false)
-const { versions, current, pending, applyUpdate } = useAppVersions()
+const { versions, current, pending, refresh, applyUpdate, clearCaches } = useAppVersions()
 
 function toggle() {
   open.value = !open.value
@@ -28,11 +28,14 @@ function onKey(event: KeyboardEvent) {
   }
 }
 
+async function checkUpdate() {
+  await refresh()
+  if (pending.value.length) close()
+}
+
 function resetLocalState() {
   clearAppStorage()
-  const url = new URL(window.location.href)
-  url.searchParams.set('_reload', String(Date.now()))
-  window.location.replace(url.toString())
+  hardReload()
 }
 
 onMounted(() => {
@@ -103,6 +106,14 @@ onUnmounted(() => {
           当前版本
           <strong>{{ current?.version || '—' }}</strong>
         </p>
+        <div class="version-actions">
+          <button type="button" class="action" @click="checkUpdate">
+            检查更新
+          </button>
+          <button type="button" class="ghost" @click="clearCaches">
+            清除缓存
+          </button>
+        </div>
         <div class="rows">
           <VersionRow
             v-for="entry in versions"
@@ -264,6 +275,14 @@ onUnmounted(() => {
   line-height: 1.45;
 }
 
+.version-actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.action,
 .danger,
 .ghost {
   min-height: 52px;
@@ -274,6 +293,16 @@ onUnmounted(() => {
   border: 3px solid #2f3f3b;
   font-size: 1.05rem;
   font-weight: 700;
+}
+
+.version-actions .action,
+.version-actions .ghost {
+  margin-top: 0;
+}
+
+.action {
+  background: var(--teal);
+  color: white;
 }
 
 .danger {

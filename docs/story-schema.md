@@ -111,4 +111,4 @@ npm run parse-stories
 
 旧键 `idea6_nb_en_story:showZh:<storyId>` 若仍存在，会在首次读取时迁移：`0`/`false` → `en`，其余 → `en+zh`。
 
-`app/public/versions.json` 为数组，**最新在前**，每项 `{ id, version, date, summary }`。阅读器每 10 秒 cache-bust 拉取；比 `ackedVersion` 更新的条目会出现在设置按钮下方的更新 toast（最多 10 条）。点击 **更新** 会写入已确认版本并硬刷新。
+`app/public/versions.json` 为数组，**最新在前**，每项 `{ id, version, date, summary }`。阅读器每 10 秒 cache-bust 拉取；设置 **版本** 页的 **检查更新** 会立刻再拉一次（`cache: no-store`）。比 `ackedVersion` 更新的条目会出现在设置按钮下方的更新 toast（最多 10 条）。点击 **更新** 会写入已确认版本并硬刷新。**清除缓存** 会注销 Service Worker、删除 Cache Storage（故事图/音频/阅读器壳），再带 `_reload` 硬刷新；不清除 `localStorage` / 阅读进度（那只在 GM **初始化**）。

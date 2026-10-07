@@ -70,11 +70,11 @@ npm run gen-tts
 - 朗读：点喇叭或句子其余部分播放整句（英文 Ana / 中文晓晓）；新点击会停掉上一句。默认不自动播放。mp3 缺失或播放失败时回退 Web Speech
 - 点词：点加粗焦点词、辅词芯片或带 `___` 的句式，弹出中文短义 +「再听」词级 Ana；不挡住整句播放
 - 翻页：大触摸热区的上一页 / 下一页，Fredoka 字体，平板宽度友好
-- 右上角 **设置**：`版本` 看当前构建与摘要；`GM` 可初始化（清空本应用全部 localStorage 后重载）
+- 右上角 **设置**：`版本` 看当前构建与摘要，可 **检查更新**（立刻拉取 `versions.json`）和 **清除缓存**（注销 Service Worker、清空 Cache Storage 后硬刷新，不碰 localStorage）；`GM` 可初始化（清空本应用全部 localStorage 后重载）
 - 更新 toast：每 10 秒带 cache-bust 拉取 `versions.json`，若有比已确认版本更新的条目（最多 10 条），在设置按钮下方列出并提供 **更新**（硬刷新并标记已读）
 - PWA：可安装到主屏幕（`standalone`）；预缓存阅读器壳 + 故事 JSON。页/词 mp3 与插图 webp 走运行时 Cache First，不进预缓存。`versions.json` 用 Network First，以免挡住更新检测
 
-进度按本故事写入 `localStorage`。展示模式是整站偏好。每次有意义的发布请在 `app/public/versions.json` 顶部追加 `{ id, version, date, summary }`。当前版本 **0.5.1**。
+进度按本故事写入 `localStorage`。展示模式是整站偏好。每次有意义的发布请在 `app/public/versions.json` 顶部追加 `{ id, version, date, summary }`。当前版本 **0.5.2**。
 
 ## 安装到主屏幕（PWA）
 
