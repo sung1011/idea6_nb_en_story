@@ -51,9 +51,10 @@ npm run gen-tts
 |------|------|
 | `stories/flag-in-the-fog.md` | 故事源稿（勿改写正文） |
 | `docs/story-schema.md` | 页字段说明（en / zh / pattern / focusWord / image / audioEn / audioZh 等） |
-| `app/scripts/parseStory.mjs` | Markdown → JSON（有 mp3 时写入 `audioEn` / `audioZh` / `audioWord`，并推导 `gloss` / `learnItems`） |
+| `app/scripts/parseStory.mjs` | Markdown → JSON（有画稿/mp3 时写入 `image` / `audioEn` / `audioZh` / `audioWord`，并推导 `gloss` / `learnItems`） |
 | `app/scripts/genStoryTts.mjs` | 按故事 JSON 调 edge-tts 生成页级 en/zh 与词级 mp3 |
 | `app/public/stories/flag-in-the-fog.json` | 阅读器消费的 JSON |
+| `app/public/images/flag-in-the-fog/` | 各页软陶风插图（`p01.webp` … `p22.webp`） |
 | `app/public/audio/flag-in-the-fog/` | 预生成朗读（`p01-en.mp3` / `p01-zh.mp3` …）与词级（`word-flag.mp3` …） |
 | `app/public/versions.json` | 版本记录（最新在前）；每次有意义的发布追加一条 |
 | `app/public/pwa192.png` / `pwa512.png` | PWA 安装图标（压缩粉彩 PNG） |
@@ -65,15 +66,15 @@ npm run gen-tts
 
 - 展示模式：`英文` / `中英对照` / `中文`（`en` \| `en+zh` \| `zh`），默认 `en+zh`，写入 `localStorage`
 - 续读：刷新后夹紧在 1..N 页继续；顶部可「继续阅读」或对本故事「从头读」
-- 插图：16:9 奶油色软陶风 CSS/SVG 占位（圆角、深色描边、页码标签）。正式画稿需压缩后再接入，本阶段不放原图
+- 插图：各页绑定 `images/flag-in-the-fog/pNN.webp`；缺图时回退 16:9 奶油色软陶风 SVG 占位。画稿需压缩后再入库
 - 朗读：点喇叭或句子其余部分播放整句（英文 Ana / 中文晓晓）；新点击会停掉上一句。默认不自动播放。mp3 缺失或播放失败时回退 Web Speech
 - 点词：点加粗焦点词、辅词芯片或带 `___` 的句式，弹出中文短义 +「再听」词级 Ana；不挡住整句播放
 - 翻页：大触摸热区的上一页 / 下一页，Fredoka 字体，平板宽度友好
 - 右上角 **设置**：`版本` 看当前构建与摘要；`GM` 可初始化（清空本应用全部 localStorage 后重载）
 - 更新 toast：每 10 秒带 cache-bust 拉取 `versions.json`，若有比已确认版本更新的条目（最多 10 条），在设置按钮下方列出并提供 **更新**（硬刷新并标记已读）
-- PWA：可安装到主屏幕（`standalone`）；预缓存阅读器壳 + 故事 JSON。页/词 mp3 走运行时 Cache First，不进预缓存。`versions.json` 用 Network First，以免挡住更新检测
+- PWA：可安装到主屏幕（`standalone`）；预缓存阅读器壳 + 故事 JSON。页/词 mp3 与插图 webp 走运行时 Cache First，不进预缓存。`versions.json` 用 Network First，以免挡住更新检测
 
-进度按本故事写入 `localStorage`。展示模式是整站偏好。每次有意义的发布请在 `app/public/versions.json` 顶部追加 `{ id, version, date, summary }`。当前版本 **0.5.0**。
+进度按本故事写入 `localStorage`。展示模式是整站偏好。每次有意义的发布请在 `app/public/versions.json` 顶部追加 `{ id, version, date, summary }`。当前版本 **0.5.1**。
 
 ## 安装到主屏幕（PWA）
 

@@ -49,21 +49,21 @@ npm run parse-stories
 | `gloss` | `string` | 否 | 本页主焦点词的中文短义。优先用源稿 `释义:`，否则从辅词括注 / 知识点 / 正文中文推导 |
 | `highlights` | `string[]` | 否 | 从 `en` 里 `**…**` 抽出的词 |
 | `learnItems` | `LearnItem[]` | 否 | 本页可点学的词（加粗词 + 辅词），每项 `{ word, gloss, audioWord }` |
-| `image` | `string \| null` | 否 | 插图相对 URL。尚无画稿时为 `null`，阅读器显示 16:9 软陶风 CSS/SVG 占位。正式画稿必须压缩后再入库，不要提交未压缩原图 |
+| `image` | `string \| null` | 否 | 插图相对 URL。仓库内有 `images/<story-id>/pNN.webp`（或 png/jpg）时写入路径；否则为 `null`，阅读器回退 16:9 软陶风 SVG 占位。正式画稿必须压缩后再入库，不要提交未压缩原图 |
 | `audioEn` | `string \| null` | 否 | 英文朗读音频相对 URL。仓库内有对应 mp3 时写入路径，否则为 `null` |
 | `audioZh` | `string \| null` | 否 | 中文朗读音频相对 URL。同上 |
 | `audioWord` | `string \| null` | 否 | 主焦点词的词级英文 mp3。仓库内有对应文件时写入路径，否则为 `null` |
 
 相对 URL 约定：
 
-- 插图：`images/<story-id>/p01.png`（尚无画稿时为 `null`）
+- 插图：`images/<story-id>/p01.webp`（Flag in the Fog 22 页均已接入；缺文件时为 `null`）
 - 英文音频：`audio/<story-id>/p01-en.mp3`（Edge TTS `en-US-AnaNeural`，语速 `-12%`）
 - 中文音频：`audio/<story-id>/p01-zh.mp3`（Edge TTS `zh-CN-XiaoxiaoNeural`）
 - 词级音频：`audio/<story-id>/word-flag.mp3`（同一 Ana 声线，只读单词）
 
 阅读器以 Vite `base`（`/idea6_nb_en_story/`）拼接这些路径。点喇叭或句子其余部分播放整句 `audioEn` / `audioZh`；点加粗焦点词、辅词芯片或带 `___` 的句式芯片打开释义面板并读单词。文件缺失或播放失败时回退 Web Speech。默认不自动播放。
 
-重新生成音频（在 `app/` 下）：`npm run gen-tts`（需 `edge-tts` 与 `ffmpeg`）。`npm run parse-stories` / `dev` / `build` 会根据 `app/public/audio/` 里是否已有文件回填路径。
+重新生成音频（在 `app/` 下）：`npm run gen-tts`（需 `edge-tts` 与 `ffmpeg`）。`npm run parse-stories` / `dev` / `build` 会根据 `app/public/images/` 与 `app/public/audio/` 里是否已有文件回填路径。
 
 ---
 

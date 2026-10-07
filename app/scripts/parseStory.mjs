@@ -67,7 +67,7 @@ export function parseStoryMarkdown(md, slug, source) {
       gloss: primary?.gloss ?? '',
       highlights,
       learnItems,
-      image: null,
+      image: existingPageImage(slug, index),
       audioEn: existingAudio(slug, id, 'en'),
       audioZh: existingAudio(slug, id, 'zh'),
       audioWord: primary?.audioWord ?? null,
@@ -175,6 +175,18 @@ export function plainSpeakText(text) {
     .replace(/\*\*([^*]+)\*\*/g, '$1')
     .replace(/\s+/g, ' ')
     .trim()
+}
+
+const IMAGE_EXTS = ['.webp', '.png', '.jpg', '.jpeg']
+
+/** @param {string} slug @param {number} index */
+function existingPageImage(slug, index) {
+  const page = `p${String(index).padStart(2, '0')}`
+  for (const ext of IMAGE_EXTS) {
+    const found = existingRel(`images/${slug}/${page}${ext}`)
+    if (found) return found
+  }
+  return null
 }
 
 /** @param {string} slug @param {string} pageId @param {'en' | 'zh'} lang */

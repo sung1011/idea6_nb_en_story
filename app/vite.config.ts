@@ -85,6 +85,20 @@ export default defineConfig({
         cleanupOutdatedCaches: true,
         runtimeCaching: [
           {
+            urlPattern: /\/images\/.*\.(?:webp|png|jpe?g)$/i,
+            handler: 'CacheFirst',
+            options: {
+              cacheName: 'story-image-cache-first',
+              expiration: {
+                maxEntries: 80,
+                maxAgeSeconds: 60 * 60 * 24 * 30,
+              },
+              cacheableResponse: {
+                statuses: [0, 200],
+              },
+            },
+          },
+          {
             urlPattern: /\/audio\/.*\.(?:mp3|ogg|m4a|wav)$/i,
             handler: 'CacheFirst',
             options: {
