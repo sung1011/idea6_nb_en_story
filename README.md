@@ -56,7 +56,9 @@ npm run gen-tts
 | `app/public/stories/flag-in-the-fog.json` | 阅读器消费的 JSON |
 | `app/public/audio/flag-in-the-fog/` | 预生成朗读（`p01-en.mp3` / `p01-zh.mp3` …）与词级（`word-flag.mp3` …） |
 | `app/public/versions.json` | 版本记录（最新在前）；每次有意义的发布追加一条 |
-| `app/` | Vue 3 + Vite + TypeScript 阅读器 |
+| `app/public/pwa192.png` / `pwa512.png` | PWA 安装图标（压缩粉彩 PNG） |
+| `app/public/appleTouchIcon.png` | iOS 添加到主屏幕图标 |
+| `app/` | Vue 3 + Vite + TypeScript 阅读器（`vite-plugin-pwa`） |
 | `.github/workflows/deployPages.yml` | 推送到 `main` 后构建并发布 GitHub Pages |
 
 ## 阅读器（Stage 6）
@@ -69,8 +71,34 @@ npm run gen-tts
 - 翻页：大触摸热区的上一页 / 下一页，Fredoka 字体，平板宽度友好
 - 右上角 **设置**：`版本` 看当前构建与摘要；`GM` 可初始化（清空本应用全部 localStorage 后重载）
 - 更新 toast：每 10 秒带 cache-bust 拉取 `versions.json`，若有比已确认版本更新的条目（最多 10 条），在设置按钮下方列出并提供 **更新**（硬刷新并标记已读）
+- PWA：可安装到主屏幕（`standalone`）；预缓存阅读器壳 + 故事 JSON。页/词 mp3 走运行时 Cache First，不进预缓存。`versions.json` 用 Network First，以免挡住更新检测
 
-进度按本故事写入 `localStorage`。展示模式是整站偏好。每次有意义的发布请在 `app/public/versions.json` 顶部追加 `{ id, version, date, summary }`。
+进度按本故事写入 `localStorage`。展示模式是整站偏好。每次有意义的发布请在 `app/public/versions.json` 顶部追加 `{ id, version, date, summary }`。当前版本 **0.5.0**。
+
+## 安装到主屏幕（PWA）
+
+站点已是 HTTPS（GitHub Pages），带 Web App Manifest（`name` / `short_name` 为「星词岛故事」）、192/512 PNG 图标和服务 Worker，满足可安装条件。安装后以独立窗口打开，入口为 `/idea6_nb_en_story/`。
+
+**Chrome / Edge（电脑）**
+
+1. 打开 https://sung1011.github.io/idea6_nb_en_story/
+2. 地址栏右侧点安装图标，或菜单 → **安装星词岛故事** / **将此应用安装到电脑**
+3. 确认安装。之后可从应用列表或桌面快捷方式打开，不再显示浏览器工具栏
+
+**Chrome / Edge（Android）**
+
+1. 用 Chrome 或 Edge 打开上面的地址
+2. 菜单 → **安装应用** 或 **添加到主屏幕**
+3. 主屏幕会出现「星词岛故事」图标
+
+**Safari（iPhone / iPad）**
+
+1. 必须用 **Safari** 打开（不要用 Chrome / 微信内置浏览器）
+2. 点底部分享按钮（方框加箭头）
+3. 滑到 **添加到主屏幕**，名称用「星词岛故事」
+4. 点添加。主屏幕图标打开后是无 Safari 地址栏的独立窗口
+
+若没有安装入口：确认打开的是 HTTPS 线上地址（不是 `localhost`），并等页面加载完成以便注册 Service Worker。
 
 ## 启用 GitHub Pages
 

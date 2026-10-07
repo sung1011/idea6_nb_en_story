@@ -1,7 +1,7 @@
 {
   "name": "idea6-nb-en-story",
   "private": true,
-  "version": "0.4.0",
+  "version": "0.5.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -18,6 +18,7 @@
     "@vitejs/plugin-vue": "^6.0.1",
     "typescript": "~5.9.3",
     "vite": "^7.1.9",
+    "vite-plugin-pwa": "^2.0.0",
     "vue-tsc": "^3.1.1"
   }
 }
