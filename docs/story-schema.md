@@ -95,9 +95,12 @@ npm run parse-stories
 - 展示模式：`en`（只英文）/ `en+zh`（对照，默认）/ `zh`（只中文）
 - 预留未接 UI：`audioEn`、`audioZh`、`knowledge`、`focusNote`（TTS 与点词学习尚未做）
 
-`localStorage`：
+`localStorage`（前缀 `idea6_nb_en_story:`，GM 初始化会全部清除）：
 
 - `idea6_nb_en_story:progress:flag-in-the-fog` → 页码（1-based，读写时夹紧到 `1..pageCount`）
 - `idea6_nb_en_story:displayMode` → `en` \| `en+zh` \| `zh`（整站偏好，默认 `en+zh`）
+- `idea6_nb_en_story:ackedVersion` → 用户已确认的最新版本 `id`（对应 `app/public/versions.json`）
 
 旧键 `idea6_nb_en_story:showZh:<storyId>` 若仍存在，会在首次读取时迁移：`0`/`false` → `en`，其余 → `en+zh`。
+
+`app/public/versions.json` 为数组，**最新在前**，每项 `{ id, version, date, summary }`。阅读器每 10 秒 cache-bust 拉取；比 `ackedVersion` 更新的条目会出现在设置按钮下方的更新 toast（最多 10 条）。点击 **更新** 会写入已确认版本并硬刷新。

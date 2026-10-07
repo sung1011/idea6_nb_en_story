@@ -1,8 +1,6 @@
 import { onMounted, ref, watch } from 'vue'
 import { isDisplayMode, type DisplayMode } from '@/types/displayMode'
-
-const STORAGE_KEY = 'idea6_nb_en_story:displayMode'
-const LEGACY_SHOW_ZH_PREFIX = 'idea6_nb_en_story:showZh:'
+import { DISPLAY_MODE_KEY, LEGACY_SHOW_ZH_PREFIX } from '@/utils/appStorage'
 
 function readLegacyShowZh(): DisplayMode | null {
   if (typeof localStorage === 'undefined') return null
@@ -17,7 +15,7 @@ function readLegacyShowZh(): DisplayMode | null {
 }
 
 function readStored(): DisplayMode {
-  const raw = localStorage.getItem(STORAGE_KEY)
+  const raw = localStorage.getItem(DISPLAY_MODE_KEY)
   if (isDisplayMode(raw)) return raw
   return readLegacyShowZh() ?? 'en+zh'
 }
@@ -33,7 +31,7 @@ export function useDisplayMode() {
 
   watch(displayMode, (value) => {
     if (!ready.value) return
-    localStorage.setItem(STORAGE_KEY, value)
+    localStorage.setItem(DISPLAY_MODE_KEY, value)
   })
 
   return {

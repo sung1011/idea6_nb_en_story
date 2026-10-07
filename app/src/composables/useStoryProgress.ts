@@ -1,8 +1,5 @@
 import { onMounted, ref, watch } from 'vue'
-
-function progressKey(storyId: string) {
-  return `idea6_nb_en_story:progress:${storyId}`
-}
+import { progressKey } from '@/utils/appStorage'
 
 function clampPage(value: number, pageCount: number): number {
   if (!Number.isInteger(value) || value < 1) return 1

@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { onMounted, ref } from 'vue'
 import StoryReader from './components/storyReader.vue'
+import AppSettings from './components/appSettings.vue'
 import type { Story } from './types/story'
 
 const STORY_ID = 'flag-in-the-fog'
@@ -24,6 +25,7 @@ onMounted(async () => {
 
 <template>
   <main class="shell">
+    <AppSettings />
     <p v-if="error" class="status error">{{ error }}</p>
     <p v-else-if="!story" class="status">Loading story…</p>
     <StoryReader v-else :story="story" />
@@ -33,7 +35,7 @@ onMounted(async () => {
 <style scoped>
 .shell {
   min-height: 100vh;
-  padding: 24px 16px 48px;
+  padding: 76px 16px 48px;
 }
 
 @media (min-width: 768px) {
