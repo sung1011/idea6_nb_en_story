@@ -48,16 +48,18 @@ npm run parse-stories
 | `knowledge` | `string` | 否 | 知识点 |
 | `highlights` | `string[]` | 否 | 从 `en` 里 `**…**` 抽出的词 |
 | `image` | `string \| null` | 否 | 插图相对 URL。尚无画稿时为 `null`，阅读器显示 16:9 软陶风 CSS/SVG 占位。正式画稿必须压缩后再入库，不要提交未压缩原图 |
-| `audioEn` | `string \| null` | 否 | 英文朗读音频相对 URL。本阶段为 `null`（不做完整 TTS） |
-| `audioZh` | `string \| null` | 否 | 中文朗读音频相对 URL。本阶段为 `null` |
+| `audioEn` | `string \| null` | 否 | 英文朗读音频相对 URL。仓库内有对应 mp3 时写入路径，否则为 `null` |
+| `audioZh` | `string \| null` | 否 | 中文朗读音频相对 URL。同上 |
 
-相对 URL 约定（预留，当前均为 `null`）：
+相对 URL 约定：
 
-- 插图：`images/<story-id>/p01.png`
-- 英文音频：`audio/<story-id>/p01-en.mp3`
-- 中文音频：`audio/<story-id>/p01-zh.mp3`
+- 插图：`images/<story-id>/p01.png`（尚无画稿时为 `null`）
+- 英文音频：`audio/<story-id>/p01-en.mp3`（Edge TTS `en-US-AnaNeural`，语速 `-12%`）
+- 中文音频：`audio/<story-id>/p01-zh.mp3`（Edge TTS `zh-CN-XiaoxiaoNeural`）
 
-阅读器以 Vite `base`（`/idea6_nb_en_story/`）拼接这些路径。
+阅读器以 Vite `base`（`/idea6_nb_en_story/`）拼接这些路径。点英文行播放 `audioEn`，点中文行播放 `audioZh`；文件缺失或播放失败时回退 Web Speech。默认不自动播放。
+
+重新生成音频（在 `app/` 下）：`npm run gen-tts`（需 `edge-tts` 与 `ffmpeg`）。`npm run parse-stories` / `dev` / `build` 会根据 `app/public/audio/` 里是否已有文件回填路径。
 
 ---
 
@@ -92,8 +94,9 @@ npm run parse-stories
 
 - 导航与续读：`id`、`pageCount`、`pages[].index`
 - 展示：`en`、`zh`、`pattern`、`focusWord`、`image`
+- 朗读：`audioEn`、`audioZh`（点对应可见行播放；缺文件回退系统语音）
 - 展示模式：`en`（只英文）/ `en+zh`（对照，默认）/ `zh`（只中文）
-- 预留未接 UI：`audioEn`、`audioZh`、`knowledge`、`focusNote`（TTS 与点词学习尚未做）
+- 预留未接 UI：`knowledge`、`focusNote`（点词学习尚未做）
 
 `localStorage`（前缀 `idea6_nb_en_story:`，GM 初始化会全部清除）：
 

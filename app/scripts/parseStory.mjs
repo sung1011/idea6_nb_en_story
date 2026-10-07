@@ -54,8 +54,8 @@ export function parseStoryMarkdown(md, slug, source) {
       knowledge: fields['知识点'] ?? '',
       highlights,
       image: null,
-      audioEn: null,
-      audioZh: null,
+      audioEn: existingAudio(slug, id, 'en'),
+      audioZh: existingAudio(slug, id, 'zh'),
     })
   }
 
@@ -78,6 +78,30 @@ export function parseStoryMarkdown(md, slug, source) {
 
 function stripLabel(text, label) {
   return text.startsWith(label) ? text.slice(label.length).trim() : text
+}
+
+/** @param {string} slug @param {string} pageId @param {'en' | 'zh'} lang */
+export function pageAudioRel(slug, pageId, lang) {
+  return `audio/${slug}/${String(pageId).toLowerCase()}-${lang}.mp3`
+}
+
+/** Strip markdown bold markers so TTS reads the spoken sentence. */
+export function plainSpeakText(text) {
+  return String(text ?? '')
+    .replace(/\*\*([^*]+)\*\*/g, '$1')
+    .replace(/\s+/g, ' ')
+    .trim()
+}
+
+/** @param {string} slug @param {string} pageId @param {'en' | 'zh'} lang */
+function existingAudio(slug, pageId, lang) {
+  const rel = pageAudioRel(slug, pageId, lang)
+  const abs = path.join(APP_ROOT, 'public', rel)
+  try {
+    return fs.statSync(abs).size > 0 ? rel : null
+  } catch {
+    return null
+  }
 }
 
 /**

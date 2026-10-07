@@ -24,8 +24,8 @@
         "flag"
       ],
       "image": null,
-      "audioEn": null,
-      "audioZh": null
+      "audioEn": "audio/flag-in-the-fog/p01-en.mp3",
+      "audioZh": "audio/flag-in-the-fog/p01-zh.mp3"
     },
     {
       "id": "P02",
@@ -39,8 +39,8 @@
       "knowledge": "读标志 / 引语；寻宝钩子（不堆三个名词）",
       "highlights": [],
       "image": null,
-      "audioEn": null,
-      "audioZh": null
+      "audioEn": "audio/flag-in-the-fog/p02-en.mp3",
+      "audioZh": "audio/flag-in-the-fog/p02-zh.mp3"
     },
     {
       "id": "P03",
@@ -56,8 +56,8 @@
         "Fog"
       ],
       "image": null,
-      "audioEn": null,
-      "audioZh": null
+      "audioEn": "audio/flag-in-the-fog/p03-en.mp3",
+      "audioZh": "audio/flag-in-the-fog/p03-zh.mp3"
     },
     {
       "id": "P04",
@@ -73,8 +73,8 @@
         "sand"
       ],
       "image": null,
-      "audioEn": null,
-      "audioZh": null
+      "audioEn": "audio/flag-in-the-fog/p04-en.mp3",
+      "audioZh": "audio/flag-in-the-fog/p04-zh.mp3"
     },
     {
       "id": "P05",
@@ -90,8 +90,8 @@
         "rock"
       ],
       "image": null,
-      "audioEn": null,
-      "audioZh": null
+      "audioEn": "audio/flag-in-the-fog/p05-en.mp3",
+      "audioZh": "audio/flag-in-the-fog/p05-zh.mp3"
     },
     {
       "id": "P06",
@@ -107,8 +107,8 @@
         "tin"
       ],
       "image": null,
-      "audioEn": null,
-      "audioZh": null
+      "audioEn": "audio/flag-in-the-fog/p06-en.mp3",
+      "audioZh": "audio/flag-in-the-fog/p06-zh.mp3"
     },
     {
       "id": "P07",
@@ -124,8 +124,8 @@
         "rat"
       ],
       "image": null,
-      "audioEn": null,
-      "audioZh": null
+      "audioEn": "audio/flag-in-the-fog/p07-en.mp3",
+      "audioZh": "audio/flag-in-the-fog/p07-zh.mp3"
     },
     {
       "id": "P08",
@@ -141,8 +141,8 @@
         "bag"
       ],
       "image": null,
-      "audioEn": null,
-      "audioZh": null
+      "audioEn": "audio/flag-in-the-fog/p08-en.mp3",
+      "audioZh": "audio/flag-in-the-fog/p08-zh.mp3"
     },
     {
       "id": "P09",
@@ -158,8 +158,8 @@
         "hill"
       ],
       "image": null,
-      "audioEn": null,
-      "audioZh": null
+      "audioEn": "audio/flag-in-the-fog/p09-en.mp3",
+      "audioZh": "audio/flag-in-the-fog/p09-zh.mp3"
     },
     {
       "id": "P10",
@@ -175,8 +175,8 @@
         "den"
       ],
       "image": null,
-      "audioEn": null,
-      "audioZh": null
+      "audioEn": "audio/flag-in-the-fog/p10-en.mp3",
+      "audioZh": "audio/flag-in-the-fog/p10-zh.mp3"
     },
     {
       "id": "P11",
@@ -190,8 +190,8 @@
       "knowledge": "Can we 请求/商量",
       "highlights": [],
       "image": null,
-      "audioEn": null,
-      "audioZh": null
+      "audioEn": "audio/flag-in-the-fog/p11-en.mp3",
+      "audioZh": "audio/flag-in-the-fog/p11-zh.mp3"
     },
     {
       "id": "P12",
@@ -207,8 +207,8 @@
         "tin"
       ],
       "image": null,
-      "audioEn": null,
-      "audioZh": null
+      "audioEn": "audio/flag-in-the-fog/p12-en.mp3",
+      "audioZh": "audio/flag-in-the-fog/p12-zh.mp3"
     },
     {
       "id": "P13",
@@ -224,8 +224,8 @@
         "sack"
       ],
       "image": null,
-      "audioEn": null,
-      "audioZh": null
+      "audioEn": "audio/flag-in-the-fog/p13-en.mp3",
+      "audioZh": "audio/flag-in-the-fog/p13-zh.mp3"
     },
     {
       "id": "P14",
@@ -241,8 +241,8 @@
         "tin"
       ],
       "image": null,
-      "audioEn": null,
-      "audioZh": null
+      "audioEn": "audio/flag-in-the-fog/p14-en.mp3",
+      "audioZh": "audio/flag-in-the-fog/p14-zh.mp3"
     },
     {
       "id": "P15",
@@ -256,8 +256,8 @@
       "knowledge": "祈使；拒绝 → 冲突未解",
       "highlights": [],
       "image": null,
-      "audioEn": null,
-      "audioZh": null
+      "audioEn": "audio/flag-in-the-fog/p15-en.mp3",
+      "audioZh": "audio/flag-in-the-fog/p15-zh.mp3"
     },
     {
       "id": "P16",
@@ -271,8 +271,8 @@
       "knowledge": "Can we 用于和解；动机用 wants（不写 tummy）",
       "highlights": [],
       "image": null,
-      "audioEn": null,
-      "audioZh": null
+      "audioEn": "audio/flag-in-the-fog/p16-en.mp3",
+      "audioZh": "audio/flag-in-the-fog/p16-zh.mp3"
     },
     {
       "id": "P17",
@@ -288,8 +288,8 @@
         "bun"
       ],
       "image": null,
-      "audioEn": null,
-      "audioZh": null
+      "audioEn": "audio/flag-in-the-fog/p17-en.mp3",
+      "audioZh": "audio/flag-in-the-fog/p17-zh.mp3"
     },
     {
       "id": "P18",
@@ -303,8 +303,8 @@
       "knowledge": "Here is 交接；交换成交（可见）",
       "highlights": [],
       "image": null,
-      "audioEn": null,
-      "audioZh": null
+      "audioEn": "audio/flag-in-the-fog/p18-en.mp3",
+      "audioZh": "audio/flag-in-the-fog/p18-zh.mp3"
     },
     {
       "id": "P19",
@@ -318,8 +318,8 @@
       "knowledge": "There is + 介词短语；开箱前奏",
       "highlights": [],
       "image": null,
-      "audioEn": null,
-      "audioZh": null
+      "audioEn": "audio/flag-in-the-fog/p19-en.mp3",
+      "audioZh": "audio/flag-in-the-fog/p19-zh.mp3"
     },
     {
       "id": "P20",
@@ -335,8 +335,8 @@
         "flag"
       ],
       "image": null,
-      "audioEn": null,
-      "audioZh": null
+      "audioEn": "audio/flag-in-the-fog/p20-en.mp3",
+      "audioZh": "audio/flag-in-the-fog/p20-zh.mp3"
     },
     {
       "id": "P21",
@@ -350,8 +350,8 @@
       "knowledge": "分享可见结果；暖收不说教",
       "highlights": [],
       "image": null,
-      "audioEn": null,
-      "audioZh": null
+      "audioEn": "audio/flag-in-the-fog/p21-en.mp3",
+      "audioZh": "audio/flag-in-the-fog/p21-zh.mp3"
     },
     {
       "id": "P22",
@@ -365,8 +365,8 @@
       "knowledge": "What a…! 收束感叹",
       "highlights": [],
       "image": null,
-      "audioEn": null,
-      "audioZh": null
+      "audioEn": "audio/flag-in-the-fog/p22-en.mp3",
+      "audioZh": "audio/flag-in-the-fog/p22-zh.mp3"
     }
   ]
 }

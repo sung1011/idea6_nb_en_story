@@ -5,6 +5,7 @@ import { DISPLAY_MODE_OPTIONS } from '@/types/displayMode'
 import { parseEnSegments } from '@/utils/parseEn'
 import { useStoryProgress } from '@/composables/useStoryProgress'
 import { useDisplayMode } from '@/composables/useDisplayMode'
+import { usePageSpeech } from '@/composables/usePageSpeech'
 import PagePlaceholder from './pagePlaceholder.vue'
 
 const props = defineProps<{
@@ -25,6 +26,7 @@ const { displayMode } = useDisplayMode()
 const page = computed(() => {
   return props.story.pages.find((item) => item.index === pageIndex.value) ?? props.story.pages[0]
 })
+const { playingLang, playLine, stop } = usePageSpeech(page)
 
 const enSegments = computed(() => parseEnSegments(page.value?.en ?? ''))
 const canPrev = computed(() => pageIndex.value > 1)
@@ -65,6 +67,7 @@ onMounted(() => {
 
 onUnmounted(() => {
   window.removeEventListener('keydown', onKey)
+  stop()
 })
 </script>
 
@@ -114,18 +117,37 @@ onUnmounted(() => {
     />
 
     <section class="copy">
-      <p v-if="showEnglish" class="en">
-        <span
-          v-for="(seg, i) in enSegments"
-          :key="`${page.id}-${i}`"
-          :class="{ hl: seg.highlight }"
-        >{{ seg.text }}</span>
-      </p>
-      <p
+      <button
+        v-if="showEnglish"
+        type="button"
+        class="line en"
+        :class="{ playing: playingLang === 'en' }"
+        :aria-pressed="playingLang === 'en'"
+        aria-label="Play English"
+        @click="playLine('en')"
+      >
+        <span class="speaker" aria-hidden="true">🔊</span>
+        <span class="line-text">
+          <span
+            v-for="(seg, i) in enSegments"
+            :key="`${page.id}-${i}`"
+            :class="{ hl: seg.highlight }"
+          >{{ seg.text }}</span>
+        </span>
+      </button>
+      <button
         v-if="showChinese && page.zh"
-        class="zh"
-        :class="{ lead: !showEnglish }"
-      >{{ page.zh }}</p>
+        type="button"
+        class="line zh"
+        :class="{ playing: playingLang === 'zh', lead: !showEnglish }"
+        :aria-pressed="playingLang === 'zh'"
+        aria-label="播放中文"
+        @click="playLine('zh')"
+      >
+        <span class="speaker" aria-hidden="true">🔊</span>
+        <span class="line-text">{{ page.zh }}</span>
+      </button>
+      <p class="hint">点句子听朗读 · Tap a line to hear it</p>
       <div class="meta">
         <span v-if="page.pattern" class="chip">{{ page.pattern }}</span>
         <span v-if="page.focusWord" class="chip word">{{ page.focusWord }}</span>
@@ -264,11 +286,68 @@ h1 {
   padding: 18px 4px 8px;
 }
 
-.en {
+.line {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  width: 100%;
   margin: 0;
+  padding: 12px 14px;
+  border: 3px solid transparent;
+  border-radius: 18px;
+  background: transparent;
+  text-align: left;
+  color: inherit;
+  font: inherit;
+}
+
+.line.en {
   font-size: 1.55rem;
   line-height: 1.45;
   font-weight: 500;
+  color: var(--ink);
+}
+
+.line.zh {
+  margin-top: 8px;
+  color: var(--muted);
+  font-size: 1.05rem;
+  line-height: 1.5;
+}
+
+.line.zh.lead {
+  margin-top: 0;
+  color: var(--ink);
+  font-size: 1.55rem;
+  font-weight: 500;
+}
+
+.line:hover,
+.line:focus-visible {
+  background: rgba(31, 138, 128, 0.08);
+  border-color: rgba(47, 63, 59, 0.28);
+}
+
+.line.playing {
+  background: rgba(31, 138, 128, 0.14);
+  border-color: #2f3f3b;
+  box-shadow: 0 3px 0 rgba(47, 63, 59, 0.16);
+}
+
+.speaker {
+  flex-shrink: 0;
+  margin-top: 0.18em;
+  font-size: 0.72em;
+  line-height: 1;
+  opacity: 0.72;
+}
+
+.line.playing .speaker {
+  opacity: 1;
+}
+
+.line-text {
+  min-width: 0;
 }
 
 .hl {
@@ -276,18 +355,10 @@ h1 {
   font-weight: 700;
 }
 
-.zh {
-  margin: 10px 0 0;
+.hint {
+  margin: 10px 2px 0;
   color: var(--muted);
-  font-size: 1.05rem;
-  line-height: 1.5;
-}
-
-.zh.lead {
-  margin: 0;
-  color: var(--ink);
-  font-size: 1.55rem;
-  font-weight: 500;
+  font-size: 0.88rem;
 }
 
 .meta {
@@ -375,8 +446,8 @@ h1 {
     font-size: 1.35rem;
   }
 
-  .en,
-  .zh.lead {
+  .line.en,
+  .line.zh.lead {
     font-size: 1.28rem;
   }
 
@@ -407,8 +478,8 @@ h1 {
     font-size: 1.9rem;
   }
 
-  .en,
-  .zh.lead {
+  .line.en,
+  .line.zh.lead {
     font-size: 1.75rem;
   }
 
