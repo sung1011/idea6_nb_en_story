@@ -1,8 +1,10 @@
 <script setup lang="ts">
 import { computed, onMounted, onUnmounted } from 'vue'
 import type { Story } from '@/types/story'
+import { DISPLAY_MODE_OPTIONS } from '@/types/displayMode'
 import { parseEnSegments } from '@/utils/parseEn'
 import { useStoryProgress } from '@/composables/useStoryProgress'
+import { useDisplayMode } from '@/composables/useDisplayMode'
 import PagePlaceholder from './pagePlaceholder.vue'
 
 const props = defineProps<{
@@ -12,12 +14,13 @@ const props = defineProps<{
 const pageCount = computed(() => props.story.pageCount || props.story.pages.length)
 const {
   pageIndex,
-  showZh,
   resumedFrom,
   next,
   prev,
   dismissResume,
+  restart,
 } = useStoryProgress(props.story.id, pageCount.value)
+const { displayMode } = useDisplayMode()
 
 const page = computed(() => {
   return props.story.pages.find((item) => item.index === pageIndex.value) ?? props.story.pages[0]
@@ -26,6 +29,17 @@ const page = computed(() => {
 const enSegments = computed(() => parseEnSegments(page.value?.en ?? ''))
 const canPrev = computed(() => pageIndex.value > 1)
 const canNext = computed(() => pageIndex.value < pageCount.value)
+const showEnglish = computed(() => displayMode.value !== 'zh' || !page.value?.zh)
+const showChinese = computed(() => displayMode.value !== 'en' && Boolean(page.value?.zh))
+const heading = computed(() => {
+  if (displayMode.value === 'zh' && props.story.titleZh) return props.story.titleZh
+  return props.story.title
+})
+const subheading = computed(() => {
+  if (displayMode.value === 'zh') return props.story.title
+  if (displayMode.value === 'en+zh') return props.story.titleZh
+  return ''
+})
 
 function onKey(event: KeyboardEvent) {
   const target = event.target as HTMLElement | null
@@ -38,7 +52,7 @@ function onKey(event: KeyboardEvent) {
     prev()
   } else if (event.key === 'Home') {
     event.preventDefault()
-    pageIndex.value = 1
+    restart()
   } else if (event.key === 'End') {
     event.preventDefault()
     pageIndex.value = pageCount.value
@@ -57,21 +71,41 @@ onUnmounted(() => {
 <template>
   <article v-if="page" class="reader">
     <header class="top">
-      <div>
+      <div class="titles">
         <p class="kicker">{{ story.label || 'Story' }}</p>
-        <h1>{{ story.title }}</h1>
-        <p v-if="story.titleZh" class="subtitle">{{ story.titleZh }}</p>
+        <h1>{{ heading }}</h1>
+        <p v-if="subheading" class="subtitle">{{ subheading }}</p>
       </div>
-      <label class="zh-toggle">
-        <input v-model="showZh" type="checkbox" />
-        <span>中文</span>
-      </label>
+      <div class="mode-toggle" role="radiogroup" aria-label="Display language">
+        <button
+          v-for="opt in DISPLAY_MODE_OPTIONS"
+          :key="opt.id"
+          type="button"
+          role="radio"
+          :aria-checked="displayMode === opt.id"
+          :aria-label="opt.hint"
+          :class="{ active: displayMode === opt.id }"
+          @click="displayMode = opt.id"
+        >
+          {{ opt.label }}
+        </button>
+      </div>
     </header>
 
-    <p v-if="resumedFrom" class="resume">
-      Resumed at page {{ resumedFrom }}
-      <button type="button" @click="dismissResume">OK</button>
-    </p>
+    <aside v-if="resumedFrom" class="resume" role="status">
+      <p class="resume-copy">
+        上次读到第 {{ resumedFrom }} 页
+        <span class="resume-en">Continue from page {{ resumedFrom }}</span>
+      </p>
+      <div class="resume-actions">
+        <button type="button" class="resume-continue" @click="dismissResume">
+          继续阅读
+        </button>
+        <button type="button" class="resume-restart" @click="restart">
+          从头读
+        </button>
+      </div>
+    </aside>
 
     <PagePlaceholder
       :page-index="page.index"
@@ -80,14 +114,18 @@ onUnmounted(() => {
     />
 
     <section class="copy">
-      <p class="en">
+      <p v-if="showEnglish" class="en">
         <span
           v-for="(seg, i) in enSegments"
           :key="`${page.id}-${i}`"
           :class="{ hl: seg.highlight }"
         >{{ seg.text }}</span>
       </p>
-      <p v-if="showZh && page.zh" class="zh">{{ page.zh }}</p>
+      <p
+        v-if="showChinese && page.zh"
+        class="zh"
+        :class="{ lead: !showEnglish }"
+      >{{ page.zh }}</p>
       <div class="meta">
         <span v-if="page.pattern" class="chip">{{ page.pattern }}</span>
         <span v-if="page.focusWord" class="chip word">{{ page.focusWord }}</span>
@@ -95,16 +133,16 @@ onUnmounted(() => {
     </section>
 
     <nav class="nav" aria-label="Page navigation">
-      <button type="button" :disabled="!canPrev" @click="prev">Prev</button>
+      <button type="button" :disabled="!canPrev" @click="prev">上一页</button>
       <p class="count">{{ page.index }} / {{ pageCount }}</p>
-      <button type="button" class="next" :disabled="!canNext" @click="next">Next</button>
+      <button type="button" class="next" :disabled="!canNext" @click="next">下一页</button>
     </nav>
   </article>
 </template>
 
 <style scoped>
 .reader {
-  max-width: 720px;
+  max-width: 840px;
   margin: 0 auto;
   background: var(--paper);
   border-radius: 28px;
@@ -140,21 +178,32 @@ h1 {
   color: var(--muted);
 }
 
-.zh-toggle {
+.mode-toggle {
   display: flex;
-  align-items: center;
-  gap: 8px;
-  user-select: none;
-  padding: 8px 12px;
+  flex-shrink: 0;
+  gap: 4px;
+  padding: 4px;
   border-radius: 999px;
   background: var(--fog);
-  font-weight: 600;
+  border: 3px solid #2f3f3b;
 }
 
-.zh-toggle input {
-  accent-color: var(--teal);
-  width: 16px;
-  height: 16px;
+.mode-toggle button {
+  min-height: 44px;
+  min-width: 56px;
+  padding: 8px 14px;
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  color: var(--ink);
+  font-size: 0.95rem;
+  font-weight: 700;
+}
+
+.mode-toggle button.active {
+  background: var(--paper);
+  color: var(--teal-dark);
+  box-shadow: 0 2px 0 rgba(47, 63, 59, 0.18);
 }
 
 .resume {
@@ -162,20 +211,53 @@ h1 {
   align-items: center;
   justify-content: space-between;
   gap: 12px;
-  margin: 0 0 12px;
-  padding: 8px 12px;
-  border-radius: 12px;
+  margin: 0 0 16px;
+  padding: 12px 14px;
+  border-radius: 18px;
+  border: 3px solid #2f3f3b;
   background: rgba(31, 138, 128, 0.12);
   color: var(--teal-dark);
-  font-weight: 500;
 }
 
-.resume button {
-  border: 0;
+.resume-copy {
+  margin: 0;
+  font-weight: 700;
+  font-size: 1.05rem;
+  line-height: 1.3;
+}
+
+.resume-en {
+  display: block;
+  margin-top: 2px;
+  font-size: 0.88rem;
+  font-weight: 500;
+  color: var(--muted);
+}
+
+.resume-actions {
+  display: flex;
+  flex-shrink: 0;
+  gap: 8px;
+}
+
+.resume-actions button {
+  min-height: 48px;
+  padding: 10px 16px;
+  border-radius: 999px;
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.resume-continue {
+  border: 3px solid #2f3f3b;
   background: var(--teal);
   color: white;
-  border-radius: 999px;
-  padding: 4px 12px;
+}
+
+.resume-restart {
+  border: 3px solid #2f3f3b;
+  background: var(--paper);
+  color: var(--ink);
 }
 
 .copy {
@@ -199,6 +281,13 @@ h1 {
   color: var(--muted);
   font-size: 1.05rem;
   line-height: 1.5;
+}
+
+.zh.lead {
+  margin: 0;
+  color: var(--ink);
+  font-size: 1.55rem;
+  font-weight: 500;
 }
 
 .meta {
@@ -230,18 +319,22 @@ h1 {
 }
 
 .nav button {
-  border: 0;
+  min-height: 56px;
+  min-width: 120px;
+  border: 3px solid #2f3f3b;
   background: var(--teal);
   color: white;
-  border-radius: 14px;
-  padding: 12px 16px;
-  font-size: 1rem;
-  font-weight: 600;
+  border-radius: 18px;
+  padding: 14px 18px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  box-shadow: 0 4px 0 #2f3f3b;
 }
 
 .nav button:disabled {
   opacity: 0.38;
   cursor: not-allowed;
+  box-shadow: none;
 }
 
 .nav .next {
@@ -254,22 +347,75 @@ h1 {
 
 .count {
   margin: 0;
-  font-weight: 600;
+  font-weight: 700;
+  font-size: 1.05rem;
   color: var(--muted);
 }
 
-@media (max-width: 640px) {
+@media (max-width: 720px) {
   .reader {
     padding: 16px 14px 12px;
     border-radius: 20px;
+  }
+
+  .top {
+    flex-direction: column;
+  }
+
+  .mode-toggle {
+    width: 100%;
+  }
+
+  .mode-toggle button {
+    flex: 1;
+    min-height: 48px;
   }
 
   h1 {
     font-size: 1.35rem;
   }
 
-  .en {
+  .en,
+  .zh.lead {
     font-size: 1.28rem;
+  }
+
+  .resume {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .resume-actions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .nav button {
+    min-width: 0;
+    width: 100%;
+    min-height: 56px;
+    font-size: 1.05rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .reader {
+    padding: 28px 32px 24px;
+  }
+
+  h1 {
+    font-size: 1.9rem;
+  }
+
+  .en,
+  .zh.lead {
+    font-size: 1.75rem;
+  }
+
+  .nav button {
+    min-height: 64px;
+    min-width: 148px;
+    font-size: 1.15rem;
   }
 }
 </style>

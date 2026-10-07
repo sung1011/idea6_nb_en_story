@@ -1,17 +1,14 @@
-<<<<<<< HEAD
 # idea6_nb_en_story / 星词岛故事库
 
 story-first English learning stories for Star Words App
-
-- First story: [Flag in the Fog / 雾里的旗](stories/flag-in-the-fog.md)（22 pages）
-=======
-# idea6_nb_en_story
 
 Vue 3 绘本阅读器，用来翻页阅读 **Flag in the Fog**（雾里的旗，22 页）。
 
 线上地址（启用 GitHub Pages 后）：
 
 https://sung1011.github.io/idea6_nb_en_story/
+
+- First story: [Flag in the Fog / 雾里的旗](stories/flag-in-the-fog.md)（22 pages）
 
 ## 本地开发
 
@@ -27,6 +24,7 @@ npm run dev
 
 ```bash
 cd app
+npm install
 npm run build
 ```
 
@@ -48,7 +46,15 @@ npm run parse-stories
 | `app/` | Vue 3 + Vite + TypeScript 阅读器 |
 | `.github/workflows/deployPages.yml` | 推送到 `main` 后构建并发布 GitHub Pages |
 
-阅读器：插图占位、英文、可选中文、页码、上一页/下一页。进度按本故事写入 `localStorage`，刷新后从上次页码继续。
+## 阅读器（Stage 4）
+
+- 展示模式：`英文` / `中英对照` / `中文`（`en` \| `en+zh` \| `zh`），默认 `en+zh`，写入 `localStorage`
+- 续读：刷新后夹紧在 1..N 页继续；顶部可「继续阅读」或对本故事「从头读」
+- 插图：16:9 奶油色软陶风 CSS/SVG 占位（圆角、深色描边、页码标签）。正式画稿需压缩后再接入，本阶段不放原图
+- 翻页：大触摸热区的上一页 / 下一页，Fredoka 字体，平板宽度友好
+- 尚未做：TTS、点词学习（Stage 5–6）
+
+进度按本故事写入 `localStorage`。展示模式是整站偏好。
 
 ## 启用 GitHub Pages
 
@@ -61,4 +67,3 @@ npm run parse-stories
 5. 首次启用后打开：https://sung1011.github.io/idea6_nb_en_story/
 
 如果 Actions 里 deploy job 报 Pages 环境未授权，回到上面第 2 步确认 Source 已是 GitHub Actions。
->>>>>>> 61c83cc (Scaffold Vue story reader and GitHub Pages deploy.)

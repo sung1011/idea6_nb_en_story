@@ -7,8 +7,16 @@ const props = defineProps<{
   image: string | null
 }>()
 
-const hues = [168, 28, 200, 42, 152, 18]
-const hue = computed(() => hues[(props.pageIndex - 1) % hues.length])
+const palettes = [
+  { sky: '#f7ead4', hill: '#cfe8d2', sand: '#ead7a8', flag: '#e08b74', sun: '#f3c97a' },
+  { sky: '#f4e6d8', hill: '#d5e4f0', sand: '#edd6b0', flag: '#d98aa8', sun: '#f0c3a0' },
+  { sky: '#efe8d6', hill: '#d7e8c8', sand: '#e6d0a4', flag: '#7eb8b0', sun: '#f2d07a' },
+  { sky: '#f6e4dc', hill: '#e4d6f0', sand: '#ebcfa8', flag: '#e0a06a', sun: '#f5c48c' },
+]
+
+const palette = computed(() => palettes[(props.pageIndex - 1) % palettes.length])
+const pageLabel = computed(() => `P${String(props.pageIndex).padStart(2, '0')}`)
+const uid = computed(() => `p${props.pageIndex}`)
 const imageSrc = computed(() => {
   if (!props.image) return ''
   const base = import.meta.env.BASE_URL
@@ -17,33 +25,67 @@ const imageSrc = computed(() => {
 </script>
 
 <template>
-  <div class="art" :style="{ '--hue': hue }">
+  <div class="art" :style="{ '--sky': palette.sky }">
     <img
       v-if="imageSrc"
       class="art-img"
       :src="imageSrc"
       :alt="`Page ${pageIndex} illustration`"
     />
-    <svg v-else class="art-svg" viewBox="0 0 640 360" aria-hidden="true">
+    <svg
+      v-else
+      class="art-svg"
+      viewBox="0 0 640 360"
+      role="img"
+      :aria-label="`Page ${pageIndex} clay placeholder`"
+    >
       <defs>
-        <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" :stop-color="`hsl(${hue} 32% 72%)`" />
-          <stop offset="100%" :stop-color="`hsl(${hue} 28% 88%)`" />
+        <linearGradient :id="`${uid}-sky`" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" :stop-color="palette.sky" />
+          <stop offset="100%" stop-color="#fff6e8" />
         </linearGradient>
       </defs>
-      <rect width="640" height="360" fill="url(#sky)" />
-      <ellipse cx="120" cy="80" rx="90" ry="28" fill="#ffffff" opacity="0.45" />
-      <ellipse cx="300" cy="50" rx="120" ry="34" fill="#ffffff" opacity="0.38" />
-      <ellipse cx="520" cy="90" rx="100" ry="30" fill="#ffffff" opacity="0.42" />
-      <path d="M0 250 C 120 210, 220 280, 340 240 C 460 200, 540 260, 640 220 L 640 360 L 0 360 Z" fill="#e8d7b5" />
-      <path d="M0 290 C 160 260, 280 310, 420 280 C 520 258, 580 300, 640 270 L 640 360 L 0 360 Z" fill="#d9c49a" />
-      <rect x="118" y="118" width="8" height="150" rx="3" fill="#5b4636" />
-      <path d="M126 122 h 90 l -18 32 18 30 H 126 z" fill="#e06a4e" />
-      <circle cx="520" cy="210" r="36" fill="#c9b48a" />
-      <text class="page-no" x="320" y="188" text-anchor="middle">{{ String(pageIndex).padStart(2, '0') }}</text>
+      <rect width="640" height="360" :fill="`url(#${uid}-sky)`" />
+      <circle
+        cx="528"
+        cy="78"
+        r="40"
+        :fill="palette.sun"
+        stroke="#2f3f3b"
+        stroke-width="7"
+      />
+      <g fill="#fff8ec" stroke="#2f3f3b" stroke-width="7" stroke-linejoin="round">
+        <ellipse cx="128" cy="86" rx="58" ry="30" />
+        <ellipse cx="176" cy="96" rx="42" ry="24" />
+        <ellipse cx="318" cy="64" rx="70" ry="28" />
+        <ellipse cx="366" cy="74" rx="40" ry="22" />
+      </g>
+      <path
+        d="M-20 230 C 90 188, 170 250, 280 214 C 390 178, 470 236, 660 198 L 660 380 L -20 380 Z"
+        :fill="palette.hill"
+        stroke="#2f3f3b"
+        stroke-width="7"
+        stroke-linejoin="round"
+      />
+      <path
+        d="M-20 276 C 120 246, 230 304, 360 268 C 480 236, 560 292, 660 258 L 660 380 L -20 380 Z"
+        :fill="palette.sand"
+        stroke="#2f3f3b"
+        stroke-width="7"
+        stroke-linejoin="round"
+      />
+      <rect x="142" y="128" width="14" height="148" rx="7" fill="#5c4638" stroke="#2f3f3b" stroke-width="5" />
+      <path
+        d="M156 136 h 108 l -22 36 22 34 H 156 z"
+        :fill="palette.flag"
+        stroke="#2f3f3b"
+        stroke-width="7"
+        stroke-linejoin="round"
+        stroke-linecap="round"
+      />
     </svg>
     <p v-if="focusWord" class="focus-chip">{{ focusWord }}</p>
-    <p v-else class="focus-chip muted">illustration soon</p>
+    <p class="page-label">{{ pageLabel }}</p>
   </div>
 </template>
 
@@ -51,10 +93,14 @@ const imageSrc = computed(() => {
 .art {
   position: relative;
   overflow: hidden;
-  border-radius: 24px;
-  background: hsl(var(--hue, 168) 30% 80%);
-  min-height: 220px;
   aspect-ratio: 16 / 9;
+  width: 100%;
+  border-radius: 28px;
+  background: var(--sky, #f7ead4);
+  border: 4px solid #2f3f3b;
+  box-shadow:
+    0 8px 0 rgba(47, 63, 59, 0.18),
+    inset 0 2px 0 rgba(255, 255, 255, 0.45);
 }
 
 .art-img,
@@ -65,27 +111,43 @@ const imageSrc = computed(() => {
   object-fit: cover;
 }
 
-.page-no {
-  font-size: 92px;
+.focus-chip,
+.page-label {
+  position: absolute;
+  margin: 0;
+  padding: 8px 14px;
+  border-radius: 999px;
+  border: 3px solid #2f3f3b;
+  background: #fff6e4;
+  color: var(--teal-dark);
+  font-size: 0.95rem;
   font-weight: 700;
-  fill: rgba(36, 51, 48, 0.18);
+  line-height: 1;
+  box-shadow: 0 3px 0 rgba(47, 63, 59, 0.2);
 }
 
 .focus-chip {
-  position: absolute;
-  left: 16px;
+  left: 14px;
   bottom: 14px;
-  margin: 0;
-  padding: 6px 12px;
-  border-radius: 999px;
-  background: rgba(255, 253, 247, 0.9);
-  color: var(--teal-dark);
-  font-size: 0.92rem;
-  font-weight: 600;
 }
 
-.muted {
-  color: var(--muted);
-  font-weight: 500;
+.page-label {
+  right: 14px;
+  bottom: 14px;
+  color: var(--ink);
+  letter-spacing: 0.04em;
+}
+
+@media (max-width: 640px) {
+  .art {
+    border-radius: 22px;
+    border-width: 3px;
+  }
+
+  .focus-chip,
+  .page-label {
+    padding: 7px 12px;
+    font-size: 0.86rem;
+  }
 }
 </style>

@@ -47,7 +47,7 @@ npm run parse-stories
 | `focusRaw` | `string` | 否 | 辅词原始字段，便于对照源稿 |
 | `knowledge` | `string` | 否 | 知识点 |
 | `highlights` | `string[]` | 否 | 从 `en` 里 `**…**` 抽出的词 |
-| `image` | `string \| null` | 否 | 插图相对 URL。尚无画稿时为 `null`，阅读器显示占位图 |
+| `image` | `string \| null` | 否 | 插图相对 URL。尚无画稿时为 `null`，阅读器显示 16:9 软陶风 CSS/SVG 占位。正式画稿必须压缩后再入库，不要提交未压缩原图 |
 | `audioEn` | `string \| null` | 否 | 英文朗读音频相对 URL。本阶段为 `null`（不做完整 TTS） |
 | `audioZh` | `string \| null` | 否 | 中文朗读音频相对 URL。本阶段为 `null` |
 
@@ -92,9 +92,12 @@ npm run parse-stories
 
 - 导航与续读：`id`、`pageCount`、`pages[].index`
 - 展示：`en`、`zh`、`pattern`、`focusWord`、`image`
-- 预留未接 UI：`audioEn`、`audioZh`、`knowledge`、`focusNote`
+- 展示模式：`en`（只英文）/ `en+zh`（对照，默认）/ `zh`（只中文）
+- 预留未接 UI：`audioEn`、`audioZh`、`knowledge`、`focusNote`（TTS 与点词学习尚未做）
 
-`localStorage` 续读键（仅本故事）：
+`localStorage`：
 
-- `idea6_nb_en_story:progress:flag-in-the-fog` → 页码（1-based）
-- `idea6_nb_en_story:showZh:flag-in-the-fog` → 是否显示中文
+- `idea6_nb_en_story:progress:flag-in-the-fog` → 页码（1-based，读写时夹紧到 `1..pageCount`）
+- `idea6_nb_en_story:displayMode` → `en` \| `en+zh` \| `zh`（整站偏好，默认 `en+zh`）
+
+旧键 `idea6_nb_en_story:showZh:<storyId>` 若仍存在，会在首次读取时迁移：`0`/`false` → `en`，其余 → `en+zh`。

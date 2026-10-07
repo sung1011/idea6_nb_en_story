@@ -33,7 +33,13 @@ onMounted(async () => {
 <style scoped>
 .shell {
   min-height: 100vh;
-  padding: 24px 16px 40px;
+  padding: 24px 16px 48px;
+}
+
+@media (min-width: 768px) {
+  .shell {
+    padding: 36px 28px 56px;
+  }
 }
 
 .status {
