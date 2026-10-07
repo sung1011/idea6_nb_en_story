@@ -46,18 +46,22 @@ npm run parse-stories
 | `focusNote` | `string` | 否 | 辅词括注（课次、回调说明等） |
 | `focusRaw` | `string` | 否 | 辅词原始字段，便于对照源稿 |
 | `knowledge` | `string` | 否 | 知识点 |
+| `gloss` | `string` | 否 | 本页主焦点词的中文短义。优先用源稿 `释义:`，否则从辅词括注 / 知识点 / 正文中文推导 |
 | `highlights` | `string[]` | 否 | 从 `en` 里 `**…**` 抽出的词 |
+| `learnItems` | `LearnItem[]` | 否 | 本页可点学的词（加粗词 + 辅词），每项 `{ word, gloss, audioWord }` |
 | `image` | `string \| null` | 否 | 插图相对 URL。尚无画稿时为 `null`，阅读器显示 16:9 软陶风 CSS/SVG 占位。正式画稿必须压缩后再入库，不要提交未压缩原图 |
 | `audioEn` | `string \| null` | 否 | 英文朗读音频相对 URL。仓库内有对应 mp3 时写入路径，否则为 `null` |
 | `audioZh` | `string \| null` | 否 | 中文朗读音频相对 URL。同上 |
+| `audioWord` | `string \| null` | 否 | 主焦点词的词级英文 mp3。仓库内有对应文件时写入路径，否则为 `null` |
 
 相对 URL 约定：
 
 - 插图：`images/<story-id>/p01.png`（尚无画稿时为 `null`）
 - 英文音频：`audio/<story-id>/p01-en.mp3`（Edge TTS `en-US-AnaNeural`，语速 `-12%`）
 - 中文音频：`audio/<story-id>/p01-zh.mp3`（Edge TTS `zh-CN-XiaoxiaoNeural`）
+- 词级音频：`audio/<story-id>/word-flag.mp3`（同一 Ana 声线，只读单词）
 
-阅读器以 Vite `base`（`/idea6_nb_en_story/`）拼接这些路径。点英文行播放 `audioEn`，点中文行播放 `audioZh`；文件缺失或播放失败时回退 Web Speech。默认不自动播放。
+阅读器以 Vite `base`（`/idea6_nb_en_story/`）拼接这些路径。点喇叭或句子其余部分播放整句 `audioEn` / `audioZh`；点加粗焦点词、辅词芯片或带 `___` 的句式芯片打开释义面板并读单词。文件缺失或播放失败时回退 Web Speech。默认不自动播放。
 
 重新生成音频（在 `app/` 下）：`npm run gen-tts`（需 `edge-tts` 与 `ffmpeg`）。`npm run parse-stories` / `dev` / `build` 会根据 `app/public/audio/` 里是否已有文件回填路径。
 
@@ -81,8 +85,9 @@ npm run parse-stories
 | `正文:` 括号外 | `en` |
 | `正文:` 全角括号内 | `zh` |
 | `主练句式:` | `pattern` |
-| `辅词:` | `focusWord` + `focusNote` + `focusRaw` |
-| `知识点:` | `knowledge` |
+| `辅词:` | `focusWord` + `focusNote` + `focusRaw`；拆出的英文词进入 `learnItems` |
+| `知识点:` | `knowledge`；若写成 `flag 旗子` 这类「词 + 中文」可推导 `gloss` |
+| `释义:` | 可选。本页主焦点词的中文短义，写入 `gloss` / 首个 `learnItems` |
 
 `## 知识点总表` 及之后的内容不进入 `pages`。
 
@@ -94,9 +99,9 @@ npm run parse-stories
 
 - 导航与续读：`id`、`pageCount`、`pages[].index`
 - 展示：`en`、`zh`、`pattern`、`focusWord`、`image`
-- 朗读：`audioEn`、`audioZh`（点对应可见行播放；缺文件回退系统语音）
+- 朗读：`audioEn`、`audioZh`（点喇叭或句子其余部分播放整句；缺文件回退系统语音）
+- 点词：`learnItems` / `gloss` / `audioWord`（点加粗词、辅词芯片或句式空位，弹出中文短义 +「再听」）
 - 展示模式：`en`（只英文）/ `en+zh`（对照，默认）/ `zh`（只中文）
-- 预留未接 UI：`knowledge`、`focusNote`（点词学习尚未做）
 
 `localStorage`（前缀 `idea6_nb_en_story:`，GM 初始化会全部清除）：
 

@@ -1,3 +1,9 @@
+export interface LearnItem {
+  word: string
+  gloss: string
+  audioWord: string | null
+}
+
 export interface StoryPage {
   id: string
   index: number
@@ -8,10 +14,13 @@ export interface StoryPage {
   focusNote: string
   focusRaw: string
   knowledge: string
+  gloss: string
   highlights: string[]
+  learnItems: LearnItem[]
   image: string | null
   audioEn: string | null
   audioZh: string | null
+  audioWord: string | null
 }
 
 export interface Story {
@@ -31,4 +40,5 @@ export interface Story {
 export interface EnSegment {
   text: string
   highlight: boolean
+  learnWord?: string
 }

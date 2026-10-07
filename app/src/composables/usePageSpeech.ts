@@ -121,15 +121,18 @@ function playFile(
 
 export function usePageSpeech(page: Ref<StoryPage | undefined>) {
   const playingLang = ref<SpeechLang | null>(null)
+  const playingWord = ref<string | null>(null)
 
   function clearPlaying(token: number) {
     if (seq !== token) return
     playingLang.value = null
+    playingWord.value = null
   }
 
   function stop() {
     stopShared()
     playingLang.value = null
+    playingWord.value = null
   }
 
   function playLine(lang: SpeechLang) {
@@ -140,6 +143,7 @@ export function usePageSpeech(page: Ref<StoryPage | undefined>) {
     stopShared()
     const token = seq
     playingLang.value = lang
+    playingWord.value = null
     const file = lang === 'zh' ? current.audioZh : current.audioEn
     const done = () => clearPlaying(token)
     if (file) {
@@ -147,6 +151,21 @@ export function usePageSpeech(page: Ref<StoryPage | undefined>) {
       return
     }
     systemSpeak(text, lang, token, done)
+  }
+
+  function playWord(word: string, file?: string | null) {
+    const text = plainSpeakText(word)
+    if (!text) return
+    stopShared()
+    const token = seq
+    playingLang.value = null
+    playingWord.value = text
+    const done = () => clearPlaying(token)
+    if (file) {
+      playFile(clipUrl(file), text, 'en', token, done)
+      return
+    }
+    systemSpeak(text, 'en', token, done)
   }
 
   onMounted(() => {
@@ -170,7 +189,9 @@ export function usePageSpeech(page: Ref<StoryPage | undefined>) {
 
   return {
     playingLang,
+    playingWord,
     playLine,
+    playWord,
     stop,
   }
 }

@@ -20,12 +20,21 @@
       "focusNote": "第8章 第2课「字母 F · see blue」",
       "focusRaw": "flag（第8章 第2课「字母 F · see blue」）",
       "knowledge": "There is 存在句；flag 词包 flag/fog/fin/frog",
+      "gloss": "旗子",
       "highlights": [
         "flag"
       ],
+      "learnItems": [
+        {
+          "word": "flag",
+          "gloss": "旗子",
+          "audioWord": "audio/flag-in-the-fog/word-flag.mp3"
+        }
+      ],
       "image": null,
       "audioEn": "audio/flag-in-the-fog/p01-en.mp3",
-      "audioZh": "audio/flag-in-the-fog/p01-zh.mp3"
+      "audioZh": "audio/flag-in-the-fog/p01-zh.mp3",
+      "audioWord": "audio/flag-in-the-fog/word-flag.mp3"
     },
     {
       "id": "P02",
@@ -37,10 +46,13 @@
       "focusNote": "承接 flag；雾与大石用画面表现",
       "focusRaw": "—（承接 flag；雾与大石用画面表现）",
       "knowledge": "读标志 / 引语；寻宝钩子（不堆三个名词）",
+      "gloss": "",
       "highlights": [],
+      "learnItems": [],
       "image": null,
       "audioEn": "audio/flag-in-the-fog/p02-en.mp3",
-      "audioZh": "audio/flag-in-the-fog/p02-zh.mp3"
+      "audioZh": "audio/flag-in-the-fog/p02-zh.mp3",
+      "audioWord": null
     },
     {
       "id": "P03",
@@ -52,12 +64,21 @@
       "focusNote": "第8章 第2课",
       "focusRaw": "fog（第8章 第2课）",
       "knowledge": "Where 疑问；fog 与 flag 同课",
+      "gloss": "雾",
       "highlights": [
         "Fog"
       ],
+      "learnItems": [
+        {
+          "word": "fog",
+          "gloss": "雾",
+          "audioWord": "audio/flag-in-the-fog/word-fog.mp3"
+        }
+      ],
       "image": null,
       "audioEn": "audio/flag-in-the-fog/p03-en.mp3",
-      "audioZh": "audio/flag-in-the-fog/p03-zh.mp3"
+      "audioZh": "audio/flag-in-the-fog/p03-zh.mp3",
+      "audioWord": "audio/flag-in-the-fog/word-fog.mp3"
     },
     {
       "id": "P04",
@@ -69,12 +90,21 @@
       "focusNote": "第11章 第3课「霍普的地图」",
       "focusRaw": "sand（第11章 第3课「霍普的地图」）",
       "knowledge": "can + 动词；sand 方位线索",
+      "gloss": "沙子",
       "highlights": [
         "sand"
       ],
+      "learnItems": [
+        {
+          "word": "sand",
+          "gloss": "沙子",
+          "audioWord": "audio/flag-in-the-fog/word-sand.mp3"
+        }
+      ],
       "image": null,
       "audioEn": "audio/flag-in-the-fog/p04-en.mp3",
-      "audioZh": "audio/flag-in-the-fog/p04-zh.mp3"
+      "audioZh": "audio/flag-in-the-fog/p04-zh.mp3",
+      "audioWord": "audio/flag-in-the-fog/word-sand.mp3"
     },
     {
       "id": "P05",
@@ -86,12 +116,26 @@
       "focusNote": "第3章 第4课「好多好多」；第2章 第2课词包，不加粗",
       "focusRaw": "rock（第3章 第4课「好多好多」）；box 道具（第2章 第2课词包，不加粗）",
       "knowledge": "介词 on；状态 It has…",
+      "gloss": "石头",
       "highlights": [
         "rock"
       ],
+      "learnItems": [
+        {
+          "word": "rock",
+          "gloss": "石头",
+          "audioWord": "audio/flag-in-the-fog/word-rock.mp3"
+        },
+        {
+          "word": "box",
+          "gloss": "盒子",
+          "audioWord": "audio/flag-in-the-fog/word-box.mp3"
+        }
+      ],
       "image": null,
       "audioEn": "audio/flag-in-the-fog/p05-en.mp3",
-      "audioZh": "audio/flag-in-the-fog/p05-zh.mp3"
+      "audioZh": "audio/flag-in-the-fog/p05-zh.mp3",
+      "audioWord": "audio/flag-in-the-fog/word-rock.mp3"
     },
     {
       "id": "P06",
@@ -103,12 +147,21 @@
       "focusNote": "第2章 第2课「回收小书」",
       "focusRaw": "tin（第2章 第2课「回收小书」）",
       "knowledge": "单拍聚焦响声（偷因之一）",
+      "gloss": "铁盒",
       "highlights": [
         "tin"
       ],
+      "learnItems": [
+        {
+          "word": "tin",
+          "gloss": "铁盒",
+          "audioWord": "audio/flag-in-the-fog/word-tin.mp3"
+        }
+      ],
       "image": null,
       "audioEn": "audio/flag-in-the-fog/p06-en.mp3",
-      "audioZh": "audio/flag-in-the-fog/p06-zh.mp3"
+      "audioZh": "audio/flag-in-the-fog/p06-zh.mp3",
+      "audioWord": "audio/flag-in-the-fog/word-tin.mp3"
     },
     {
       "id": "P07",
@@ -120,12 +173,21 @@
       "focusNote": "第5章 第3课「谁住在小屋」",
       "focusRaw": "rat（第5章 第3课「谁住在小屋」）",
       "knowledge": "Who 疑问；闻味而来（屑用画面/中文，不写 crumbs）",
+      "gloss": "老鼠",
       "highlights": [
         "rat"
       ],
+      "learnItems": [
+        {
+          "word": "rat",
+          "gloss": "老鼠",
+          "audioWord": "audio/flag-in-the-fog/word-rat.mp3"
+        }
+      ],
       "image": null,
       "audioEn": "audio/flag-in-the-fog/p07-en.mp3",
-      "audioZh": "audio/flag-in-the-fog/p07-zh.mp3"
+      "audioZh": "audio/flag-in-the-fog/p07-zh.mp3",
+      "audioWord": "audio/flag-in-the-fog/word-rat.mp3"
     },
     {
       "id": "P08",
@@ -137,12 +199,26 @@
       "focusNote": "第2章 第2课",
       "focusRaw": "bag（第2章 第2课）；tin 回调",
       "knowledge": "put…in… 紧接失窃；物主 my + has",
+      "gloss": "袋子",
       "highlights": [
         "bag"
       ],
+      "learnItems": [
+        {
+          "word": "bag",
+          "gloss": "袋子",
+          "audioWord": "audio/flag-in-the-fog/word-bag.mp3"
+        },
+        {
+          "word": "tin",
+          "gloss": "铁盒",
+          "audioWord": "audio/flag-in-the-fog/word-tin.mp3"
+        }
+      ],
       "image": null,
       "audioEn": "audio/flag-in-the-fog/p08-en.mp3",
-      "audioZh": "audio/flag-in-the-fog/p08-zh.mp3"
+      "audioZh": "audio/flag-in-the-fog/p08-zh.mp3",
+      "audioWord": "audio/flag-in-the-fog/word-bag.mp3"
     },
     {
       "id": "P09",
@@ -154,12 +230,26 @@
       "focusNote": "回调；第8章 第3课「卡姆和帕特」",
       "focusRaw": "fog（回调）；hill（第8章 第3课「卡姆和帕特」）",
       "knowledge": "祈使 Stop；Still + 否定；短追",
+      "gloss": "小山",
       "highlights": [
         "hill"
       ],
+      "learnItems": [
+        {
+          "word": "hill",
+          "gloss": "小山",
+          "audioWord": "audio/flag-in-the-fog/word-hill.mp3"
+        },
+        {
+          "word": "fog",
+          "gloss": "雾",
+          "audioWord": "audio/flag-in-the-fog/word-fog.mp3"
+        }
+      ],
       "image": null,
       "audioEn": "audio/flag-in-the-fog/p09-en.mp3",
-      "audioZh": "audio/flag-in-the-fog/p09-zh.mp3"
+      "audioZh": "audio/flag-in-the-fog/p09-zh.mp3",
+      "audioWord": "audio/flag-in-the-fog/word-hill.mp3"
     },
     {
       "id": "P10",
@@ -171,12 +261,21 @@
       "focusNote": "第2章 第1课「小豹子」",
       "focusRaw": "den（第2章 第1课「小豹子」）",
       "knowledge": "There is 再练；洞穴场景",
+      "gloss": "洞穴",
       "highlights": [
         "den"
       ],
+      "learnItems": [
+        {
+          "word": "den",
+          "gloss": "洞穴",
+          "audioWord": "audio/flag-in-the-fog/word-den.mp3"
+        }
+      ],
       "image": null,
       "audioEn": "audio/flag-in-the-fog/p10-en.mp3",
-      "audioZh": "audio/flag-in-the-fog/p10-zh.mp3"
+      "audioZh": "audio/flag-in-the-fog/p10-zh.mp3",
+      "audioWord": "audio/flag-in-the-fog/word-den.mp3"
     },
     {
       "id": "P11",
@@ -188,10 +287,13 @@
       "focusNote": "",
       "focusRaw": "—",
       "knowledge": "Can we 请求/商量",
+      "gloss": "",
       "highlights": [],
+      "learnItems": [],
       "image": null,
       "audioEn": "audio/flag-in-the-fog/p11-en.mp3",
-      "audioZh": "audio/flag-in-the-fog/p11-zh.mp3"
+      "audioZh": "audio/flag-in-the-fog/p11-zh.mp3",
+      "audioWord": null
     },
     {
       "id": "P12",
@@ -203,12 +305,21 @@
       "focusNote": "",
       "focusRaw": "tin",
       "knowledge": "Where 在行动中复现；听觉线索",
+      "gloss": "铁盒",
       "highlights": [
         "tin"
       ],
+      "learnItems": [
+        {
+          "word": "tin",
+          "gloss": "铁盒",
+          "audioWord": "audio/flag-in-the-fog/word-tin.mp3"
+        }
+      ],
       "image": null,
       "audioEn": "audio/flag-in-the-fog/p12-en.mp3",
-      "audioZh": "audio/flag-in-the-fog/p12-zh.mp3"
+      "audioZh": "audio/flag-in-the-fog/p12-zh.mp3",
+      "audioWord": "audio/flag-in-the-fog/word-tin.mp3"
     },
     {
       "id": "P13",
@@ -220,12 +331,21 @@
       "focusNote": "第8章 第3课",
       "focusRaw": "sack（第8章 第3课）",
       "knowledge": "肯定/否定对比；假线索",
+      "gloss": "空袋子",
       "highlights": [
         "sack"
       ],
+      "learnItems": [
+        {
+          "word": "sack",
+          "gloss": "空袋子",
+          "audioWord": "audio/flag-in-the-fog/word-sack.mp3"
+        }
+      ],
       "image": null,
       "audioEn": "audio/flag-in-the-fog/p13-en.mp3",
-      "audioZh": "audio/flag-in-the-fog/p13-zh.mp3"
+      "audioZh": "audio/flag-in-the-fog/p13-zh.mp3",
+      "audioWord": "audio/flag-in-the-fog/word-sack.mp3"
     },
     {
       "id": "P14",
@@ -237,12 +357,26 @@
       "focusNote": "",
       "focusRaw": "rat / tin",
       "knowledge": "has 冲突顶格；对峙开始",
+      "gloss": "铁盒",
       "highlights": [
         "tin"
       ],
+      "learnItems": [
+        {
+          "word": "tin",
+          "gloss": "铁盒",
+          "audioWord": "audio/flag-in-the-fog/word-tin.mp3"
+        },
+        {
+          "word": "rat",
+          "gloss": "老鼠",
+          "audioWord": "audio/flag-in-the-fog/word-rat.mp3"
+        }
+      ],
       "image": null,
       "audioEn": "audio/flag-in-the-fog/p14-en.mp3",
-      "audioZh": "audio/flag-in-the-fog/p14-zh.mp3"
+      "audioZh": "audio/flag-in-the-fog/p14-zh.mp3",
+      "audioWord": "audio/flag-in-the-fog/word-tin.mp3"
     },
     {
       "id": "P15",
@@ -254,10 +388,13 @@
       "focusNote": "",
       "focusRaw": "—",
       "knowledge": "祈使；拒绝 → 冲突未解",
+      "gloss": "",
       "highlights": [],
+      "learnItems": [],
       "image": null,
       "audioEn": "audio/flag-in-the-fog/p15-en.mp3",
-      "audioZh": "audio/flag-in-the-fog/p15-zh.mp3"
+      "audioZh": "audio/flag-in-the-fog/p15-zh.mp3",
+      "audioWord": null
     },
     {
       "id": "P16",
@@ -269,10 +406,13 @@
       "focusNote": "bun 下页加粗",
       "focusRaw": "—（bun 下页加粗）",
       "knowledge": "Can we 用于和解；动机用 wants（不写 tummy）",
+      "gloss": "",
       "highlights": [],
+      "learnItems": [],
       "image": null,
       "audioEn": "audio/flag-in-the-fog/p16-en.mp3",
-      "audioZh": "audio/flag-in-the-fog/p16-zh.mp3"
+      "audioZh": "audio/flag-in-the-fog/p16-zh.mp3",
+      "audioWord": null
     },
     {
       "id": "P17",
@@ -284,12 +424,21 @@
       "focusNote": "第2章 第4课「我想吃」",
       "focusRaw": "bun（第2章 第4课「我想吃」）",
       "knowledge": "Please + 祈使；礼貌请求",
+      "gloss": "小面包",
       "highlights": [
         "bun"
       ],
+      "learnItems": [
+        {
+          "word": "bun",
+          "gloss": "小面包",
+          "audioWord": "audio/flag-in-the-fog/word-bun.mp3"
+        }
+      ],
       "image": null,
       "audioEn": "audio/flag-in-the-fog/p17-en.mp3",
-      "audioZh": "audio/flag-in-the-fog/p17-zh.mp3"
+      "audioZh": "audio/flag-in-the-fog/p17-zh.mp3",
+      "audioWord": "audio/flag-in-the-fog/word-bun.mp3"
     },
     {
       "id": "P18",
@@ -301,10 +450,29 @@
       "focusNote": "",
       "focusRaw": "tin / bag / bun",
       "knowledge": "Here is 交接；交换成交（可见）",
+      "gloss": "铁盒",
       "highlights": [],
+      "learnItems": [
+        {
+          "word": "tin",
+          "gloss": "铁盒",
+          "audioWord": "audio/flag-in-the-fog/word-tin.mp3"
+        },
+        {
+          "word": "bag",
+          "gloss": "袋子",
+          "audioWord": "audio/flag-in-the-fog/word-bag.mp3"
+        },
+        {
+          "word": "bun",
+          "gloss": "小面包",
+          "audioWord": "audio/flag-in-the-fog/word-bun.mp3"
+        }
+      ],
       "image": null,
       "audioEn": "audio/flag-in-the-fog/p18-en.mp3",
-      "audioZh": "audio/flag-in-the-fog/p18-zh.mp3"
+      "audioZh": "audio/flag-in-the-fog/p18-zh.mp3",
+      "audioWord": "audio/flag-in-the-fog/word-tin.mp3"
     },
     {
       "id": "P19",
@@ -316,10 +484,19 @@
       "focusNote": "",
       "focusRaw": "tin",
       "knowledge": "There is + 介词短语；开箱前奏",
+      "gloss": "铁盒",
       "highlights": [],
+      "learnItems": [
+        {
+          "word": "tin",
+          "gloss": "铁盒",
+          "audioWord": "audio/flag-in-the-fog/word-tin.mp3"
+        }
+      ],
       "image": null,
       "audioEn": "audio/flag-in-the-fog/p19-en.mp3",
-      "audioZh": "audio/flag-in-the-fog/p19-zh.mp3"
+      "audioZh": "audio/flag-in-the-fog/p19-zh.mp3",
+      "audioWord": "audio/flag-in-the-fog/word-tin.mp3"
     },
     {
       "id": "P20",
@@ -331,12 +508,21 @@
       "focusNote": "与 P01 闭环；贴纸仅画面/中文，不强读",
       "focusRaw": "flag（与 P01 闭环；贴纸仅画面/中文，不强读）",
       "knowledge": "Look 感叹发现；开头旗 ↔ 小旗配件",
+      "gloss": "旗子",
       "highlights": [
         "flag"
       ],
+      "learnItems": [
+        {
+          "word": "flag",
+          "gloss": "旗子",
+          "audioWord": "audio/flag-in-the-fog/word-flag.mp3"
+        }
+      ],
       "image": null,
       "audioEn": "audio/flag-in-the-fog/p20-en.mp3",
-      "audioZh": "audio/flag-in-the-fog/p20-zh.mp3"
+      "audioZh": "audio/flag-in-the-fog/p20-zh.mp3",
+      "audioWord": "audio/flag-in-the-fog/word-flag.mp3"
     },
     {
       "id": "P21",
@@ -348,10 +534,24 @@
       "focusNote": "",
       "focusRaw": "bun / sand",
       "knowledge": "分享可见结果；暖收不说教",
+      "gloss": "小面包",
       "highlights": [],
+      "learnItems": [
+        {
+          "word": "bun",
+          "gloss": "小面包",
+          "audioWord": "audio/flag-in-the-fog/word-bun.mp3"
+        },
+        {
+          "word": "sand",
+          "gloss": "沙子",
+          "audioWord": "audio/flag-in-the-fog/word-sand.mp3"
+        }
+      ],
       "image": null,
       "audioEn": "audio/flag-in-the-fog/p21-en.mp3",
-      "audioZh": "audio/flag-in-the-fog/p21-zh.mp3"
+      "audioZh": "audio/flag-in-the-fog/p21-zh.mp3",
+      "audioWord": "audio/flag-in-the-fog/word-bun.mp3"
     },
     {
       "id": "P22",
@@ -363,10 +563,19 @@
       "focusNote": "",
       "focusRaw": "flag",
       "knowledge": "What a…! 收束感叹",
+      "gloss": "旗子",
       "highlights": [],
+      "learnItems": [
+        {
+          "word": "flag",
+          "gloss": "旗子",
+          "audioWord": "audio/flag-in-the-fog/word-flag.mp3"
+        }
+      ],
       "image": null,
       "audioEn": "audio/flag-in-the-fog/p22-en.mp3",
-      "audioZh": "audio/flag-in-the-fog/p22-zh.mp3"
+      "audioZh": "audio/flag-in-the-fog/p22-zh.mp3",
+      "audioWord": "audio/flag-in-the-fog/word-flag.mp3"
     }
   ]
 }

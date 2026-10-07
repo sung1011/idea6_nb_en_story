@@ -1,12 +1,13 @@
 <script setup lang="ts">
-import { computed, onMounted, onUnmounted } from 'vue'
-import type { Story } from '@/types/story'
+import { computed, onMounted, onUnmounted, ref, watch } from 'vue'
+import type { LearnItem, Story } from '@/types/story'
 import { DISPLAY_MODE_OPTIONS } from '@/types/displayMode'
 import { parseEnSegments } from '@/utils/parseEn'
 import { useStoryProgress } from '@/composables/useStoryProgress'
 import { useDisplayMode } from '@/composables/useDisplayMode'
 import { usePageSpeech } from '@/composables/usePageSpeech'
 import PagePlaceholder from './pagePlaceholder.vue'
+import GlossPanel from './glossPanel.vue'
 
 const props = defineProps<{
   story: Story
@@ -26,9 +27,11 @@ const { displayMode } = useDisplayMode()
 const page = computed(() => {
   return props.story.pages.find((item) => item.index === pageIndex.value) ?? props.story.pages[0]
 })
-const { playingLang, playLine, stop } = usePageSpeech(page)
+const { playingLang, playingWord, playLine, playWord, stop } = usePageSpeech(page)
 
-const enSegments = computed(() => parseEnSegments(page.value?.en ?? ''))
+const learnItems = computed(() => page.value?.learnItems ?? [])
+const learnWords = computed(() => learnItems.value.map((item) => item.word))
+const enSegments = computed(() => parseEnSegments(page.value?.en ?? '', learnWords.value))
 const canPrev = computed(() => pageIndex.value > 1)
 const canNext = computed(() => pageIndex.value < pageCount.value)
 const showEnglish = computed(() => displayMode.value !== 'zh' || !page.value?.zh)
@@ -42,10 +45,46 @@ const subheading = computed(() => {
   if (displayMode.value === 'en+zh') return props.story.titleZh
   return ''
 })
+const patternLearn = computed(() => {
+  if (!page.value?.pattern?.includes('___')) return null
+  return learnItems.value[0] ?? null
+})
+const openLearn = ref<LearnItem | null>(null)
+
+function findLearnItem(word: string): LearnItem | null {
+  const key = word.trim().toLowerCase()
+  return learnItems.value.find((item) => item.word.toLowerCase() === key) ?? null
+}
+
+function openGloss(word: string) {
+  const item = findLearnItem(word)
+  if (!item) return
+  openLearn.value = item
+  playWord(item.word, item.audioWord)
+}
+
+function replayGloss() {
+  const item = openLearn.value
+  if (!item) return
+  playWord(item.word, item.audioWord)
+}
+
+function closeGloss() {
+  openLearn.value = null
+}
+
+function isOpenWord(word: string) {
+  return openLearn.value?.word.toLowerCase() === word.trim().toLowerCase()
+}
 
 function onKey(event: KeyboardEvent) {
   const target = event.target as HTMLElement | null
   if (target && ['INPUT', 'TEXTAREA'].includes(target.tagName)) return
+  if (event.key === 'Escape' && openLearn.value) {
+    event.preventDefault()
+    closeGloss()
+    return
+  }
   if (event.key === 'ArrowRight' || event.key === 'PageDown') {
     event.preventDefault()
     next()
@@ -60,6 +99,13 @@ function onKey(event: KeyboardEvent) {
     pageIndex.value = pageCount.value
   }
 }
+
+watch(
+  () => page.value?.id,
+  () => {
+    closeGloss()
+  },
+)
 
 onMounted(() => {
   window.addEventListener('keydown', onKey)
@@ -117,24 +163,33 @@ onUnmounted(() => {
     />
 
     <section class="copy">
-      <button
+      <div
         v-if="showEnglish"
-        type="button"
         class="line en"
         :class="{ playing: playingLang === 'en' }"
-        :aria-pressed="playingLang === 'en'"
-        aria-label="Play English"
-        @click="playLine('en')"
       >
-        <span class="speaker" aria-hidden="true">🔊</span>
-        <span class="line-text">
-          <span
-            v-for="(seg, i) in enSegments"
-            :key="`${page.id}-${i}`"
-            :class="{ hl: seg.highlight }"
-          >{{ seg.text }}</span>
-        </span>
-      </button>
+        <button
+          type="button"
+          class="speaker"
+          :aria-pressed="playingLang === 'en'"
+          aria-label="Play English"
+          @click="playLine('en')"
+        >
+          🔊
+        </button>
+        <p class="line-text" @click="playLine('en')">
+          <template v-for="(seg, i) in enSegments" :key="`${page.id}-${i}`">
+            <button
+              v-if="seg.learnWord && findLearnItem(seg.learnWord)"
+              type="button"
+              class="tap-word"
+              :class="{ hl: seg.highlight, open: isOpenWord(seg.learnWord) }"
+              @click.stop="openGloss(seg.learnWord)"
+            >{{ seg.text }}</button>
+            <span v-else :class="{ hl: seg.highlight }">{{ seg.text }}</span>
+          </template>
+        </p>
+      </div>
       <button
         v-if="showChinese && page.zh"
         type="button"
@@ -147,10 +202,31 @@ onUnmounted(() => {
         <span class="speaker" aria-hidden="true">🔊</span>
         <span class="line-text">{{ page.zh }}</span>
       </button>
-      <p class="hint">点句子听朗读 · Tap a line to hear it</p>
+      <GlossPanel
+        v-if="openLearn"
+        :item="openLearn"
+        :playing="Boolean(playingWord)"
+        @replay="replayGloss"
+        @close="closeGloss"
+      />
+      <p class="hint">点加粗词看意思 · 点喇叭或句子听整句</p>
       <div class="meta">
-        <span v-if="page.pattern" class="chip">{{ page.pattern }}</span>
-        <span v-if="page.focusWord" class="chip word">{{ page.focusWord }}</span>
+        <button
+          v-if="page.pattern"
+          type="button"
+          class="chip"
+          :class="{ tap: Boolean(patternLearn), open: patternLearn && isOpenWord(patternLearn.word) }"
+          :disabled="!patternLearn"
+          @click="patternLearn && openGloss(patternLearn.word)"
+        >{{ page.pattern }}</button>
+        <button
+          v-for="item in learnItems"
+          :key="`${page.id}-${item.word}`"
+          type="button"
+          class="chip word tap"
+          :class="{ open: isOpenWord(item.word) }"
+          @click="openGloss(item.word)"
+        >{{ item.word }}</button>
       </div>
     </section>
 
@@ -301,6 +377,10 @@ h1 {
   font: inherit;
 }
 
+button.line {
+  cursor: pointer;
+}
+
 .line.en {
   font-size: 1.55rem;
   line-height: 1.45;
@@ -336,23 +416,58 @@ h1 {
 
 .speaker {
   flex-shrink: 0;
-  margin-top: 0.18em;
+  margin-top: 0.05em;
+  padding: 0;
+  border: 0;
+  background: transparent;
   font-size: 0.72em;
   line-height: 1;
   opacity: 0.72;
 }
 
-.line.playing .speaker {
+button.speaker {
+  min-width: 44px;
+  min-height: 44px;
+  border-radius: 14px;
+}
+
+.line.playing .speaker,
+button.speaker[aria-pressed='true'] {
   opacity: 1;
 }
 
 .line-text {
   min-width: 0;
+  margin: 0;
+  cursor: pointer;
 }
 
 .hl {
   color: var(--coral);
   font-weight: 700;
+}
+
+.tap-word {
+  display: inline;
+  padding: 0 1px;
+  border: 0;
+  border-radius: 6px;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  text-decoration: underline;
+  text-decoration-style: dotted;
+  text-underline-offset: 4px;
+}
+
+.tap-word.hl {
+  text-decoration-thickness: 3px;
+}
+
+.tap-word.open,
+.chip.open {
+  background: rgba(224, 106, 78, 0.2);
+  box-shadow: 0 0 0 3px rgba(224, 106, 78, 0.28);
 }
 
 .hint {
@@ -369,16 +484,26 @@ h1 {
 }
 
 .chip {
-  padding: 6px 10px;
+  padding: 8px 12px;
+  border: 0;
   border-radius: 999px;
   background: rgba(31, 138, 128, 0.12);
   color: var(--teal-dark);
   font-size: 0.92rem;
+  font-weight: 700;
 }
 
 .chip.word {
   background: rgba(224, 106, 78, 0.14);
   color: #b4452e;
+}
+
+.chip.tap {
+  min-height: 40px;
+}
+
+.chip:disabled {
+  cursor: default;
 }
 
 .nav {

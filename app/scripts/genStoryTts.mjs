@@ -1,7 +1,12 @@
 import { spawn } from 'node:child_process'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
-import { pageAudioRel, parseAndWriteStories, plainSpeakText } from './parseStory.mjs'
+import {
+  pageAudioRel,
+  parseAndWriteStories,
+  plainSpeakText,
+  wordAudioRel,
+} from './parseStory.mjs'
 import fs from 'node:fs'
 
 const APP_ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..')
@@ -18,6 +23,8 @@ const force = process.argv.includes('--force')
 
 const written = parseAndWriteStories()
 const clips = []
+
+const wordSeen = new Set()
 
 for (const item of written) {
   const story = JSON.parse(fs.readFileSync(path.join(STORIES_DIR, `${item.slug}.json`), 'utf8'))
@@ -38,6 +45,18 @@ for (const item of written) {
         text: zh,
         voice: ZH_VOICE,
         rate: ZH_RATE,
+      })
+    }
+    for (const learn of page.learnItems ?? []) {
+      const word = String(learn.word ?? '').trim()
+      const file = wordAudioRel(story.id, word)
+      if (!word || !file || wordSeen.has(file)) continue
+      wordSeen.add(file)
+      clips.push({
+        file,
+        text: word,
+        voice: EN_VOICE,
+        rate: EN_RATE,
       })
     }
   }
@@ -62,4 +81,4 @@ const code = await new Promise((resolve) => {
 if (code !== 0) process.exit(code ?? 1)
 
 parseAndWriteStories()
-console.log('updated story JSON with audioEn / audioZh paths')
+console.log('updated story JSON with audioEn / audioZh / audioWord paths')

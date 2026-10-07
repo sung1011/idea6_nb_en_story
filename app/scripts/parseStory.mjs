@@ -41,6 +41,18 @@ export function parseStoryMarkdown(md, slug, source) {
     const { en, zh } = splitEnZh(fields['正文'] ?? '')
     const focus = parseFocus(fields['辅词'] ?? '')
     const highlights = [...en.matchAll(/\*\*([^*]+)\*\*/g)].map((m) => m[1])
+    const knowledge = fields['知识点'] ?? ''
+    const explicitGloss = fields['释义'] ?? ''
+    const learnItems = buildLearnItems({
+      slug,
+      highlights,
+      focusWord: focus.focusWord,
+      focusRaw: focus.focusRaw,
+      knowledge,
+      explicitGloss,
+      zh,
+    })
+    const primary = learnItems[0]
 
     pages.push({
       id,
@@ -51,11 +63,14 @@ export function parseStoryMarkdown(md, slug, source) {
       focusWord: focus.focusWord,
       focusNote: focus.focusNote,
       focusRaw: focus.focusRaw,
-      knowledge: fields['知识点'] ?? '',
+      knowledge,
+      gloss: primary?.gloss ?? '',
       highlights,
+      learnItems,
       image: null,
       audioEn: existingAudio(slug, id, 'en'),
       audioZh: existingAudio(slug, id, 'zh'),
+      audioWord: primary?.audioWord ?? null,
     })
   }
 
@@ -85,6 +100,75 @@ export function pageAudioRel(slug, pageId, lang) {
   return `audio/${slug}/${String(pageId).toLowerCase()}-${lang}.mp3`
 }
 
+/** @param {string} slug @param {string} word */
+export function wordAudioRel(slug, word) {
+  const key = String(word ?? '')
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-|-$/g, '')
+  return key ? `audio/${slug}/word-${key}.mp3` : ''
+}
+
+/**
+ * Short zh glosses derived from Flag in the Fog 正文中文 / 辅词 / 知识点.
+ * Used only when the page has no 释义: and notes do not already give a meaning.
+ */
+export const STORY_WORD_GLOSS = {
+  flag: '旗子',
+  fog: '雾',
+  sand: '沙子',
+  rock: '石头',
+  box: '盒子',
+  tin: '铁盒',
+  rat: '老鼠',
+  bag: '袋子',
+  hill: '小山',
+  den: '洞穴',
+  sack: '空袋子',
+  bun: '小面包',
+  lock: '锁',
+  key: '钥匙',
+}
+
+const META_NOTE =
+  /第\s*\d+\s*章|第\s*\d+\s*课|回调|不加粗|下页|词包|疑问|存在句|听辨|方位|线索|场景|对比|顶格|复现|同课|请求|商量|和解|礼貌|交接|感叹|收束|发现|闭环/
+
+/** @param {string} focusWord */
+export function splitFocusWords(focusWord) {
+  if (!focusWord) return []
+  return focusWord
+    .split(/\s*\/\s*/)
+    .map((part) =>
+      part
+        .replace(/道具|回调|不加粗/g, '')
+        .replace(/[^\p{L}'-]+/gu, ' ')
+        .trim(),
+    )
+    .filter((word) => /^[A-Za-z][A-Za-z'\- ]{0,24}$/.test(word))
+}
+
+/**
+ * @param {{ word: string, focusRaw?: string, knowledge?: string, explicitGloss?: string, zh?: string }} input
+ */
+export function deriveGloss({ word, focusRaw = '', knowledge = '', explicitGloss = '', zh = '' }) {
+  const trimmed = String(explicitGloss ?? '').trim()
+  if (trimmed) return trimmed
+
+  const key = String(word ?? '').trim()
+  if (!key) return ''
+
+  const fromFocus = glossFromLabeledNote(key, focusRaw)
+  if (fromFocus) return fromFocus
+
+  const fromKnowledge = glossFromKnowledge(key, knowledge)
+  if (fromKnowledge) return fromKnowledge
+
+  const fromZh = glossFromPageZh(key, zh)
+  if (fromZh) return fromZh
+
+  return STORY_WORD_GLOSS[key.toLowerCase()] ?? ''
+}
+
 /** Strip markdown bold markers so TTS reads the spoken sentence. */
 export function plainSpeakText(text) {
   return String(text ?? '')
@@ -96,12 +180,101 @@ export function plainSpeakText(text) {
 /** @param {string} slug @param {string} pageId @param {'en' | 'zh'} lang */
 function existingAudio(slug, pageId, lang) {
   const rel = pageAudioRel(slug, pageId, lang)
+  return existingRel(rel)
+}
+
+/** @param {string} slug @param {string} word */
+function existingWordAudio(slug, word) {
+  const rel = wordAudioRel(slug, word)
+  return rel ? existingRel(rel) : null
+}
+
+/** @param {string} rel */
+function existingRel(rel) {
   const abs = path.join(APP_ROOT, 'public', rel)
   try {
     return fs.statSync(abs).size > 0 ? rel : null
   } catch {
     return null
   }
+}
+
+/**
+ * @param {{
+ *   slug: string
+ *   highlights: string[]
+ *   focusWord: string
+ *   focusRaw: string
+ *   knowledge: string
+ *   explicitGloss: string
+ *   zh: string
+ * }} input
+ */
+function buildLearnItems({ slug, highlights, focusWord, focusRaw, knowledge, explicitGloss, zh }) {
+  const seen = new Set()
+  const words = []
+  for (const raw of [...highlights, ...splitFocusWords(focusWord)]) {
+    const word = String(raw ?? '').trim()
+    const key = word.toLowerCase()
+    if (!word || seen.has(key)) continue
+    seen.add(key)
+    words.push(key)
+  }
+
+  return words
+    .map((word, index) => {
+      const gloss = deriveGloss({
+        word,
+        focusRaw,
+        knowledge,
+        explicitGloss: index === 0 ? explicitGloss : '',
+        zh,
+      })
+      return {
+        word,
+        gloss,
+        audioWord: existingWordAudio(slug, word),
+      }
+    })
+    .filter((item) => item.gloss)
+}
+
+/** @param {string} word @param {string} raw */
+function glossFromLabeledNote(word, raw) {
+  const escaped = word.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
+  const match = raw.match(new RegExp(`${escaped}[^/；;]*（([^）]+)）`, 'i'))
+  const note = match?.[1]?.trim() ?? ''
+  if (!note || META_NOTE.test(note) || !/[\u4e00-\u9fff]/.test(note)) return ''
+  return shortZh(note)
+}
+
+/** @param {string} word @param {string} knowledge */
+function glossFromKnowledge(word, knowledge) {
+  const escaped = word.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
+  const match = knowledge.match(
+    new RegExp(`(?:^|[；;、/]\\s*)${escaped}\\s+([\\u4e00-\\u9fff]{1,6})`, 'i'),
+  )
+  const note = match?.[1]?.trim() ?? ''
+  if (!note || META_NOTE.test(note) || /^[与的在是再和]/.test(note)) return ''
+  return shortZh(note)
+}
+
+/** @param {string} word @param {string} zh */
+function glossFromPageZh(word, zh) {
+  const fallback = STORY_WORD_GLOSS[word.toLowerCase()]
+  if (!fallback || !zh) return ''
+  if (zh.includes(fallback)) return fallback
+  const shorter = fallback.replace(/^(小|空|大)/, '')
+  if (shorter && zh.includes(shorter)) return fallback
+  return ''
+}
+
+/** @param {string} text */
+function shortZh(text) {
+  return text
+    .replace(/[，。；、].*$/, '')
+    .replace(/\s+/g, '')
+    .slice(0, 8)
 }
 
 /**
