@@ -18,6 +18,12 @@
     "summary": "Chinese title now sits next to the English title."
   },
   {
+    "id": "v0.6.1-art-labels",
+    "version": "0.6.1",
+    "date": "2026-10-08",
+    "summary": "Cleaner pictures: removed the keyword and page labels from the image."
+  },
+  {
     "id": "v0.6.0",
     "version": "0.6.0",
     "date": "2026-10-08",

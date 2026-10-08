@@ -3,7 +3,6 @@ import { computed } from 'vue'
 
 const props = defineProps<{
   pageIndex: number
-  focusWord: string
   image: string | null
 }>()
 
@@ -15,7 +14,6 @@ const palettes = [
 ]
 
 const palette = computed(() => palettes[(props.pageIndex - 1) % palettes.length])
-const pageLabel = computed(() => `P${String(props.pageIndex).padStart(2, '0')}`)
 const uid = computed(() => `p${props.pageIndex}`)
 const imageSrc = computed(() => {
   if (!props.image) return ''
@@ -84,14 +82,11 @@ const imageSrc = computed(() => {
         stroke-linecap="round"
       />
     </svg>
-    <p v-if="focusWord" class="focus-chip">{{ focusWord }}</p>
-    <p class="page-label">{{ pageLabel }}</p>
   </div>
 </template>
 
 <style scoped>
 .art {
-  position: relative;
   overflow: hidden;
   aspect-ratio: 16 / 9;
   width: 100%;
@@ -111,43 +106,10 @@ const imageSrc = computed(() => {
   object-fit: cover;
 }
 
-.focus-chip,
-.page-label {
-  position: absolute;
-  margin: 0;
-  padding: 8px 14px;
-  border-radius: 999px;
-  border: 3px solid #2f3f3b;
-  background: #fff6e4;
-  color: var(--teal-dark);
-  font-size: 0.95rem;
-  font-weight: 700;
-  line-height: 1;
-  box-shadow: 0 3px 0 rgba(47, 63, 59, 0.2);
-}
-
-.focus-chip {
-  left: 14px;
-  bottom: 14px;
-}
-
-.page-label {
-  right: 14px;
-  bottom: 14px;
-  color: var(--ink);
-  letter-spacing: 0.04em;
-}
-
 @media (max-width: 640px) {
   .art {
     border-radius: 22px;
     border-width: 3px;
-  }
-
-  .focus-chip,
-  .page-label {
-    padding: 7px 12px;
-    font-size: 0.86rem;
   }
 }
 </style>

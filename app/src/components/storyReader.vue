@@ -135,7 +135,6 @@ onUnmounted(() => {
 
     <PagePlaceholder
       :page-index="page.index"
-      :focus-word="page.focusWord"
       :image="page.image"
     />
 
