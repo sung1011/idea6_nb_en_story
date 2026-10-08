@@ -112,7 +112,8 @@
 ---
 
 ### P14
-正文: Spots! Is it Mom? No, it is an **egg**.（斑点！是妈妈吗？不，是一颗蛋。）
+正文: Spots! Is it Mom? No, it is an **egg**.（斑点！是妈妈吗？不，是树上的一颗蛋。）
+场景: 树枝上的鸟窝里一颗带斑点的蛋
 主练句式: Is it Mom? No, it is an ___ .
 辅词: egg（第2章 第4课「我想吃 · for」）
 知识点: a / an 对比（a mug → an egg）；第二次被骗
@@ -120,23 +121,26 @@
 ---
 
 ### P15
-正文: Spots! Is it Mom? No, it is a **fish** in a **tub**.（斑点！是妈妈吗？不，是木盆里的一条鱼。）
-主练句式: Is it Mom? No, it is a ___ in a ___ .
-辅词: fish（第2章 第4课）；tub（第2章 第2课「回收小书」）
-知识点: in a ___ 方位；第三次被骗
+正文: Spots! Is it Mom? No, it is a **fish** in the **river**.（斑点！是妈妈吗？不，是河里的一条鱼。）
+场景: 小河里跳出一条带斑点的鱼
+主练句式: Is it Mom? No, it is a ___ in the ___ .
+辅词: fish（第2章 第4课）；river
+知识点: in the ___ 方位；第三次被骗
 
 ---
 
 ### P16
-正文: Big spots by a bush! "Mom!" yells Mia.（灌木旁有一大片斑点！“妈妈！”米娅大喊。）
+正文: Big spots by a **fence**! "Mom!" yells Mia.（篱笆旁有一大片斑点！“妈妈！”米娅大喊。）
+场景: 小木屋院子，篱笆后露出一大片斑点
 主练句式: ___ by a ___ !
-辅词: —（spot 回调）
+辅词: fence
 知识点: 假胜利铺垫；情绪上扬
 
 ---
 
 ### P17
-正文: It is not Mom. It is a big rug. Bug laughs.（不是妈妈。是一块大花地毯。小瓢虫哈哈笑。）
+正文: It is not Mom. It is a big rug. Bug laughs.（不是妈妈。是晾在篱笆上的一块大花毯。小瓢虫哈哈笑。）
+场景: 同一院子，大花毯晾在篱笆上
 主练句式: It is not ___ . It is a ___ .
 辅词: —（rug 回调，词卡复用）
 知识点: It is not 否定句；假胜利落空

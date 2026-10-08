@@ -56,7 +56,7 @@ npm run parse-stories
 
 相对 URL 约定：
 
-- 插图：`images/<story-id>/p01.webp`（Flag in the Fog 22 页均已接入；缺文件时为 `null`）
+- 插图：`images/<story-id>/p01.webp`（Flag in the Fog 22 页、Spot the Cub 24 页均已接入；缺文件时为 `null`）
 - 英文音频：`audio/<story-id>/p01-en.mp3`（Edge TTS `en-US-AriaNeural`，语速 `-15%`）
 - 中文音频：`audio/<story-id>/p01-zh.mp3`（Edge TTS `zh-CN-XiaoxiaoNeural`）
 - 词级音频：`audio/<story-id>/word-flag.mp3`（同一 Aria 声线，只读单词）

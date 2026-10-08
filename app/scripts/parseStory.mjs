@@ -129,6 +129,22 @@ export const STORY_WORD_GLOSS = {
   bun: '小面包',
   lock: '锁',
   key: '钥匙',
+  cub: '小豹子',
+  log: '圆木',
+  wet: '湿的',
+  rug: '小毯子',
+  spots: '斑点',
+  nap: '小睡',
+  mom: '妈妈',
+  bug: '瓢虫',
+  mug: '杯子',
+  dots: '圆点',
+  egg: '蛋',
+  fish: '鱼',
+  river: '小河',
+  fence: '篱笆',
+  hug: '拥抱',
+  glad: '开心',
 }
 
 const META_NOTE =
@@ -214,6 +230,21 @@ function existingWordImage(slug, word) {
     if (found) return found
   }
   return null
+}
+
+/** @param {Record<string, unknown>} story */
+function applyExistingMedia(story) {
+  const slug = String(story.id ?? '')
+  for (const page of story.pages ?? []) {
+    page.image = existingPageImage(slug, page.index)
+    page.audioEn = existingAudio(slug, page.id, 'en')
+    page.audioZh = existingAudio(slug, page.id, 'zh')
+    for (const item of page.learnItems ?? []) {
+      item.audioWord = existingWordAudio(slug, item.word)
+      item.image = existingWordImage(slug, item.word)
+    }
+    page.audioWord = page.learnItems?.[0]?.audioWord ?? existingWordAudio(slug, page.focusWord)
+  }
 }
 
 /** @param {string} rel */
@@ -398,9 +429,9 @@ export function parseAndWriteStories() {
       if (!saved?.pages || saved.pages.length !== story.pageCount) {
         throw new Error(`Kept ${slug}.json page count mismatch`)
       }
-    } else {
-      fs.writeFileSync(outFile, `${JSON.stringify(story, null, 2)}\n`)
+      applyExistingMedia(saved)
     }
+    fs.writeFileSync(outFile, `${JSON.stringify(saved, null, 2)}\n`)
     catalog.push(saved)
     written.push({ slug, pageCount: saved.pageCount, outFile })
   }
