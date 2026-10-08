@@ -74,10 +74,10 @@ npm run gen-tts
 - 换故事：左上角故事切换器显示 `1. Flag in the Fog`，点开可选 `2. Spot the Cub`（英文标题、目录顺序编号）。每本故事单独续读
 - 续读：刷新后夹紧在 1..N 页，打开直接回到该故事上次页（无提示条）；Home 键回到第 1 页
 - 插图：各页绑定 `images/flag-in-the-fog/pNN.webp`；缺图时回退 16:9 奶油色软陶风 SVG 占位。画稿上不叠关键词或页码。画稿需压缩后再入库
-- 朗读：点喇叭或英文句子播放 Aria（1.0x）；点句子左侧 **中文** 弹出译文并播晓晓。**中文** 正下方 **Slow** 用同一句英文 mp3 慢读（默认 60%，`playbackRate` + 保调；无 mp3 时 Web Speech 按比例降速）。语速在 Settings 的 **Slow speed** 里调 30%–90%。新点击会停掉上一句。默认不自动播放
+- 朗读：点喇叭或英文句子播放 Aria（1.0x）；点句子左侧 **中文** 弹出译文并播晓晓。**中文** 正下方 **Slow** 用同一句英文 mp3 慢读（默认 60%，`playbackRate` + 保调；无 mp3 时 Web Speech 按比例降速）。语速在 Settings → **General** 的 **Slow speed** 里调 30%–90%。新点击会停掉上一句。默认不自动播放
 - 点词：句中加粗焦点词只作标记，点击句子任意处（含加粗词）播放整句英文；点辅词芯片弹出释义气泡（词图 + 中文短义 + Play again）。主练句式只展示、不可点
 - 翻页：大触摸热区的 Prev / Next，Fredoka 字体，平板宽度友好。第 22 页再点 Next 进入本课总结（不是第 23 页；页码仍为 Summary，进度停在 22）。总结页 **Words** 网格为 13 个去重关键词（首次出现顺序），点卡片打开与阅读器相同的释义气泡；**Sentences** 列出去重句式，只展示。**Read again** 回到第 1 页，Prev 回到第 22 页
-- 阅读卡标题行右侧 **Settings** 齿轮：顶部 **Slow speed** 滑杆/步进（30%–90%，默认 60%，写入 localStorage）；`Version` 显示已安装版本，并始终列出最近 10 个按版本号合并的更新（同号多条摘要合成一行）；可 **Check for updates**（立刻拉取 `versions.json`，无新版本 toast **You're up to date.**，有则 **Update available**）和 **Clear cache**（toast **Cache cleared.** 约 2 秒后注销 Service Worker、清空 Cache Storage 并硬刷新，不碰 localStorage）。Settings 内没有 **Update**。`GM` 可 **Reset all data**（清空本应用全部 localStorage 后重载）
+- 阅读卡标题行右侧 **Settings** 齿轮：`General` / `Version` / `GM` 三个页签。`General` 里 **Slow speed** 滑杆/步进（30%–90%，默认 60%，写入 localStorage）。`Version` 显示已安装版本，并始终列出最近 10 个按版本号合并的更新（同号多条摘要合成一行）；可 **Check for updates**（立刻拉取 `versions.json`，无新版本 toast **You're up to date.**，有则 **Update available**）和 **Clear cache**（toast **Cache cleared.** 约 2 秒后注销 Service Worker、清空 Cache Storage 并硬刷新，不碰 localStorage）。Settings 内没有 **Update**。`GM` 可 **Reset all data**（清空本应用全部 localStorage 后重载）
 - 更新弹层：每 10 秒带 cache-bust 拉取 `versions.json`，若有比已安装版本号更新的组，齿轮关闭时在设置外弹出这些版本行，顶部一个 **Update**（写入已确认版本、清缓存、保留进度、硬刷新）。已是最新则不显示弹层
 - PWA：可安装到主屏幕（`standalone`）；预缓存阅读器壳 + 故事 JSON。页/词 mp3 与插图 webp 走运行时 Cache First，不进预缓存。换插图时 bump `vite.config.ts` 里的 `story-image-cache-first` 缓存名，换朗读时 bump `story-audio-cache-first` 缓存名，检查更新并重载后会拉新资源。`versions.json` 用 Network First，以免挡住更新检测
 

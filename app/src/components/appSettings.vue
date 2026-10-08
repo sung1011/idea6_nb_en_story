@@ -5,12 +5,12 @@ import { SLOW_SPEED_MAX, SLOW_SPEED_MIN, SLOW_SPEED_STEP, useSlowSpeed } from '@
 import { clearAppStorage } from '@/utils/appStorage'
 import VersionRow from './versionRow.vue'
 
-type SettingsTab = 'version' | 'gm'
+type SettingsTab = 'general' | 'version' | 'gm'
 
 const FLASH_MS = 2000
 
 const open = ref(false)
-const tab = ref<SettingsTab>('version')
+const tab = ref<SettingsTab>('general')
 const gmConfirming = ref(false)
 const flash = ref('')
 const { installed, history, pending, refresh, applyUpdate, clearCaches } = useAppVersions()
@@ -111,40 +111,16 @@ onUnmounted(() => {
       role="dialog"
       aria-label="Settings"
     >
-      <div class="slow-speed">
-        <div class="slow-head">
-          <p class="slow-label">Slow speed</p>
-          <p class="slow-value" aria-live="polite">{{ slowPercent }}%</p>
-        </div>
-        <div class="slow-controls">
-          <button
-            type="button"
-            class="ghost step"
-            aria-label="Decrease slow speed"
-            :disabled="!canSlower"
-            @click="slower"
-          >−</button>
-          <input
-            type="range"
-            class="slow-slider"
-            :min="SLOW_SPEED_MIN"
-            :max="SLOW_SPEED_MAX"
-            :step="SLOW_SPEED_STEP"
-            :value="slowPercent"
-            aria-label="Slow speed"
-            @input="onSlowInput"
-          />
-          <button
-            type="button"
-            class="ghost step"
-            aria-label="Increase slow speed"
-            :disabled="!canFaster"
-            @click="faster"
-          >+</button>
-        </div>
-      </div>
-
       <div class="tabs" role="tablist" aria-label="Settings sections">
+        <button
+          type="button"
+          role="tab"
+          :aria-selected="tab === 'general'"
+          :class="{ active: tab === 'general' }"
+          @click="tab = 'general'"
+        >
+          General
+        </button>
         <button
           type="button"
           role="tab"
@@ -165,7 +141,42 @@ onUnmounted(() => {
         </button>
       </div>
 
-      <div v-if="tab === 'version'" class="pane" role="tabpanel">
+      <div v-if="tab === 'general'" class="pane" role="tabpanel">
+        <div class="slow-speed">
+          <div class="slow-head">
+            <p class="slow-label">Slow speed</p>
+            <p class="slow-value" aria-live="polite">{{ slowPercent }}%</p>
+          </div>
+          <div class="slow-controls">
+            <button
+              type="button"
+              class="ghost step"
+              aria-label="Decrease slow speed"
+              :disabled="!canSlower"
+              @click="slower"
+            >−</button>
+            <input
+              type="range"
+              class="slow-slider"
+              :min="SLOW_SPEED_MIN"
+              :max="SLOW_SPEED_MAX"
+              :step="SLOW_SPEED_STEP"
+              :value="slowPercent"
+              aria-label="Slow speed"
+              @input="onSlowInput"
+            />
+            <button
+              type="button"
+              class="ghost step"
+              aria-label="Increase slow speed"
+              :disabled="!canFaster"
+              @click="faster"
+            >+</button>
+          </div>
+        </div>
+      </div>
+
+      <div v-else-if="tab === 'version'" class="pane" role="tabpanel">
         <div class="pane-head">
           <p class="current">
             Current version
@@ -191,7 +202,7 @@ onUnmounted(() => {
         </div>
       </div>
 
-      <div v-else class="pane" role="tabpanel">
+      <div v-else-if="tab === 'gm'" class="pane" role="tabpanel">
         <p class="gm-copy">Clear reading progress and acknowledged versions on this device, then reload.</p>
         <template v-if="!gmConfirming">
           <button type="button" class="danger" @click="gmConfirming = true">
@@ -288,7 +299,7 @@ onUnmounted(() => {
 }
 
 .slow-speed {
-  margin-bottom: 12px;
+  margin: 0;
   padding: 10px 12px 12px;
   border-radius: 18px;
   border: 3px solid #2f3f3b;
@@ -353,11 +364,12 @@ onUnmounted(() => {
 
 .tabs button {
   flex: 1;
-  min-height: 48px;
+  min-height: 44px;
+  padding: 8px 4px;
   border: 0;
   border-radius: 999px;
   background: transparent;
-  font-size: 1.05rem;
+  font-size: 0.92rem;
   font-weight: 700;
 }
 
