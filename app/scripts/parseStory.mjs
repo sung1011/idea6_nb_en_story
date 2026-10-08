@@ -114,6 +114,7 @@ export function wordAudioRel(slug, word) {
  * Used only when the page has no 释义: and notes do not already give a meaning.
  */
 export const STORY_WORD_GLOSS = {
+  map: '地图',
   flag: '旗子',
   fog: '雾',
   sand: '沙子',

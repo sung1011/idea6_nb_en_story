@@ -5,7 +5,7 @@
   "version": "v2",
   "label": "故事 B",
   "scene": "海盗湾海滩 → 薄雾 → 小山脚沙洞 → 回到海滩（白天 / 描边软陶）",
-  "structure": "寻宝 → 真偷（有动机）→ 短追 → 假线索 → 对峙 → 请求分享 → 交换 → 开箱闭环 → 暖收",
+  "structure": "地图寻宝 → 真偷（有动机）→ 短追 → 假线索 → 对峙 → 请求分享 → 交换 → 开箱得金币和贝壳 → 暖收",
   "notes": "篇幅：22 页 · 语法为主、词为辅 · v2：降难词、拆 P06 信息、收紧英文",
   "source": "stories/flag-in-the-fog.md",
   "pageCount": 22,
@@ -13,13 +13,39 @@
     {
       "id": "P01",
       "index": 1,
-      "en": "Mia and Ben are at the sea. There is an old **flag** by the sand.",
-      "zh": "米娅和本在海边。沙滩边有一面旧旗子。",
+      "en": "Mia and Ben are at the sea. There is an old **map** by the sand.",
+      "zh": "米娅和本在海边。沙滩边有一张旧地图。",
       "pattern": "There is a ___ .",
+      "focusWord": "map",
+      "focusNote": "",
+      "focusRaw": "map",
+      "knowledge": "There is 存在句；map 寻宝地图",
+      "gloss": "地图",
+      "highlights": [
+        "map"
+      ],
+      "learnItems": [
+        {
+          "word": "map",
+          "gloss": "地图",
+          "audioWord": "audio/flag-in-the-fog/word-map.mp3"
+        }
+      ],
+      "image": "images/flag-in-the-fog/p01.webp",
+      "audioEn": "audio/flag-in-the-fog/p01-en.mp3",
+      "audioZh": "audio/flag-in-the-fog/p01-zh.mp3",
+      "audioWord": "audio/flag-in-the-fog/word-map.mp3"
+    },
+    {
+      "id": "P02",
+      "index": 2,
+      "en": "A red **flag** is on the map. “Find the box!”",
+      "zh": "地图上画着一面红旗。“找到箱子！”",
+      "pattern": "A ___ is on the map.",
       "focusWord": "flag",
-      "focusNote": "第8章 第2课「字母 F · see blue」",
-      "focusRaw": "flag（第8章 第2课「字母 F · see blue」）",
-      "knowledge": "There is 存在句；flag 词包 flag/fog/fin/frog",
+      "focusNote": "第8章 第2课「字母 F · see blue」；地图上的红旗标出箱子",
+      "focusRaw": "flag（第8章 第2课「字母 F · see blue」；地图上的红旗标出箱子）",
+      "knowledge": "介词 on；红旗 = 箱子位置",
       "gloss": "旗子",
       "highlights": [
         "flag"
@@ -31,28 +57,10 @@
           "audioWord": "audio/flag-in-the-fog/word-flag.mp3"
         }
       ],
-      "image": "images/flag-in-the-fog/p01.webp",
-      "audioEn": "audio/flag-in-the-fog/p01-en.mp3",
-      "audioZh": "audio/flag-in-the-fog/p01-zh.mp3",
-      "audioWord": "audio/flag-in-the-fog/word-flag.mp3"
-    },
-    {
-      "id": "P02",
-      "index": 2,
-      "en": "The flag says, “Find the box!”",
-      "zh": "旗上写着：“找到盒子！”",
-      "pattern": "The ___ says, “___!”",
-      "focusWord": "",
-      "focusNote": "承接 flag；雾与大石用画面表现",
-      "focusRaw": "—（承接 flag；雾与大石用画面表现）",
-      "knowledge": "读标志 / 引语；寻宝钩子（不堆三个名词）",
-      "gloss": "",
-      "highlights": [],
-      "learnItems": [],
       "image": "images/flag-in-the-fog/p02.webp",
       "audioEn": "audio/flag-in-the-fog/p02-en.mp3",
       "audioZh": "audio/flag-in-the-fog/p02-zh.mp3",
-      "audioWord": null
+      "audioWord": "audio/flag-in-the-fog/word-flag.mp3"
     },
     {
       "id": "P03",
@@ -109,8 +117,8 @@
     {
       "id": "P05",
       "index": 5,
-      "en": "“Look!” says Mia. A box is on a big **rock**. It has a lock.",
-      "zh": "“看！”米娅说。一个箱子在大石头上。它有一把锁。",
+      "en": "“Look!” says Mia. A flag is on a big **rock**. A box is by it. It has a lock.",
+      "zh": "“看！”米娅说。大石头上插着一面旗，旗子旁边有个箱子，上面有一把锁。",
       "pattern": "It is on the ___ .",
       "focusWord": "rock / box 道具",
       "focusNote": "第3章 第4课「好多好多」；第2章 第2课词包，不加粗",
@@ -501,47 +509,34 @@
     {
       "id": "P20",
       "index": 20,
-      "en": "Click! Look! A little **flag**!",
-      "zh": "咔哒！看！一面小小的旗！",
-      "pattern": "Look! It is a ___ !",
-      "focusWord": "flag",
-      "focusNote": "与 P01 闭环；贴纸仅画面/中文，不强读",
-      "focusRaw": "flag（与 P01 闭环；贴纸仅画面/中文，不强读）",
-      "knowledge": "Look 感叹发现；开头旗 ↔ 小旗配件",
-      "gloss": "旗子",
-      "highlights": [
-        "flag"
-      ],
-      "learnItems": [
-        {
-          "word": "flag",
-          "gloss": "旗子",
-          "audioWord": "audio/flag-in-the-fog/word-flag.mp3"
-        }
-      ],
+      "en": "Click! The box opens. Gold coins and shiny shells!",
+      "zh": "咔哒！箱子开了。里面是金币和闪亮的贝壳！",
+      "pattern": "The box opens.",
+      "focusWord": "",
+      "focusNote": "",
+      "focusRaw": "—",
+      "knowledge": "开箱；宝物是金币和贝壳",
+      "gloss": "",
+      "highlights": [],
+      "learnItems": [],
       "image": "images/flag-in-the-fog/p20.webp",
       "audioEn": "audio/flag-in-the-fog/p20-en.mp3",
       "audioZh": "audio/flag-in-the-fog/p20-zh.mp3",
-      "audioWord": "audio/flag-in-the-fog/word-flag.mp3"
+      "audioWord": null
     },
     {
       "id": "P21",
       "index": 21,
-      "en": "Friends sit on the sand. The rat eats the bun. Yum!",
-      "zh": "朋友们坐在沙子上。老鼠啃着面包。真香！",
+      "en": "Friends sit on the sand. Mia gives the rat a shell.",
+      "zh": "朋友们坐在沙滩上。米娅送给小老鼠一个贝壳。",
       "pattern": "Friends share a ___ .",
-      "focusWord": "bun / sand",
+      "focusWord": "sand",
       "focusNote": "",
-      "focusRaw": "bun / sand",
-      "knowledge": "分享可见结果；暖收不说教",
-      "gloss": "小面包",
+      "focusRaw": "sand",
+      "knowledge": "分享贝壳；暖收不说教",
+      "gloss": "沙子",
       "highlights": [],
       "learnItems": [
-        {
-          "word": "bun",
-          "gloss": "小面包",
-          "audioWord": "audio/flag-in-the-fog/word-bun.mp3"
-        },
         {
           "word": "sand",
           "gloss": "沙子",
@@ -551,31 +546,25 @@
       "image": "images/flag-in-the-fog/p21.webp",
       "audioEn": "audio/flag-in-the-fog/p21-en.mp3",
       "audioZh": "audio/flag-in-the-fog/p21-zh.mp3",
-      "audioWord": "audio/flag-in-the-fog/word-bun.mp3"
+      "audioWord": "audio/flag-in-the-fog/word-sand.mp3"
     },
     {
       "id": "P22",
       "index": 22,
-      "en": "Mia and Ben set the flag by the box. What a day!",
-      "zh": "米娅和本把旗子插在箱子旁边。多棒的一天！",
+      "en": "Mia and Ben share the coins. What a day!",
+      "zh": "米娅和本一起分金币。多棒的一天！",
       "pattern": "What a ___ !",
-      "focusWord": "flag",
+      "focusWord": "",
       "focusNote": "",
-      "focusRaw": "flag",
-      "knowledge": "What a…! 收束感叹",
-      "gloss": "旗子",
+      "focusRaw": "—",
+      "knowledge": "What a…! 分金币收束",
+      "gloss": "",
       "highlights": [],
-      "learnItems": [
-        {
-          "word": "flag",
-          "gloss": "旗子",
-          "audioWord": "audio/flag-in-the-fog/word-flag.mp3"
-        }
-      ],
+      "learnItems": [],
       "image": "images/flag-in-the-fog/p22.webp",
       "audioEn": "audio/flag-in-the-fog/p22-en.mp3",
       "audioZh": "audio/flag-in-the-fog/p22-zh.mp3",
-      "audioWord": "audio/flag-in-the-fog/word-flag.mp3"
+      "audioWord": null
     }
   ]
 }

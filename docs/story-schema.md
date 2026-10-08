@@ -73,10 +73,11 @@ npm run parse-stories
 
 ```markdown
 ### P01
-正文: Mia and Ben are at the sea. There is an old **flag** by the sand.（米娅和本在海边。沙滩边有一面旧旗子。）
+正文: Mia and Ben are at the sea. There is an old **map** by the sand.（米娅和本在海边。沙滩边有一张旧地图。）
 主练句式: There is a ___ .
-辅词: flag（第8章 第2课「字母 F · see blue」）
-知识点: There is 存在句；flag 词包 flag/fog/fin/frog
+辅词: map
+知识点: There is 存在句；map 寻宝地图
+释义: 地图
 ```
 
 | 源稿 | JSON |

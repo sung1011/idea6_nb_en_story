@@ -70,7 +70,7 @@ npm run gen-tts
 
 ## 阅读器（Stage 6）
 
-- 始终中英对照：英文标题 + 中文副标题；英文行在上、中文行在下，均可点读
+- 始终中英对照：英文标题后紧跟较小的浅色中文标题（可换行）；英文行在上、中文行在下，均可点读
 - 续读：刷新后夹紧在 1..N 页，打开直接回到上次页（无提示条）；Home 键回到第 1 页
 - 插图：各页绑定 `images/flag-in-the-fog/pNN.webp`；缺图时回退 16:9 奶油色软陶风 SVG 占位。画稿需压缩后再入库
 - 朗读：点喇叭或句子其余部分播放整句（英文 Ana / 中文晓晓）；新点击会停掉上一句。默认不自动播放。mp3 缺失或播放失败时回退 Web Speech
@@ -80,7 +80,7 @@ npm run gen-tts
 - 更新 toast：每 10 秒带 cache-bust 拉取 `versions.json`，若有比已确认版本更新的条目（最多 10 条），在齿轮下方列出并提供 **Update**（先走与 **Clear cache** 相同的流程，再硬刷新并标记已读；阅读进度保留）
 - PWA：可安装到主屏幕（`standalone`）；预缓存阅读器壳 + 故事 JSON。页/词 mp3 与插图 webp 走运行时 Cache First，不进预缓存。换插图时 bump `vite.config.ts` 里的 `story-image-cache-first` 缓存名，换朗读时 bump `story-audio-cache-first` 缓存名，检查更新并重载后会拉新资源。`versions.json` 用 Network First，以免挡住更新检测
 
-进度按本故事写入 `localStorage`。每次有意义的发布请在 `app/public/versions.json` 顶部追加 `{ id, version, date, summary }`（新条目用英文）。当前版本 **0.6.0**。
+进度按本故事写入 `localStorage`。每次有意义的发布请在 `app/public/versions.json` 顶部追加 `{ id, version, date, summary }`（新条目用英文）。当前版本 **0.6.1**。
 
 ## 安装到主屏幕（PWA）
 

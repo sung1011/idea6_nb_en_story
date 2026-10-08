@@ -126,8 +126,9 @@ onUnmounted(() => {
     <header class="top">
       <div class="titles">
         <p class="kicker">{{ story.label || 'Story' }}</p>
-        <h1>{{ story.title }}</h1>
-        <p v-if="story.titleZh" class="subtitle">{{ story.titleZh }}</p>
+        <h1>
+          {{ story.title }}<span v-if="story.titleZh" class="title-zh"> · {{ story.titleZh }}</span>
+        </h1>
       </div>
       <AppSettings />
     </header>
@@ -246,11 +247,13 @@ onUnmounted(() => {
 h1 {
   margin: 0;
   font-size: 1.7rem;
-  line-height: 1.15;
+  line-height: 1.25;
+  overflow-wrap: anywhere;
 }
 
-.subtitle {
-  margin: 4px 0 0;
+.title-zh {
+  font-size: 0.62em;
+  font-weight: 500;
   color: var(--muted);
 }
 

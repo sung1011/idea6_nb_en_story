@@ -1,24 +1,25 @@
 # 故事 B · Flag in the Fog（雾里的旗）· v2
 
 > 场景：海盗湾海滩 → 薄雾 → 小山脚沙洞 → 回到海滩（白天 / 描边软陶）  
-> 结构：寻宝 → 真偷（有动机）→ 短追 → 假线索 → 对峙 → 请求分享 → 交换 → 开箱闭环 → 暖收  
+> 结构：地图寻宝 → 真偷（有动机）→ 短追 → 假线索 → 对峙 → 请求分享 → 交换 → 开箱得金币和贝壳 → 暖收  
 > 篇幅：22 页 · 语法为主、词为辅 · v2：降难词、拆 P06 信息、收紧英文
 
 ---
 
 ### P01
-正文: Mia and Ben are at the sea. There is an old **flag** by the sand.（米娅和本在海边。沙滩边有一面旧旗子。）
+正文: Mia and Ben are at the sea. There is an old **map** by the sand.（米娅和本在海边。沙滩边有一张旧地图。）
 主练句式: There is a ___ .
-辅词: flag（第8章 第2课「字母 F · see blue」）
-知识点: There is 存在句；flag 词包 flag/fog/fin/frog
+辅词: map
+知识点: There is 存在句；map 寻宝地图
+释义: 地图
 
 ---
 
 ### P02
-正文: The flag says, “Find the box!”（旗上写着：“找到盒子！”）
-主练句式: The ___ says, “___!”
-辅词: —（承接 flag；雾与大石用画面表现）
-知识点: 读标志 / 引语；寻宝钩子（不堆三个名词）
+正文: A red **flag** is on the map. “Find the box!”（地图上画着一面红旗。“找到箱子！”）
+主练句式: A ___ is on the map.
+辅词: flag（第8章 第2课「字母 F · see blue」；地图上的红旗标出箱子）
+知识点: 介词 on；红旗 = 箱子位置
 
 ---
 
@@ -39,7 +40,7 @@
 ---
 
 ### P05
-正文: “Look!” says Mia. A box is on a big **rock**. It has a lock.（“看！”米娅说。一个箱子在大石头上。它有一把锁。）
+正文: “Look!” says Mia. A flag is on a big **rock**. A box is by it. It has a lock.（“看！”米娅说。大石头上插着一面旗，旗子旁边有个箱子，上面有一把锁。）
 主练句式: It is on the ___ .
 辅词: rock（第3章 第4课「好多好多」）；box 道具（第2章 第2课词包，不加粗）
 知识点: 介词 on；状态 It has…
@@ -159,26 +160,26 @@
 ---
 
 ### P20
-正文: Click! Look! A little **flag**!（咔哒！看！一面小小的旗！）
-主练句式: Look! It is a ___ !
-辅词: flag（与 P01 闭环；贴纸仅画面/中文，不强读）
-知识点: Look 感叹发现；开头旗 ↔ 小旗配件
+正文: Click! The box opens. Gold coins and shiny shells!（咔哒！箱子开了。里面是金币和闪亮的贝壳！）
+主练句式: The box opens.
+辅词: —
+知识点: 开箱；宝物是金币和贝壳
 
 ---
 
 ### P21
-正文: Friends sit on the sand. The rat eats the bun. Yum!（朋友们坐在沙子上。老鼠啃着面包。真香！）
+正文: Friends sit on the sand. Mia gives the rat a shell.（朋友们坐在沙滩上。米娅送给小老鼠一个贝壳。）
 主练句式: Friends share a ___ .
-辅词: bun / sand
-知识点: 分享可见结果；暖收不说教
+辅词: sand
+知识点: 分享贝壳；暖收不说教
 
 ---
 
 ### P22
-正文: Mia and Ben set the flag by the box. What a day!（米娅和本把旗子插在箱子旁边。多棒的一天！）
+正文: Mia and Ben share the coins. What a day!（米娅和本一起分金币。多棒的一天！）
 主练句式: What a ___ !
-辅词: flag
-知识点: What a…! 收束感叹
+辅词: —
+知识点: What a…! 分金币收束
 
 ---
 
@@ -186,7 +187,8 @@
 
 | 焦点 | 课次 | 课名 | 用法 |
 |------|------|------|------|
-| flag / fog | 第8章 第2课 | 字母 F · see blue | 存在/Where/闭环 |
+| map | — | — | P01 寻宝地图 |
+| flag / fog | 第8章 第2课 | 字母 F · see blue | 地图红旗标出箱子 / Where |
 | sand | 第11章 第3课 | 霍普的地图 | We can walk |
 | rock | 第3章 第4课 | 好多好多 | on the rock |
 | tin / bag / box | 第2章 第2课 | 回收小书 | ding / put in / There is in |

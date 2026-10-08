@@ -1,5 +1,23 @@
 [
   {
+    "id": "v0.6.1",
+    "version": "0.6.1",
+    "date": "2026-10-08",
+    "summary": "Story now starts with a treasure map and ends with gold coins and shells."
+  },
+  {
+    "id": "v0.6.1-pages",
+    "version": "0.6.1",
+    "date": "2026-10-08",
+    "summary": "New art, text and audio on pages 1, 2, 5, 20, 21 and 22."
+  },
+  {
+    "id": "v0.6.1-title",
+    "version": "0.6.1",
+    "date": "2026-10-08",
+    "summary": "Chinese title now sits next to the English title."
+  },
+  {
     "id": "v0.6.0",
     "version": "0.6.0",
     "date": "2026-10-08",
