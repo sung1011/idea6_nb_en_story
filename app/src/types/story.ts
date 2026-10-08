@@ -19,7 +19,6 @@ export interface StoryPage {
   learnItems: LearnItem[]
   image: string | null
   audioEn: string | null
-  audioZh: string | null
 }
 
 export interface Story {

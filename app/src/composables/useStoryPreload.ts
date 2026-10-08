@@ -1,6 +1,5 @@
 import { computed, nextTick, onMounted, onUnmounted, ref, watch, type Ref } from 'vue'
 import type { Story, StoryPage } from '@/types/story'
-import { useZhVoice } from '@/composables/useZhVoice'
 
 const WARM_CONCURRENCY = 2
 const LOOKAHEAD_PAGES = 2
@@ -31,9 +30,8 @@ function uniqueUrls(urls: Array<string | null | undefined>): string[] {
   return list
 }
 
-export function pageWarmUrls(page: StoryPage, includeZh: boolean): string[] {
+export function pageWarmUrls(page: StoryPage): string[] {
   const urls = [assetUrl(page.image), assetUrl(page.audioEn)]
-  if (includeZh) urls.push(assetUrl(page.audioZh))
   for (const item of page.learnItems ?? []) urls.push(assetUrl(item.image))
   return uniqueUrls(urls)
 }
@@ -152,13 +150,12 @@ function orderedWarmPages(story: Story, pageIndex: number): StoryPage[] {
   return [...first, ...rest]
 }
 
-function pageFullyCached(page: StoryPage, includeZh: boolean): boolean {
-  const urls = pageWarmUrls(page, includeZh)
+function pageFullyCached(page: StoryPage): boolean {
+  const urls = pageWarmUrls(page)
   return urls.every((url) => cachedUrls.has(url))
 }
 
 export function useStoryPreload(story: Ref<Story>, pageIndex: Ref<number>) {
-  const { isDevice: zhDevice } = useZhVoice()
   const cacheTick = ref(0)
   const cacheDone = ref(0)
   const cacheTotal = ref(0)
@@ -169,16 +166,11 @@ export function useStoryPreload(story: Ref<Story>, pageIndex: Ref<number>) {
   let idleHandle = 0
   let fadeTimer = 0
 
-  function includeZhAudio(): boolean {
-    return !zhDevice.value
-  }
-
   function recount() {
     if (cacheSkipped.value) return
-    const includeZh = includeZhAudio()
     const pages = story.value.pages
     cacheTotal.value = pages.length
-    cacheDone.value = pages.filter((page) => pageFullyCached(page, includeZh)).length
+    cacheDone.value = pages.filter((page) => pageFullyCached(page)).length
     const complete = cacheTotal.value > 0 && cacheDone.value >= cacheTotal.value
     if (complete) {
       if (!cacheComplete.value) {
@@ -212,13 +204,12 @@ export function useStoryPreload(story: Ref<Story>, pageIndex: Ref<number>) {
     if (cacheSkipped.value) return false
     const next = story.value.pages.find((page) => page.index === pageIndex.value + 1)
     if (!next) return false
-    return !pageFullyCached(next, includeZhAudio())
+    return !pageFullyCached(next)
   })
 
   function preloadAhead() {
-    const includeZh = includeZhAudio()
     const pages = upcomingPages(story.value, pageIndex.value)
-    const urls = uniqueUrls(pages.flatMap((page) => pageWarmUrls(page, includeZh)))
+    const urls = uniqueUrls(pages.flatMap((page) => pageWarmUrls(page)))
     void runQueue(urls, undefined, LOOKAHEAD_PAGES, recount)
   }
 
@@ -232,9 +223,8 @@ export function useStoryPreload(story: Ref<Story>, pageIndex: Ref<number>) {
       return
     }
     cacheSkipped.value = false
-    const includeZh = includeZhAudio()
     const urls = uniqueUrls(
-      orderedWarmPages(story.value, pageIndex.value).flatMap((page) => pageWarmUrls(page, includeZh)),
+      orderedWarmPages(story.value, pageIndex.value).flatMap((page) => pageWarmUrls(page)),
     )
     await Promise.all(urls.map(urlInCache))
     recount()
@@ -249,9 +239,8 @@ export function useStoryPreload(story: Ref<Story>, pageIndex: Ref<number>) {
     warmAbort?.abort()
     warmAbort = new AbortController()
     const signal = warmAbort.signal
-    const includeZh = includeZhAudio()
     const urls = uniqueUrls(
-      orderedWarmPages(story.value, pageIndex.value).flatMap((page) => pageWarmUrls(page, includeZh)),
+      orderedWarmPages(story.value, pageIndex.value).flatMap((page) => pageWarmUrls(page)),
     )
     void runQueue(urls, signal, WARM_CONCURRENCY, recount).then(() => {
       if (signal.aborted) {
@@ -265,7 +254,7 @@ export function useStoryPreload(story: Ref<Story>, pageIndex: Ref<number>) {
   }
 
   watch(
-    () => [story.value.id, pageIndex.value, zhDevice.value] as const,
+    () => [story.value.id, pageIndex.value] as const,
     () => {
       preloadAhead()
     },
@@ -273,7 +262,7 @@ export function useStoryPreload(story: Ref<Story>, pageIndex: Ref<number>) {
   )
 
   watch(
-    () => [story.value.id, zhDevice.value] as const,
+    () => story.value.id,
     () => {
       void scanExisting().then(() => {
         if (idleHandle) cancelIdle(idleHandle)

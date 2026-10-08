@@ -1,5 +1,11 @@
 [
   {
+    "id": "v0.6.19",
+    "version": "0.6.19",
+    "date": "2026-10-08",
+    "summary": "Chinese is now read by the device voice; the Chinese voice setting was removed."
+  },
+  {
     "id": "v0.6.18",
     "version": "0.6.18",
     "date": "2026-10-08",

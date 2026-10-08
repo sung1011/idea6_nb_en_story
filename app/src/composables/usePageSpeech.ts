@@ -1,6 +1,5 @@
 import { onMounted, onUnmounted, ref, watch, type Ref } from 'vue'
 import type { StoryPage } from '@/types/story'
-import { useZhVoice } from '@/composables/useZhVoice'
 import { asWordCues, followWordAt, type WordCue } from '@/utils/followCue'
 
 export type SpeechLang = 'en' | 'zh'
@@ -234,7 +233,6 @@ function playFile(
 }
 
 export function usePageSpeech(page: Ref<StoryPage | undefined>) {
-  const { isDevice: zhDevice } = useZhVoice()
   const playingLang = ref<SpeechLang | null>(null)
   const playingWord = ref<string | null>(null)
   const playingRate = ref(1)
@@ -288,10 +286,6 @@ export function usePageSpeech(page: Ref<StoryPage | undefined>) {
     playingWord.value = null
     playingRate.value = speed
     followIndex.value = null
-    const useDeviceZh = lang === 'zh' && zhDevice.value
-    const file = useDeviceZh
-      ? ''
-      : String((lang === 'zh' ? current.audioZh : current.audioEn) || '').trim()
     const done = () => {
       clearPlaying(token)
       options.onEnded?.()
@@ -303,7 +297,12 @@ export function usePageSpeech(page: Ref<StoryPage | undefined>) {
     const skip = () => {
       clearPlaying(token)
     }
-    const wantFollow = lang === 'en' && speed < 1 && Boolean(file)
+    if (lang === 'zh') {
+      systemSpeak(text, 'zh', token, done, 1, true)
+      return
+    }
+    const file = String(current.audioEn || '').trim()
+    const wantFollow = speed < 1 && Boolean(file)
     if (file) {
       playFile(clipUrl(file), text, lang, token, done, speed, {
         ...options,
@@ -323,11 +322,11 @@ export function usePageSpeech(page: Ref<StoryPage | undefined>) {
       })
       return
     }
-    if (options.silent && !useDeviceZh) {
+    if (options.silent) {
       skip()
       return
     }
-    systemSpeak(text, lang, token, done, speed, useDeviceZh)
+    systemSpeak(text, lang, token, done, speed)
   }
 
   function playWord(word: string) {

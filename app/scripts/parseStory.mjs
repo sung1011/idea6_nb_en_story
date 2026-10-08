@@ -69,7 +69,6 @@ export function parseStoryMarkdown(md, slug, source) {
       learnItems,
       image: existingPageImage(slug, index),
       audioEn: existingAudio(slug, id, 'en'),
-      audioZh: existingAudio(slug, id, 'zh'),
     })
   }
 
@@ -222,12 +221,12 @@ function applyExistingMedia(story) {
   for (const page of story.pages ?? []) {
     page.image = existingPageImage(slug, page.index)
     page.audioEn = existingAudio(slug, page.id, 'en')
-    page.audioZh = existingAudio(slug, page.id, 'zh')
     for (const item of page.learnItems ?? []) {
       item.image = existingWordImage(slug, item.word)
       delete item.audioWord
     }
     delete page.audioWord
+    delete page.audioZh
   }
 }
 

@@ -32,8 +32,7 @@
         }
       ],
       "image": "images/flag-in-the-fog/p01.webp",
-      "audioEn": "audio/flag-in-the-fog/p01-en.mp3",
-      "audioZh": "audio/flag-in-the-fog/p01-zh.mp3"
+      "audioEn": "audio/flag-in-the-fog/p01-en.mp3"
     },
     {
       "id": "P02",
@@ -57,8 +56,7 @@
         }
       ],
       "image": "images/flag-in-the-fog/p02.webp",
-      "audioEn": "audio/flag-in-the-fog/p02-en.mp3",
-      "audioZh": "audio/flag-in-the-fog/p02-zh.mp3"
+      "audioEn": "audio/flag-in-the-fog/p02-en.mp3"
     },
     {
       "id": "P03",
@@ -82,8 +80,7 @@
         }
       ],
       "image": "images/flag-in-the-fog/p03.webp",
-      "audioEn": "audio/flag-in-the-fog/p03-en.mp3",
-      "audioZh": "audio/flag-in-the-fog/p03-zh.mp3"
+      "audioEn": "audio/flag-in-the-fog/p03-en.mp3"
     },
     {
       "id": "P04",
@@ -107,8 +104,7 @@
         }
       ],
       "image": "images/flag-in-the-fog/p04.webp",
-      "audioEn": "audio/flag-in-the-fog/p04-en.mp3",
-      "audioZh": "audio/flag-in-the-fog/p04-zh.mp3"
+      "audioEn": "audio/flag-in-the-fog/p04-en.mp3"
     },
     {
       "id": "P05",
@@ -137,8 +133,7 @@
         }
       ],
       "image": "images/flag-in-the-fog/p05.webp",
-      "audioEn": "audio/flag-in-the-fog/p05-en.mp3",
-      "audioZh": "audio/flag-in-the-fog/p05-zh.mp3"
+      "audioEn": "audio/flag-in-the-fog/p05-en.mp3"
     },
     {
       "id": "P06",
@@ -162,8 +157,7 @@
         }
       ],
       "image": "images/flag-in-the-fog/p06.webp",
-      "audioEn": "audio/flag-in-the-fog/p06-en.mp3",
-      "audioZh": "audio/flag-in-the-fog/p06-zh.mp3"
+      "audioEn": "audio/flag-in-the-fog/p06-en.mp3"
     },
     {
       "id": "P07",
@@ -187,8 +181,7 @@
         }
       ],
       "image": "images/flag-in-the-fog/p07.webp",
-      "audioEn": "audio/flag-in-the-fog/p07-en.mp3",
-      "audioZh": "audio/flag-in-the-fog/p07-zh.mp3"
+      "audioEn": "audio/flag-in-the-fog/p07-en.mp3"
     },
     {
       "id": "P08",
@@ -217,8 +210,7 @@
         }
       ],
       "image": "images/flag-in-the-fog/p08.webp",
-      "audioEn": "audio/flag-in-the-fog/p08-en.mp3",
-      "audioZh": "audio/flag-in-the-fog/p08-zh.mp3"
+      "audioEn": "audio/flag-in-the-fog/p08-en.mp3"
     },
     {
       "id": "P09",
@@ -247,8 +239,7 @@
         }
       ],
       "image": "images/flag-in-the-fog/p09.webp",
-      "audioEn": "audio/flag-in-the-fog/p09-en.mp3",
-      "audioZh": "audio/flag-in-the-fog/p09-zh.mp3"
+      "audioEn": "audio/flag-in-the-fog/p09-en.mp3"
     },
     {
       "id": "P10",
@@ -272,8 +263,7 @@
         }
       ],
       "image": "images/flag-in-the-fog/p10.webp",
-      "audioEn": "audio/flag-in-the-fog/p10-en.mp3",
-      "audioZh": "audio/flag-in-the-fog/p10-zh.mp3"
+      "audioEn": "audio/flag-in-the-fog/p10-en.mp3"
     },
     {
       "id": "P11",
@@ -289,8 +279,7 @@
       "highlights": [],
       "learnItems": [],
       "image": "images/flag-in-the-fog/p11.webp",
-      "audioEn": "audio/flag-in-the-fog/p11-en.mp3",
-      "audioZh": "audio/flag-in-the-fog/p11-zh.mp3"
+      "audioEn": "audio/flag-in-the-fog/p11-en.mp3"
     },
     {
       "id": "P12",
@@ -314,8 +303,7 @@
         }
       ],
       "image": "images/flag-in-the-fog/p12.webp",
-      "audioEn": "audio/flag-in-the-fog/p12-en.mp3",
-      "audioZh": "audio/flag-in-the-fog/p12-zh.mp3"
+      "audioEn": "audio/flag-in-the-fog/p12-en.mp3"
     },
     {
       "id": "P13",
@@ -339,8 +327,7 @@
         }
       ],
       "image": "images/flag-in-the-fog/p13.webp",
-      "audioEn": "audio/flag-in-the-fog/p13-en.mp3",
-      "audioZh": "audio/flag-in-the-fog/p13-zh.mp3"
+      "audioEn": "audio/flag-in-the-fog/p13-en.mp3"
     },
     {
       "id": "P14",
@@ -369,8 +356,7 @@
         }
       ],
       "image": "images/flag-in-the-fog/p14.webp",
-      "audioEn": "audio/flag-in-the-fog/p14-en.mp3",
-      "audioZh": "audio/flag-in-the-fog/p14-zh.mp3"
+      "audioEn": "audio/flag-in-the-fog/p14-en.mp3"
     },
     {
       "id": "P15",
@@ -386,8 +372,7 @@
       "highlights": [],
       "learnItems": [],
       "image": "images/flag-in-the-fog/p15.webp",
-      "audioEn": "audio/flag-in-the-fog/p15-en.mp3",
-      "audioZh": "audio/flag-in-the-fog/p15-zh.mp3"
+      "audioEn": "audio/flag-in-the-fog/p15-en.mp3"
     },
     {
       "id": "P16",
@@ -403,8 +388,7 @@
       "highlights": [],
       "learnItems": [],
       "image": "images/flag-in-the-fog/p16.webp",
-      "audioEn": "audio/flag-in-the-fog/p16-en.mp3",
-      "audioZh": "audio/flag-in-the-fog/p16-zh.mp3"
+      "audioEn": "audio/flag-in-the-fog/p16-en.mp3"
     },
     {
       "id": "P17",
@@ -428,8 +412,7 @@
         }
       ],
       "image": "images/flag-in-the-fog/p17.webp",
-      "audioEn": "audio/flag-in-the-fog/p17-en.mp3",
-      "audioZh": "audio/flag-in-the-fog/p17-zh.mp3"
+      "audioEn": "audio/flag-in-the-fog/p17-en.mp3"
     },
     {
       "id": "P18",
@@ -461,8 +444,7 @@
         }
       ],
       "image": "images/flag-in-the-fog/p18.webp",
-      "audioEn": "audio/flag-in-the-fog/p18-en.mp3",
-      "audioZh": "audio/flag-in-the-fog/p18-zh.mp3"
+      "audioEn": "audio/flag-in-the-fog/p18-en.mp3"
     },
     {
       "id": "P19",
@@ -484,8 +466,7 @@
         }
       ],
       "image": "images/flag-in-the-fog/p19.webp",
-      "audioEn": "audio/flag-in-the-fog/p19-en.mp3",
-      "audioZh": "audio/flag-in-the-fog/p19-zh.mp3"
+      "audioEn": "audio/flag-in-the-fog/p19-en.mp3"
     },
     {
       "id": "P20",
@@ -501,8 +482,7 @@
       "highlights": [],
       "learnItems": [],
       "image": "images/flag-in-the-fog/p20.webp",
-      "audioEn": "audio/flag-in-the-fog/p20-en.mp3",
-      "audioZh": "audio/flag-in-the-fog/p20-zh.mp3"
+      "audioEn": "audio/flag-in-the-fog/p20-en.mp3"
     },
     {
       "id": "P21",
@@ -524,8 +504,7 @@
         }
       ],
       "image": "images/flag-in-the-fog/p21.webp",
-      "audioEn": "audio/flag-in-the-fog/p21-en.mp3",
-      "audioZh": "audio/flag-in-the-fog/p21-zh.mp3"
+      "audioEn": "audio/flag-in-the-fog/p21-en.mp3"
     },
     {
       "id": "P22",
@@ -541,8 +520,7 @@
       "highlights": [],
       "learnItems": [],
       "image": "images/flag-in-the-fog/p22.webp",
-      "audioEn": "audio/flag-in-the-fog/p22-en.mp3",
-      "audioZh": "audio/flag-in-the-fog/p22-zh.mp3"
+      "audioEn": "audio/flag-in-the-fog/p22-en.mp3"
     }
   ]
 }

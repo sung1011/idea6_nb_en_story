@@ -19,6 +19,7 @@ export function progressKey(storyId: string) {
 export function clearStaleDisplayModeKeys() {
   if (typeof localStorage === 'undefined') return
   localStorage.removeItem(DISPLAY_MODE_KEY)
+  localStorage.removeItem(ZH_VOICE_KEY)
   const stale: string[] = []
   for (let i = 0; i < localStorage.length; i += 1) {
     const key = localStorage.key(i)

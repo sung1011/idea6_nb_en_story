@@ -51,20 +51,19 @@ npm run parse-stories
 | `learnItems` | `LearnItem[]` | 否 | 本页可点学的词（加粗词 + 辅词），每项 `{ word, gloss, image }` |
 | `image` | `string \| null` | 否 | 插图相对 URL。仓库内有 `images/<story-id>/pNN.webp`（或 png/jpg）时写入路径；否则为 `null`，阅读器回退 16:9 软陶风 SVG 占位。正式画稿必须压缩后再入库，不要提交未压缩原图 |
 | `audioEn` | `string \| null` | 否 | 英文朗读音频相对 URL。仓库内有对应 mp3 时写入路径，否则为 `null` |
-| `audioZh` | `string \| null` | 否 | 中文朗读音频相对 URL。同上 |
 
 相对 URL 约定：
 
 - 插图：`images/<story-id>/p01.webp`（Flag in the Fog 22 页、Spot the Cub 24 页均已接入；缺文件时为 `null`）
 - 英文音频：`audio/<story-id>/p01-en.mp3`（Edge TTS `en-US-AriaNeural`，语速 `-15%`）
-- 中文音频：`audio/<story-id>/p01-zh.mp3`（Edge TTS `zh-CN-XiaoxiaoNeural`）
+- 中文不入库 mp3：页级 **CN**、自动朗读的中文步、词卡 **CN** 都走系统 `speechSynthesis`（`zh-CN` 默认声）
 - 英文逐词时间轴：`audio/<story-id>/timings.json`，紧凑 JSON `{ pageId: [[startMs, endMs, wordIndex], ...] }`。`wordIndex` 与阅读器把英文拆成 `[A-Za-z0-9']+` 后的顺序一致。用与页级英文相同的 Aria `-15%` 文本跑 `WordBoundary`（offset/duration 为 100ns，除以 10000 得毫秒）。新合成 mp3 与现有文件时长差 ≤120ms 时保留旧 mp3，只写入时间轴
 - 词图：`images/<story-id>/words/map.webp`（有文件时写入 `learnItems[].image`）
 - 单词和句式不写 mp3：点词 / 词卡 / 句式芯片用系统 `speechSynthesis`（英文 `en-US` 默认声，词卡 **CN** 用 `zh-CN` 默认声）。句式列表见 `uploads/phrases.json` / `app/public/phrases.json`
 
-阅读器以 Vite `base`（`/idea6_nb_en_story/`）拼接这些路径。打开故事页（翻页、换故事、续读）时自动先播 `audioEn`，约 0.5 秒后再播 `audioZh`（正常语速）。Settings → **General** 的 **Auto read** 默认开。点英文句子（含句中加粗焦点词）播放整句 `audioEn`。点英文句子左侧的 **CN** 弹出本页译文并播放 `audioZh`。点 **Slow** 按 Settings 语速播英文 mp3；仅在 `playbackRate < 1` 时按 `audio.currentTime`（不受倍速影响）用 rAF 对照 `timings.json` 给当前词加一层很淡的底色（约 120ms 淡入淡出，不改布局/字号/字重/对比）。停止、翻页、读完会清掉跟读。`prefers-reduced-motion` 时底色仍在、无过渡。点 Slow、单词或句子会立刻停掉自动队列。点辅词芯片弹出释义气泡（词图 + 短义 + **CN**），打开时用设备英文声读单词，点英文词可再读，点 **CN** 用设备中文声读释义。主练句式可点。总结页 **Sentences** 用 `phrases.json` 列表，可点朗读。总结页和没有音频的页不自动读。页级 mp3 缺失时自动朗读静默跳过；浏览器拦截自动播放时，等第一次点击后再读当前页。下一页未缓存完时 Next 略微变暗（透明度约 0.55，无动画/光晕/圆环），仍可点，缓存好后约 200ms 恢复，并保留 `aria-busy`。
+阅读器以 Vite `base`（`/idea6_nb_en_story/`）拼接这些路径。打开故事页（翻页、换故事、续读）时自动先播 `audioEn`，约 0.5 秒后再用系统中文声读 `zh`。Settings → **General** 的 **Auto read** 默认开。点英文句子（含句中加粗焦点词）播放整句 `audioEn`。点英文句子左侧的 **CN** 弹出本页译文并用 `speechSynthesis` 读中文。点 **Slow** 按 Settings 语速播英文 mp3；仅在 `playbackRate < 1` 时按 `audio.currentTime`（不受倍速影响）用 rAF 对照 `timings.json` 给当前词加一层很淡的底色（约 120ms 淡入淡出，不改布局/字号/字重/对比）。停止、翻页、读完会清掉跟读。`prefers-reduced-motion` 时底色仍在、无过渡。点 Slow、单词或句子会立刻停掉自动队列。点辅词芯片弹出释义气泡（词图 + 短义 + **CN**），打开时用设备英文声读单词，点英文词可再读，点 **CN** 用设备中文声读释义。主练句式可点。总结页 **Sentences** 用 `phrases.json` 列表，可点朗读。总结页和没有英文音频、也没有中文正文的页不自动读。页级英文 mp3 缺失时自动朗读的英文步静默跳过；中文步在有译文时始终走系统语音。浏览器拦截自动播放时，等第一次点击后再读当前页。下一页未缓存完时 Next 略微变暗（透明度约 0.55，无动画/光晕/圆环），仍可点，缓存好后约 200ms 恢复，并保留 `aria-busy`。缓存按页计：图 + 英 mp3 + 词图。
 
-重新生成音频（在 `app/` 下）：`npm run gen-tts`（需 `edge-tts` 与 `ffmpeg`）。英文跟读时间轴：`node scripts/genEnTimings.mjs`。`npm run parse-stories` / `dev` / `build` 会根据 `app/public/images/` 与 `app/public/audio/` 里是否已有文件回填路径。
+重新生成英文音频（在 `app/` 下）：`npm run gen-tts`（需 `edge-tts` 与 `ffmpeg`，只生成 `pNN-en.mp3`）。英文跟读时间轴：`node scripts/genEnTimings.mjs`。`npm run parse-stories` / `dev` / `build` 会根据 `app/public/images/` 与 `app/public/audio/` 里是否已有文件回填路径。
 
 ---
 
@@ -101,7 +100,7 @@ npm run parse-stories
 
 - 导航与续读：`id`、`pageCount`、`pages[].index`
 - 展示：`en`、`zh`、`pattern`、`focusWord`、`image`（正文显示英文；**CN** 在句子左侧，点开弹层）
-- 朗读：`audioEn`、`audioZh`（打开页自动英→中；点英文句子含加粗词播放整句；缺文件回退系统语音）。Slow 跟读另拉 `audio/<story-id>/timings.json`
+- 朗读：`audioEn`（打开页自动英→中；点英文句子含加粗词播放整句；缺英文文件时自动朗读跳过英文步）。中文始终 `speechSynthesis`。Slow 跟读另拉 `audio/<story-id>/timings.json`
 - 点词：`learnItems` / `gloss` / `image`（点辅词芯片弹出词图 + 释义 + **CN**；句中加粗词只作高亮标记；句式可点，走设备英文声）
 - 总结页：跨页去重 `learnItems`（首次出现顺序）与去重 `pattern`；点词卡复用同一释义气泡；**Read again** 回第 1 页，进度仍夹紧在 `1..pageCount`
 
@@ -111,8 +110,7 @@ npm run parse-stories
 - `idea6_nb_en_story:ackedVersion` → 用户已确认的最新版本 `id`（对应 `app/public/versions.json`）
 - `idea6_nb_en_story:slowSpeed` → Slow 语速百分比（30–90，默认 60）
 - `idea6_nb_en_story:autoRead` → 自动朗读（`1`/`0`，缺省为开）
-- `idea6_nb_en_story:zhVoice` → 页级中文声（`xiaoxiao` / `device`，缺省 Xiaoxiao）
 
-启动时会删除过期键 `idea6_nb_en_story:displayMode` 与 `idea6_nb_en_story:showZh:<storyId>`，不碰阅读进度。
+启动时会删除过期键 `idea6_nb_en_story:displayMode`、`idea6_nb_en_story:showZh:<storyId>` 与 `idea6_nb_en_story:zhVoice`，不碰阅读进度。
 
 `app/public/versions.json` 为数组，**最新在前**，每项 `{ id, version, date, summary }`（新条目用英文）。阅读器按 `version` 号合并为组（同号多条摘要合成一行，日期取该组最新）。Settings **Version** 始终列出最近 10 组，**Current version** 为已确认/已安装版本号，页内无 **Update**。**Check for updates** 立刻再拉一次（`cache: no-store`），无新版本约 2 秒 toast **You're up to date.**，有则 **Update available**。比已确认版本号更新的组出现在设置外的弹层（手机可滚动），顶部一个 **Update**。已是最新则不显示弹层。点击 **Update** 会写入已确认版本，然后走与 **Clear cache** 相同的流程：注销 Service Worker、删除 Cache Storage（故事图/音频/阅读器壳），再带 `_reload` 硬刷新；清缓存失败时仍会硬刷新。不清除 `localStorage` / 阅读进度（那只在 GM **Reset all data**）。独立的 **Clear cache** 先 toast **Cache cleared.** 约 2 秒，再清缓存并硬刷新。

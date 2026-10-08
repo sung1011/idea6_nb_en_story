@@ -1,4 +1,4 @@
-"""Generate story-page mp3s with Edge TTS (Aria -15% / 晓晓), then shrink for a kids app."""
+"""Generate English story-page mp3s with Edge TTS (Aria -15%), then shrink for a kids app."""
 
 from __future__ import annotations
 
@@ -54,7 +54,11 @@ async def main() -> int:
     public_dir = Path(sys.argv[1])
     force = "--force" in sys.argv[2:]
     catalog = json.load(sys.stdin)
-    clips = catalog["clips"]
+    clips = [
+        clip
+        for clip in catalog["clips"]
+        if not str(clip.get("file") or "").endswith("-zh.mp3") and clip.get("lang") != "zh"
+    ]
     sem = asyncio.Semaphore(4)
     failed: list[str] = []
     made = 0

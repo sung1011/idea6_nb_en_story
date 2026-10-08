@@ -1,7 +1,7 @@
 import { computed, onMounted, onUnmounted, ref, watch, type Ref } from 'vue'
 import { AUTO_READ_KEY } from '@/utils/appStorage'
 import type { StoryPage } from '@/types/story'
-import type { PlayOptions, SpeechLang } from '@/composables/usePageSpeech'
+import { plainSpeakText, type PlayOptions, type SpeechLang } from '@/composables/usePageSpeech'
 
 const ZH_GAP_MS = 500
 const AUTO_READ_DEFAULT = true
@@ -64,7 +64,7 @@ export function useAutoRead(
     const current = page.value
     if (!current) return
     const hasEn = Boolean(String(current.audioEn || '').trim())
-    const hasZh = Boolean(String(current.audioZh || '').trim())
+    const hasZh = Boolean(plainSpeakText(current.zh))
     if (!hasEn && !hasZh) return
 
     const token = generation

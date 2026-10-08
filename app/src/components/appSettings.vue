@@ -2,7 +2,6 @@
 import { onMounted, onUnmounted, ref } from 'vue'
 import { hardReload, useAppVersions } from '@/composables/useAppVersions'
 import { useAutoReadSetting } from '@/composables/useAutoRead'
-import { ZH_VOICE_DEVICE, ZH_VOICE_XIAOXIAO, useZhVoice } from '@/composables/useZhVoice'
 import { SLOW_SPEED_MAX, SLOW_SPEED_MIN, SLOW_SPEED_STEP, useSlowSpeed } from '@/composables/useSlowSpeed'
 import { clearAppStorage } from '@/utils/appStorage'
 import VersionRow from './versionRow.vue'
@@ -18,7 +17,6 @@ const flash = ref('')
 const { installed, history, pending, refresh, applyUpdate, clearCaches } = useAppVersions()
 const { percent: slowPercent, setPercent: setSlowPercent, slower, faster, canSlower, canFaster } = useSlowSpeed()
 const { enabled: autoRead, toggle: toggleAutoRead, label: autoReadLabel } = useAutoReadSetting()
-const { voice: zhVoice, setVoice: setZhVoice } = useZhVoice()
 
 defineProps<{
   cacheLabel?: string
@@ -169,23 +167,6 @@ onUnmounted(() => {
           >
             {{ autoReadLabel }}
           </button>
-        </div>
-        <div class="zh-voice">
-          <p class="slow-label">Chinese voice</p>
-          <div class="voice-picks">
-            <button
-              type="button"
-              class="voice-pick"
-              :aria-pressed="zhVoice === ZH_VOICE_XIAOXIAO"
-              @click="setZhVoice(ZH_VOICE_XIAOXIAO)"
-            >Xiaoxiao</button>
-            <button
-              type="button"
-              class="voice-pick"
-              :aria-pressed="zhVoice === ZH_VOICE_DEVICE"
-              @click="setZhVoice(ZH_VOICE_DEVICE)"
-            >Device</button>
-          </div>
         </div>
         <div class="slow-speed">
           <div class="slow-head">
@@ -393,41 +374,6 @@ onUnmounted(() => {
 }
 
 .switch[aria-checked='true'] {
-  background: var(--teal);
-  color: white;
-}
-
-.zh-voice {
-  margin-bottom: 10px;
-  padding: 10px 12px 12px;
-  border-radius: 18px;
-  border: 3px solid #2f3f3b;
-  background: var(--fog);
-}
-
-.zh-voice .slow-label {
-  margin: 0 0 8px;
-}
-
-.voice-picks {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 8px;
-}
-
-.voice-pick {
-  min-height: 44px;
-  margin: 0;
-  padding: 8px 10px;
-  border-radius: 999px;
-  border: 3px solid #2f3f3b;
-  background: var(--paper);
-  color: var(--ink);
-  font-size: 1.02rem;
-  font-weight: 700;
-}
-
-.voice-pick[aria-pressed='true'] {
   background: var(--teal);
   color: white;
 }
