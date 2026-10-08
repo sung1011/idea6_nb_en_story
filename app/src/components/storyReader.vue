@@ -5,6 +5,7 @@ import type { StoryIndexEntry } from '@/types/storyIndex'
 import { parseEnSegments } from '@/utils/parseEn'
 import { useStoryProgress } from '@/composables/useStoryProgress'
 import { usePageSpeech } from '@/composables/usePageSpeech'
+import { useSlowSpeed } from '@/composables/useSlowSpeed'
 import PagePlaceholder from './pagePlaceholder.vue'
 import GlossPanel, { type GlossAnchor } from './glossPanel.vue'
 import AppSettings from './appSettings.vue'
@@ -27,7 +28,9 @@ const onSummary = ref(false)
 const page = computed(() => {
   return props.story.pages.find((item) => item.index === pageIndex.value) ?? props.story.pages[0]
 })
-const { playingLang, playingWord, playLine, playWord, stop } = usePageSpeech(page)
+const { playingLang, playingWord, playingRate, playLine, playWord, stop } = usePageSpeech(page)
+const { rate: slowRate } = useSlowSpeed()
+const slowPlaying = computed(() => playingLang.value === 'en' && playingRate.value < 1)
 
 const learnItems = computed(() => page.value?.learnItems ?? [])
 const learnWords = computed(() => learnItems.value.map((item) => item.word))
@@ -96,6 +99,11 @@ function closePanels() {
   openLearn.value = null
   openZh.value = false
   glossAnchor.value = null
+}
+
+function playSlow() {
+  closePanels()
+  playLine('en', slowRate.value)
 }
 
 function toggleZh(event: Event) {
@@ -235,15 +243,25 @@ onUnmounted(() => {
 
       <section class="copy">
         <div class="en-row">
-          <button
-            v-if="showChinese"
-            type="button"
-            class="chip zh tap"
-            :class="{ open: openZh }"
-            aria-label="Show Chinese"
-            :aria-expanded="openZh"
-            @click="toggleZh"
-          >中文</button>
+          <div class="side-btns">
+            <button
+              v-if="showChinese"
+              type="button"
+              class="chip zh tap"
+              :class="{ open: openZh }"
+              aria-label="Show Chinese"
+              :aria-expanded="openZh"
+              @click="toggleZh"
+            >中文</button>
+            <button
+              type="button"
+              class="chip slow tap"
+              :class="{ playing: slowPlaying }"
+              aria-label="Read slowly"
+              :aria-pressed="slowPlaying"
+              @click="playSlow"
+            >Slow</button>
+          </div>
           <div class="line en" :class="{ playing: playingLang === 'en' }">
             <button
               type="button"
@@ -358,9 +376,31 @@ h1 {
   gap: 8px;
 }
 
-.en-row .chip.zh {
+.side-btns {
   flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 6px;
   margin-top: 12px;
+}
+
+.en-row .chip.zh,
+.en-row .chip.slow {
+  margin: 0;
+  min-height: 36px;
+  padding: 6px 10px;
+  font-size: 0.82rem;
+}
+
+.chip.slow {
+  background: rgba(47, 63, 59, 0.1);
+  color: var(--ink);
+}
+
+.chip.slow.playing {
+  background: rgba(31, 138, 128, 0.28);
+  box-shadow: 0 0 0 3px rgba(31, 138, 128, 0.28);
 }
 
 .en-row .line {

@@ -1,5 +1,11 @@
 [
   {
+    "id": "v0.6.9",
+    "version": "0.6.9",
+    "date": "2026-10-08",
+    "summary": "Slow read: new Slow button under 中文 plays the sentence at a slower speed; adjust it in Settings"
+  },
+  {
     "id": "v0.6.8",
     "version": "0.6.8",
     "date": "2026-10-08",

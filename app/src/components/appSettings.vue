@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { onMounted, onUnmounted, ref } from 'vue'
 import { hardReload, useAppVersions } from '@/composables/useAppVersions'
+import { SLOW_SPEED_MAX, SLOW_SPEED_MIN, SLOW_SPEED_STEP, useSlowSpeed } from '@/composables/useSlowSpeed'
 import { clearAppStorage } from '@/utils/appStorage'
 import VersionRow from './versionRow.vue'
 
@@ -13,6 +14,12 @@ const tab = ref<SettingsTab>('version')
 const gmConfirming = ref(false)
 const flash = ref('')
 const { installed, history, pending, refresh, applyUpdate, clearCaches } = useAppVersions()
+const { percent: slowPercent, setPercent: setSlowPercent, slower, faster, canSlower, canFaster } = useSlowSpeed()
+
+function onSlowInput(event: Event) {
+  const value = Number((event.target as HTMLInputElement).value)
+  setSlowPercent(value)
+}
 
 let flashTimer = 0
 
@@ -104,6 +111,39 @@ onUnmounted(() => {
       role="dialog"
       aria-label="Settings"
     >
+      <div class="slow-speed">
+        <div class="slow-head">
+          <p class="slow-label">Slow speed</p>
+          <p class="slow-value" aria-live="polite">{{ slowPercent }}%</p>
+        </div>
+        <div class="slow-controls">
+          <button
+            type="button"
+            class="ghost step"
+            aria-label="Decrease slow speed"
+            :disabled="!canSlower"
+            @click="slower"
+          >−</button>
+          <input
+            type="range"
+            class="slow-slider"
+            :min="SLOW_SPEED_MIN"
+            :max="SLOW_SPEED_MAX"
+            :step="SLOW_SPEED_STEP"
+            :value="slowPercent"
+            aria-label="Slow speed"
+            @input="onSlowInput"
+          />
+          <button
+            type="button"
+            class="ghost step"
+            aria-label="Increase slow speed"
+            :disabled="!canFaster"
+            @click="faster"
+          >+</button>
+        </div>
+      </div>
+
       <div class="tabs" role="tablist" aria-label="Settings sections">
         <button
           type="button"
@@ -245,6 +285,60 @@ onUnmounted(() => {
   border: 3px solid #2f3f3b;
   background: var(--paper);
   box-shadow: var(--shadow);
+}
+
+.slow-speed {
+  margin-bottom: 12px;
+  padding: 10px 12px 12px;
+  border-radius: 18px;
+  border: 3px solid #2f3f3b;
+  background: var(--fog);
+}
+
+.slow-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.slow-label,
+.slow-value {
+  margin: 0;
+  font-size: 1.05rem;
+  font-weight: 700;
+}
+
+.slow-value {
+  color: var(--teal-dark);
+}
+
+.slow-controls {
+  display: grid;
+  grid-template-columns: 44px 1fr 44px;
+  align-items: center;
+  gap: 8px;
+}
+
+.slow-slider {
+  width: 100%;
+  min-height: 32px;
+  accent-color: var(--teal);
+}
+
+.ghost.step {
+  min-height: 44px;
+  width: 44px;
+  margin: 0;
+  padding: 0;
+  font-size: 1.35rem;
+  line-height: 1;
+}
+
+.ghost.step:disabled {
+  opacity: 0.38;
+  cursor: not-allowed;
 }
 
 .tabs {

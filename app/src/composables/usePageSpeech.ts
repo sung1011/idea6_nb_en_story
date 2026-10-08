@@ -57,17 +57,39 @@ function unlockAudio(): void {
     })
 }
 
+const NORMAL_EN_SPEECH_RATE = 0.86
+const MIN_SPEECH_RATE = 0.3
+
+function applyPlaybackRate(el: HTMLAudioElement, rate: number) {
+  el.playbackRate = rate
+  el.preservesPitch = true
+  const pitched = el as HTMLAudioElement & {
+    webkitPreservesPitch?: boolean
+    mozPreservesPitch?: boolean
+  }
+  pitched.webkitPreservesPitch = true
+  pitched.mozPreservesPitch = true
+}
+
 function stopShared(): void {
   seq += 1
   window.speechSynthesis?.cancel()
   if (sharedAudio) {
     sharedAudio.onended = null
     sharedAudio.onerror = null
+    sharedAudio.onloadedmetadata = null
     sharedAudio.pause()
+    applyPlaybackRate(sharedAudio, 1)
   }
 }
 
-function systemSpeak(text: string, lang: SpeechLang, token: number, onDone: () => void): void {
+function systemSpeak(
+  text: string,
+  lang: SpeechLang,
+  token: number,
+  onDone: () => void,
+  rate = 1,
+): void {
   if (!window.speechSynthesis || seq !== token) {
     onDone()
     return
@@ -75,7 +97,8 @@ function systemSpeak(text: string, lang: SpeechLang, token: number, onDone: () =
   window.speechSynthesis.cancel()
   const utter = new SpeechSynthesisUtterance(text)
   utter.lang = lang === 'zh' ? 'zh-CN' : 'en-US'
-  utter.rate = lang === 'zh' ? 1 : 0.86
+  const base = lang === 'zh' ? 1 : NORMAL_EN_SPEECH_RATE
+  utter.rate = Math.max(MIN_SPEECH_RATE, base * rate)
   utter.pitch = 1.12
   if (lang === 'zh') {
     const voice = pickZhVoice()
@@ -96,6 +119,7 @@ function playFile(
   lang: SpeechLang,
   token: number,
   onDone: () => void,
+  rate = 1,
 ): void {
   const el = element()
   let handed = false
@@ -104,53 +128,69 @@ function playFile(
     handed = true
     el.onended = null
     el.onerror = null
-    systemSpeak(text, lang, token, onDone)
+    el.onloadedmetadata = null
+    systemSpeak(text, lang, token, onDone, rate)
   }
   el.onended = null
   el.onerror = null
+  el.onloadedmetadata = null
   el.pause()
   el.src = src
+  applyPlaybackRate(el, rate)
+  el.onloadedmetadata = () => {
+    if (seq !== token) return
+    applyPlaybackRate(el, rate)
+  }
   el.onended = () => {
     if (seq !== token || handed) return
     handed = true
+    applyPlaybackRate(el, 1)
     onDone()
   }
   el.onerror = fail
-  void el.play().catch(fail)
+  void el.play().then(() => {
+    if (seq !== token) return
+    applyPlaybackRate(el, rate)
+  }).catch(fail)
 }
 
 export function usePageSpeech(page: Ref<StoryPage | undefined>) {
   const playingLang = ref<SpeechLang | null>(null)
   const playingWord = ref<string | null>(null)
+  const playingRate = ref(1)
 
   function clearPlaying(token: number) {
     if (seq !== token) return
     playingLang.value = null
     playingWord.value = null
+    playingRate.value = 1
   }
 
   function stop() {
     stopShared()
     playingLang.value = null
     playingWord.value = null
+    playingRate.value = 1
   }
 
-  function playLine(lang: SpeechLang) {
+  function playLine(lang: SpeechLang, rate = 1) {
     const current = page.value
     if (!current) return
     const text = plainSpeakText(lang === 'zh' ? current.zh : current.en)
     if (!text) return
+    const speed = lang === 'en' ? rate : 1
     stopShared()
     const token = seq
     playingLang.value = lang
     playingWord.value = null
+    playingRate.value = speed
     const file = String((lang === 'zh' ? current.audioZh : current.audioEn) || '').trim()
     const done = () => clearPlaying(token)
     if (file) {
-      playFile(clipUrl(file), text, lang, token, done)
+      playFile(clipUrl(file), text, lang, token, done, speed)
       return
     }
-    systemSpeak(text, lang, token, done)
+    systemSpeak(text, lang, token, done, speed)
   }
 
   function playWord(word: string, file?: string | null) {
@@ -160,13 +200,14 @@ export function usePageSpeech(page: Ref<StoryPage | undefined>) {
     const token = seq
     playingLang.value = null
     playingWord.value = text
+    playingRate.value = 1
     const done = () => clearPlaying(token)
     const clip = String(file || '').trim()
     if (clip) {
-      playFile(clipUrl(clip), text, 'en', token, done)
+      playFile(clipUrl(clip), text, 'en', token, done, 1)
       return
     }
-    systemSpeak(text, 'en', token, done)
+    systemSpeak(text, 'en', token, done, 1)
   }
 
   onMounted(() => {
@@ -191,6 +232,7 @@ export function usePageSpeech(page: Ref<StoryPage | undefined>) {
   return {
     playingLang,
     playingWord,
+    playingRate,
     playLine,
     playWord,
     stop,
