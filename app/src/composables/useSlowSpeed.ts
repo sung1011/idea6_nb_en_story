@@ -4,7 +4,7 @@ import { SLOW_SPEED_KEY } from '@/utils/appStorage'
 export const SLOW_SPEED_MIN = 30
 export const SLOW_SPEED_MAX = 90
 export const SLOW_SPEED_STEP = 10
-export const SLOW_SPEED_DEFAULT = 50
+export const SLOW_SPEED_DEFAULT = 60
 
 const percent = ref(readStored())
 
@@ -16,8 +16,11 @@ export function clampSlowPercent(value: number): number {
 
 function readStored(): number {
   if (typeof localStorage === 'undefined') return SLOW_SPEED_DEFAULT
-  const raw = Number(localStorage.getItem(SLOW_SPEED_KEY))
-  return clampSlowPercent(Number.isFinite(raw) ? raw : SLOW_SPEED_DEFAULT)
+  const stored = localStorage.getItem(SLOW_SPEED_KEY)
+  if (stored == null || stored === '') return SLOW_SPEED_DEFAULT
+  const raw = Number(stored)
+  if (!Number.isFinite(raw)) return SLOW_SPEED_DEFAULT
+  return clampSlowPercent(raw)
 }
 
 function persist(value: number) {
