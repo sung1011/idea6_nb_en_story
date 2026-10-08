@@ -4,6 +4,13 @@ import { hardReload, useAppVersions } from '@/composables/useAppVersions'
 import { useAutoReadSetting } from '@/composables/useAutoRead'
 import { SLOW_SPEED_MAX, SLOW_SPEED_MIN, SLOW_SPEED_STEP, useSlowSpeed } from '@/composables/useSlowSpeed'
 import { clearAppStorage } from '@/utils/appStorage'
+import {
+  ADD_TO_HOME_COPY,
+  addToHomeKind,
+  promptInstall,
+  shouldHideAddToHome,
+  type AddToHomeKind,
+} from '@/utils/addToHome'
 import VersionRow from './versionRow.vue'
 
 type SettingsTab = 'general' | 'version' | 'gm'
@@ -17,6 +24,10 @@ const flash = ref('')
 const { installed, history, pending, refresh, applyUpdate, clearCaches } = useAppVersions()
 const { percent: slowPercent, setPercent: setSlowPercent, slower, faster, canSlower, canFaster } = useSlowSpeed()
 const { enabled: autoRead, toggle: toggleAutoRead, label: autoReadLabel } = useAutoReadSetting()
+const hideAddHome = ref(false)
+const addHomeKind = ref<AddToHomeKind>('inApp')
+const addHomeHint = ref<'ios' | 'inApp' | null>(null)
+const addHomeCopy = ADD_TO_HOME_COPY
 
 defineProps<{
   cacheLabel?: string
@@ -75,12 +86,37 @@ function resetLocalState() {
   hardReload()
 }
 
+function refreshAddHome() {
+  hideAddHome.value = shouldHideAddToHome()
+}
+
+async function onAddHome() {
+  if (addHomeKind.value === 'prompt') {
+    addHomeHint.value = null
+    const result = await promptInstall()
+    if (result === 'missing') showFlash(addHomeCopy.almostReady)
+    return
+  }
+  addHomeHint.value = addHomeKind.value === 'ios' ? 'ios' : 'inApp'
+}
+
+let addHomeMedia: MediaQueryList | null = null
+
 onMounted(() => {
   window.addEventListener('keydown', onKey)
+  addHomeKind.value = addToHomeKind(navigator.userAgent, {
+    maxTouchPoints: navigator.maxTouchPoints,
+  })
+  refreshAddHome()
+  window.addEventListener('appinstalled', refreshAddHome)
+  addHomeMedia = window.matchMedia('(display-mode: standalone)')
+  addHomeMedia.addEventListener('change', refreshAddHome)
 })
 
 onUnmounted(() => {
   window.removeEventListener('keydown', onKey)
+  window.removeEventListener('appinstalled', refreshAddHome)
+  addHomeMedia?.removeEventListener('change', refreshAddHome)
   if (flashTimer) window.clearTimeout(flashTimer)
 })
 </script>
@@ -155,6 +191,23 @@ onUnmounted(() => {
       </div>
 
       <div v-if="tab === 'general'" class="pane" role="tabpanel">
+        <div v-if="!hideAddHome" class="add-home">
+          <div class="add-home-row">
+            <div class="add-home-text">
+              <p class="slow-label">{{ addHomeCopy.title }}</p>
+              <p class="add-home-copy">{{ addHomeCopy.body }}</p>
+            </div>
+            <button
+              type="button"
+              class="add-home-btn"
+              :aria-expanded="addHomeHint ? true : undefined"
+              :aria-label="addHomeCopy.add"
+              @click="onAddHome"
+            >{{ addHomeCopy.add }}</button>
+          </div>
+          <p v-if="addHomeHint === 'ios'" class="add-home-steps">{{ addHomeCopy.iosSteps }}</p>
+          <p v-if="addHomeHint === 'inApp'" class="add-home-steps">{{ addHomeCopy.inAppSteps }}</p>
+        </div>
         <div class="auto-read">
           <p class="slow-label">Auto read</p>
           <button
@@ -342,6 +395,53 @@ onUnmounted(() => {
   border: 3px solid #2f3f3b;
   background: var(--paper);
   box-shadow: var(--shadow);
+}
+
+.add-home {
+  margin-bottom: 10px;
+  padding: 10px 12px 12px;
+  border-radius: 18px;
+  border: 3px solid #2f3f3b;
+  background: var(--fog);
+}
+
+.add-home-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.add-home-text {
+  min-width: 0;
+}
+
+.add-home-copy,
+.add-home-steps {
+  margin: 4px 0 0;
+  color: var(--muted);
+  font-size: 0.92rem;
+  font-weight: 500;
+  line-height: 1.35;
+}
+
+.add-home-steps {
+  color: var(--ink);
+  font-weight: 600;
+}
+
+.add-home-btn {
+  flex-shrink: 0;
+  min-height: 44px;
+  min-width: 72px;
+  margin: 0;
+  padding: 8px 14px;
+  border-radius: 999px;
+  border: 3px solid #2f3f3b;
+  background: var(--teal);
+  color: white;
+  font-size: 1.05rem;
+  font-weight: 700;
 }
 
 .auto-read {

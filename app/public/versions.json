@@ -1,5 +1,11 @@
 [
   {
+    "id": "v0.6.21",
+    "version": "0.6.21",
+    "date": "2026-10-08",
+    "summary": "Settings now has an Add to Home Screen option."
+  },
+  {
     "id": "v0.6.20",
     "version": "0.6.20",
     "date": "2026-10-08",

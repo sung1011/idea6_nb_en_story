@@ -115,6 +115,6 @@ npm run parse-stories
 - `idea6_nb_en_story:slowSpeed` → Slow 语速百分比（30–90，默认 60）
 - `idea6_nb_en_story:autoRead` → 自动朗读（`1`/`0`，缺省为开）
 
-启动时会删除过期键 `idea6_nb_en_story:displayMode`、`idea6_nb_en_story:showZh:<storyId>` 与 `idea6_nb_en_story:zhVoice`，不碰阅读进度。
+启动时会删除过期键 `idea6_nb_en_story:displayMode`、`idea6_nb_en_story:showZh:<storyId>` 与 `idea6_nb_en_story:zhVoice`，不碰阅读进度。没有「自动弹出安装提示」的 localStorage 开关；添加到主屏幕只在 Settings → General。
 
 `app/public/versions.json` 为数组，**最新在前**，每项 `{ id, version, date, summary }`（新条目用英文）。阅读器按 `version` 号合并为组（同号多条摘要合成一行，日期取该组最新）。Settings **Version** 始终列出最近 10 组，**Current version** 为已确认/已安装版本号，页内无 **Update**。**Check for updates** 立刻再拉一次（`cache: no-store`），无新版本约 2 秒 toast **You're up to date.**，有则 **Update available**。比已确认版本号更新的组出现在设置外的弹层（手机可滚动），顶部一个 **Update**。已是最新则不显示弹层。点击 **Update** 会写入已确认版本，然后走与 **Clear cache** 相同的流程：注销 Service Worker、删除 Cache Storage（故事图/音频/阅读器壳），再带 `_reload` 硬刷新；清缓存失败时仍会硬刷新。不清除 `localStorage` / 阅读进度（那只在 GM **Reset all data**）。独立的 **Clear cache** 先 toast **Cache cleared.** 约 2 秒，再清缓存并硬刷新。

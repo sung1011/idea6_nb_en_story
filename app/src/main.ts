@@ -6,8 +6,10 @@ import '@fontsource/fredoka/600.css'
 import '@fontsource/fredoka/700.css'
 import './style.css'
 import { clearStaleDisplayModeKeys } from './utils/appStorage'
+import { captureInstallPrompt } from './utils/addToHome'
 import App from './app.vue'
 
+captureInstallPrompt()
 clearStaleDisplayModeKeys()
 registerSW({ immediate: true })
 
