@@ -1,8 +1,8 @@
 # 故事 C · Spot the Cub（找小豹）· 第 2 章 · v1 正文
 
 > 场景：白天森林 → 小溪圆木 → 林间空地 → 灌木丛 → 高树梢 → 豹妈妈身边（白天 / 描边软陶）  
-> 角色：Mia（主角）、Ben（固定配角）、小豹 cub、软反派瓢虫 Bug（调皮指错路，不偷东西）、豹妈妈  
-> 结构：救援开场 → 立目标 → 三次被骗（同一句式反复）→ 假胜利 → 危机 → 反派心软 → 真团聚 → 安静收尾  
+> 角色：Mia（主角）、Ben（固定配角）、小豹 cub、瓢虫 Bug（一路帮忙找妈妈）、豹妈妈  
+> 结构：救援开场 → 立目标 → 三次看错斑点（同一句式反复）→ 假胜利 → 危机 → Bug 飞高帮忙 → 真团聚 → 安静收尾  
 > 篇幅：24 页 · 每页英文 ≤ 55 字符 · 不用交换/分享/偷窃/"Give it back!"/"What a day!"
 
 ---
@@ -83,7 +83,7 @@
 正文: A little red **bug** peeks out. "I see spots!"（一只红色的小瓢虫探出头。“我看见斑点了！”）
 主练句式: I see ___ !
 辅词: bug（第2章 第3课 / -ug）
-知识点: I see 句；软反派 Bug 登场（调皮，不吓人）
+知识点: I see 句；瓢虫 Bug 登场，愿意帮忙
 
 ---
 
@@ -104,10 +104,10 @@
 ---
 
 ### P13
-正文: Bug giggles. "Hee hee! Come!"（小瓢虫咯咯笑：“嘻嘻！来呀！”）
-主练句式: —（喜剧停顿页）
+正文: Bug flies on. "Come! I will find her!"（小瓢虫继续往前飞：“快来！我一定会找到她！”）
+主练句式: —（Bug 帮忙找妈妈）
 辅词: —
-知识点: 拟声笑；反派动机：她觉得好玩
+知识点: Come! 祈使句；Bug 一路帮忙找妈妈
 
 ---
 
@@ -139,7 +139,7 @@
 ---
 
 ### P17
-正文: It is not Mom. It is a big rug. Bug laughs.（不是妈妈。是晾在篱笆上的一块大花毯。小瓢虫哈哈笑。）
+正文: It is not Mom. It is a big rug. Bug is sad.（不是妈妈，是晾在篱笆上的一块大花毯。小瓢虫很难过。）
 场景: 同一院子，大花毯晾在篱笆上
 主练句式: It is not ___ . It is a ___ .
 辅词: —（rug 回调，词卡复用）
@@ -164,15 +164,15 @@
 ---
 
 ### P20
-正文: Bug stops. "Oh no. I am sorry, cub."（小瓢虫停下来。“哎呀。对不起，小豹。”）
-主练句式: I am sorry.
+正文: Bug thinks. "I am small. I can not see far."（小瓢虫想了想：“我太小了，看不远。”）
+主练句式: I can not see far.
 辅词: —
-知识点: 道歉用语；反派心软（反转起点）
+知识点: I am / I can not；Bug 想办法帮忙
 
 ---
 
 ### P21
-正文: Bug flies up, up, up. "I see big spots!"（小瓢虫飞呀飞，飞到高高的地方。“我看见大斑点了！”）
+正文: "I can fly up!" Up, up, up. "I see big spots!"（“我可以飞高呀！”飞呀飞，飞到高高的地方。“我看见大斑点了！”）
 主练句式: I see ___ !（P10 回调）
 辅词: —（bug / spot 回调）
 知识点: up, up, up 重复；同一句话这次是真的
@@ -196,7 +196,7 @@
 ---
 
 ### P24
-正文: "Shh," says Mia. Nap time, little cub.（米娅轻声说：“嘘——”睡觉啦，小豹。）
+正文: "Thank you, Bug!" Nap time, little cub.（“谢谢你，小瓢虫！”睡觉啦，小豹。）
 主练句式: ___ time.
 辅词: —（nap 回调）
 知识点: 安静收尾；画面：小豹睡在妈妈爪间，Bug 停在 Mia 的星星发夹上
@@ -214,4 +214,4 @@ cub · log · wet · rug · spot · nap · mom · bug · mug · dot · egg · fi
 - We can help!
 - I see ___ !
 - Is it Mom? No, it is a ___ .
-- I am sorry.
+- I can not see far.

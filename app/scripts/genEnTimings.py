@@ -172,8 +172,17 @@ async def main() -> int:
     for story_id, pages in by_story.items():
         out = public_dir / "audio" / story_id / "timings.json"
         out.parent.mkdir(parents=True, exist_ok=True)
-        out.write_text(json.dumps(pages, separators=(",", ":")) + "\n", encoding="utf-8")
-        print(f"wrote {out} pages {len(pages)}")
+        existing = {}
+        if out.exists():
+            try:
+                loaded = json.loads(out.read_text(encoding="utf-8"))
+                if isinstance(loaded, dict):
+                    existing = loaded
+            except json.JSONDecodeError:
+                existing = {}
+        existing.update(pages)
+        out.write_text(json.dumps(existing, separators=(",", ":")) + "\n", encoding="utf-8")
+        print(f"wrote {out} pages {len(existing)} (updated {len(pages)})")
     print(f"en timings done kept {kept} replaced {replaced}")
     if failed:
         print(f"FAILED {len(failed)}")
