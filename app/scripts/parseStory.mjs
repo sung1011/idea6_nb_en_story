@@ -394,7 +394,7 @@ function parseFocus(raw) {
 const STORY_ORDER = ['flag-in-the-fog', 'spot-the-cub']
 const STORY_PAGE_COUNTS = {
   'flag-in-the-fog': 22,
-  'spot-the-cub': 24,
+  'spot-the-cub': 23,
 }
 
 function writeStoriesIndex(stories) {

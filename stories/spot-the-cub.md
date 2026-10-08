@@ -3,7 +3,7 @@
 > 场景：白天森林 → 小溪圆木 → 林间空地 → 灌木丛 → 高树梢 → 豹妈妈身边（白天 / 描边软陶）  
 > 角色：Mia（主角）、Ben（固定配角）、小豹 cub、瓢虫 Bug（一路帮忙找妈妈）、豹妈妈  
 > 结构：救援开场 → 立目标 → 三次看错斑点（同一句式反复）→ 假胜利 → 危机 → Bug 飞高帮忙 → 真团聚 → 安静收尾  
-> 篇幅：24 页 · 每页英文 ≤ 55 字符 · 不用交换/分享/偷窃/"Give it back!"/"What a day!"
+> 篇幅：23 页 · 每页英文 ≤ 55 字符 · 不用交换/分享/偷窃/"Give it back!"/"What a day!"
 
 ---
 
@@ -148,22 +148,14 @@
 ---
 
 ### P18
-正文: The wind blows. Leaves fly. The cub cries.（风吹起来了。树叶乱飞。小豹哭了。）
-主练句式: The ___ blows.
+正文: The cub sits down. "I want Mom!" it cries.（小豹坐下来，哭着说：“我要妈妈！”）
+主练句式: I want ___ !
 辅词: —
-知识点: 三个短句递进；危机（保持白天，不变暗）
+知识点: I want 表达愿望；情绪低谷，引出 Bug 想办法
 
 ---
 
 ### P19
-正文: The cub sits down. It can not walk.（小豹坐下了。它走不动了。）
-主练句式: It can not ___ .
-辅词: —（can 回调否定形式）
-知识点: can not 否定；最低点
-
----
-
-### P20
 正文: Bug thinks. "I am small. I can not see far."（小瓢虫想了想：“我太小了，看不远。”）
 主练句式: I can not see far.
 辅词: —
@@ -171,7 +163,7 @@
 
 ---
 
-### P21
+### P20
 正文: "I can fly up!" Up, up, up. "I see big spots!"（“我可以飞高呀！”飞呀飞，飞到高高的地方。“我看见大斑点了！”）
 主练句式: I see ___ !（P10 回调）
 辅词: —（bug / spot 回调）
@@ -179,7 +171,7 @@
 
 ---
 
-### P22
+### P21
 正文: Is it Mom? Yes! It is Mom!（是妈妈吗？是的！是妈妈！）
 主练句式: Is it Mom? Yes, it is ___ !
 辅词: —（mom 回调）
@@ -187,7 +179,7 @@
 
 ---
 
-### P23
+### P22
 正文: Mom and cub **hug**. Mia and Ben are **glad**.（妈妈和小豹抱在一起。米娅和本好开心。）
 主练句式: ___ and ___ hug. / We have a big hug!
 辅词: hug（第2章 第3课）；glad（第6章 第4课，与 P04 sad 呼应）
@@ -195,7 +187,7 @@
 
 ---
 
-### P24
+### P23
 正文: "Thank you, Bug!" Nap time, little cub.（“谢谢你，小瓢虫！”睡觉啦，小豹。）
 主练句式: ___ time.
 辅词: —（nap 回调）
@@ -214,4 +206,5 @@ cub · log · wet · rug · spot · nap · mom · bug · mug · dot · egg · fi
 - We can help!
 - I see ___ !
 - Is it Mom? No, it is a ___ .
+- I want ___ !
 - I can not see far.
