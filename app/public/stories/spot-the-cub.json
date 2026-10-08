@@ -26,8 +26,7 @@
       "image": "images/spot-the-cub/p01.webp",
       "audioEn": "audio/spot-the-cub/p01-en.mp3",
       "phrase": "in the green woods",
-      "phraseZh": "在绿绿的树林里",
-      "audioPhrase": "audio/spot-the-cub/phrase-p01.mp3"
+      "phraseZh": "在绿绿的树林里"
     },
     {
       "id": "P02",
@@ -45,8 +44,7 @@
       "image": "images/spot-the-cub/p02.webp",
       "audioEn": "audio/spot-the-cub/p02-en.mp3",
       "phrase": "Help! Help!",
-      "phraseZh": "救命！救命！",
-      "audioPhrase": "audio/spot-the-cub/phrase-p02.mp3"
+      "phraseZh": "救命！救命！"
     },
     {
       "id": "P03",
@@ -78,8 +76,7 @@
       "image": "images/spot-the-cub/p03.webp",
       "audioEn": "audio/spot-the-cub/p03-en.mp3",
       "phrase": "on a log",
-      "phraseZh": "在一根木头上",
-      "audioPhrase": "audio/spot-the-cub/phrase-p03.mp3"
+      "phraseZh": "在一根木头上"
     },
     {
       "id": "P04",
@@ -105,8 +102,7 @@
       "image": "images/spot-the-cub/p04.webp",
       "audioEn": "audio/spot-the-cub/p04-en.mp3",
       "phrase": "The cub is wet.",
-      "phraseZh": "小豹湿透了。",
-      "audioPhrase": "audio/spot-the-cub/phrase-p04.mp3"
+      "phraseZh": "小豹湿透了。"
     },
     {
       "id": "P05",
@@ -132,8 +128,7 @@
       "image": "images/spot-the-cub/p05.webp",
       "audioEn": "audio/spot-the-cub/p05-en.mp3",
       "phrase": "from his bag",
-      "phraseZh": "从他的包里",
-      "audioPhrase": "audio/spot-the-cub/phrase-p05.mp3"
+      "phraseZh": "从他的包里"
     },
     {
       "id": "P06",
@@ -151,8 +146,7 @@
       "image": "images/spot-the-cub/p06.webp",
       "audioEn": "audio/spot-the-cub/p06-en.mp3",
       "phrase": "tug and tug",
-      "phraseZh": "拉呀拉",
-      "audioPhrase": "audio/spot-the-cub/phrase-p06.mp3"
+      "phraseZh": "拉呀拉"
     },
     {
       "id": "P07",
@@ -184,8 +178,7 @@
       "image": "images/spot-the-cub/p07.webp",
       "audioEn": "audio/spot-the-cub/p07-en.mp3",
       "phrase": "soft spots",
-      "phraseZh": "软软的斑点",
-      "audioPhrase": "audio/spot-the-cub/phrase-p07.mp3"
+      "phraseZh": "软软的斑点"
     },
     {
       "id": "P08",
@@ -211,8 +204,7 @@
       "image": "images/spot-the-cub/p08.webp",
       "audioEn": "audio/spot-the-cub/p08-en.mp3",
       "phrase": "Where is your mom?",
-      "phraseZh": "你的妈妈在哪里？",
-      "audioPhrase": "audio/spot-the-cub/phrase-p08.mp3"
+      "phraseZh": "你的妈妈在哪里？"
     },
     {
       "id": "P09",
@@ -230,8 +222,7 @@
       "image": "images/spot-the-cub/p09.webp",
       "audioEn": "audio/spot-the-cub/p09-en.mp3",
       "phrase": "We can help!",
-      "phraseZh": "我们能帮忙！",
-      "audioPhrase": "audio/spot-the-cub/phrase-p09.mp3"
+      "phraseZh": "我们能帮忙！"
     },
     {
       "id": "P10",
@@ -257,8 +248,7 @@
       "image": "images/spot-the-cub/p10.webp",
       "audioEn": "audio/spot-the-cub/p10-en.mp3",
       "phrase": "a little red bug",
-      "phraseZh": "一只小红虫",
-      "audioPhrase": "audio/spot-the-cub/phrase-p10.mp3"
+      "phraseZh": "一只小红虫"
     },
     {
       "id": "P11",
@@ -276,8 +266,7 @@
       "image": "images/spot-the-cub/p11.webp",
       "audioEn": "audio/spot-the-cub/p11-en.mp3",
       "phrase": "run after her",
-      "phraseZh": "跟着她跑",
-      "audioPhrase": "audio/spot-the-cub/phrase-p11.mp3"
+      "phraseZh": "跟着她跑"
     },
     {
       "id": "P12",
@@ -309,8 +298,7 @@
       "image": "images/spot-the-cub/p12.webp",
       "audioEn": "audio/spot-the-cub/p12-en.mp3",
       "phrase": "a mug with dots",
-      "phraseZh": "一个有圆点的杯子",
-      "audioPhrase": "audio/spot-the-cub/phrase-p12.mp3"
+      "phraseZh": "一个有圆点的杯子"
     },
     {
       "id": "P13",
@@ -328,8 +316,7 @@
       "image": "images/spot-the-cub/p13.webp",
       "audioEn": "audio/spot-the-cub/p13-en.mp3",
       "phrase": "Hee hee!",
-      "phraseZh": "嘻嘻！",
-      "audioPhrase": "audio/spot-the-cub/phrase-p13.mp3"
+      "phraseZh": "嘻嘻！"
     },
     {
       "id": "P14",
@@ -355,8 +342,7 @@
       "image": "images/spot-the-cub/p14.webp",
       "audioEn": "audio/spot-the-cub/p14-en.mp3",
       "phrase": "Is it Mom?",
-      "phraseZh": "是妈妈吗？",
-      "audioPhrase": "audio/spot-the-cub/phrase-p14.mp3"
+      "phraseZh": "是妈妈吗？"
     },
     {
       "id": "P15",
@@ -388,8 +374,7 @@
       "image": "images/spot-the-cub/p15.webp",
       "audioEn": "audio/spot-the-cub/p15-en.mp3",
       "phrase": "in the river",
-      "phraseZh": "在河里",
-      "audioPhrase": "audio/spot-the-cub/phrase-p15.mp3"
+      "phraseZh": "在河里"
     },
     {
       "id": "P16",
@@ -415,8 +400,7 @@
       "image": "images/spot-the-cub/p16.webp",
       "audioEn": "audio/spot-the-cub/p16-en.mp3",
       "phrase": "by a fence",
-      "phraseZh": "在篱笆旁边",
-      "audioPhrase": "audio/spot-the-cub/phrase-p16.mp3"
+      "phraseZh": "在篱笆旁边"
     },
     {
       "id": "P17",
@@ -434,8 +418,7 @@
       "image": "images/spot-the-cub/p17.webp",
       "audioEn": "audio/spot-the-cub/p17-en.mp3",
       "phrase": "a big rug",
-      "phraseZh": "一块大毯子",
-      "audioPhrase": "audio/spot-the-cub/phrase-p17.mp3"
+      "phraseZh": "一块大毯子"
     },
     {
       "id": "P18",
@@ -453,8 +436,7 @@
       "image": "images/spot-the-cub/p18.webp",
       "audioEn": "audio/spot-the-cub/p18-en.mp3",
       "phrase": "The wind blows.",
-      "phraseZh": "风在吹。",
-      "audioPhrase": "audio/spot-the-cub/phrase-p18.mp3"
+      "phraseZh": "风在吹。"
     },
     {
       "id": "P19",
@@ -472,8 +454,7 @@
       "image": "images/spot-the-cub/p19.webp",
       "audioEn": "audio/spot-the-cub/p19-en.mp3",
       "phrase": "sits down",
-      "phraseZh": "坐下来",
-      "audioPhrase": "audio/spot-the-cub/phrase-p19.mp3"
+      "phraseZh": "坐下来"
     },
     {
       "id": "P20",
@@ -491,8 +472,7 @@
       "image": "images/spot-the-cub/p20.webp",
       "audioEn": "audio/spot-the-cub/p20-en.mp3",
       "phrase": "I am sorry.",
-      "phraseZh": "对不起。",
-      "audioPhrase": "audio/spot-the-cub/phrase-p20.mp3"
+      "phraseZh": "对不起。"
     },
     {
       "id": "P21",
@@ -510,8 +490,7 @@
       "image": "images/spot-the-cub/p21.webp",
       "audioEn": "audio/spot-the-cub/p21-en.mp3",
       "phrase": "up, up, up",
-      "phraseZh": "飞呀飞，越飞越高",
-      "audioPhrase": "audio/spot-the-cub/phrase-p21.mp3"
+      "phraseZh": "飞呀飞，越飞越高"
     },
     {
       "id": "P22",
@@ -529,8 +508,7 @@
       "image": "images/spot-the-cub/p22.webp",
       "audioEn": "audio/spot-the-cub/p22-en.mp3",
       "phrase": "Yes! It is Mom!",
-      "phraseZh": "是的！是妈妈！",
-      "audioPhrase": "audio/spot-the-cub/phrase-p22.mp3"
+      "phraseZh": "是的！是妈妈！"
     },
     {
       "id": "P23",
@@ -562,8 +540,7 @@
       "image": "images/spot-the-cub/p23.webp",
       "audioEn": "audio/spot-the-cub/p23-en.mp3",
       "phrase": "Mom and cub hug.",
-      "phraseZh": "妈妈和小豹抱在一起。",
-      "audioPhrase": "audio/spot-the-cub/phrase-p23.mp3"
+      "phraseZh": "妈妈和小豹抱在一起。"
     },
     {
       "id": "P24",
@@ -581,8 +558,7 @@
       "image": "images/spot-the-cub/p24.webp",
       "audioEn": "audio/spot-the-cub/p24-en.mp3",
       "phrase": "Nap time",
-      "phraseZh": "午睡时间",
-      "audioPhrase": "audio/spot-the-cub/phrase-p24.mp3"
+      "phraseZh": "午睡时间"
     }
   ]
 }

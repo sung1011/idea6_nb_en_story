@@ -1,4 +1,4 @@
-"""Generate English page and phrase mp3s with Edge TTS (Aria -15%), then shrink for a kids app."""
+"""Generate English page mp3s with Edge TTS (Aria -15%), then shrink for a kids app."""
 
 from __future__ import annotations
 

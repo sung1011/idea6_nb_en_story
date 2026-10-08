@@ -34,8 +34,7 @@
       "image": "images/flag-in-the-fog/p01.webp",
       "audioEn": "audio/flag-in-the-fog/p01-en.mp3",
       "phrase": "an old map",
-      "phraseZh": "一张旧地图",
-      "audioPhrase": "audio/flag-in-the-fog/phrase-p01.mp3"
+      "phraseZh": "一张旧地图"
     },
     {
       "id": "P02",
@@ -61,8 +60,7 @@
       "image": "images/flag-in-the-fog/p02.webp",
       "audioEn": "audio/flag-in-the-fog/p02-en.mp3",
       "phrase": "a red flag",
-      "phraseZh": "一面红旗",
-      "audioPhrase": "audio/flag-in-the-fog/phrase-p02.mp3"
+      "phraseZh": "一面红旗"
     },
     {
       "id": "P03",
@@ -88,8 +86,7 @@
       "image": "images/flag-in-the-fog/p03.webp",
       "audioEn": "audio/flag-in-the-fog/p03-en.mp3",
       "phrase": "Where is the way?",
-      "phraseZh": "路在哪里？",
-      "audioPhrase": "audio/flag-in-the-fog/phrase-p03.mp3"
+      "phraseZh": "路在哪里？"
     },
     {
       "id": "P04",
@@ -115,8 +112,7 @@
       "image": "images/flag-in-the-fog/p04.webp",
       "audioEn": "audio/flag-in-the-fog/p04-en.mp3",
       "phrase": "We can walk!",
-      "phraseZh": "我们能走！",
-      "audioPhrase": "audio/flag-in-the-fog/phrase-p04.mp3"
+      "phraseZh": "我们能走！"
     },
     {
       "id": "P05",
@@ -147,8 +143,7 @@
       "image": "images/flag-in-the-fog/p05.webp",
       "audioEn": "audio/flag-in-the-fog/p05-en.mp3",
       "phrase": "on a big rock",
-      "phraseZh": "在一块大石头上",
-      "audioPhrase": "audio/flag-in-the-fog/phrase-p05.mp3"
+      "phraseZh": "在一块大石头上"
     },
     {
       "id": "P06",
@@ -174,8 +169,7 @@
       "image": "images/flag-in-the-fog/p06.webp",
       "audioEn": "audio/flag-in-the-fog/p06-en.mp3",
       "phrase": "a little tin",
-      "phraseZh": "一个小铁盒",
-      "audioPhrase": "audio/flag-in-the-fog/phrase-p06.mp3"
+      "phraseZh": "一个小铁盒"
     },
     {
       "id": "P07",
@@ -201,8 +195,7 @@
       "image": "images/flag-in-the-fog/p07.webp",
       "audioEn": "audio/flag-in-the-fog/p07-en.mp3",
       "phrase": "Who is that?",
-      "phraseZh": "那是谁？",
-      "audioPhrase": "audio/flag-in-the-fog/phrase-p07.mp3"
+      "phraseZh": "那是谁？"
     },
     {
       "id": "P08",
@@ -233,8 +226,7 @@
       "image": "images/flag-in-the-fog/p08.webp",
       "audioEn": "audio/flag-in-the-fog/p08-en.mp3",
       "phrase": "in his bag",
-      "phraseZh": "在他的包里",
-      "audioPhrase": "audio/flag-in-the-fog/phrase-p08.mp3"
+      "phraseZh": "在他的包里"
     },
     {
       "id": "P09",
@@ -265,8 +257,7 @@
       "image": "images/flag-in-the-fog/p09.webp",
       "audioEn": "audio/flag-in-the-fog/p09-en.mp3",
       "phrase": "to a hill",
-      "phraseZh": "通向一座小山",
-      "audioPhrase": "audio/flag-in-the-fog/phrase-p09.mp3"
+      "phraseZh": "通向一座小山"
     },
     {
       "id": "P10",
@@ -292,8 +283,7 @@
       "image": "images/flag-in-the-fog/p10.webp",
       "audioEn": "audio/flag-in-the-fog/p10-en.mp3",
       "phrase": "a dark den",
-      "phraseZh": "一个黑黑的洞",
-      "audioPhrase": "audio/flag-in-the-fog/phrase-p10.mp3"
+      "phraseZh": "一个黑黑的洞"
     },
     {
       "id": "P11",
@@ -311,8 +301,7 @@
       "image": "images/flag-in-the-fog/p11.webp",
       "audioEn": "audio/flag-in-the-fog/p11-en.mp3",
       "phrase": "go in",
-      "phraseZh": "进去",
-      "audioPhrase": "audio/flag-in-the-fog/phrase-p11.mp3"
+      "phraseZh": "进去"
     },
     {
       "id": "P12",
@@ -338,8 +327,7 @@
       "image": "images/flag-in-the-fog/p12.webp",
       "audioEn": "audio/flag-in-the-fog/p12-en.mp3",
       "phrase": "Where is the tin?",
-      "phraseZh": "铁盒在哪里？",
-      "audioPhrase": "audio/flag-in-the-fog/phrase-p12.mp3"
+      "phraseZh": "铁盒在哪里？"
     },
     {
       "id": "P13",
@@ -365,8 +353,7 @@
       "image": "images/flag-in-the-fog/p13.webp",
       "audioEn": "audio/flag-in-the-fog/p13-en.mp3",
       "phrase": "an empty sack",
-      "phraseZh": "一个空麻袋",
-      "audioPhrase": "audio/flag-in-the-fog/phrase-p13.mp3"
+      "phraseZh": "一个空麻袋"
     },
     {
       "id": "P14",
@@ -397,8 +384,7 @@
       "image": "images/flag-in-the-fog/p14.webp",
       "audioEn": "audio/flag-in-the-fog/p14-en.mp3",
       "phrase": "deep in the den",
-      "phraseZh": "在洞的深处",
-      "audioPhrase": "audio/flag-in-the-fog/phrase-p14.mp3"
+      "phraseZh": "在洞的深处"
     },
     {
       "id": "P15",
@@ -416,8 +402,7 @@
       "image": "images/flag-in-the-fog/p15.webp",
       "audioEn": "audio/flag-in-the-fog/p15-en.mp3",
       "phrase": "Give it back!",
-      "phraseZh": "还给我们！",
-      "audioPhrase": "audio/flag-in-the-fog/phrase-p15.mp3"
+      "phraseZh": "还给我们！"
     },
     {
       "id": "P16",
@@ -435,8 +420,7 @@
       "image": "images/flag-in-the-fog/p16.webp",
       "audioEn": "audio/flag-in-the-fog/p16-en.mp3",
       "phrase": "Can we share?",
-      "phraseZh": "我们可以分享吗？",
-      "audioPhrase": "audio/flag-in-the-fog/phrase-p16.mp3"
+      "phraseZh": "我们可以分享吗？"
     },
     {
       "id": "P17",
@@ -462,8 +446,7 @@
       "image": "images/flag-in-the-fog/p17.webp",
       "audioEn": "audio/flag-in-the-fog/p17-en.mp3",
       "phrase": "a warm bun",
-      "phraseZh": "一个热乎乎的面包",
-      "audioPhrase": "audio/flag-in-the-fog/phrase-p17.mp3"
+      "phraseZh": "一个热乎乎的面包"
     },
     {
       "id": "P18",
@@ -497,8 +480,7 @@
       "image": "images/flag-in-the-fog/p18.webp",
       "audioEn": "audio/flag-in-the-fog/p18-en.mp3",
       "phrase": "Here is the tin.",
-      "phraseZh": "铁盒在这儿。",
-      "audioPhrase": "audio/flag-in-the-fog/phrase-p18.mp3"
+      "phraseZh": "铁盒在这儿。"
     },
     {
       "id": "P19",
@@ -522,8 +504,7 @@
       "image": "images/flag-in-the-fog/p19.webp",
       "audioEn": "audio/flag-in-the-fog/p19-en.mp3",
       "phrase": "a key in it",
-      "phraseZh": "里面有一把钥匙",
-      "audioPhrase": "audio/flag-in-the-fog/phrase-p19.mp3"
+      "phraseZh": "里面有一把钥匙"
     },
     {
       "id": "P20",
@@ -541,8 +522,7 @@
       "image": "images/flag-in-the-fog/p20.webp",
       "audioEn": "audio/flag-in-the-fog/p20-en.mp3",
       "phrase": "gold coins",
-      "phraseZh": "金币",
-      "audioPhrase": "audio/flag-in-the-fog/phrase-p20.mp3"
+      "phraseZh": "金币"
     },
     {
       "id": "P21",
@@ -566,8 +546,7 @@
       "image": "images/flag-in-the-fog/p21.webp",
       "audioEn": "audio/flag-in-the-fog/p21-en.mp3",
       "phrase": "sit on the sand",
-      "phraseZh": "坐在沙滩上",
-      "audioPhrase": "audio/flag-in-the-fog/phrase-p21.mp3"
+      "phraseZh": "坐在沙滩上"
     },
     {
       "id": "P22",
@@ -585,8 +564,7 @@
       "image": "images/flag-in-the-fog/p22.webp",
       "audioEn": "audio/flag-in-the-fog/p22-en.mp3",
       "phrase": "What a day!",
-      "phraseZh": "多棒的一天！",
-      "audioPhrase": "audio/flag-in-the-fog/phrase-p22.mp3"
+      "phraseZh": "多棒的一天！"
     }
   ]
 }

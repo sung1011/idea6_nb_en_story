@@ -51,23 +51,21 @@ npm run parse-stories
 | `learnItems` | `LearnItem[]` | 否 | 本页可点学的词（加粗词 + 辅词），每项 `{ word, gloss, image }` |
 | `image` | `string \| null` | 否 | 插图相对 URL。仓库内有 `images/<story-id>/pNN.webp`（或 png/jpg）时写入路径；否则为 `null`，阅读器回退 16:9 软陶风 SVG 占位。正式画稿必须压缩后再入库，不要提交未压缩原图 |
 | `audioEn` | `string \| null` | 否 | 英文朗读音频相对 URL。仓库内有对应 mp3 时写入路径，否则为 `null` |
-| `phrase` | `string` | 否 | 本页可点短句英文。来自 `uploads/phrases.json`，阅读器展示，不展示 `pattern` |
+| `phrase` | `string` | 否 | 本页可点短句英文，写在故事 JSON 里，阅读器展示，不展示 `pattern` |
 | `phraseZh` | `string` | 否 | 短句中文释义，芯片上跟在英文后，较小较浅 |
-| `audioPhrase` | `string \| null` | 否 | 短句英文 mp3。仓库内有 `audio/<story>/phrase-pNN.mp3` 时写入路径 |
 
 相对 URL 约定：
 
 - 插图：`images/<story-id>/p01.webp`（Flag in the Fog 22 页、Spot the Cub 24 页均已接入；缺文件时为 `null`）
 - 英文音频：`audio/<story-id>/p01-en.mp3`（Edge TTS `en-US-AriaNeural`，语速 `-15%`）
-- 短句音频：`audio/<story-id>/phrase-p01.mp3`（同一 Aria `-15%`，文本为 `phrase`）
 - 中文不入库 mp3：页级 **CN**、自动朗读的中文步、词卡 **CN** 都走系统 `speechSynthesis`（`zh-CN` 默认声）
 - 英文逐词时间轴：`audio/<story-id>/timings.json`，紧凑 JSON `{ pageId: [[startMs, endMs, wordIndex], ...] }`。`wordIndex` 与阅读器把英文拆成 `[A-Za-z0-9']+` 后的顺序一致。用与页级英文相同的 Aria `-15%` 文本跑 `WordBoundary`（offset/duration 为 100ns，除以 10000 得毫秒）。新合成 mp3 与现有文件时长差 ≤120ms 时保留旧 mp3，只写入时间轴
 - 词图：`images/<story-id>/words/map.webp`（有文件时写入 `learnItems[].image`）
-- 单词不写 mp3：点词 / 词卡用系统 `speechSynthesis`（英文 `en-US` 默认声，词卡 **CN** 用 `zh-CN` 默认声）。每页短句见 `uploads/phrases.json`（`{storyId: {pageId: [en, zh]}}`）
+- 单词不写 mp3：点词 / 词卡用系统 `speechSynthesis`（英文 `en-US` 默认声，词卡 **CN** 用 `zh-CN` 默认声）。短句 `phrase` / `phraseZh` 写在故事 JSON 里，点芯片也走系统语音，不生成短句 mp3
 
-阅读器以 Vite `base`（`/idea6_nb_en_story/`）拼接这些路径。打开故事页（翻页、换故事、续读）时自动先播 `audioEn`，约 0.5 秒后再用系统中文声读 `zh`。Settings → **General** 的 **Auto read** 默认开。点英文句子（含句中加粗焦点词）播放整句 `audioEn`。点英文句子左侧的 **CN** 弹出本页译文并用 `speechSynthesis` 读中文。点 **Slow** 按 Settings 语速播英文 mp3；仅在 `playbackRate < 1` 时按 `audio.currentTime`（不受倍速影响）用 rAF 对照 `timings.json` 给当前词加一层很淡的底色（约 120ms 淡入淡出，不改布局/字号/字重/对比）。停止、翻页、读完会清掉跟读。`prefers-reduced-motion` 时底色仍在、无过渡。点 Slow、单词或句子会立刻停掉自动队列。点辅词芯片弹出释义气泡（词图 + 短义 + **CN**），打开时用设备英文声读单词，点英文词可再读，点 **CN** 用设备中文声读释义。点本页短句芯片用系统 `speechSynthesis` 先读英文 `phrase`（en-US），约 300ms 后再读 `phraseZh`（zh-CN）；芯片按下态保持到中文读完。新的点按、翻页或其他朗读会取消这串队列。总结页 **Sentences** 列出去重短句，同样可点朗读。总结页和没有英文音频、也没有中文正文的页不自动读。页级英文 mp3 缺失时自动朗读的英文步静默跳过；中文步在有译文时始终走系统语音。浏览器拦截自动播放时，等第一次点击后再读当前页。下一页未缓存完时 Next 略微变暗（透明度约 0.55，无动画/光晕/圆环），仍可点，缓存好后约 200ms 恢复，并保留 `aria-busy`。缓存按页计：图 + 英 mp3 + 短句 mp3 + 词图。
+阅读器以 Vite `base`（`/idea6_nb_en_story/`）拼接这些路径。打开故事页（翻页、换故事、续读）时自动先播 `audioEn`，约 0.5 秒后再用系统中文声读 `zh`。Settings → **General** 的 **Auto read** 默认开。点英文句子（含句中加粗焦点词）播放整句 `audioEn`。点英文句子左侧的 **CN** 弹出本页译文并用 `speechSynthesis` 读中文。点 **Slow** 按 Settings 语速播英文 mp3；仅在 `playbackRate < 1` 时按 `audio.currentTime`（不受倍速影响）用 rAF 对照 `timings.json` 给当前词加一层很淡的底色（约 120ms 淡入淡出，不改布局/字号/字重/对比）。停止、翻页、读完会清掉跟读。`prefers-reduced-motion` 时底色仍在、无过渡。点 Slow、单词或句子会立刻停掉自动队列。点辅词芯片弹出释义气泡（词图 + 短义 + **CN**），打开时用设备英文声读单词，点英文词可再读，点 **CN** 用设备中文声读释义。点本页短句芯片用系统 `speechSynthesis` 先读英文 `phrase`（en-US），约 300ms 后再读 `phraseZh`（zh-CN）；芯片按下态保持到中文读完。新的点按、翻页或其他朗读会取消这串队列。总结页 **Sentences** 列出去重短句，同样可点朗读。总结页和没有英文音频、也没有中文正文的页不自动读。页级英文 mp3 缺失时自动朗读的英文步静默跳过；中文步在有译文时始终走系统语音。浏览器拦截自动播放时，等第一次点击后再读当前页。下一页未缓存完时 Next 略微变暗（透明度约 0.55，无动画/光晕/圆环），仍可点，缓存好后约 200ms 恢复，并保留 `aria-busy`。缓存按页计：图 + 英 mp3 + 词图。
 
-重新生成英文音频（在 `app/` 下）：`npm run gen-tts`（需 `edge-tts` 与 `ffmpeg`，生成 `pNN-en.mp3` 与 `phrase-pNN.mp3`）。英文跟读时间轴：`node scripts/genEnTimings.mjs`。`npm run parse-stories` / `dev` / `build` 会根据 `app/public/images/` 与 `app/public/audio/` 里是否已有文件回填路径。
+重新生成英文音频（在 `app/` 下）：`npm run gen-tts`（需 `edge-tts` 与 `ffmpeg`，生成 `pNN-en.mp3`）。英文跟读时间轴：`node scripts/genEnTimings.mjs`。`npm run parse-stories` / `dev` / `build` 会根据 `app/public/images/` 与 `app/public/audio/` 里是否已有文件回填路径；已有 JSON 里的 `phrase` / `phraseZh` 会保留。
 
 ---
 
@@ -106,7 +104,7 @@ npm run parse-stories
 - 展示：`en`、`zh`、`pattern`、`focusWord`、`image`（正文显示英文；**CN** 在句子左侧，点开弹层）
 - 朗读：`audioEn`（打开页自动英→中；点英文句子含加粗词播放整句；缺英文文件时自动朗读跳过英文步）。中文始终 `speechSynthesis`。短句点按：`phrase` 英文系统声 → 约 300ms → `phraseZh` 中文系统声。Slow 跟读另拉 `audio/<story-id>/timings.json`
 - 点词：`learnItems` / `gloss` / `image`（点辅词芯片弹出词图 + 释义 + **CN**；句中加粗词只作高亮标记；句式可点，走设备英文声）
-- 总结页：跨页去重 `learnItems`（首次出现顺序）与去重 `pattern`；点词卡复用同一释义气泡；**Read again** 回第 1 页，进度仍夹紧在 `1..pageCount`
+- 总结页：跨页去重 `learnItems`（首次出现顺序）与去重 `phrase`；点词卡复用同一释义气泡；**Read again** 回第 1 页，进度仍夹紧在 `1..pageCount`
 
 `localStorage`（前缀 `idea6_nb_en_story:`，GM Reset all data 会全部清除）：
 

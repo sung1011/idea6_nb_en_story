@@ -75,7 +75,6 @@ const summaryPhrases = computed(() => {
     items.push({
       phrase,
       phraseZh: storyPage.phraseZh ?? '',
-      audioPhrase: storyPage.audioPhrase ?? null,
     })
   }
   return items

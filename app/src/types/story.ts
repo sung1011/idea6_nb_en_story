@@ -21,13 +21,11 @@ export interface StoryPage {
   audioEn: string | null
   phrase: string
   phraseZh: string
-  audioPhrase: string | null
 }
 
 export interface StoryPhrase {
   phrase: string
   phraseZh: string
-  audioPhrase: string | null
 }
 
 export interface Story {

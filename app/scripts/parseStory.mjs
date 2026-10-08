@@ -98,38 +98,31 @@ export function pageAudioRel(slug, pageId, lang) {
   return `audio/${slug}/${String(pageId).toLowerCase()}-${lang}.mp3`
 }
 
-/** @param {string} slug @param {string} pageId */
-export function pagePhraseRel(slug, pageId) {
-  return `audio/${slug}/phrase-${String(pageId).toLowerCase()}.mp3`
-}
-
-function loadPhraseTable() {
-  const file = path.join(REPO_ROOT, 'uploads', 'phrases.json')
-  const raw = JSON.parse(fs.readFileSync(file, 'utf8'))
-  if (!raw || typeof raw !== 'object') throw new Error('uploads/phrases.json is missing')
-  return raw
-}
-
-function writePublicPhrases(table) {
-  const out = path.join(APP_ROOT, 'public', 'phrases.json')
-  fs.writeFileSync(out, `${JSON.stringify(table, null, 2)}\n`)
-}
-
-/** @param {{ id: string, pages: Array<Record<string, unknown>> }} story */
-function applyPhraseFields(story) {
-  const table = loadPhraseTable()
-  const byPage = table[story.id]
-  if (!byPage || typeof byPage !== 'object' || Array.isArray(byPage)) {
-    throw new Error(`No phrase table for ${story.id}`)
+/** @param {string} outFile */
+function loadExistingPages(outFile) {
+  try {
+    const saved = JSON.parse(fs.readFileSync(outFile, 'utf8'))
+    return new Map((saved.pages ?? []).map((page) => [page.id, page]))
+  } catch {
+    return new Map()
   }
+}
+
+/**
+ * Keep phrase / phraseZh in the story JSON. Parsing from markdown copies them
+ * from the previous JSON so they are not dropped. Phrase chips use Web Speech.
+ * @param {{ id: string, pages: Array<Record<string, unknown>> }} story
+ * @param {Map<string, Record<string, unknown>>} existingById
+ */
+function applyPhraseFields(story, existingById = new Map()) {
   for (const page of story.pages ?? []) {
-    const pair = byPage[page.id]
-    const phrase = Array.isArray(pair) ? String(pair[0] ?? '').trim() : ''
-    const phraseZh = Array.isArray(pair) ? String(pair[1] ?? '').trim() : ''
+    delete page.audioPhrase
+    const fromExisting = existingById.get(page.id) ?? {}
+    const phrase = String(page.phrase ?? fromExisting.phrase ?? '').trim()
+    const phraseZh = String(page.phraseZh ?? fromExisting.phraseZh ?? '').trim()
     if (!phrase) throw new Error(`Missing phrase for ${story.id} ${page.id}`)
     page.phrase = phrase
     page.phraseZh = phraseZh
-    page.audioPhrase = existingRel(pagePhraseRel(story.id, page.id))
   }
 }
 
@@ -262,8 +255,8 @@ function applyExistingMedia(story) {
     }
     delete page.audioWord
     delete page.audioZh
+    delete page.audioPhrase
   }
-  applyPhraseFields(story)
 }
 
 /** @param {string} rel */
@@ -440,6 +433,7 @@ export function parseAndWriteStories() {
       throw new Error(`Expected ${expected} pages for ${slug}, got ${story.pageCount}`)
     }
     const outFile = path.join(OUT_DIR, `${slug}.json`)
+    const existingById = loadExistingPages(outFile)
     let saved = story
     const keepHandJson = slug === 'spot-the-cub' && fs.existsSync(outFile)
     if (keepHandJson) {
@@ -449,12 +443,11 @@ export function parseAndWriteStories() {
       }
       applyExistingMedia(saved)
     }
-    applyPhraseFields(saved)
+    applyPhraseFields(saved, existingById)
     fs.writeFileSync(outFile, `${JSON.stringify(saved, null, 2)}\n`)
     catalog.push(saved)
     written.push({ slug, pageCount: saved.pageCount, outFile })
   }
-  writePublicPhrases(loadPhraseTable())
   writeStoriesIndex(catalog)
   return written
 }

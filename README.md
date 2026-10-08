@@ -45,7 +45,7 @@ python3 -m pip install edge-tts
 npm run gen-tts
 ```
 
-需要本机有 `ffmpeg`（脚本会压成单声道 24kHz / 40kbps）。强制全部重录加 `--force`：`npm run gen-tts -- --force`。生成后 JSON 的 `audioEn` / `audioPhrase` 会写成 `audio/<story-id>/p01-en.mp3`、`audio/<story-id>/phrase-p01.mp3` 这类路径。中文和单词不生成 mp3，阅读器用系统 `speechSynthesis`（中文 `zh-CN` 默认声）。
+需要本机有 `ffmpeg`（脚本会压成单声道 24kHz / 40kbps）。强制全部重录加 `--force`：`npm run gen-tts -- --force`。生成后 JSON 的 `audioEn` 会写成 `audio/<story-id>/p01-en.mp3`。中文、单词和短句不生成 mp3，阅读器用系统 `speechSynthesis`（英文 `en-US`，中文 `zh-CN`）。
 
 英文慢读跟读时间轴（Edge TTS `WordBoundary`，写入 `audio/<story-id>/timings.json`）。若新合成的英文 mp3 时长与现有文件相差不超过 120ms 则保留旧文件：
 
@@ -62,17 +62,16 @@ node scripts/genEnTimings.mjs
 | `stories/spot-the-cub.md` | 第二本故事源稿（勿改写正文） |
 | `docs/characters.md` | 角色一致性规则、角色表与画图提示前缀 |
 | `docs/characters/` | Mia / Ben / Rat / Cub / Bug / Mom Leopard 角色参考图 |
-| `docs/story-schema.md` | 页字段说明（en / zh / pattern / phrase / image / audioEn / audioPhrase 等） |
-| `app/scripts/parseStory.mjs` | Markdown → JSON（有画稿/英文 mp3 时写入 `image` / `audioEn` / `audioPhrase`，并从 `uploads/phrases.json` 写入 `phrase` / `phraseZh`） |
-| `app/scripts/genStoryTts.mjs` | 按故事 JSON 调 edge-tts 生成页级英文 mp3 和 `phrase-pNN.mp3` |
+| `docs/story-schema.md` | 页字段说明（en / zh / pattern / phrase / image / audioEn 等） |
+| `app/scripts/parseStory.mjs` | Markdown → JSON（有画稿/英文 mp3 时写入 `image` / `audioEn`，并保留故事 JSON 里的 `phrase` / `phraseZh`） |
+| `app/scripts/genStoryTts.mjs` | 按故事 JSON 调 edge-tts 生成页级英文 mp3 |
 | `app/scripts/genEnTimings.mjs` | 用 Aria `-15%` 的 WordBoundary 生成 `audio/<story-id>/timings.json` |
-| `uploads/phrases.json` | 每页短句表 `{storyId: {pageId: [en, zh]}}`；构建时写入故事 JSON 并同步到 `app/public/phrases.json` |
 | `app/public/stories/flag-in-the-fog.json` | Flag in the Fog 阅读器 JSON |
 | `app/public/stories/spot-the-cub.json` | Spot the Cub 阅读器 JSON |
 | `app/public/images/flag-in-the-fog/` | 各页软陶风插图（`p01.webp` … `p22.webp`） |
 | `app/public/images/spot-the-cub/` | Spot the Cub 插图（`p01.webp` … `p24.webp`） |
-| `app/public/audio/flag-in-the-fog/` | 预生成页级英文朗读（`p01-en.mp3` …）、短句 `phrase-p01.mp3` 和 `timings.json` |
-| `app/public/audio/spot-the-cub/` | Spot the Cub 页级英文朗读、短句 mp3 和 `timings.json` |
+| `app/public/audio/flag-in-the-fog/` | 预生成页级英文朗读（`p01-en.mp3` …）和 `timings.json` |
+| `app/public/audio/spot-the-cub/` | Spot the Cub 页级英文朗读和 `timings.json` |
 | `app/public/versions.json` | 版本记录（最新在前）；每次有意义的发布追加一条 |
 | `app/assets/icon-master.png` | 软陶风应用图标母版（1024，不进 public） |
 | `app/scripts/makePwaIcons.py` | 从母版生成 `pwa512` / `pwa192` / `appleTouchIcon` / `favicon.png` |
@@ -91,11 +90,11 @@ node scripts/genEnTimings.mjs
 - 朗读：打开一页后自动先读英文、停约 0.5 秒再用设备中文声读译文。Settings → **General** 的 **Auto read** 默认开。点英文句子只读英文；**CN** 弹出译文并用系统 `zh-CN` 声朗读；**Slow** 慢读英文，并按 `timings.json` 给当前词加一层很淡的底色（约 120ms 淡入；不改字号、字重或对比；翻页/停止/读完会清掉）。正常语速不跟读。`prefers-reduced-motion` 时底色仍在，只去掉过渡。手动点读或翻页会立刻停掉自动队列。语速在 **Slow speed** 里调 30%–90%。浏览器拦截自动播放时，等第一次点击后再读当前页
 - 点词：句中加粗焦点词只作标记，点击句子任意处（含加粗词）播放整句英文；点辅词芯片弹出释义气泡（词图 + 中文短义 + **CN**）。打开词卡用设备英文声读单词，再点英文词可重读，点 **CN** 用设备中文声读释义。每页一条短句芯片（英文 + 较小浅色中文），点按先用设备英文声读短句，约 300ms 后再读中文释义；整段播放期间芯片保持按下态。新的点按、翻页或其他朗读会立刻停掉这串朗读和自动朗读。短句芯片尽量单行显示
 - 翻页：大触摸热区的 Prev / Next，Fredoka 字体，平板宽度友好。第 22 页再点 Next 进入本课总结（不是第 23 页；页码仍为 Summary，进度停在 22）。总结页 **Words** 网格为去重关键词（首次出现顺序），点卡片打开与阅读器相同的释义气泡；**Sentences** 列出去重短句（首次出现顺序），可点朗读。**Read again** 回到第 1 页，Prev 回到第 22 页
-- 阅读卡标题行右侧 **Settings** 齿轮：齿轮上方有淡淡的 `Cached N/M pages`（按页计；该页图、英 mp3、短句 mp3 和词图都齐才算一页）。`General` 顶部有 **Add to Home Screen** 卡片（已是独立窗口或安装完成后隐藏；从不自动弹窗）。`General` 里还有 **Auto read** 和 **Slow speed**（30%–90%，默认 60%）。下一页未缓存完时 Next 略微变暗，仍可点。`Version` 显示已安装版本，并始终列出最近 10 个按版本号合并的更新（同号多条摘要合成一行）；可 **Check for updates**（立刻拉取 `versions.json`，无新版本 toast **You're up to date.**，有则 **Update available**）和 **Clear cache**（toast **Cache cleared.** 约 2 秒后注销 Service Worker、清空 Cache Storage 并硬刷新，不碰 localStorage）。Settings 内没有 **Update**。`GM` 可 **Reset all data**（清空本应用全部 localStorage 后重载）
+- 阅读卡标题行右侧 **Settings** 齿轮：齿轮上方有淡淡的 `Cached N/M pages`（按页计；该页图、英 mp3 和词图都齐才算一页）。`General` 顶部有 **Add to Home Screen** 卡片（已是独立窗口或安装完成后隐藏；从不自动弹窗）。`General` 里还有 **Auto read** 和 **Slow speed**（30%–90%，默认 60%）。下一页未缓存完时 Next 略微变暗，仍可点。`Version` 显示已安装版本，并始终列出最近 10 个按版本号合并的更新（同号多条摘要合成一行）；可 **Check for updates**（立刻拉取 `versions.json`，无新版本 toast **You're up to date.**，有则 **Update available**）和 **Clear cache**（toast **Cache cleared.** 约 2 秒后注销 Service Worker、清空 Cache Storage 并硬刷新，不碰 localStorage）。Settings 内没有 **Update**。`GM` 可 **Reset all data**（清空本应用全部 localStorage 后重载）
 - 更新弹层：每 10 秒带 cache-bust 拉取 `versions.json`，若有比已安装版本号更新的组，齿轮关闭时在设置外弹出这些版本行，顶部一个 **Update**（写入已确认版本、清缓存、保留进度、硬刷新）。已是最新则不显示弹层
-- PWA：可安装到主屏幕（`standalone`）；预缓存阅读器壳 + 故事 JSON。页级英文 mp3 与插图 webp 走运行时 Cache First，不进预缓存。翻页时后台预取后两页的图、英文 mp3 和短句 mp3；故事打开后在空闲时低并发把本章资源写入缓存（省流量模式跳过）。换插图时 bump `vite.config.ts` 里的 `story-image-cache-first` 缓存名，换朗读时 bump `story-audio-cache-first` 缓存名，检查更新并重载后会拉新资源。`versions.json` 用 Network First，以免挡住更新检测
+- PWA：可安装到主屏幕（`standalone`）；预缓存阅读器壳 + 故事 JSON。页级英文 mp3 与插图 webp 走运行时 Cache First，不进预缓存。翻页时后台预取后两页的图和英文 mp3；故事打开后在空闲时低并发把本章资源写入缓存（省流量模式跳过）。换插图时 bump `vite.config.ts` 里的 `story-image-cache-first` 缓存名，换朗读时 bump `story-audio-cache-first` 缓存名，检查更新并重载后会拉新资源。`versions.json` 用 Network First，以免挡住更新检测
 
-进度按本故事写入 `localStorage`。每次有意义的发布请在 `app/public/versions.json` 顶部追加 `{ id, version, date, summary }`（新条目用英文）。当前版本 **0.6.22**。
+进度按本故事写入 `localStorage`。每次有意义的发布请在 `app/public/versions.json` 顶部追加 `{ id, version, date, summary }`（新条目用英文）。当前版本 **0.6.23**。
 
 ## 安装到主屏幕（PWA）
 
