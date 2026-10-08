@@ -209,8 +209,8 @@
     {
       "id": "P09",
       "index": 9,
-      "en": "\"Mom has big spots. We can help!\"",
-      "zh": "“妈妈有大大的斑点。我们能帮忙！”",
+      "en": "\"Mom has big spots,\" says the cub. \"We can help!\"",
+      "zh": "小豹说：“妈妈有大大的斑点。”“我们能帮忙！”",
       "pattern": "We can help!",
       "focusWord": "",
       "focusNote": "",

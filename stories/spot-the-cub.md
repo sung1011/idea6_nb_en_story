@@ -72,7 +72,7 @@
 ---
 
 ### P09
-正文: "Mom has big spots. We can help!"（“妈妈有大大的斑点。我们能帮忙！”）
+正文: "Mom has big spots," says the cub. "We can help!"（小豹说：“妈妈有大大的斑点。”“我们能帮忙！”）
 主练句式: We can help!
 辅词: —（spot 回调；help 为第4章 第4课视觉词）
 知识点: can help；Mom can help. 句式变体

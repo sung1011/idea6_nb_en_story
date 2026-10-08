@@ -97,7 +97,7 @@ export default defineConfig({
             urlPattern: /\/audio\/.*\.(?:mp3|ogg|m4a|wav)$/i,
             handler: 'CacheFirst',
             options: {
-              cacheName: 'story-audio-cache-first-v0.6.26',
+              cacheName: 'story-audio-cache-first-v0.6.27',
               expiration: {
                 maxEntries: 500,
                 maxAgeSeconds: 60 * 60 * 24 * 30,
