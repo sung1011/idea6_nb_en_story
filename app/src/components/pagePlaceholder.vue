@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed } from 'vue'
+import { computed, nextTick, ref, watch } from 'vue'
 
 const props = defineProps<{
   pageIndex: number
@@ -21,15 +21,46 @@ const imageSrc = computed(() => {
   const base = import.meta.env.BASE_URL
   return `${base}${file.replace(/^\//, '')}`
 })
+const imgRef = ref<HTMLImageElement | null>(null)
+const shown = ref(false)
+
+function markReady() {
+  shown.value = true
+}
+
+watch(
+  imageSrc,
+  async (src) => {
+    shown.value = false
+    if (!src) return
+    await nextTick()
+    const el = imgRef.value
+    if (el?.complete && el.naturalWidth > 0) markReady()
+  },
+  { immediate: true },
+)
 </script>
 
 <template>
-  <div class="art" :style="{ '--sky': palette.sky }">
+  <div
+    class="art"
+    :class="{ loading: Boolean(imageSrc) && !shown }"
+    :style="{ '--sky': palette.sky }"
+    :aria-busy="Boolean(imageSrc) && !shown"
+  >
+    <span v-if="imageSrc && !shown" class="shimmer" aria-hidden="true" />
     <img
       v-if="imageSrc"
+      ref="imgRef"
+      :key="imageSrc"
       class="art-img"
+      :class="{ ready: shown }"
       :src="imageSrc"
       :alt="`Page ${pageIndex} illustration`"
+      decoding="async"
+      fetchpriority="high"
+      @load="markReady"
+      @error="markReady"
     />
     <svg
       v-else
@@ -88,15 +119,29 @@ const imageSrc = computed(() => {
 
 <style scoped>
 .art {
+  position: relative;
   overflow: hidden;
   aspect-ratio: 16 / 9;
   width: 100%;
   border-radius: 28px;
-  background: var(--sky, #f7ead4);
+  background: #f3ead8;
   border: 4px solid #2f3f3b;
   box-shadow:
     0 8px 0 rgba(47, 63, 59, 0.18),
     inset 0 2px 0 rgba(255, 255, 255, 0.45);
+}
+
+.art.loading {
+  background: #f3ead8;
+}
+
+.shimmer {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: linear-gradient(105deg, #f3ead8 12%, #fff6ea 46%, #f3ead8 78%);
+  background-size: 220% 100%;
+  animation: art-shimmer 1.15s ease-in-out infinite;
 }
 
 .art-img,
@@ -105,6 +150,37 @@ const imageSrc = computed(() => {
   width: 100%;
   height: 100%;
   object-fit: cover;
+}
+
+.art-img {
+  position: relative;
+  z-index: 1;
+  opacity: 0;
+  transition: opacity 0.35s ease;
+}
+
+.art-img.ready {
+  opacity: 1;
+}
+
+@keyframes art-shimmer {
+  0% {
+    background-position: 100% 0;
+  }
+  100% {
+    background-position: 0 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .shimmer {
+    animation: none;
+    background: #f3ead8;
+  }
+
+  .art-img {
+    transition: none;
+  }
 }
 
 @media (max-width: 640px) {

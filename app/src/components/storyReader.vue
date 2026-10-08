@@ -1,11 +1,12 @@
 <script setup lang="ts">
-import { computed, onMounted, onUnmounted, ref, watch } from 'vue'
+import { computed, onMounted, onUnmounted, ref, toRef, watch } from 'vue'
 import type { LearnItem, Story } from '@/types/story'
 import type { StoryIndexEntry } from '@/types/storyIndex'
 import { parseEnSegments } from '@/utils/parseEn'
 import { useStoryProgress } from '@/composables/useStoryProgress'
 import { usePageSpeech } from '@/composables/usePageSpeech'
 import { useSlowSpeed } from '@/composables/useSlowSpeed'
+import { useStoryPreload } from '@/composables/useStoryPreload'
 import PagePlaceholder from './pagePlaceholder.vue'
 import GlossPanel, { type GlossAnchor } from './glossPanel.vue'
 import AppSettings from './appSettings.vue'
@@ -24,6 +25,7 @@ const emit = defineEmits<{
 const pageCount = computed(() => props.story.pageCount || props.story.pages.length)
 const { pageIndex, next, prev, restart } = useStoryProgress(props.story.id, pageCount.value)
 const onSummary = ref(false)
+useStoryPreload(toRef(props, 'story'), pageIndex)
 
 const page = computed(() => {
   return props.story.pages.find((item) => item.index === pageIndex.value) ?? props.story.pages[0]

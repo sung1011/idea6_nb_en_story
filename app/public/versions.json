@@ -1,5 +1,11 @@
 [
   {
+    "id": "v0.6.13",
+    "version": "0.6.13",
+    "date": "2026-10-08",
+    "summary": "Pages and audio now load ahead in the background, so page turns and playback start faster."
+  },
+  {
     "id": "v0.6.12",
     "version": "0.6.12",
     "date": "2026-10-08",
