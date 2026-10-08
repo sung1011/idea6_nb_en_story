@@ -82,7 +82,7 @@ export default defineConfig({
             urlPattern: /\/images\/.*\.(?:webp|png|jpe?g)$/i,
             handler: 'CacheFirst',
             options: {
-              cacheName: 'story-image-cache-first-v0.5.4',
+              cacheName: 'story-image-cache-first-v0.6.0',
               expiration: {
                 maxEntries: 80,
                 maxAgeSeconds: 60 * 60 * 24 * 30,
@@ -96,7 +96,7 @@ export default defineConfig({
             urlPattern: /\/audio\/.*\.(?:mp3|ogg|m4a|wav)$/i,
             handler: 'CacheFirst',
             options: {
-              cacheName: 'story-audio-cache-first',
+              cacheName: 'story-audio-cache-first-v0.6.0',
               expiration: {
                 maxEntries: 120,
                 maxAgeSeconds: 60 * 60 * 24 * 30,

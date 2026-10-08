@@ -1,13 +1,13 @@
 # 故事 B · Flag in the Fog（雾里的旗）· v2
 
-> 场景：海盗湾浅滩 → 薄雾 → 洞穴 → 湾边分享（白天 / 描边软陶）  
+> 场景：海盗湾海滩 → 薄雾 → 小山脚沙洞 → 回到海滩（白天 / 描边软陶）  
 > 结构：寻宝 → 真偷（有动机）→ 短追 → 假线索 → 对峙 → 请求分享 → 交换 → 开箱闭环 → 暖收  
 > 篇幅：22 页 · 语法为主、词为辅 · v2：降难词、拆 P06 信息、收紧英文
 
 ---
 
 ### P01
-正文: There is an old **flag** by the sand.（沙滩边有一面旧旗子。）
+正文: Mia and Ben are at the sea. There is an old **flag** by the sand.（米娅和本在海边。沙滩边有一面旧旗子。）
 主练句式: There is a ___ .
 辅词: flag（第8章 第2课「字母 F · see blue」）
 知识点: There is 存在句；flag 词包 flag/fog/fin/frog
@@ -39,7 +39,7 @@
 ---
 
 ### P05
-正文: Look! A box is on a big **rock**. It has a lock.（看！大石头上有个盒子。盒子有锁。）
+正文: “Look!” says Mia. A box is on a big **rock**. It has a lock.（“看！”米娅说。一个箱子在大石头上。它有一把锁。）
 主练句式: It is on the ___ .
 辅词: rock（第3章 第4课「好多好多」）；box 道具（第2章 第2课词包，不加粗）
 知识点: 介词 on；状态 It has…
@@ -71,7 +71,7 @@
 ---
 
 ### P09
-正文: “Stop!” they yell. The fog lifts. Still no bag—only prints to a **hill**.（他们喊：“停下！”雾散了。还是没有袋子——只有通向小山的脚印。）
+正文: “Stop!” yells Mia. The fog lifts. Still no bag—only prints to a **hill**.（“停下！”米娅大喊。雾散了。还是没有包——只有一串脚印通向小山。）
 主练句式: Stop! / Still no ___ !
 辅词: fog（回调）；hill（第8章 第3课「卡姆和帕特」）
 知识点: 祈使 Stop；Still + 否定；短追
@@ -151,7 +151,7 @@
 ---
 
 ### P19
-正文: In the sun, they open the tin. There is a key in the tin!（阳光下，他们打开铁盒。铁盒里有一把钥匙！）
+正文: In the sun, Mia opens the tin. There is a key in the tin!（在阳光下，米娅打开铁盒。铁盒里有一把钥匙！）
 主练句式: There is a ___ in the ___ .
 辅词: tin
 知识点: There is + 介词短语；开箱前奏
@@ -175,7 +175,7 @@
 ---
 
 ### P22
-正文: They set the flag by the box. What a day!（他们把旗插在盒子旁。多么棒的一天！）
+正文: Mia and Ben set the flag by the box. What a day!（米娅和本把旗子插在箱子旁边。多棒的一天！）
 主练句式: What a ___ !
 辅词: flag
 知识点: What a…! 收束感叹

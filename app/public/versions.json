@@ -1,5 +1,23 @@
 [
   {
+    "id": "v0.6.0",
+    "version": "0.6.0",
+    "date": "2026-10-08",
+    "summary": "Mia is now the hero, with Ben as her sidekick."
+  },
+  {
+    "id": "v0.6.0-art",
+    "version": "0.6.0",
+    "date": "2026-10-08",
+    "summary": "All 22 pages redrawn with consistent characters."
+  },
+  {
+    "id": "v0.6.0-audio",
+    "version": "0.6.0",
+    "date": "2026-10-08",
+    "summary": "Updated text and audio on pages 1, 5, 9, 19 and 22."
+  },
+  {
     "id": "v0.5.6",
     "version": "0.5.6",
     "date": "2026-10-08",
