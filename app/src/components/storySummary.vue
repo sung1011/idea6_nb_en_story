@@ -12,9 +12,10 @@ const emit = defineEmits<{
 }>()
 
 function imageSrc(file: string | null) {
-  if (!file) return ''
+  const name = String(file || '').trim()
+  if (!name) return ''
   const base = import.meta.env.BASE_URL
-  return `${base}${file.replace(/^\//, '')}`
+  return `${base}${name.replace(/^\//, '')}`
 }
 
 function isOpen(word: string) {

@@ -16,9 +16,10 @@ const palettes = [
 const palette = computed(() => palettes[(props.pageIndex - 1) % palettes.length])
 const uid = computed(() => `p${props.pageIndex}`)
 const imageSrc = computed(() => {
-  if (!props.image) return ''
+  const file = String(props.image || '').trim()
+  if (!file) return ''
   const base = import.meta.env.BASE_URL
-  return `${base}${props.image.replace(/^\//, '')}`
+  return `${base}${file.replace(/^\//, '')}`
 })
 </script>
 

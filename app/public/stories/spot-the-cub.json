@@ -1,0 +1,571 @@
+{
+  "id": "spot-the-cub",
+  "title": "Spot the Cub",
+  "titleZh": "找小豹",
+  "version": "0.1.0",
+  "label": "Story 2",
+  "scene": "Daytime forest → stream log → clearing → bush → treetop → mom (bright / outlined soft clay)",
+  "structure": "Rescue → goal → three tricks → false win → crisis → Bug softens → reunion → quiet nap",
+  "notes": "Chapter 2. No steal/trade/share. Soft villain Bug misleads playfully.",
+  "source": "stories/spot-the-cub.md",
+  "pageCount": 24,
+  "pages": [
+    {
+      "id": "P01",
+      "index": 1,
+      "en": "Mia and Ben walk in the green woods.",
+      "zh": "米娅和本走在绿油油的树林里。",
+      "pattern": "___ and ___ walk in the ___ .",
+      "focusWord": "",
+      "focusNote": "",
+      "focusRaw": "",
+      "knowledge": "主语 + walk；新场景森林",
+      "gloss": "",
+      "highlights": [],
+      "learnItems": [],
+      "image": "",
+      "audioEn": "",
+      "audioZh": "",
+      "audioWord": ""
+    },
+    {
+      "id": "P02",
+      "index": 2,
+      "en": "\"Help! Help!\" A cry comes from the water.",
+      "zh": "“救命！救命！”水边传来哭声。",
+      "pattern": "Help!",
+      "focusWord": "",
+      "focusNote": "",
+      "focusRaw": "",
+      "knowledge": "呼救；悬念钩子",
+      "gloss": "",
+      "highlights": [],
+      "learnItems": [],
+      "image": "",
+      "audioEn": "",
+      "audioZh": "",
+      "audioWord": ""
+    },
+    {
+      "id": "P03",
+      "index": 3,
+      "en": "A little **cub** is on a **log** in the water!",
+      "zh": "一只小豹子趴在水里的圆木上！",
+      "pattern": "A ___ is on a ___ .",
+      "focusWord": "cub",
+      "focusNote": "",
+      "focusRaw": "cub",
+      "knowledge": "介词 on；CVC cub / log",
+      "gloss": "小豹子",
+      "highlights": [
+        "cub",
+        "log"
+      ],
+      "learnItems": [
+        {
+          "word": "cub",
+          "gloss": "小豹子",
+          "audioWord": "",
+          "image": ""
+        },
+        {
+          "word": "log",
+          "gloss": "圆木",
+          "audioWord": "",
+          "image": ""
+        }
+      ],
+      "image": "",
+      "audioEn": "",
+      "audioZh": "",
+      "audioWord": ""
+    },
+    {
+      "id": "P04",
+      "index": 4,
+      "en": "The cub is **wet**. The cub is sad.",
+      "zh": "小豹浑身湿透了。小豹很难过。",
+      "pattern": "The ___ is ___ .",
+      "focusWord": "wet",
+      "focusNote": "",
+      "focusRaw": "wet",
+      "knowledge": "be + 形容词；wet / sad",
+      "gloss": "湿的",
+      "highlights": [
+        "wet"
+      ],
+      "learnItems": [
+        {
+          "word": "wet",
+          "gloss": "湿的",
+          "audioWord": "",
+          "image": ""
+        }
+      ],
+      "image": "",
+      "audioEn": "",
+      "audioZh": "",
+      "audioWord": ""
+    },
+    {
+      "id": "P05",
+      "index": 5,
+      "en": "Ben gets a **rug** from his bag. \"Hold on!\"",
+      "zh": "本从包里拿出一条小毯子。“抓紧！”",
+      "pattern": "___ gets a ___ from his ___ .",
+      "focusWord": "rug",
+      "focusNote": "",
+      "focusRaw": "rug",
+      "knowledge": "-ug 音族；救援动作",
+      "gloss": "小毯子",
+      "highlights": [
+        "rug"
+      ],
+      "learnItems": [
+        {
+          "word": "rug",
+          "gloss": "小毯子",
+          "audioWord": "",
+          "image": ""
+        }
+      ],
+      "image": "",
+      "audioEn": "",
+      "audioZh": "",
+      "audioWord": ""
+    },
+    {
+      "id": "P06",
+      "index": 6,
+      "en": "Mia and Ben tug and tug. The cub is safe!",
+      "zh": "米娅和本拉呀拉。小豹得救了！",
+      "pattern": "We tug and tug!",
+      "focusWord": "",
+      "focusNote": "",
+      "focusRaw": "",
+      "knowledge": "重复动词；第4章 第4课句式 We tug and tug!",
+      "gloss": "",
+      "highlights": [],
+      "learnItems": [],
+      "image": "",
+      "audioEn": "",
+      "audioZh": "",
+      "audioWord": ""
+    },
+    {
+      "id": "P07",
+      "index": 7,
+      "en": "The cub has soft **spots**. It wants a **nap**.",
+      "zh": "小豹身上有软软的斑点。它想睡一觉。",
+      "pattern": "The ___ has ___ . / It wants a ___ .",
+      "focusWord": "spots",
+      "focusNote": "",
+      "focusRaw": "spots",
+      "knowledge": "has / wants；Leopard has a spot. / Leopard has a nap.",
+      "gloss": "斑点",
+      "highlights": [
+        "spots",
+        "nap"
+      ],
+      "learnItems": [
+        {
+          "word": "spots",
+          "gloss": "斑点",
+          "audioWord": "",
+          "image": ""
+        },
+        {
+          "word": "nap",
+          "gloss": "小睡",
+          "audioWord": "",
+          "image": ""
+        }
+      ],
+      "image": "",
+      "audioEn": "",
+      "audioZh": "",
+      "audioWord": ""
+    },
+    {
+      "id": "P08",
+      "index": 8,
+      "en": "\"Where is your **mom**?\" asks Mia.",
+      "zh": "米娅问：“你的妈妈在哪里？”",
+      "pattern": "Where is your ___ ?",
+      "focusWord": "mom",
+      "focusNote": "",
+      "focusRaw": "mom",
+      "knowledge": "Where 疑问 + your；立目标",
+      "gloss": "妈妈",
+      "highlights": [
+        "mom"
+      ],
+      "learnItems": [
+        {
+          "word": "mom",
+          "gloss": "妈妈",
+          "audioWord": "",
+          "image": ""
+        }
+      ],
+      "image": "",
+      "audioEn": "",
+      "audioZh": "",
+      "audioWord": ""
+    },
+    {
+      "id": "P09",
+      "index": 9,
+      "en": "\"Mom has big spots. We can help!\"",
+      "zh": "“妈妈有大大的斑点。我们能帮忙！”",
+      "pattern": "We can help!",
+      "focusWord": "",
+      "focusNote": "",
+      "focusRaw": "",
+      "knowledge": "can help；Mom can help. 句式变体",
+      "gloss": "",
+      "highlights": [],
+      "learnItems": [],
+      "image": "",
+      "audioEn": "",
+      "audioZh": "",
+      "audioWord": ""
+    },
+    {
+      "id": "P10",
+      "index": 10,
+      "en": "A little red **bug** peeks out. \"I see spots!\"",
+      "zh": "一只红色的小瓢虫探出头。“我看见斑点了！”",
+      "pattern": "I see ___ !",
+      "focusWord": "bug",
+      "focusNote": "",
+      "focusRaw": "bug",
+      "knowledge": "I see 句；软反派 Bug 登场（调皮，不吓人）",
+      "gloss": "瓢虫",
+      "highlights": [
+        "bug"
+      ],
+      "learnItems": [
+        {
+          "word": "bug",
+          "gloss": "瓢虫",
+          "audioWord": "",
+          "image": ""
+        }
+      ],
+      "image": "",
+      "audioEn": "",
+      "audioZh": "",
+      "audioWord": ""
+    },
+    {
+      "id": "P11",
+      "index": 11,
+      "en": "\"Come!\" says Bug. They run after her.",
+      "zh": "“来呀！”小瓢虫说。他们跟着她跑。",
+      "pattern": "\"Come!\" says ___ .",
+      "focusWord": "",
+      "focusNote": "",
+      "focusRaw": "",
+      "knowledge": "引语 + says；追随动作",
+      "gloss": "",
+      "highlights": [],
+      "learnItems": [],
+      "image": "",
+      "audioEn": "",
+      "audioZh": "",
+      "audioWord": ""
+    },
+    {
+      "id": "P12",
+      "index": 12,
+      "en": "Spots! Is it Mom? No, it is a **mug** with **dots**.",
+      "zh": "斑点！是妈妈吗？不，是一个带圆点的杯子。",
+      "pattern": "Is it Mom? No, it is a ___ .",
+      "focusWord": "mug",
+      "focusNote": "",
+      "focusRaw": "mug",
+      "knowledge": "一般疑问句 + 否定回答；第一次被骗",
+      "gloss": "杯子",
+      "highlights": [
+        "mug",
+        "dots"
+      ],
+      "learnItems": [
+        {
+          "word": "mug",
+          "gloss": "杯子",
+          "audioWord": "",
+          "image": ""
+        },
+        {
+          "word": "dots",
+          "gloss": "圆点",
+          "audioWord": "",
+          "image": ""
+        }
+      ],
+      "image": "",
+      "audioEn": "",
+      "audioZh": "",
+      "audioWord": ""
+    },
+    {
+      "id": "P13",
+      "index": 13,
+      "en": "Bug giggles. \"Hee hee! Come!\"",
+      "zh": "小瓢虫咯咯笑：“嘻嘻！来呀！”",
+      "pattern": "",
+      "focusWord": "",
+      "focusNote": "",
+      "focusRaw": "",
+      "knowledge": "拟声笑；反派动机：她觉得好玩",
+      "gloss": "",
+      "highlights": [],
+      "learnItems": [],
+      "image": "",
+      "audioEn": "",
+      "audioZh": "",
+      "audioWord": ""
+    },
+    {
+      "id": "P14",
+      "index": 14,
+      "en": "Spots! Is it Mom? No, it is an **egg**.",
+      "zh": "斑点！是妈妈吗？不，是一颗蛋。",
+      "pattern": "Is it Mom? No, it is an ___ .",
+      "focusWord": "egg",
+      "focusNote": "",
+      "focusRaw": "egg",
+      "knowledge": "a / an 对比（a mug → an egg）；第二次被骗",
+      "gloss": "蛋",
+      "highlights": [
+        "egg"
+      ],
+      "learnItems": [
+        {
+          "word": "egg",
+          "gloss": "蛋",
+          "audioWord": "",
+          "image": ""
+        }
+      ],
+      "image": "",
+      "audioEn": "",
+      "audioZh": "",
+      "audioWord": ""
+    },
+    {
+      "id": "P15",
+      "index": 15,
+      "en": "Spots! Is it Mom? No, it is a **fish** in a **tub**.",
+      "zh": "斑点！是妈妈吗？不，是木盆里的一条鱼。",
+      "pattern": "Is it Mom? No, it is a ___ in a ___ .",
+      "focusWord": "fish",
+      "focusNote": "",
+      "focusRaw": "fish",
+      "knowledge": "in a ___ 方位；第三次被骗",
+      "gloss": "鱼",
+      "highlights": [
+        "fish",
+        "tub"
+      ],
+      "learnItems": [
+        {
+          "word": "fish",
+          "gloss": "鱼",
+          "audioWord": "",
+          "image": ""
+        },
+        {
+          "word": "tub",
+          "gloss": "木盆",
+          "audioWord": "",
+          "image": ""
+        }
+      ],
+      "image": "",
+      "audioEn": "",
+      "audioZh": "",
+      "audioWord": ""
+    },
+    {
+      "id": "P16",
+      "index": 16,
+      "en": "Big spots by a bush! \"Mom!\" yells Mia.",
+      "zh": "灌木旁有一大片斑点！“妈妈！”米娅大喊。",
+      "pattern": "___ by a ___ !",
+      "focusWord": "",
+      "focusNote": "",
+      "focusRaw": "",
+      "knowledge": "假胜利铺垫；情绪上扬",
+      "gloss": "",
+      "highlights": [],
+      "learnItems": [],
+      "image": "",
+      "audioEn": "",
+      "audioZh": "",
+      "audioWord": ""
+    },
+    {
+      "id": "P17",
+      "index": 17,
+      "en": "It is not Mom. It is a big rug. Bug laughs.",
+      "zh": "不是妈妈。是一块大花地毯。小瓢虫哈哈笑。",
+      "pattern": "It is not ___ . It is a ___ .",
+      "focusWord": "",
+      "focusNote": "",
+      "focusRaw": "",
+      "knowledge": "It is not 否定句；假胜利落空",
+      "gloss": "",
+      "highlights": [],
+      "learnItems": [],
+      "image": "",
+      "audioEn": "",
+      "audioZh": "",
+      "audioWord": ""
+    },
+    {
+      "id": "P18",
+      "index": 18,
+      "en": "The wind blows. Leaves fly. The cub cries.",
+      "zh": "风吹起来了。树叶乱飞。小豹哭了。",
+      "pattern": "The ___ blows.",
+      "focusWord": "",
+      "focusNote": "",
+      "focusRaw": "",
+      "knowledge": "三个短句递进；危机（保持白天，不变暗）",
+      "gloss": "",
+      "highlights": [],
+      "learnItems": [],
+      "image": "",
+      "audioEn": "",
+      "audioZh": "",
+      "audioWord": ""
+    },
+    {
+      "id": "P19",
+      "index": 19,
+      "en": "The cub sits down. It can not walk.",
+      "zh": "小豹坐下了。它走不动了。",
+      "pattern": "It can not ___ .",
+      "focusWord": "",
+      "focusNote": "",
+      "focusRaw": "",
+      "knowledge": "can not 否定；最低点",
+      "gloss": "",
+      "highlights": [],
+      "learnItems": [],
+      "image": "",
+      "audioEn": "",
+      "audioZh": "",
+      "audioWord": ""
+    },
+    {
+      "id": "P20",
+      "index": 20,
+      "en": "Bug stops. \"Oh no. I am sorry, cub.\"",
+      "zh": "小瓢虫停下来。“哎呀。对不起，小豹。”",
+      "pattern": "I am sorry.",
+      "focusWord": "",
+      "focusNote": "",
+      "focusRaw": "",
+      "knowledge": "道歉用语；反派心软（反转起点）",
+      "gloss": "",
+      "highlights": [],
+      "learnItems": [],
+      "image": "",
+      "audioEn": "",
+      "audioZh": "",
+      "audioWord": ""
+    },
+    {
+      "id": "P21",
+      "index": 21,
+      "en": "Bug flies up, up, up. \"I see big spots!\"",
+      "zh": "小瓢虫飞呀飞，飞到高高的地方。“我看见大斑点了！”",
+      "pattern": "I see ___ !（P10 回调）",
+      "focusWord": "",
+      "focusNote": "",
+      "focusRaw": "",
+      "knowledge": "up, up, up 重复；同一句话这次是真的",
+      "gloss": "",
+      "highlights": [],
+      "learnItems": [],
+      "image": "",
+      "audioEn": "",
+      "audioZh": "",
+      "audioWord": ""
+    },
+    {
+      "id": "P22",
+      "index": 22,
+      "en": "Is it Mom? Yes! It is Mom!",
+      "zh": "是妈妈吗？是的！是妈妈！",
+      "pattern": "Is it Mom? Yes, it is ___ !",
+      "focusWord": "",
+      "focusNote": "",
+      "focusRaw": "",
+      "knowledge": "三次 No 之后的 Yes——句式反转即剧情反转",
+      "gloss": "",
+      "highlights": [],
+      "learnItems": [],
+      "image": "",
+      "audioEn": "",
+      "audioZh": "",
+      "audioWord": ""
+    },
+    {
+      "id": "P23",
+      "index": 23,
+      "en": "Mom and cub **hug**. Mia and Ben are **glad**.",
+      "zh": "妈妈和小豹抱在一起。米娅和本好开心。",
+      "pattern": "___ and ___ hug. / We have a big hug!",
+      "focusWord": "hug",
+      "focusNote": "",
+      "focusRaw": "hug",
+      "knowledge": "sad → glad 情绪闭环；-ug 音族收齐 bug/mug/rug/hug",
+      "gloss": "拥抱",
+      "highlights": [
+        "hug",
+        "glad"
+      ],
+      "learnItems": [
+        {
+          "word": "hug",
+          "gloss": "拥抱",
+          "audioWord": "",
+          "image": ""
+        },
+        {
+          "word": "glad",
+          "gloss": "开心",
+          "audioWord": "",
+          "image": ""
+        }
+      ],
+      "image": "",
+      "audioEn": "",
+      "audioZh": "",
+      "audioWord": ""
+    },
+    {
+      "id": "P24",
+      "index": 24,
+      "en": "\"Shh,\" says Mia. Nap time, little cub.",
+      "zh": "米娅轻声说：“嘘——”睡觉啦，小豹。",
+      "pattern": "___ time.",
+      "focusWord": "",
+      "focusNote": "",
+      "focusRaw": "",
+      "knowledge": "安静收尾；画面：小豹睡在妈妈爪间，Bug 停在 Mia 的星星发夹上",
+      "gloss": "",
+      "highlights": [],
+      "learnItems": [],
+      "image": "",
+      "audioEn": "",
+      "audioZh": "",
+      "audioWord": ""
+    }
+  ]
+}

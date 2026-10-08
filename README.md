@@ -71,7 +71,8 @@ npm run gen-tts
 ## 阅读器（Stage 6）
 
 - 始终中英对照：英文标题后紧跟较小的浅色中文标题（可换行）；正文只显示英文（固定两行高度），**中文** 按钮在英文句子左侧同一行，点开弹层并朗读
-- 续读：刷新后夹紧在 1..N 页，打开直接回到上次页（无提示条）；Home 键回到第 1 页
+- 换故事：左上角故事切换器显示 `1. Flag in the Fog`，点开可选 `2. Spot the Cub`（英文标题、目录顺序编号）。每本故事单独续读
+- 续读：刷新后夹紧在 1..N 页，打开直接回到该故事上次页（无提示条）；Home 键回到第 1 页
 - 插图：各页绑定 `images/flag-in-the-fog/pNN.webp`；缺图时回退 16:9 奶油色软陶风 SVG 占位。画稿上不叠关键词或页码。画稿需压缩后再入库
 - 朗读：点喇叭或英文句子播放 Ana；点句子左侧 **中文** 弹出译文并播晓晓。新点击会停掉上一句。默认不自动播放。mp3 缺失或播放失败时回退 Web Speech
 - 点词：句中加粗焦点词只作标记，点击句子任意处（含加粗词）播放整句英文；点辅词芯片弹出释义气泡（词图 + 中文短义 + Play again）。主练句式只展示、不可点
@@ -80,7 +81,7 @@ npm run gen-tts
 - 更新弹层：每 10 秒带 cache-bust 拉取 `versions.json`，若有比已安装版本号更新的组，齿轮关闭时在设置外弹出这些版本行，顶部一个 **Update**（写入已确认版本、清缓存、保留进度、硬刷新）。已是最新则不显示弹层
 - PWA：可安装到主屏幕（`standalone`）；预缓存阅读器壳 + 故事 JSON。页/词 mp3 与插图 webp 走运行时 Cache First，不进预缓存。换插图时 bump `vite.config.ts` 里的 `story-image-cache-first` 缓存名，换朗读时 bump `story-audio-cache-first` 缓存名，检查更新并重载后会拉新资源。`versions.json` 用 Network First，以免挡住更新检测
 
-进度按本故事写入 `localStorage`。每次有意义的发布请在 `app/public/versions.json` 顶部追加 `{ id, version, date, summary }`（新条目用英文）。当前版本 **0.6.6**。
+进度按本故事写入 `localStorage`。每次有意义的发布请在 `app/public/versions.json` 顶部追加 `{ id, version, date, summary }`（新条目用英文）。当前版本 **0.6.7**。
 
 ## 安装到主屏幕（PWA）
 

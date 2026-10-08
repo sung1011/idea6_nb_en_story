@@ -14,9 +14,10 @@ const props = defineProps<{
 }>()
 
 const imageSrc = computed(() => {
-  if (!props.image) return ''
+  const file = String(props.image || '').trim()
+  if (!file) return ''
   const base = import.meta.env.BASE_URL
-  return `${base}${props.image.replace(/^\//, '')}`
+  return `${base}${file.replace(/^\//, '')}`
 })
 
 const emit = defineEmits<{

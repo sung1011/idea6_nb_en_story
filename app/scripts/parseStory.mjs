@@ -349,6 +349,29 @@ function parseFocus(raw) {
   return { focusWord: word, focusNote: notes.join('；'), focusRaw }
 }
 
+const STORY_ORDER = ['flag-in-the-fog', 'spot-the-cub']
+const STORY_PAGE_COUNTS = {
+  'flag-in-the-fog': 22,
+  'spot-the-cub': 24,
+}
+
+function writeStoriesIndex(stories) {
+  const byId = new Map(stories.map((story) => [story.id, story]))
+  const extra = stories.map((story) => story.id).filter((id) => !STORY_ORDER.includes(id))
+  const ordered = [...STORY_ORDER.filter((id) => byId.has(id)), ...extra]
+  const index = ordered.map((id) => {
+    const story = byId.get(id)
+    return {
+      id: story.id,
+      title: story.title,
+      titleZh: story.titleZh || '',
+    }
+  })
+  const outFile = path.join(OUT_DIR, 'index.json')
+  fs.writeFileSync(outFile, `${JSON.stringify(index, null, 2)}\n`)
+  return outFile
+}
+
 export function parseAndWriteStories() {
   fs.mkdirSync(OUT_DIR, { recursive: true })
   const files = fs.readdirSync(STORIES_DIR).filter((name) => name.endsWith('.md'))
@@ -357,18 +380,31 @@ export function parseAndWriteStories() {
   }
 
   const written = []
+  const catalog = []
   for (const file of files) {
     const slug = file.replace(/\.md$/, '')
     const source = `stories/${file}`
     const md = fs.readFileSync(path.join(STORIES_DIR, file), 'utf8')
     const story = parseStoryMarkdown(md, slug, source)
-    if (slug === 'flag-in-the-fog' && story.pageCount !== 22) {
-      throw new Error(`Expected 22 pages for flag-in-the-fog, got ${story.pageCount}`)
+    const expected = STORY_PAGE_COUNTS[slug]
+    if (expected && story.pageCount !== expected) {
+      throw new Error(`Expected ${expected} pages for ${slug}, got ${story.pageCount}`)
     }
     const outFile = path.join(OUT_DIR, `${slug}.json`)
-    fs.writeFileSync(outFile, `${JSON.stringify(story, null, 2)}\n`)
-    written.push({ slug, pageCount: story.pageCount, outFile })
+    let saved = story
+    const keepHandJson = slug === 'spot-the-cub' && fs.existsSync(outFile)
+    if (keepHandJson) {
+      saved = JSON.parse(fs.readFileSync(outFile, 'utf8'))
+      if (!saved?.pages || saved.pages.length !== story.pageCount) {
+        throw new Error(`Kept ${slug}.json page count mismatch`)
+      }
+    } else {
+      fs.writeFileSync(outFile, `${JSON.stringify(story, null, 2)}\n`)
+    }
+    catalog.push(saved)
+    written.push({ slug, pageCount: saved.pageCount, outFile })
   }
+  writeStoriesIndex(catalog)
   return written
 }
 

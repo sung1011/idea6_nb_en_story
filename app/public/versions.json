@@ -1,5 +1,23 @@
 [
   {
+    "id": "v0.6.7",
+    "version": "0.6.7",
+    "date": "2026-10-08",
+    "summary": "Story switcher at top-left: 1. Flag in the Fog / 2. Spot the Cub"
+  },
+  {
+    "id": "v0.6.7-progress",
+    "version": "0.6.7",
+    "date": "2026-10-08",
+    "summary": "Each story keeps its own reading progress"
+  },
+  {
+    "id": "v0.6.7-spot",
+    "version": "0.6.7",
+    "date": "2026-10-08",
+    "summary": "Added Spot the Cub text (art and audio coming soon)"
+  },
+  {
     "id": "v0.6.6",
     "version": "0.6.6",
     "date": "2026-10-08",

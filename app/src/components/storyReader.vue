@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { computed, onMounted, onUnmounted, ref, watch } from 'vue'
 import type { LearnItem, Story } from '@/types/story'
+import type { StoryIndexEntry } from '@/types/storyIndex'
 import { parseEnSegments } from '@/utils/parseEn'
 import { useStoryProgress } from '@/composables/useStoryProgress'
 import { usePageSpeech } from '@/composables/usePageSpeech'
@@ -8,9 +9,15 @@ import PagePlaceholder from './pagePlaceholder.vue'
 import GlossPanel, { type GlossAnchor } from './glossPanel.vue'
 import AppSettings from './appSettings.vue'
 import StorySummary from './storySummary.vue'
+import StorySwitcher from './storySwitcher.vue'
 
 const props = defineProps<{
   story: Story
+  stories: StoryIndexEntry[]
+}>()
+
+const emit = defineEmits<{
+  select: [id: string]
 }>()
 
 const pageCount = computed(() => props.story.pageCount || props.story.pages.length)
@@ -131,6 +138,10 @@ function onViewportChange() {
 function onKey(event: KeyboardEvent) {
   const target = event.target as HTMLElement | null
   if (target && ['INPUT', 'TEXTAREA'].includes(target.tagName)) return
+  if (document.querySelector('[data-story-switcher-open]')) {
+    if (event.key === 'Escape') closePanels()
+    return
+  }
   if (event.key === 'Escape' && (openLearn.value || openZh.value)) {
     event.preventDefault()
     closePanels()
@@ -204,7 +215,11 @@ onUnmounted(() => {
   <article v-if="page" class="reader">
     <header class="top">
       <div class="titles">
-        <p class="kicker">{{ story.label || 'Story' }}</p>
+        <StorySwitcher
+          :stories="stories"
+          :current-id="story.id"
+          @select="emit('select', $event)"
+        />
         <h1>
           {{ story.title }}<span v-if="story.titleZh" class="title-zh"> · {{ story.titleZh }}</span>
         </h1>
@@ -247,7 +262,7 @@ onUnmounted(() => {
           </div>
         </div>
         <div class="meta">
-          <p v-if="page.pattern" class="chip pattern">{{ page.pattern }}</p>
+          <p v-if="page.pattern && page.pattern !== '—'" class="chip pattern">{{ page.pattern }}</p>
           <button
             v-for="item in learnItems"
             :key="`${page.id}-${item.word}`"
@@ -318,15 +333,6 @@ onUnmounted(() => {
 .titles {
   min-width: 0;
   flex: 1;
-}
-
-.kicker {
-  margin: 0 0 4px;
-  color: var(--teal);
-  font-weight: 600;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  font-size: 0.78rem;
 }
 
 h1 {

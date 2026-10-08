@@ -144,7 +144,7 @@ export function usePageSpeech(page: Ref<StoryPage | undefined>) {
     const token = seq
     playingLang.value = lang
     playingWord.value = null
-    const file = lang === 'zh' ? current.audioZh : current.audioEn
+    const file = String((lang === 'zh' ? current.audioZh : current.audioEn) || '').trim()
     const done = () => clearPlaying(token)
     if (file) {
       playFile(clipUrl(file), text, lang, token, done)
@@ -161,8 +161,9 @@ export function usePageSpeech(page: Ref<StoryPage | undefined>) {
     playingLang.value = null
     playingWord.value = text
     const done = () => clearPlaying(token)
-    if (file) {
-      playFile(clipUrl(file), text, 'en', token, done)
+    const clip = String(file || '').trim()
+    if (clip) {
+      playFile(clipUrl(clip), text, 'en', token, done)
       return
     }
     systemSpeak(text, 'en', token, done)
