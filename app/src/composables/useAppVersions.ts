@@ -39,9 +39,9 @@ export function useAppVersions() {
     const acked = readAcked()
     if (!acked) return []
     const idx = versions.value.findIndex((entry) => entry.id === acked)
-    const newer = idx === -1 ? versions.value : versions.value.slice(0, idx)
-    return newer.slice(0, TOAST_LIMIT)
+    return idx === -1 ? versions.value : versions.value.slice(0, idx)
   })
+  const toastPending = computed(() => pending.value.slice(0, TOAST_LIMIT))
 
   async function refresh() {
     try {
@@ -106,6 +106,7 @@ export function useAppVersions() {
     versions,
     current,
     pending,
+    toastPending,
     refresh,
     applyUpdate,
     clearCaches,

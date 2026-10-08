@@ -1,5 +1,11 @@
 [
   {
+    "id": "v0.6.4",
+    "version": "0.6.4",
+    "date": "2026-10-08",
+    "summary": "Version tab lists new versions again with one Update button on top."
+  },
+  {
     "id": "v0.6.3-summary",
     "version": "0.6.3",
     "date": "2026-10-08",

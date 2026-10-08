@@ -12,7 +12,7 @@ const open = ref(false)
 const tab = ref<SettingsTab>('version')
 const gmConfirming = ref(false)
 const flash = ref('')
-const { versions, current, pending, refresh, applyUpdate, clearCaches } = useAppVersions()
+const { current, pending, toastPending, refresh, applyUpdate, clearCaches } = useAppVersions()
 
 let flashTimer = 0
 
@@ -127,20 +127,10 @@ onUnmounted(() => {
 
       <div v-if="tab === 'version'" class="pane" role="tabpanel">
         <div class="pane-head">
-          <div class="current-line">
-            <p class="current">
-              Current version
-              <strong>{{ current?.version || '—' }}</strong>
-            </p>
-            <button
-              v-if="pending.length"
-              type="button"
-              class="action update-one"
-              @click="applyUpdate"
-            >
-              Update
-            </button>
-          </div>
+          <p class="current">
+            Current version
+            <strong>{{ current?.version || '—' }}</strong>
+          </p>
           <div class="version-actions">
             <button type="button" class="action" @click="checkUpdate">
               Check for updates
@@ -150,13 +140,15 @@ onUnmounted(() => {
             </button>
           </div>
         </div>
-        <div class="rows">
+        <div v-if="pending.length" class="diff">
+          <button type="button" class="action" @click="applyUpdate">
+            Update
+          </button>
           <VersionRow
-            v-for="entry in versions"
+            v-for="entry in pending"
             :key="entry.id"
             :entry="entry"
           />
-          <p v-if="!versions.length" class="empty">No version history yet</p>
         </div>
       </div>
 
@@ -189,7 +181,7 @@ onUnmounted(() => {
       {{ flash }}
     </aside>
     <aside
-      v-else-if="!open && pending.length"
+      v-else-if="!open && toastPending.length"
       class="toast"
       aria-live="polite"
       aria-label="Available updates"
@@ -285,16 +277,8 @@ onUnmounted(() => {
   background: var(--paper);
 }
 
-.current-line {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 8px;
-  margin-bottom: 12px;
-}
-
 .current {
-  margin: 0;
+  margin: 0 0 12px;
   font-size: 1.05rem;
   font-weight: 600;
 }
@@ -304,11 +288,15 @@ onUnmounted(() => {
   color: var(--teal-dark);
 }
 
-.rows,
+.diff,
 .toast {
   display: flex;
   flex-direction: column;
   gap: 8px;
+}
+
+.diff {
+  margin-top: 12px;
 }
 
 .toast.notice {
@@ -325,7 +313,6 @@ onUnmounted(() => {
   font-size: 1.05rem;
 }
 
-.empty,
 .gm-copy,
 .confirm p {
   margin: 0;
@@ -356,14 +343,8 @@ onUnmounted(() => {
 .version-actions .action,
 .version-actions .ghost,
 .toast .action,
-.update-one {
+.diff .action {
   margin-top: 0;
-}
-
-.update-one {
-  width: auto;
-  min-width: 88px;
-  flex-shrink: 0;
 }
 
 .action {
