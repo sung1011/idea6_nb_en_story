@@ -62,7 +62,7 @@ npm run parse-stories
 - 词级音频：`audio/<story-id>/word-flag.mp3`（同一 Aria 声线，只读单词）
 - 词图：`images/<story-id>/words/map.webp`（有文件时写入 `learnItems[].image`）
 
-阅读器以 Vite `base`（`/idea6_nb_en_story/`）拼接这些路径。点喇叭或英文句子（含句中加粗焦点词）播放整句 `audioEn`。点英文句子左侧的 **CN** 弹出本页译文并播放 `audioZh`。点辅词芯片在词旁弹出释义气泡（词图 + 短义 + Play again）并读单词。主练句式只展示、不可点。第 22 页 Next 进入总结页（Words / Sentences），不是第 23 页。文件缺失或播放失败时回退 Web Speech。默认不自动播放。
+阅读器以 Vite `base`（`/idea6_nb_en_story/`）拼接这些路径。打开故事页（翻页、换故事、续读）时自动先播 `audioEn`，约 0.5 秒后再播 `audioZh`（正常语速）。Settings → **General** 的 **Auto read** 默认开。点喇叭或英文句子（含句中加粗焦点词）播放整句 `audioEn`。点英文句子左侧的 **CN** 弹出本页译文并播放 `audioZh`。点 Slow、单词或句子会立刻停掉自动队列。点辅词芯片在词旁弹出释义气泡（词图 + 短义 + Play again）并读单词。主练句式只展示、不可点。总结页和没有音频的页不自动读。文件缺失时自动朗读静默跳过；手动点读失败时回退 Web Speech。浏览器拦截自动播放时，等第一次点击后再读当前页。
 
 重新生成音频（在 `app/` 下）：`npm run gen-tts`（需 `edge-tts` 与 `ffmpeg`）。`npm run parse-stories` / `dev` / `build` 会根据 `app/public/images/` 与 `app/public/audio/` 里是否已有文件回填路径。
 
@@ -101,7 +101,7 @@ npm run parse-stories
 
 - 导航与续读：`id`、`pageCount`、`pages[].index`
 - 展示：`en`、`zh`、`pattern`、`focusWord`、`image`（正文显示英文；**CN** 在句子左侧，点开弹层）
-- 朗读：`audioEn`、`audioZh`（点喇叭或英文句子含加粗词播放整句；缺文件回退系统语音）
+- 朗读：`audioEn`、`audioZh`（打开页自动英→中；点喇叭或英文句子含加粗词播放整句；缺文件回退系统语音）
 - 点词：`learnItems` / `gloss` / `audioWord` / `image`（点辅词芯片弹出词图 + 释义 + Play again；句中加粗词只作高亮标记；句式只展示）
 - 总结页：跨页去重 `learnItems`（首次出现顺序）与去重 `pattern`；点词卡复用同一释义气泡；**Read again** 回第 1 页，进度仍夹紧在 `1..pageCount`
 
@@ -109,6 +109,8 @@ npm run parse-stories
 
 - `idea6_nb_en_story:progress:flag-in-the-fog` → 页码（1-based，读写时夹紧到 `1..pageCount`）
 - `idea6_nb_en_story:ackedVersion` → 用户已确认的最新版本 `id`（对应 `app/public/versions.json`）
+- `idea6_nb_en_story:slowSpeed` → Slow 语速百分比（30–90，默认 60）
+- `idea6_nb_en_story:autoRead` → 自动朗读（`1`/`0`，缺省为开）
 
 启动时会删除过期键 `idea6_nb_en_story:displayMode` 与 `idea6_nb_en_story:showZh:<storyId>`，不碰阅读进度。
 

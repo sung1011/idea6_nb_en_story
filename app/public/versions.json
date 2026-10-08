@@ -1,5 +1,11 @@
 [
   {
+    "id": "v0.6.14",
+    "version": "0.6.14",
+    "date": "2026-10-08",
+    "summary": "Each page now reads aloud automatically: English first, then Chinese. Turn it off in Settings."
+  },
+  {
     "id": "v0.6.13",
     "version": "0.6.13",
     "date": "2026-10-08",

@@ -3,6 +3,7 @@ export const STORAGE_PREFIX = 'idea6_nb_en_story:'
 export const ACKED_VERSION_KEY = `${STORAGE_PREFIX}ackedVersion`
 export const SELECTED_STORY_KEY = `${STORAGE_PREFIX}selectedStory`
 export const SLOW_SPEED_KEY = `${STORAGE_PREFIX}slowSpeed`
+export const AUTO_READ_KEY = `${STORAGE_PREFIX}autoRead`
 export const DISPLAY_MODE_KEY = `${STORAGE_PREFIX}displayMode`
 export const LEGACY_SHOW_ZH_PREFIX = `${STORAGE_PREFIX}showZh:`
 

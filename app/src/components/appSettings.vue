@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { onMounted, onUnmounted, ref } from 'vue'
 import { hardReload, useAppVersions } from '@/composables/useAppVersions'
+import { useAutoReadSetting } from '@/composables/useAutoRead'
 import { SLOW_SPEED_MAX, SLOW_SPEED_MIN, SLOW_SPEED_STEP, useSlowSpeed } from '@/composables/useSlowSpeed'
 import { clearAppStorage } from '@/utils/appStorage'
 import VersionRow from './versionRow.vue'
@@ -15,6 +16,7 @@ const gmConfirming = ref(false)
 const flash = ref('')
 const { installed, history, pending, refresh, applyUpdate, clearCaches } = useAppVersions()
 const { percent: slowPercent, setPercent: setSlowPercent, slower, faster, canSlower, canFaster } = useSlowSpeed()
+const { enabled: autoRead, toggle: toggleAutoRead, label: autoReadLabel } = useAutoReadSetting()
 
 function onSlowInput(event: Event) {
   const value = Number((event.target as HTMLInputElement).value)
@@ -142,6 +144,19 @@ onUnmounted(() => {
       </div>
 
       <div v-if="tab === 'general'" class="pane" role="tabpanel">
+        <div class="auto-read">
+          <p class="slow-label">Auto read</p>
+          <button
+            type="button"
+            class="switch"
+            role="switch"
+            :aria-checked="autoRead"
+            aria-label="Auto read"
+            @click="toggleAutoRead"
+          >
+            {{ autoReadLabel }}
+          </button>
+        </div>
         <div class="slow-speed">
           <div class="slow-head">
             <p class="slow-label">Slow speed</p>
@@ -296,6 +311,40 @@ onUnmounted(() => {
   border: 3px solid #2f3f3b;
   background: var(--paper);
   box-shadow: var(--shadow);
+}
+
+.auto-read {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 10px;
+  padding: 10px 12px;
+  border-radius: 18px;
+  border: 3px solid #2f3f3b;
+  background: var(--fog);
+}
+
+.auto-read .slow-label {
+  margin: 0;
+}
+
+.switch {
+  min-height: 44px;
+  min-width: 72px;
+  margin: 0;
+  padding: 8px 14px;
+  border-radius: 999px;
+  border: 3px solid #2f3f3b;
+  background: var(--paper);
+  color: var(--ink);
+  font-size: 1.05rem;
+  font-weight: 700;
+}
+
+.switch[aria-checked='true'] {
+  background: var(--teal);
+  color: white;
 }
 
 .slow-speed {

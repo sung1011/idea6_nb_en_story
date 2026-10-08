@@ -3,6 +3,14 @@ import type { StoryPage } from '@/types/story'
 
 export type SpeechLang = 'en' | 'zh'
 
+export type PlayOptions = {
+  onEnded?: () => void
+  silent?: boolean
+  deferAutoplay?: boolean
+  onBlocked?: () => void
+  onSilentFail?: () => void
+}
+
 /** One silent wav so the first tap can unlock audio on iOS. */
 const SILENT_WAV =
   'data:audio/wav;base64,UklGRiQAAABXQVZFZm10IBAAAAABAAEARKwAAIhYAQACABAAZGF0YQAAAAA='
@@ -113,6 +121,12 @@ function systemSpeak(
   window.speechSynthesis.speak(utter)
 }
 
+function isAutoplayBlocked(error: unknown): boolean {
+  const name = error && typeof error === 'object' && 'name' in error ? String(error.name) : ''
+  const message = error && typeof error === 'object' && 'message' in error ? String(error.message) : ''
+  return name === 'NotAllowedError' || /interact|autoplay/i.test(message)
+}
+
 function playFile(
   src: string,
   text: string,
@@ -120,15 +134,28 @@ function playFile(
   token: number,
   onDone: () => void,
   rate = 1,
+  options: PlayOptions = {},
 ): void {
   const el = element()
   let handed = false
-  const fail = () => {
+  const fail = (error?: unknown) => {
     if (seq !== token || handed) return
+    if (options.deferAutoplay && isAutoplayBlocked(error)) {
+      handed = true
+      el.onended = null
+      el.onerror = null
+      el.onloadedmetadata = null
+      options.onBlocked?.()
+      return
+    }
     handed = true
     el.onended = null
     el.onerror = null
     el.onloadedmetadata = null
+    if (options.silent) {
+      options.onSilentFail?.()
+      return
+    }
     systemSpeak(text, lang, token, onDone, rate)
   }
   el.onended = null
@@ -147,11 +174,11 @@ function playFile(
     applyPlaybackRate(el, 1)
     onDone()
   }
-  el.onerror = fail
+  el.onerror = () => fail()
   void el.play().then(() => {
     if (seq !== token) return
     applyPlaybackRate(el, rate)
-  }).catch(fail)
+  }).catch((error) => fail(error))
 }
 
 export function usePageSpeech(page: Ref<StoryPage | undefined>) {
@@ -173,7 +200,7 @@ export function usePageSpeech(page: Ref<StoryPage | undefined>) {
     playingRate.value = 1
   }
 
-  function playLine(lang: SpeechLang, rate = 1) {
+  function playLine(lang: SpeechLang, rate = 1, options: PlayOptions = {}) {
     const current = page.value
     if (!current) return
     const text = plainSpeakText(lang === 'zh' ? current.zh : current.en)
@@ -185,9 +212,27 @@ export function usePageSpeech(page: Ref<StoryPage | undefined>) {
     playingWord.value = null
     playingRate.value = speed
     const file = String((lang === 'zh' ? current.audioZh : current.audioEn) || '').trim()
-    const done = () => clearPlaying(token)
+    const done = () => {
+      clearPlaying(token)
+      options.onEnded?.()
+    }
+    const blocked = () => {
+      clearPlaying(token)
+      options.onBlocked?.()
+    }
+    const skip = () => {
+      clearPlaying(token)
+    }
     if (file) {
-      playFile(clipUrl(file), text, lang, token, done, speed)
+      playFile(clipUrl(file), text, lang, token, done, speed, {
+        ...options,
+        onBlocked: blocked,
+        onSilentFail: skip,
+      })
+      return
+    }
+    if (options.silent) {
+      skip()
       return
     }
     systemSpeak(text, lang, token, done, speed)

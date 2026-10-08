@@ -7,6 +7,7 @@ import { useStoryProgress } from '@/composables/useStoryProgress'
 import { usePageSpeech } from '@/composables/usePageSpeech'
 import { useSlowSpeed } from '@/composables/useSlowSpeed'
 import { useStoryPreload } from '@/composables/useStoryPreload'
+import { useAutoRead } from '@/composables/useAutoRead'
 import PagePlaceholder from './pagePlaceholder.vue'
 import GlossPanel, { type GlossAnchor } from './glossPanel.vue'
 import AppSettings from './appSettings.vue'
@@ -23,7 +24,7 @@ const emit = defineEmits<{
 }>()
 
 const pageCount = computed(() => props.story.pageCount || props.story.pages.length)
-const { pageIndex, next, prev, restart } = useStoryProgress(props.story.id, pageCount.value)
+const { pageIndex, ready, next, prev, restart } = useStoryProgress(props.story.id, pageCount.value)
 const onSummary = ref(false)
 useStoryPreload(toRef(props, 'story'), pageIndex)
 
@@ -31,6 +32,7 @@ const page = computed(() => {
   return props.story.pages.find((item) => item.index === pageIndex.value) ?? props.story.pages[0]
 })
 const { playingLang, playingWord, playingRate, playLine, playWord, stop } = usePageSpeech(page)
+const { cancelAuto } = useAutoRead(page, onSummary, ready, playLine, stop)
 const { rate: slowRate } = useSlowSpeed()
 const slowPlaying = computed(() => playingLang.value === 'en' && playingRate.value < 1)
 
@@ -76,6 +78,7 @@ function findLearnItem(word: string): LearnItem | null {
 function openGloss(word: string, event: Event) {
   const item = findLearnItem(word)
   if (!item) return
+  cancelAuto()
   openZh.value = false
   const target = event.currentTarget as HTMLElement | null
   if (target) glossAnchor.value = target.getBoundingClientRect()
@@ -104,11 +107,18 @@ function closePanels() {
 }
 
 function playSlow() {
+  cancelAuto()
   closePanels()
   playLine('en', slowRate.value)
 }
 
+function playEnglish() {
+  cancelAuto()
+  playLine('en')
+}
+
 function toggleZh(event: Event) {
+  cancelAuto()
   if (openZh.value) {
     closeZh()
     return
@@ -121,6 +131,7 @@ function toggleZh(event: Event) {
 }
 
 function replayPanel() {
+  cancelAuto()
   if (openLearn.value) {
     playWord(openLearn.value.word, openLearn.value.audioWord)
     return
@@ -291,11 +302,11 @@ onUnmounted(() => {
               class="speaker"
               :aria-pressed="playingLang === 'en'"
               aria-label="Play English"
-              @click="playLine('en')"
+              @click="playEnglish"
             >
               🔊
             </button>
-            <p class="line-text" @click="playLine('en')">
+            <p class="line-text" @click="playEnglish">
               <template v-for="(seg, i) in enSegments" :key="`${page.id}-${i}`">
                 <span :class="{ hl: seg.highlight }">{{ seg.text }}</span>
               </template>
