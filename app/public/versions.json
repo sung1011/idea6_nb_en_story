@@ -1,5 +1,11 @@
 [
   {
+    "id": "v0.6.17",
+    "version": "0.6.17",
+    "date": "2026-10-08",
+    "summary": "A faint Cached N/M pages label shows warm-up progress. Next button now just dims slightly while the next page loads."
+  },
+  {
     "id": "v0.6.16",
     "version": "0.6.16",
     "date": "2026-10-08",

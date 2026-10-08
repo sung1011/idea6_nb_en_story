@@ -20,6 +20,11 @@ const { percent: slowPercent, setPercent: setSlowPercent, slower, faster, canSlo
 const { enabled: autoRead, toggle: toggleAutoRead, label: autoReadLabel } = useAutoReadSetting()
 const { voice: zhVoice, setVoice: setZhVoice } = useZhVoice()
 
+defineProps<{
+  cacheLabel?: string
+  cacheFade?: boolean
+}>()
+
 function onSlowInput(event: Event) {
   const value = Number((event.target as HTMLInputElement).value)
   setSlowPercent(value)
@@ -84,6 +89,12 @@ onUnmounted(() => {
 
 <template>
   <div class="settings">
+    <p
+      v-if="cacheLabel"
+      class="cache-hint"
+      :class="{ fade: cacheFade }"
+      aria-hidden="true"
+    >{{ cacheLabel }}</p>
     <button
       type="button"
       class="gear"
@@ -289,6 +300,26 @@ onUnmounted(() => {
   position: relative;
   z-index: 50;
   flex-shrink: 0;
+}
+
+.cache-hint {
+  position: absolute;
+  right: 0;
+  bottom: calc(100% + 2px);
+  margin: 0;
+  color: var(--muted);
+  font-size: 10px;
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: 0.01em;
+  white-space: nowrap;
+  opacity: 0.4;
+  pointer-events: none;
+  transition: opacity 0.8s ease;
+}
+
+.cache-hint.fade {
+  opacity: 0;
 }
 
 .gear {

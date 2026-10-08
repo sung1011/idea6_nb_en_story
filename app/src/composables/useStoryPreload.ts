@@ -1,4 +1,4 @@
-import { nextTick, onMounted, onUnmounted, watch, type Ref } from 'vue'
+import { computed, nextTick, onMounted, onUnmounted, ref, watch, type Ref } from 'vue'
 import type { Story, StoryPage } from '@/types/story'
 import { useZhVoice } from '@/composables/useZhVoice'
 
@@ -6,6 +6,7 @@ const WARM_CONCURRENCY = 2
 const LOOKAHEAD_PAGES = 2
 const IDLE_TIMEOUT_MS = 1500
 const IDLE_FALLBACK_MS = 200
+const CACHE_FADE_MS = 1800
 
 const warmedStories = new Set<string>()
 const warmingStories = new Set<string>()
@@ -30,14 +31,7 @@ function uniqueUrls(urls: Array<string | null | undefined>): string[] {
   return list
 }
 
-function pageLookaheadUrls(page: StoryPage, includeZh: boolean): string[] {
-  const urls = [assetUrl(page.image), assetUrl(page.audioEn)]
-  if (includeZh) urls.push(assetUrl(page.audioZh))
-  for (const item of page.learnItems ?? []) urls.push(assetUrl(item.image))
-  return uniqueUrls(urls)
-}
-
-function pageWarmUrls(page: StoryPage, includeZh: boolean): string[] {
+export function pageWarmUrls(page: StoryPage, includeZh: boolean): string[] {
   const urls = [assetUrl(page.image), assetUrl(page.audioEn)]
   if (includeZh) urls.push(assetUrl(page.audioZh))
   for (const item of page.learnItems ?? []) urls.push(assetUrl(item.image))
@@ -64,8 +58,33 @@ function cancelIdle(handle: number) {
   window.clearTimeout(handle)
 }
 
-function warmUrl(url: string, signal?: AbortSignal): Promise<void> {
-  if (!url || cachedUrls.has(url)) return Promise.resolve()
+function absoluteUrl(url: string): string {
+  if (typeof window === 'undefined') return url
+  return new URL(url, window.location.origin).href
+}
+
+async function urlInCache(url: string): Promise<boolean> {
+  if (!url) return false
+  if (cachedUrls.has(url)) return true
+  if (typeof caches === 'undefined') return false
+  try {
+    const hit = await caches.match(absoluteUrl(url), { ignoreSearch: true })
+    if (hit) {
+      cachedUrls.add(url)
+      return true
+    }
+  } catch {
+    /* ignore */
+  }
+  return false
+}
+
+function warmUrl(url: string, signal?: AbortSignal, onCached?: () => void): Promise<void> {
+  if (!url) return Promise.resolve()
+  if (cachedUrls.has(url)) {
+    onCached?.()
+    return Promise.resolve()
+  }
   const existing = inflight.get(url)
   if (existing && !signal) return existing
   if (existing && signal) {
@@ -85,6 +104,7 @@ function warmUrl(url: string, signal?: AbortSignal): Promise<void> {
       if (!response.ok) return
       await response.blob()
       cachedUrls.add(url)
+      onCached?.()
     })
     .catch((error: unknown) => {
       const name = error && typeof error === 'object' && 'name' in error ? String(error.name) : ''
@@ -97,14 +117,19 @@ function warmUrl(url: string, signal?: AbortSignal): Promise<void> {
   return job
 }
 
-async function runQueue(urls: string[], signal?: AbortSignal, concurrency = WARM_CONCURRENCY) {
+async function runQueue(
+  urls: string[],
+  signal?: AbortSignal,
+  concurrency = WARM_CONCURRENCY,
+  onCached?: () => void,
+) {
   let cursor = 0
   async function worker() {
     while (cursor < urls.length) {
       if (signal?.aborted) return
       const url = urls[cursor]
       cursor += 1
-      await warmUrl(url, signal)
+      await warmUrl(url, signal, onCached)
     }
   }
   const workers = Array.from({ length: Math.min(concurrency, urls.length) }, () => worker())
@@ -127,36 +152,115 @@ function orderedWarmPages(story: Story, pageIndex: number): StoryPage[] {
   return [...first, ...rest]
 }
 
+function pageFullyCached(page: StoryPage, includeZh: boolean): boolean {
+  const urls = pageWarmUrls(page, includeZh)
+  return urls.every((url) => cachedUrls.has(url))
+}
+
 export function useStoryPreload(story: Ref<Story>, pageIndex: Ref<number>) {
   const { isDevice: zhDevice } = useZhVoice()
+  const cacheTick = ref(0)
+  const cacheDone = ref(0)
+  const cacheTotal = ref(0)
+  const cacheSkipped = ref(false)
+  const cacheComplete = ref(false)
+  const cacheFade = ref(false)
   let warmAbort: AbortController | null = null
   let idleHandle = 0
+  let fadeTimer = 0
+
+  function includeZhAudio(): boolean {
+    return !zhDevice.value
+  }
+
+  function recount() {
+    if (cacheSkipped.value) return
+    const includeZh = includeZhAudio()
+    const pages = story.value.pages
+    cacheTotal.value = pages.length
+    cacheDone.value = pages.filter((page) => pageFullyCached(page, includeZh)).length
+    const complete = cacheTotal.value > 0 && cacheDone.value >= cacheTotal.value
+    if (complete) {
+      if (!cacheComplete.value) {
+        cacheComplete.value = true
+        cacheFade.value = false
+        if (fadeTimer) window.clearTimeout(fadeTimer)
+        fadeTimer = window.setTimeout(() => {
+          cacheFade.value = true
+        }, CACHE_FADE_MS)
+      }
+    } else {
+      cacheComplete.value = false
+      cacheFade.value = false
+      if (fadeTimer) {
+        window.clearTimeout(fadeTimer)
+        fadeTimer = 0
+      }
+    }
+    cacheTick.value += 1
+  }
+
+  const cacheLabel = computed(() => {
+    if (cacheSkipped.value) return ''
+    if (!cacheTotal.value) return ''
+    if (cacheComplete.value) return 'Cached ✓'
+    return `Cached ${cacheDone.value}/${cacheTotal.value} pages`
+  })
+
+  const nextPageLoading = computed(() => {
+    cacheTick.value
+    if (cacheSkipped.value) return false
+    const next = story.value.pages.find((page) => page.index === pageIndex.value + 1)
+    if (!next) return false
+    return !pageFullyCached(next, includeZhAudio())
+  })
 
   function preloadAhead() {
-    const includeZh = !zhDevice.value
+    const includeZh = includeZhAudio()
     const pages = upcomingPages(story.value, pageIndex.value)
-    const urls = uniqueUrls(pages.flatMap((page) => pageLookaheadUrls(page, includeZh)))
-    void runQueue(urls, undefined, LOOKAHEAD_PAGES)
+    const urls = uniqueUrls(pages.flatMap((page) => pageWarmUrls(page, includeZh)))
+    void runQueue(urls, undefined, LOOKAHEAD_PAGES, recount)
+  }
+
+  async function scanExisting() {
+    if (saveDataOn()) {
+      cacheSkipped.value = true
+      cacheDone.value = 0
+      cacheTotal.value = 0
+      cacheComplete.value = false
+      cacheFade.value = false
+      return
+    }
+    cacheSkipped.value = false
+    const includeZh = includeZhAudio()
+    const urls = uniqueUrls(
+      orderedWarmPages(story.value, pageIndex.value).flatMap((page) => pageWarmUrls(page, includeZh)),
+    )
+    await Promise.all(urls.map(urlInCache))
+    recount()
   }
 
   function startWarmup() {
     const id = story.value.id
-    if (!id || warmedStories.has(id) || warmingStories.has(id) || saveDataOn()) return
+    if (!id || cacheSkipped.value || warmedStories.has(id) || warmingStories.has(id) || saveDataOn()) {
+      return
+    }
     warmingStories.add(id)
     warmAbort?.abort()
     warmAbort = new AbortController()
     const signal = warmAbort.signal
-    const includeZh = !zhDevice.value
+    const includeZh = includeZhAudio()
     const urls = uniqueUrls(
       orderedWarmPages(story.value, pageIndex.value).flatMap((page) => pageWarmUrls(page, includeZh)),
     )
-    void runQueue(urls, signal, WARM_CONCURRENCY).then(() => {
+    void runQueue(urls, signal, WARM_CONCURRENCY, recount).then(() => {
       if (signal.aborted) {
         warmingStories.delete(id)
         return
       }
       warmingStories.delete(id)
       warmedStories.add(id)
+      recount()
     })
   }
 
@@ -168,15 +272,34 @@ export function useStoryPreload(story: Ref<Story>, pageIndex: Ref<number>) {
     { immediate: true },
   )
 
+  watch(
+    () => [story.value.id, zhDevice.value] as const,
+    () => {
+      void scanExisting().then(() => {
+        if (idleHandle) cancelIdle(idleHandle)
+        idleHandle = whenIdle(startWarmup)
+      })
+    },
+  )
+
   onMounted(() => {
     void nextTick(() => {
-      idleHandle = whenIdle(startWarmup)
+      void scanExisting().then(() => {
+        idleHandle = whenIdle(startWarmup)
+      })
     })
   })
 
   onUnmounted(() => {
     warmAbort?.abort()
     if (idleHandle) cancelIdle(idleHandle)
+    if (fadeTimer) window.clearTimeout(fadeTimer)
     warmingStories.delete(story.value.id)
   })
+
+  return {
+    cacheLabel,
+    cacheFade,
+    nextPageLoading,
+  }
 }

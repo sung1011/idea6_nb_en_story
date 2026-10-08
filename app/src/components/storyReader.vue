@@ -26,7 +26,7 @@ const emit = defineEmits<{
 const pageCount = computed(() => props.story.pageCount || props.story.pages.length)
 const { pageIndex, ready, next, prev, restart } = useStoryProgress(props.story.id, pageCount.value)
 const onSummary = ref(false)
-useStoryPreload(toRef(props, 'story'), pageIndex)
+const { cacheLabel, cacheFade, nextPageLoading } = useStoryPreload(toRef(props, 'story'), pageIndex)
 
 const page = computed(() => {
   return props.story.pages.find((item) => item.index === pageIndex.value) ?? props.story.pages[0]
@@ -279,7 +279,7 @@ onUnmounted(() => {
           {{ story.title }}<span v-if="story.titleZh" class="title-zh"> · {{ story.titleZh }}</span>
         </h1>
       </div>
-      <AppSettings />
+      <AppSettings :cache-label="cacheLabel" :cache-fade="cacheFade" />
     </header>
 
     <template v-if="!onSummary">
@@ -379,7 +379,14 @@ onUnmounted(() => {
       <button type="button" :disabled="!canPrev" @click="goPrev">Prev</button>
       <p v-if="!onSummary" class="count">{{ page.index }} / {{ pageCount }}</p>
       <p v-else class="count">Summary</p>
-      <button type="button" class="next" :disabled="!canNext" @click="goNext">Next</button>
+      <button
+        type="button"
+        class="next"
+        :class="{ loading: nextPageLoading }"
+        :disabled="!canNext"
+        :aria-busy="nextPageLoading ? true : undefined"
+        @click="goNext"
+      >Next</button>
     </nav>
     <button
       v-if="onSummary"
@@ -634,6 +641,12 @@ h1 {
 
 .nav .next {
   justify-self: end;
+  transition: opacity 0.2s ease, filter 0.2s ease;
+}
+
+.nav .next.loading {
+  opacity: 0.55;
+  filter: saturate(0.7);
 }
 
 .nav button:first-child {

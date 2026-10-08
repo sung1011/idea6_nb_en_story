@@ -83,11 +83,11 @@ npm run gen-tts
 - 朗读：打开一页后自动先读英文、停约 0.5 秒再读中文（1.0x）。Settings → **General** 的 **Auto read** 默认开；**Chinese voice** 默认 Xiaoxiao（页级中文 mp3），可选 Device（系统中文声）。点英文句子只读英文；**CN** 弹出译文并按所选中文声朗读；**Slow** 慢读英文。手动点读会立刻停掉自动队列。语速在 **Slow speed** 里调 30%–90%。浏览器拦截自动播放时，等第一次点击后再读当前页
 - 点词：句中加粗焦点词只作标记，点击句子任意处（含加粗词）播放整句英文；点辅词芯片弹出释义气泡（词图 + 中文短义 + **CN**）。打开词卡用设备英文声读单词，再点英文词可重读，点 **CN** 用设备中文声读释义。主练句式和总结页句式（`phrases.json`）可点，走设备英文声
 - 翻页：大触摸热区的 Prev / Next，Fredoka 字体，平板宽度友好。第 22 页再点 Next 进入本课总结（不是第 23 页；页码仍为 Summary，进度停在 22）。总结页 **Words** 网格为去重关键词（首次出现顺序），点卡片打开与阅读器相同的释义气泡；**Sentences** 列出 `phrases.json` 句式，可点朗读。**Read again** 回到第 1 页，Prev 回到第 22 页
-- 阅读卡标题行右侧 **Settings** 齿轮：`General` / `Version` / `GM` 三个页签。`General` 里 **Auto read**、**Chinese voice**（Xiaoxiao / Device）和 **Slow speed**（30%–90%，默认 60%）。`Version` 显示已安装版本，并始终列出最近 10 个按版本号合并的更新（同号多条摘要合成一行）；可 **Check for updates**（立刻拉取 `versions.json`，无新版本 toast **You're up to date.**，有则 **Update available**）和 **Clear cache**（toast **Cache cleared.** 约 2 秒后注销 Service Worker、清空 Cache Storage 并硬刷新，不碰 localStorage）。Settings 内没有 **Update**。`GM` 可 **Reset all data**（清空本应用全部 localStorage 后重载）
+- 阅读卡标题行右侧 **Settings** 齿轮：齿轮上方有淡淡的 `Cached N/M pages`（按页计；该页图、英 mp3、中 mp3（Device 时不计）和词图都齐才算一页）。`General` 里 **Auto read**、**Chinese voice**（Xiaoxiao / Device）和 **Slow speed**（30%–90%，默认 60%）。下一页未缓存完时 Next 略微变暗，仍可点。`Version` 显示已安装版本，并始终列出最近 10 个按版本号合并的更新（同号多条摘要合成一行）；可 **Check for updates**（立刻拉取 `versions.json`，无新版本 toast **You're up to date.**，有则 **Update available**）和 **Clear cache**（toast **Cache cleared.** 约 2 秒后注销 Service Worker、清空 Cache Storage 并硬刷新，不碰 localStorage）。Settings 内没有 **Update**。`GM` 可 **Reset all data**（清空本应用全部 localStorage 后重载）
 - 更新弹层：每 10 秒带 cache-bust 拉取 `versions.json`，若有比已安装版本号更新的组，齿轮关闭时在设置外弹出这些版本行，顶部一个 **Update**（写入已确认版本、清缓存、保留进度、硬刷新）。已是最新则不显示弹层
 - PWA：可安装到主屏幕（`standalone`）；预缓存阅读器壳 + 故事 JSON。页级 mp3 与插图 webp 走运行时 Cache First，不进预缓存。翻页时后台预取后两页的图和中英 mp3；故事打开后在空闲时低并发把本章资源写入缓存（省流量模式跳过）。换插图时 bump `vite.config.ts` 里的 `story-image-cache-first` 缓存名，换朗读时 bump `story-audio-cache-first` 缓存名，检查更新并重载后会拉新资源。`versions.json` 用 Network First，以免挡住更新检测
 
-进度按本故事写入 `localStorage`。每次有意义的发布请在 `app/public/versions.json` 顶部追加 `{ id, version, date, summary }`（新条目用英文）。当前版本 **0.6.16**。
+进度按本故事写入 `localStorage`。每次有意义的发布请在 `app/public/versions.json` 顶部追加 `{ id, version, date, summary }`（新条目用英文）。当前版本 **0.6.17**。
 
 ## 安装到主屏幕（PWA）
 
