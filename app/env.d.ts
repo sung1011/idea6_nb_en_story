@@ -14,3 +14,8 @@ declare module '*.mjs' {
     outFile: string
   }>
 }
+
+declare module 'virtual:media-manifest' {
+  const hashes: Record<string, string>
+  export default hashes
+}

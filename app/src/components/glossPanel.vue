@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { computed, nextTick, onMounted, ref, watch } from 'vue'
+import { mediaUrl } from '@/utils/mediaUrl'
 
 export type GlossAnchor = Pick<DOMRect, 'top' | 'left' | 'width' | 'height' | 'bottom' | 'right'>
 
@@ -13,12 +14,7 @@ const props = defineProps<{
   ariaLabel?: string
 }>()
 
-const imageSrc = computed(() => {
-  const file = String(props.image || '').trim()
-  if (!file) return ''
-  const base = import.meta.env.BASE_URL
-  return `${base}${file.replace(/^\//, '')}`
-})
+const imageSrc = computed(() => mediaUrl(props.image))
 
 const emit = defineEmits<{
   chinese: []

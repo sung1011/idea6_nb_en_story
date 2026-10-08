@@ -1,5 +1,6 @@
 import { computed, nextTick, onMounted, onUnmounted, ref, watch, type Ref } from 'vue'
 import type { Story, StoryPage } from '@/types/story'
+import { mediaUrl } from '@/utils/mediaUrl'
 
 const WARM_CONCURRENCY = 2
 const LOOKAHEAD_PAGES = 2
@@ -11,12 +12,6 @@ const warmedStories = new Set<string>()
 const warmingStories = new Set<string>()
 const cachedUrls = new Set<string>()
 const inflight = new Map<string, Promise<void>>()
-
-function assetUrl(file: string | null | undefined): string {
-  const name = String(file || '').trim()
-  if (!name) return ''
-  return `${import.meta.env.BASE_URL}${name.replace(/^\//, '')}`
-}
 
 function uniqueUrls(urls: Array<string | null | undefined>): string[] {
   const seen = new Set<string>()
@@ -31,8 +26,8 @@ function uniqueUrls(urls: Array<string | null | undefined>): string[] {
 }
 
 export function pageWarmUrls(page: StoryPage): string[] {
-  const urls = [assetUrl(page.image), assetUrl(page.audioEn)]
-  for (const item of page.learnItems ?? []) urls.push(assetUrl(item.image))
+  const urls = [mediaUrl(page.image), mediaUrl(page.audioEn)]
+  for (const item of page.learnItems ?? []) urls.push(mediaUrl(item.image))
   return uniqueUrls(urls)
 }
 
@@ -66,7 +61,7 @@ async function urlInCache(url: string): Promise<boolean> {
   if (cachedUrls.has(url)) return true
   if (typeof caches === 'undefined') return false
   try {
-    const hit = await caches.match(absoluteUrl(url), { ignoreSearch: true })
+    const hit = await caches.match(absoluteUrl(url))
     if (hit) {
       cachedUrls.add(url)
       return true

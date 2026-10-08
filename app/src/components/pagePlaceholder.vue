@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { computed, nextTick, ref, watch } from 'vue'
+import { mediaUrl } from '@/utils/mediaUrl'
 
 const props = defineProps<{
   pageIndex: number
@@ -15,12 +16,7 @@ const palettes = [
 
 const palette = computed(() => palettes[(props.pageIndex - 1) % palettes.length])
 const uid = computed(() => `p${props.pageIndex}`)
-const imageSrc = computed(() => {
-  const file = String(props.image || '').trim()
-  if (!file) return ''
-  const base = import.meta.env.BASE_URL
-  return `${base}${file.replace(/^\//, '')}`
-})
+const imageSrc = computed(() => mediaUrl(props.image))
 const imgRef = ref<HTMLImageElement | null>(null)
 const shown = ref(false)
 

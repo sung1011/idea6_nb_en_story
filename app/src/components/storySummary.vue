@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import type { LearnItem, StoryPhrase } from '@/types/story'
+import { mediaUrl } from '@/utils/mediaUrl'
 
 const props = defineProps<{
   words: LearnItem[]
@@ -14,10 +15,7 @@ const emit = defineEmits<{
 }>()
 
 function imageSrc(file: string | null) {
-  const name = String(file || '').trim()
-  if (!name) return ''
-  const base = import.meta.env.BASE_URL
-  return `${base}${name.replace(/^\//, '')}`
+  return mediaUrl(file)
 }
 
 function isOpen(word: string) {

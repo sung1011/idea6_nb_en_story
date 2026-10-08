@@ -1,6 +1,7 @@
 import { onMounted, onUnmounted, ref, watch, type Ref } from 'vue'
 import type { StoryPage } from '@/types/story'
 import { asWordCues, followWordAt, type WordCue } from '@/utils/followCue'
+import { mediaUrl } from '@/utils/mediaUrl'
 
 export type SpeechLang = 'en' | 'zh'
 
@@ -37,11 +38,6 @@ function element(): HTMLAudioElement {
     sharedAudio.preload = 'auto'
   }
   return sharedAudio
-}
-
-function clipUrl(file: string): string {
-  const base = import.meta.env.BASE_URL
-  return `${base}${file.replace(/^\//, '')}`
 }
 
 export function plainSpeakText(text: string): string {
@@ -120,7 +116,7 @@ function timingsPathFromAudio(audioEn: string): string {
 
 function loadTimings(path: string): Promise<Record<string, WordCue[]> | null> {
   if (!path) return Promise.resolve(null)
-  const url = clipUrl(path)
+  const url = mediaUrl(path)
   let pending = timingsByUrl.get(url)
   if (!pending) {
     pending = fetch(url)
@@ -317,7 +313,7 @@ export function usePageSpeech(page: Ref<StoryPage | undefined>) {
     const file = String(current.audioEn || '').trim()
     const wantFollow = speed < 1 && Boolean(file)
     if (file) {
-      playFile(clipUrl(file), text, lang, token, done, speed, {
+      playFile(mediaUrl(file), text, lang, token, done, speed, {
         ...options,
         onBlocked: blocked,
         onSilentFail: skip,

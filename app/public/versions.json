@@ -1,5 +1,11 @@
 [
   {
+    "id": "v0.6.28",
+    "version": "0.6.28",
+    "date": "2026-10-08",
+    "summary": "Updated pictures and narration now refresh automatically, no need to clear the cache."
+  },
+  {
     "id": "v0.6.27",
     "version": "0.6.27",
     "date": "2026-10-08",
