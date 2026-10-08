@@ -1,9 +1,14 @@
 import { computed, onMounted, onUnmounted, ref } from 'vue'
-import { parseVersions, type AppVersion } from '@/types/appVersion'
+import {
+  findGroupIndex,
+  groupVersions,
+  parseVersions,
+  type AppVersion,
+} from '@/types/appVersion'
 import { ACKED_VERSION_KEY } from '@/utils/appStorage'
 
 const POLL_MS = 10_000
-const TOAST_LIMIT = 10
+const HISTORY_LIMIT = 10
 const RELOAD_PARAM = '_reload'
 
 function versionsUrl() {
@@ -34,14 +39,19 @@ export function hardReload() {
 
 export function useAppVersions() {
   const versions = ref<AppVersion[]>([])
-  const current = computed(() => versions.value[0] ?? null)
-  const pending = computed(() => {
-    const acked = readAcked()
-    if (!acked) return []
-    const idx = versions.value.findIndex((entry) => entry.id === acked)
-    return idx === -1 ? versions.value : versions.value.slice(0, idx)
+  const ackedId = ref<string | null>(null)
+  const grouped = computed(() => groupVersions(versions.value))
+  const history = computed(() => grouped.value.slice(0, HISTORY_LIMIT))
+  const installed = computed(() => {
+    const idx = findGroupIndex(grouped.value, ackedId.value)
+    if (idx === -1) return grouped.value[0] ?? null
+    return grouped.value[idx]
   })
-  const toastPending = computed(() => pending.value.slice(0, TOAST_LIMIT))
+  const pending = computed(() => {
+    if (!ackedId.value) return []
+    const idx = findGroupIndex(grouped.value, ackedId.value)
+    return idx === -1 ? grouped.value : grouped.value.slice(0, idx)
+  })
 
   async function refresh() {
     try {
@@ -49,10 +59,12 @@ export function useAppVersions() {
       if (!response.ok) return
       const next = parseVersions(await response.json())
       if (!next.length) return
-      const acked = readAcked()
+      let acked = readAcked()
       if (!acked || !next.some((entry) => entry.id === acked)) {
-        writeAcked(next[0].id)
+        acked = next[0].id
+        writeAcked(acked)
       }
+      ackedId.value = acked
       versions.value = next
     } catch {
       // ignore network errors; next poll retries
@@ -80,7 +92,10 @@ export function useAppVersions() {
 
   async function applyUpdate() {
     const newest = versions.value[0]
-    if (newest) writeAcked(newest.id)
+    if (newest) {
+      writeAcked(newest.id)
+      ackedId.value = newest.id
+    }
     try {
       await clearCaches()
     } catch {
@@ -104,9 +119,11 @@ export function useAppVersions() {
 
   return {
     versions,
-    current,
+    grouped,
+    history,
+    installed,
     pending,
-    toastPending,
+    historyLimit: HISTORY_LIMIT,
     refresh,
     applyUpdate,
     clearCaches,

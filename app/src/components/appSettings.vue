@@ -12,7 +12,7 @@ const open = ref(false)
 const tab = ref<SettingsTab>('version')
 const gmConfirming = ref(false)
 const flash = ref('')
-const { current, pending, toastPending, refresh, applyUpdate, clearCaches } = useAppVersions()
+const { installed, history, pending, refresh, applyUpdate, clearCaches } = useAppVersions()
 
 let flashTimer = 0
 
@@ -129,7 +129,7 @@ onUnmounted(() => {
         <div class="pane-head">
           <p class="current">
             Current version
-            <strong>{{ current?.version || '—' }}</strong>
+            <strong>{{ installed?.version || '—' }}</strong>
           </p>
           <div class="version-actions">
             <button type="button" class="action" @click="checkUpdate">
@@ -140,14 +140,13 @@ onUnmounted(() => {
             </button>
           </div>
         </div>
-        <div v-if="pending.length" class="diff">
-          <button type="button" class="action" @click="applyUpdate">
-            Update
-          </button>
+        <div class="history" aria-label="Last 10 versions">
           <VersionRow
-            v-for="entry in pending"
-            :key="entry.id"
-            :entry="entry"
+            v-for="group in history"
+            :key="group.version"
+            :version="group.version"
+            :date="group.date"
+            :summaries="group.summaries"
           />
         </div>
       </div>
@@ -181,15 +180,21 @@ onUnmounted(() => {
       {{ flash }}
     </aside>
     <aside
-      v-else-if="!open && toastPending.length"
-      class="toast"
+      v-else-if="!open && pending.length"
+      class="toast popover"
       aria-live="polite"
       aria-label="Available updates"
     >
-      <p class="toast-copy">Update available</p>
-      <button type="button" class="action" @click="applyUpdate">
+      <button type="button" class="action sticky" @click="applyUpdate">
         Update
       </button>
+      <VersionRow
+        v-for="group in pending"
+        :key="group.version"
+        :version="group.version"
+        :date="group.date"
+        :summaries="group.summaries"
+      />
     </aside>
   </div>
 </template>
@@ -288,14 +293,14 @@ onUnmounted(() => {
   color: var(--teal-dark);
 }
 
-.diff,
+.history,
 .toast {
   display: flex;
   flex-direction: column;
   gap: 8px;
 }
 
-.diff {
+.history {
   margin-top: 12px;
 }
 
@@ -307,10 +312,8 @@ onUnmounted(() => {
   font-size: 1.05rem;
 }
 
-.toast-copy {
-  margin: 0;
-  font-weight: 700;
-  font-size: 1.05rem;
+.toast.popover {
+  max-height: min(70vh, 560px);
 }
 
 .gm-copy,
@@ -342,9 +345,14 @@ onUnmounted(() => {
 
 .version-actions .action,
 .version-actions .ghost,
-.toast .action,
-.diff .action {
+.toast .action {
   margin-top: 0;
+}
+
+.toast .action.sticky {
+  position: sticky;
+  top: 0;
+  z-index: 1;
 }
 
 .action {

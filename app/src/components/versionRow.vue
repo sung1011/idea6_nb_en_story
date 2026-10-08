@@ -1,18 +1,21 @@
 <script setup lang="ts">
-import type { AppVersion } from '@/types/appVersion'
-
 defineProps<{
-  entry: AppVersion
+  version: string
+  date: string
+  summaries: string[]
 }>()
 </script>
 
 <template>
   <article class="row">
     <p class="meta">
-      <span class="ver">{{ entry.version }}</span>
-      <span class="date">{{ entry.date }}</span>
+      <span class="ver">{{ version }}</span>
+      <span class="date">{{ date }}</span>
     </p>
-    <p class="summary">{{ entry.summary }}</p>
+    <ul v-if="summaries.length > 1" class="bullets">
+      <li v-for="(line, index) in summaries" :key="index">{{ line }}</li>
+    </ul>
+    <p v-else-if="summaries[0]" class="summary">{{ summaries[0] }}</p>
   </article>
 </template>
 
@@ -43,11 +46,20 @@ defineProps<{
   font-weight: 500;
 }
 
-.summary {
+.summary,
+.bullets {
   margin: 0;
   color: var(--ink);
   font-size: 0.95rem;
   line-height: 1.35;
   font-weight: 500;
+}
+
+.bullets {
+  padding-left: 1.15em;
+}
+
+.bullets li + li {
+  margin-top: 4px;
 }
 </style>
