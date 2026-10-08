@@ -57,8 +57,11 @@ npm run gen-tts
 | `app/public/images/flag-in-the-fog/` | 各页软陶风插图（`p01.webp` … `p22.webp`） |
 | `app/public/audio/flag-in-the-fog/` | 预生成朗读（`p01-en.mp3` / `p01-zh.mp3` …）与词级（`word-flag.mp3` …） |
 | `app/public/versions.json` | 版本记录（最新在前）；每次有意义的发布追加一条 |
-| `app/public/pwa192.png` / `pwa512.png` | PWA 安装图标（压缩粉彩 PNG） |
+| `app/assets/icon-master.png` | 软陶风应用图标母版（1024，不进 public） |
+| `app/scripts/makePwaIcons.py` | 从母版生成 `pwa512` / `pwa192` / `appleTouchIcon` / `favicon.png` |
+| `app/public/pwa192.png` / `pwa512.png` | PWA 安装图标（Mia 软陶风） |
 | `app/public/appleTouchIcon.png` | iOS 添加到主屏幕图标 |
+| `app/public/favicon.png` | 站点 favicon（48×48 PNG） |
 | `app/` | Vue 3 + Vite + TypeScript 阅读器（`vite-plugin-pwa`） |
 | `.github/workflows/deployPages.yml` | 推送到 `main` 后构建并发布 GitHub Pages |
 
@@ -74,7 +77,7 @@ npm run gen-tts
 - 更新 toast：每 10 秒带 cache-bust 拉取 `versions.json`，若有比已确认版本更新的条目（最多 10 条），在齿轮下方列出并提供 **Update**（先走与 **Clear cache** 相同的流程，再硬刷新并标记已读；阅读进度保留）
 - PWA：可安装到主屏幕（`standalone`）；预缓存阅读器壳 + 故事 JSON。页/词 mp3 与插图 webp 走运行时 Cache First，不进预缓存。换插图时 bump `vite.config.ts` 里的 `story-image-cache-first` 缓存名，检查更新并重载后会拉新图。`versions.json` 用 Network First，以免挡住更新检测
 
-进度按本故事写入 `localStorage`。每次有意义的发布请在 `app/public/versions.json` 顶部追加 `{ id, version, date, summary }`（新条目用英文）。当前版本 **0.5.5**。
+进度按本故事写入 `localStorage`。每次有意义的发布请在 `app/public/versions.json` 顶部追加 `{ id, version, date, summary }`（新条目用英文）。当前版本 **0.5.6**。
 
 ## 安装到主屏幕（PWA）
 

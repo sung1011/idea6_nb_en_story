@@ -38,7 +38,7 @@ export default defineConfig({
       injectRegister: false,
       filename: 'sw.js',
       manifestFilename: 'manifest.json',
-      includeAssets: ['favicon.svg', 'appleTouchIcon.png', 'pwa192.png', 'pwa512.png'],
+      includeAssets: ['favicon.png', 'appleTouchIcon.png', 'pwa192.png', 'pwa512.png'],
       manifest: {
         id: APP_BASE,
         name: 'Star Word Island',
@@ -63,13 +63,7 @@ export default defineConfig({
             src: 'pwa512.png',
             sizes: '512x512',
             type: 'image/png',
-            purpose: 'any',
-          },
-          {
-            src: 'pwa512.png',
-            sizes: '512x512',
-            type: 'image/png',
-            purpose: 'maskable',
+            purpose: 'any maskable',
           },
         ],
       },
