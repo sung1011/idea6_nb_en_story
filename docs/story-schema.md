@@ -61,7 +61,7 @@ npm run parse-stories
 - 中文音频：`audio/<story-id>/p01-zh.mp3`（Edge TTS `zh-CN-XiaoxiaoNeural`）
 - 词级音频：`audio/<story-id>/word-flag.mp3`（同一 Ana 声线，只读单词）
 
-阅读器以 Vite `base`（`/idea6_nb_en_story/`）拼接这些路径。点喇叭或英文句子播放整句 `audioEn`。点 **中文** 芯片弹出本页译文并播放 `audioZh`。点加粗焦点词、辅词芯片或带 `___` 的句式芯片在词旁弹出释义气泡并读单词。文件缺失或播放失败时回退 Web Speech。默认不自动播放。
+阅读器以 Vite `base`（`/idea6_nb_en_story/`）拼接这些路径。点喇叭或英文句子（含句中加粗焦点词）播放整句 `audioEn`。点英文句子左侧的 **中文** 弹出本页译文并播放 `audioZh`。点辅词芯片或带 `___` 的句式芯片在词旁弹出释义气泡并读单词。文件缺失或播放失败时回退 Web Speech。默认不自动播放。
 
 重新生成音频（在 `app/` 下）：`npm run gen-tts`（需 `edge-tts` 与 `ffmpeg`）。`npm run parse-stories` / `dev` / `build` 会根据 `app/public/images/` 与 `app/public/audio/` 里是否已有文件回填路径。
 
@@ -99,9 +99,9 @@ npm run parse-stories
 当前 Vue 阅读器实际用到：
 
 - 导航与续读：`id`、`pageCount`、`pages[].index`
-- 展示：`en`、`zh`、`pattern`、`focusWord`、`image`（正文显示英文；中文在芯片弹层）
-- 朗读：`audioEn`、`audioZh`（点喇叭或句子其余部分播放整句；缺文件回退系统语音）
-- 点词：`learnItems` / `gloss` / `audioWord`（点加粗词、辅词芯片或句式空位，在词旁弹出释义气泡 + Play again）
+- 展示：`en`、`zh`、`pattern`、`focusWord`、`image`（正文显示英文；**中文** 在句子左侧，点开弹层）
+- 朗读：`audioEn`、`audioZh`（点喇叭或英文句子含加粗词播放整句；缺文件回退系统语音）
+- 点词：`learnItems` / `gloss` / `audioWord`（点辅词芯片或句式空位，在词旁弹出释义气泡 + Play again；句中加粗词只作高亮标记）
 
 `localStorage`（前缀 `idea6_nb_en_story:`，GM Reset all data 会全部清除）：
 
@@ -110,4 +110,4 @@ npm run parse-stories
 
 启动时会删除过期键 `idea6_nb_en_story:displayMode` 与 `idea6_nb_en_story:showZh:<storyId>`，不碰阅读进度。
 
-`app/public/versions.json` 为数组，**最新在前**，每项 `{ id, version, date, summary }`（新条目用英文）。阅读器每 10 秒 cache-bust 拉取；Settings **Version** 页的 **Check for updates** 会立刻再拉一次（`cache: no-store`）。比 `ackedVersion` 更新的条目会出现在齿轮下方的更新 toast（最多 10 条），Version 列表里对应行也会显示 **Update**。点击 **Update** 会写入已确认版本，然后走与 **Clear cache** 相同的流程：注销 Service Worker、删除 Cache Storage（故事图/音频/阅读器壳），再带 `_reload` 硬刷新；清缓存失败时仍会硬刷新。不清除 `localStorage` / 阅读进度（那只在 GM **Reset all data**）。独立的 **Clear cache** 按钮行为不变。
+`app/public/versions.json` 为数组，**最新在前**，每项 `{ id, version, date, summary }`（新条目用英文）。阅读器每 10 秒 cache-bust 拉取；Settings **Version** 页的 **Check for updates** 会立刻再拉一次（`cache: no-store`），无新版本约 2 秒 toast **You're up to date.**，有则 **Update available**。比 `ackedVersion` 更新时，Version 面板顶部（当前版本旁）只显示一个 **Update**，版本行只展示 id/date/summary；齿轮关闭时下方 toast 也是 **Update available** + 一个 **Update**。点击 **Update** 会写入已确认版本，然后走与 **Clear cache** 相同的流程：注销 Service Worker、删除 Cache Storage（故事图/音频/阅读器壳），再带 `_reload` 硬刷新；清缓存失败时仍会硬刷新。不清除 `localStorage` / 阅读进度（那只在 GM **Reset all data**）。独立的 **Clear cache** 先 toast **Cache cleared.** 约 2 秒，再清缓存并硬刷新。

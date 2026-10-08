@@ -3,48 +3,25 @@ import type { AppVersion } from '@/types/appVersion'
 
 defineProps<{
   entry: AppVersion
-  showUpdate?: boolean
-}>()
-
-const emit = defineEmits<{
-  update: []
 }>()
 </script>
 
 <template>
   <article class="row">
-    <div class="copy">
-      <p class="meta">
-        <span class="ver">{{ entry.version }}</span>
-        <span class="date">{{ entry.date }}</span>
-      </p>
-      <p class="summary">{{ entry.summary }}</p>
-    </div>
-    <button
-      v-if="showUpdate"
-      type="button"
-      class="update"
-      @click="emit('update')"
-    >
-      Update
-    </button>
+    <p class="meta">
+      <span class="ver">{{ entry.version }}</span>
+      <span class="date">{{ entry.date }}</span>
+    </p>
+    <p class="summary">{{ entry.summary }}</p>
   </article>
 </template>
 
 <style scoped>
 .row {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
   padding: 10px 12px;
   border-radius: 16px;
   border: 3px solid #2f3f3b;
   background: var(--paper);
-}
-
-.copy {
-  min-width: 0;
 }
 
 .meta {
@@ -72,18 +49,5 @@ const emit = defineEmits<{
   font-size: 0.95rem;
   line-height: 1.35;
   font-weight: 500;
-}
-
-.update {
-  flex-shrink: 0;
-  min-height: 48px;
-  min-width: 72px;
-  padding: 8px 14px;
-  border-radius: 999px;
-  border: 3px solid #2f3f3b;
-  background: var(--teal);
-  color: white;
-  font-size: 1rem;
-  font-weight: 700;
 }
 </style>

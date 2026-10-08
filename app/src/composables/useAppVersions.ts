@@ -59,7 +59,7 @@ export function useAppVersions() {
     }
   }
 
-  async function clearCaches() {
+  async function clearCaches(reloadDelayMs = 0) {
     try {
       if ('serviceWorker' in navigator) {
         const registrations = await navigator.serviceWorker.getRegistrations()
@@ -71,6 +71,9 @@ export function useAppVersions() {
       }
     } catch {
       // still reload so the shell and story assets refetch
+    }
+    if (reloadDelayMs > 0) {
+      await new Promise((resolve) => window.setTimeout(resolve, reloadDelayMs))
     }
     hardReload()
   }

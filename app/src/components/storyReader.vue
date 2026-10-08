@@ -94,7 +94,7 @@ function onPointerDown(event: PointerEvent) {
   const target = event.target as HTMLElement | null
   if (!target) return
   if (target.closest('[data-gloss-panel]')) return
-  if (target.closest('.tap-word, .chip.tap')) return
+  if (target.closest('.chip.tap')) return
   closePanels()
 }
 
@@ -166,28 +166,32 @@ onUnmounted(() => {
     />
 
     <section class="copy">
-      <div class="line en" :class="{ playing: playingLang === 'en' }">
+      <div class="en-row">
         <button
+          v-if="showChinese"
           type="button"
-          class="speaker"
-          :aria-pressed="playingLang === 'en'"
-          aria-label="Play English"
-          @click="playLine('en')"
-        >
-          🔊
-        </button>
-        <p class="line-text" @click="playLine('en')">
-          <template v-for="(seg, i) in enSegments" :key="`${page.id}-${i}`">
-            <button
-              v-if="seg.learnWord && findLearnItem(seg.learnWord)"
-              type="button"
-              class="tap-word"
-              :class="{ hl: seg.highlight, open: isOpenWord(seg.learnWord) }"
-              @click.stop="openGloss(seg.learnWord, $event)"
-            >{{ seg.text }}</button>
-            <span v-else :class="{ hl: seg.highlight }">{{ seg.text }}</span>
-          </template>
-        </p>
+          class="chip zh tap"
+          :class="{ open: openZh }"
+          aria-label="Show Chinese"
+          :aria-expanded="openZh"
+          @click="toggleZh"
+        >中文</button>
+        <div class="line en" :class="{ playing: playingLang === 'en' }">
+          <button
+            type="button"
+            class="speaker"
+            :aria-pressed="playingLang === 'en'"
+            aria-label="Play English"
+            @click="playLine('en')"
+          >
+            🔊
+          </button>
+          <p class="line-text" @click="playLine('en')">
+            <template v-for="(seg, i) in enSegments" :key="`${page.id}-${i}`">
+              <span :class="{ hl: seg.highlight }">{{ seg.text }}</span>
+            </template>
+          </p>
+        </div>
       </div>
       <div class="meta">
         <button
@@ -206,15 +210,6 @@ onUnmounted(() => {
           :class="{ open: isOpenWord(item.word) }"
           @click="openGloss(item.word, $event)"
         >{{ item.word }}</button>
-        <button
-          v-if="showChinese"
-          type="button"
-          class="chip zh tap"
-          :class="{ open: openZh }"
-          aria-label="Show Chinese"
-          :aria-expanded="openZh"
-          @click="toggleZh"
-        >中文</button>
       </div>
     </section>
 
@@ -284,6 +279,23 @@ h1 {
 
 .copy {
   padding: 18px 4px 8px;
+}
+
+.en-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.en-row .chip.zh {
+  flex-shrink: 0;
+  margin-top: 12px;
+}
+
+.en-row .line {
+  flex: 1;
+  min-width: 0;
+  width: auto;
 }
 
 .line {
@@ -359,24 +371,6 @@ button.speaker[aria-pressed='true'] {
   font-weight: 700;
 }
 
-.tap-word {
-  display: inline;
-  padding: 0 1px;
-  border: 0;
-  border-radius: 6px;
-  background: transparent;
-  color: inherit;
-  font: inherit;
-  text-decoration: underline;
-  text-decoration-style: dotted;
-  text-underline-offset: 4px;
-}
-
-.tap-word.hl {
-  text-decoration-thickness: 3px;
-}
-
-.tap-word.open,
 .chip.open {
   background: rgba(224, 106, 78, 0.2);
   box-shadow: 0 0 0 3px rgba(224, 106, 78, 0.28);

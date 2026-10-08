@@ -1,5 +1,29 @@
 [
   {
+    "id": "v0.6.2-toast",
+    "version": "0.6.2",
+    "date": "2026-10-08",
+    "summary": "Check for updates and Clear cache now show a short toast."
+  },
+  {
+    "id": "v0.6.2-update",
+    "version": "0.6.2",
+    "date": "2026-10-08",
+    "summary": "Settings Version now has one Update button for the whole list."
+  },
+  {
+    "id": "v0.6.2-zh",
+    "version": "0.6.2",
+    "date": "2026-10-08",
+    "summary": "The 中文 button now sits to the left of the English sentence."
+  },
+  {
+    "id": "v0.6.2",
+    "version": "0.6.2",
+    "date": "2026-10-08",
+    "summary": "Tapping a bold word in the sentence now reads the whole sentence."
+  },
+  {
     "id": "v0.6.1",
     "version": "0.6.1",
     "date": "2026-10-08",

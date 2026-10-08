@@ -6,10 +6,24 @@ import VersionRow from './versionRow.vue'
 
 type SettingsTab = 'version' | 'gm'
 
+const FLASH_MS = 2000
+
 const open = ref(false)
 const tab = ref<SettingsTab>('version')
 const gmConfirming = ref(false)
+const flash = ref('')
 const { versions, current, pending, refresh, applyUpdate, clearCaches } = useAppVersions()
+
+let flashTimer = 0
+
+function showFlash(message: string) {
+  flash.value = message
+  if (flashTimer) window.clearTimeout(flashTimer)
+  flashTimer = window.setTimeout(() => {
+    flash.value = ''
+    flashTimer = 0
+  }, FLASH_MS)
+}
 
 function toggle() {
   open.value = !open.value
@@ -30,7 +44,16 @@ function onKey(event: KeyboardEvent) {
 
 async function checkUpdate() {
   await refresh()
-  if (pending.value.length) close()
+  if (pending.value.length) {
+    showFlash('Update available')
+    return
+  }
+  showFlash("You're up to date.")
+}
+
+async function onClearCache() {
+  showFlash('Cache cleared.')
+  await clearCaches(FLASH_MS)
 }
 
 function resetLocalState() {
@@ -44,6 +67,7 @@ onMounted(() => {
 
 onUnmounted(() => {
   window.removeEventListener('keydown', onKey)
+  if (flashTimer) window.clearTimeout(flashTimer)
 })
 </script>
 
@@ -102,25 +126,35 @@ onUnmounted(() => {
       </div>
 
       <div v-if="tab === 'version'" class="pane" role="tabpanel">
-        <p class="current">
-          Current version
-          <strong>{{ current?.version || '—' }}</strong>
-        </p>
-        <div class="version-actions">
-          <button type="button" class="action" @click="checkUpdate">
-            Check for updates
-          </button>
-          <button type="button" class="ghost" @click="clearCaches">
-            Clear cache
-          </button>
+        <div class="pane-head">
+          <div class="current-line">
+            <p class="current">
+              Current version
+              <strong>{{ current?.version || '—' }}</strong>
+            </p>
+            <button
+              v-if="pending.length"
+              type="button"
+              class="action update-one"
+              @click="applyUpdate"
+            >
+              Update
+            </button>
+          </div>
+          <div class="version-actions">
+            <button type="button" class="action" @click="checkUpdate">
+              Check for updates
+            </button>
+            <button type="button" class="ghost" @click="onClearCache">
+              Clear cache
+            </button>
+          </div>
         </div>
         <div class="rows">
           <VersionRow
             v-for="entry in versions"
             :key="entry.id"
             :entry="entry"
-            :show-update="pending.some((item) => item.id === entry.id)"
-            @update="applyUpdate"
           />
           <p v-if="!versions.length" class="empty">No version history yet</p>
         </div>
@@ -148,18 +182,22 @@ onUnmounted(() => {
     </section>
 
     <aside
-      v-else-if="pending.length"
+      v-if="flash"
+      class="toast notice"
+      aria-live="polite"
+    >
+      {{ flash }}
+    </aside>
+    <aside
+      v-else-if="!open && pending.length"
       class="toast"
       aria-live="polite"
       aria-label="Available updates"
     >
-      <VersionRow
-        v-for="entry in pending"
-        :key="entry.id"
-        :entry="entry"
-        show-update
-        @update="applyUpdate"
-      />
+      <p class="toast-copy">Update available</p>
+      <button type="button" class="action" @click="applyUpdate">
+        Update
+      </button>
     </aside>
   </div>
 </template>
@@ -238,8 +276,25 @@ onUnmounted(() => {
   box-shadow: 0 2px 0 rgba(47, 63, 59, 0.18);
 }
 
+.pane-head {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  margin: -4px -4px 12px;
+  padding: 4px 4px 8px;
+  background: var(--paper);
+}
+
+.current-line {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
 .current {
-  margin: 0 0 12px;
+  margin: 0;
   font-size: 1.05rem;
   font-weight: 600;
 }
@@ -256,6 +311,20 @@ onUnmounted(() => {
   gap: 8px;
 }
 
+.toast.notice {
+  z-index: 47;
+  width: max-content;
+  max-width: min(360px, calc(100vw - 48px));
+  font-weight: 700;
+  font-size: 1.05rem;
+}
+
+.toast-copy {
+  margin: 0;
+  font-weight: 700;
+  font-size: 1.05rem;
+}
+
 .empty,
 .gm-copy,
 .confirm p {
@@ -269,7 +338,6 @@ onUnmounted(() => {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 8px;
-  margin-bottom: 12px;
 }
 
 .action,
@@ -286,8 +354,16 @@ onUnmounted(() => {
 }
 
 .version-actions .action,
-.version-actions .ghost {
+.version-actions .ghost,
+.toast .action,
+.update-one {
   margin-top: 0;
+}
+
+.update-one {
+  width: auto;
+  min-width: 88px;
+  flex-shrink: 0;
 }
 
 .action {
