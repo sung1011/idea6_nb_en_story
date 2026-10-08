@@ -25,8 +25,7 @@
       "learnItems": [],
       "image": "images/spot-the-cub/p01.webp",
       "audioEn": "audio/spot-the-cub/p01-en.mp3",
-      "audioZh": "audio/spot-the-cub/p01-zh.mp3",
-      "audioWord": null
+      "audioZh": "audio/spot-the-cub/p01-zh.mp3"
     },
     {
       "id": "P02",
@@ -43,8 +42,7 @@
       "learnItems": [],
       "image": "images/spot-the-cub/p02.webp",
       "audioEn": "audio/spot-the-cub/p02-en.mp3",
-      "audioZh": "audio/spot-the-cub/p02-zh.mp3",
-      "audioWord": null
+      "audioZh": "audio/spot-the-cub/p02-zh.mp3"
     },
     {
       "id": "P03",
@@ -65,20 +63,17 @@
         {
           "word": "cub",
           "gloss": "小豹子",
-          "audioWord": "audio/spot-the-cub/word-cub.mp3",
           "image": "images/spot-the-cub/words/cub.webp"
         },
         {
           "word": "log",
           "gloss": "圆木",
-          "audioWord": "audio/spot-the-cub/word-log.mp3",
           "image": "images/spot-the-cub/words/log.webp"
         }
       ],
       "image": "images/spot-the-cub/p03.webp",
       "audioEn": "audio/spot-the-cub/p03-en.mp3",
-      "audioZh": "audio/spot-the-cub/p03-zh.mp3",
-      "audioWord": "audio/spot-the-cub/word-cub.mp3"
+      "audioZh": "audio/spot-the-cub/p03-zh.mp3"
     },
     {
       "id": "P04",
@@ -98,14 +93,12 @@
         {
           "word": "wet",
           "gloss": "湿的",
-          "audioWord": "audio/spot-the-cub/word-wet.mp3",
           "image": "images/spot-the-cub/words/wet.webp"
         }
       ],
       "image": "images/spot-the-cub/p04.webp",
       "audioEn": "audio/spot-the-cub/p04-en.mp3",
-      "audioZh": "audio/spot-the-cub/p04-zh.mp3",
-      "audioWord": "audio/spot-the-cub/word-wet.mp3"
+      "audioZh": "audio/spot-the-cub/p04-zh.mp3"
     },
     {
       "id": "P05",
@@ -125,14 +118,12 @@
         {
           "word": "rug",
           "gloss": "小毯子",
-          "audioWord": "audio/spot-the-cub/word-rug.mp3",
           "image": "images/spot-the-cub/words/rug.webp"
         }
       ],
       "image": "images/spot-the-cub/p05.webp",
       "audioEn": "audio/spot-the-cub/p05-en.mp3",
-      "audioZh": "audio/spot-the-cub/p05-zh.mp3",
-      "audioWord": "audio/spot-the-cub/word-rug.mp3"
+      "audioZh": "audio/spot-the-cub/p05-zh.mp3"
     },
     {
       "id": "P06",
@@ -149,8 +140,7 @@
       "learnItems": [],
       "image": "images/spot-the-cub/p06.webp",
       "audioEn": "audio/spot-the-cub/p06-en.mp3",
-      "audioZh": "audio/spot-the-cub/p06-zh.mp3",
-      "audioWord": null
+      "audioZh": "audio/spot-the-cub/p06-zh.mp3"
     },
     {
       "id": "P07",
@@ -171,20 +161,17 @@
         {
           "word": "spots",
           "gloss": "斑点",
-          "audioWord": "audio/spot-the-cub/word-spots.mp3",
           "image": "images/spot-the-cub/words/spots.webp"
         },
         {
           "word": "nap",
           "gloss": "小睡",
-          "audioWord": "audio/spot-the-cub/word-nap.mp3",
           "image": "images/spot-the-cub/words/nap.webp"
         }
       ],
       "image": "images/spot-the-cub/p07.webp",
       "audioEn": "audio/spot-the-cub/p07-en.mp3",
-      "audioZh": "audio/spot-the-cub/p07-zh.mp3",
-      "audioWord": "audio/spot-the-cub/word-spots.mp3"
+      "audioZh": "audio/spot-the-cub/p07-zh.mp3"
     },
     {
       "id": "P08",
@@ -204,14 +191,12 @@
         {
           "word": "mom",
           "gloss": "妈妈",
-          "audioWord": "audio/spot-the-cub/word-mom.mp3",
           "image": "images/spot-the-cub/words/mom.webp"
         }
       ],
       "image": "images/spot-the-cub/p08.webp",
       "audioEn": "audio/spot-the-cub/p08-en.mp3",
-      "audioZh": "audio/spot-the-cub/p08-zh.mp3",
-      "audioWord": "audio/spot-the-cub/word-mom.mp3"
+      "audioZh": "audio/spot-the-cub/p08-zh.mp3"
     },
     {
       "id": "P09",
@@ -228,8 +213,7 @@
       "learnItems": [],
       "image": "images/spot-the-cub/p09.webp",
       "audioEn": "audio/spot-the-cub/p09-en.mp3",
-      "audioZh": "audio/spot-the-cub/p09-zh.mp3",
-      "audioWord": null
+      "audioZh": "audio/spot-the-cub/p09-zh.mp3"
     },
     {
       "id": "P10",
@@ -249,14 +233,12 @@
         {
           "word": "bug",
           "gloss": "瓢虫",
-          "audioWord": "audio/spot-the-cub/word-bug.mp3",
           "image": "images/spot-the-cub/words/bug.webp"
         }
       ],
       "image": "images/spot-the-cub/p10.webp",
       "audioEn": "audio/spot-the-cub/p10-en.mp3",
-      "audioZh": "audio/spot-the-cub/p10-zh.mp3",
-      "audioWord": "audio/spot-the-cub/word-bug.mp3"
+      "audioZh": "audio/spot-the-cub/p10-zh.mp3"
     },
     {
       "id": "P11",
@@ -273,8 +255,7 @@
       "learnItems": [],
       "image": "images/spot-the-cub/p11.webp",
       "audioEn": "audio/spot-the-cub/p11-en.mp3",
-      "audioZh": "audio/spot-the-cub/p11-zh.mp3",
-      "audioWord": null
+      "audioZh": "audio/spot-the-cub/p11-zh.mp3"
     },
     {
       "id": "P12",
@@ -295,20 +276,17 @@
         {
           "word": "mug",
           "gloss": "杯子",
-          "audioWord": "audio/spot-the-cub/word-mug.mp3",
           "image": "images/spot-the-cub/words/mug.webp"
         },
         {
           "word": "dots",
           "gloss": "圆点",
-          "audioWord": "audio/spot-the-cub/word-dots.mp3",
           "image": "images/spot-the-cub/words/dots.webp"
         }
       ],
       "image": "images/spot-the-cub/p12.webp",
       "audioEn": "audio/spot-the-cub/p12-en.mp3",
-      "audioZh": "audio/spot-the-cub/p12-zh.mp3",
-      "audioWord": "audio/spot-the-cub/word-mug.mp3"
+      "audioZh": "audio/spot-the-cub/p12-zh.mp3"
     },
     {
       "id": "P13",
@@ -325,8 +303,7 @@
       "learnItems": [],
       "image": "images/spot-the-cub/p13.webp",
       "audioEn": "audio/spot-the-cub/p13-en.mp3",
-      "audioZh": "audio/spot-the-cub/p13-zh.mp3",
-      "audioWord": null
+      "audioZh": "audio/spot-the-cub/p13-zh.mp3"
     },
     {
       "id": "P14",
@@ -346,14 +323,12 @@
         {
           "word": "egg",
           "gloss": "蛋",
-          "audioWord": "audio/spot-the-cub/word-egg.mp3",
           "image": "images/spot-the-cub/words/egg.webp"
         }
       ],
       "image": "images/spot-the-cub/p14.webp",
       "audioEn": "audio/spot-the-cub/p14-en.mp3",
-      "audioZh": "audio/spot-the-cub/p14-zh.mp3",
-      "audioWord": "audio/spot-the-cub/word-egg.mp3"
+      "audioZh": "audio/spot-the-cub/p14-zh.mp3"
     },
     {
       "id": "P15",
@@ -374,20 +349,17 @@
         {
           "word": "fish",
           "gloss": "鱼",
-          "audioWord": "audio/spot-the-cub/word-fish.mp3",
           "image": "images/spot-the-cub/words/fish.webp"
         },
         {
           "word": "river",
           "gloss": "小河",
-          "audioWord": "audio/spot-the-cub/word-river.mp3",
           "image": "images/spot-the-cub/words/river.webp"
         }
       ],
       "image": "images/spot-the-cub/p15.webp",
       "audioEn": "audio/spot-the-cub/p15-en.mp3",
-      "audioZh": "audio/spot-the-cub/p15-zh.mp3",
-      "audioWord": "audio/spot-the-cub/word-fish.mp3"
+      "audioZh": "audio/spot-the-cub/p15-zh.mp3"
     },
     {
       "id": "P16",
@@ -407,14 +379,12 @@
         {
           "word": "fence",
           "gloss": "篱笆",
-          "audioWord": "audio/spot-the-cub/word-fence.mp3",
           "image": "images/spot-the-cub/words/fence.webp"
         }
       ],
       "image": "images/spot-the-cub/p16.webp",
       "audioEn": "audio/spot-the-cub/p16-en.mp3",
-      "audioZh": "audio/spot-the-cub/p16-zh.mp3",
-      "audioWord": "audio/spot-the-cub/word-fence.mp3"
+      "audioZh": "audio/spot-the-cub/p16-zh.mp3"
     },
     {
       "id": "P17",
@@ -431,8 +401,7 @@
       "learnItems": [],
       "image": "images/spot-the-cub/p17.webp",
       "audioEn": "audio/spot-the-cub/p17-en.mp3",
-      "audioZh": "audio/spot-the-cub/p17-zh.mp3",
-      "audioWord": null
+      "audioZh": "audio/spot-the-cub/p17-zh.mp3"
     },
     {
       "id": "P18",
@@ -449,8 +418,7 @@
       "learnItems": [],
       "image": "images/spot-the-cub/p18.webp",
       "audioEn": "audio/spot-the-cub/p18-en.mp3",
-      "audioZh": "audio/spot-the-cub/p18-zh.mp3",
-      "audioWord": null
+      "audioZh": "audio/spot-the-cub/p18-zh.mp3"
     },
     {
       "id": "P19",
@@ -467,8 +435,7 @@
       "learnItems": [],
       "image": "images/spot-the-cub/p19.webp",
       "audioEn": "audio/spot-the-cub/p19-en.mp3",
-      "audioZh": "audio/spot-the-cub/p19-zh.mp3",
-      "audioWord": null
+      "audioZh": "audio/spot-the-cub/p19-zh.mp3"
     },
     {
       "id": "P20",
@@ -485,8 +452,7 @@
       "learnItems": [],
       "image": "images/spot-the-cub/p20.webp",
       "audioEn": "audio/spot-the-cub/p20-en.mp3",
-      "audioZh": "audio/spot-the-cub/p20-zh.mp3",
-      "audioWord": null
+      "audioZh": "audio/spot-the-cub/p20-zh.mp3"
     },
     {
       "id": "P21",
@@ -503,8 +469,7 @@
       "learnItems": [],
       "image": "images/spot-the-cub/p21.webp",
       "audioEn": "audio/spot-the-cub/p21-en.mp3",
-      "audioZh": "audio/spot-the-cub/p21-zh.mp3",
-      "audioWord": null
+      "audioZh": "audio/spot-the-cub/p21-zh.mp3"
     },
     {
       "id": "P22",
@@ -521,8 +486,7 @@
       "learnItems": [],
       "image": "images/spot-the-cub/p22.webp",
       "audioEn": "audio/spot-the-cub/p22-en.mp3",
-      "audioZh": "audio/spot-the-cub/p22-zh.mp3",
-      "audioWord": null
+      "audioZh": "audio/spot-the-cub/p22-zh.mp3"
     },
     {
       "id": "P23",
@@ -543,20 +507,17 @@
         {
           "word": "hug",
           "gloss": "拥抱",
-          "audioWord": "audio/spot-the-cub/word-hug.mp3",
           "image": "images/spot-the-cub/words/hug.webp"
         },
         {
           "word": "glad",
           "gloss": "开心",
-          "audioWord": "audio/spot-the-cub/word-glad.mp3",
           "image": "images/spot-the-cub/words/glad.webp"
         }
       ],
       "image": "images/spot-the-cub/p23.webp",
       "audioEn": "audio/spot-the-cub/p23-en.mp3",
-      "audioZh": "audio/spot-the-cub/p23-zh.mp3",
-      "audioWord": "audio/spot-the-cub/word-hug.mp3"
+      "audioZh": "audio/spot-the-cub/p23-zh.mp3"
     },
     {
       "id": "P24",
@@ -573,8 +534,7 @@
       "learnItems": [],
       "image": "images/spot-the-cub/p24.webp",
       "audioEn": "audio/spot-the-cub/p24-en.mp3",
-      "audioZh": "audio/spot-the-cub/p24-zh.mp3",
-      "audioWord": null
+      "audioZh": "audio/spot-the-cub/p24-zh.mp3"
     }
   ]
 }

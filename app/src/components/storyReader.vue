@@ -31,7 +31,7 @@ useStoryPreload(toRef(props, 'story'), pageIndex)
 const page = computed(() => {
   return props.story.pages.find((item) => item.index === pageIndex.value) ?? props.story.pages[0]
 })
-const { playingLang, playingWord, playingRate, playLine, playWord, stop } = usePageSpeech(page)
+const { playingLang, playingWord, playingRate, playLine, playWord, playDevice, stop } = usePageSpeech(page)
 const { cancelAuto } = useAutoRead(page, onSummary, ready, playLine, stop)
 const { rate: slowRate } = useSlowSpeed()
 const slowPlaying = computed(() => playingLang.value === 'en' && playingRate.value < 1)
@@ -57,11 +57,18 @@ const uniquePatterns = computed(() => {
   const patterns: string[] = []
   for (const storyPage of props.story.pages) {
     const pattern = storyPage.pattern?.trim()
-    if (!pattern || seen.has(pattern)) continue
+    if (!pattern || pattern === '—' || seen.has(pattern)) continue
     seen.add(pattern)
     patterns.push(pattern)
   }
   return patterns
+})
+const phraseCatalog = ref<Record<string, string[]>>({})
+const summaryPhrases = computed(() => {
+  const fromFile = phraseCatalog.value[props.story.id] ?? []
+  const seen = new Set(fromFile)
+  const extra = uniquePatterns.value.filter((item) => !seen.has(item))
+  return fromFile.length ? [...fromFile, ...extra] : uniquePatterns.value
 })
 const canPrev = computed(() => onSummary.value || pageIndex.value > 1)
 const canNext = computed(() => !onSummary.value)
@@ -83,7 +90,7 @@ function openGloss(word: string, event: Event) {
   const target = event.currentTarget as HTMLElement | null
   if (target) glossAnchor.value = target.getBoundingClientRect()
   openLearn.value = item
-  playWord(item.word, item.audioWord)
+  playWord(item.word)
 }
 
 function openSummaryWord(item: LearnItem, event: Event) {
@@ -130,10 +137,23 @@ function toggleZh(event: Event) {
   playLine('zh')
 }
 
-function replayPanel() {
+function playPhrase(text: string) {
+  const spoken = String(text || '').trim()
+  if (!spoken || spoken === '—') return
+  cancelAuto()
+  playWord(spoken)
+}
+
+function speakPanelEn() {
+  if (!openLearn.value) return
+  cancelAuto()
+  playWord(openLearn.value.word)
+}
+
+function speakPanelZh() {
   cancelAuto()
   if (openLearn.value) {
-    playWord(openLearn.value.word, openLearn.value.audioWord)
+    playDevice(openLearn.value.gloss, 'zh')
     return
   }
   if (openZh.value) playLine('zh')
@@ -221,6 +241,14 @@ onMounted(() => {
   window.addEventListener('pointerdown', onPointerDown)
   window.addEventListener('scroll', onViewportChange, true)
   window.addEventListener('resize', onViewportChange)
+  void fetch(`${import.meta.env.BASE_URL}phrases.json`)
+    .then((response) => (response.ok ? response.json() : null))
+    .then((data) => {
+      if (data && typeof data === 'object') phraseCatalog.value = data as Record<string, string[]>
+    })
+    .catch(() => {
+      /* keep page patterns */
+    })
 })
 
 onUnmounted(() => {
@@ -314,7 +342,13 @@ onUnmounted(() => {
           </div>
         </div>
         <div class="meta">
-          <p v-if="page.pattern && page.pattern !== '—'" class="chip pattern">{{ page.pattern }}</p>
+          <button
+            v-if="page.pattern && page.pattern !== '—'"
+            type="button"
+            class="chip pattern tap"
+            :aria-label="`Play phrase ${page.pattern}`"
+            @click="playPhrase(page.pattern)"
+          >{{ page.pattern }}</button>
           <button
             v-for="item in learnItems"
             :key="`${page.id}-${item.word}`"
@@ -330,9 +364,10 @@ onUnmounted(() => {
     <StorySummary
       v-else
       :words="uniqueWords"
-      :patterns="uniquePatterns"
+      :patterns="summaryPhrases"
       :open-word="openLearn?.word"
       @open-word="openSummaryWord"
+      @play-phrase="playPhrase"
     />
 
     <nav class="nav" aria-label="Page navigation">
@@ -355,10 +390,12 @@ onUnmounted(() => {
       :heading="openLearn?.word"
       :body="openLearn ? openLearn.gloss : (page.zh || '')"
       :image="openLearn?.image"
-      :playing="openLearn ? Boolean(playingWord) : playingLang === 'zh'"
+      :playing-en="Boolean(playingWord)"
+      :playing-zh="playingLang === 'zh'"
       :anchor="glossAnchor"
       :ariaLabel="openLearn ? 'Word meaning' : 'Chinese translation'"
-      @replay="replayPanel"
+      @speak-en="speakPanelEn"
+      @chinese="speakPanelZh"
       @close="openLearn ? closeGloss() : closeZh()"
     />
   </article>
@@ -572,8 +609,7 @@ button.speaker[aria-pressed='true'] {
 
 .chip.pattern {
   margin: 0;
-  cursor: default;
-  pointer-events: none;
+  cursor: pointer;
 }
 
 .chip:disabled {

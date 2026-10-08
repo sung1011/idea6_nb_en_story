@@ -7,9 +7,9 @@ const props = defineProps<{
   heading?: string
   body: string
   image?: string | null
-  playing: boolean
+  playingEn?: boolean
+  playingZh?: boolean
   anchor: GlossAnchor
-  replayLabel?: string
   ariaLabel?: string
 }>()
 
@@ -21,7 +21,8 @@ const imageSrc = computed(() => {
 })
 
 const emit = defineEmits<{
-  replay: []
+  chinese: []
+  speakEn: []
   close: []
 }>()
 
@@ -108,15 +109,32 @@ onMounted(async () => {
       <div v-if="imageSrc" class="art">
         <img :src="imageSrc" :alt="heading || body" @load="positionPanel" />
       </div>
-      <p v-if="heading" class="word">{{ heading }}</p>
+      <button
+        v-if="heading"
+        type="button"
+        class="word"
+        :aria-pressed="playingEn"
+        :aria-label="`Play ${heading}`"
+        @click="emit('speakEn')"
+      >
+        {{ heading }}
+      </button>
       <p class="meaning" :class="{ solo: !heading }">{{ body }}</p>
       <button
         type="button"
-        class="replay"
-        :aria-pressed="playing"
-        @click="emit('replay')"
+        class="chip zh tap side-chip"
+        :class="{ open: playingZh }"
+        aria-label="Play Chinese"
+        :aria-pressed="playingZh"
+        @click="emit('chinese')"
       >
-        🔊 {{ replayLabel || 'Play again' }}
+        <svg class="side-icon icon-bubble" viewBox="0 0 24 24" aria-hidden="true">
+          <path
+            fill="currentColor"
+            d="M4.4 3.8h15.2A2.8 2.8 0 0 1 22.4 6.6v8.1a2.8 2.8 0 0 1-2.8 2.8h-7.15l-5.35 4.05v-4.05H4.4A2.8 2.8 0 0 1 1.6 14.7V6.6A2.8 2.8 0 0 1 4.4 3.8Z"
+          />
+        </svg>
+        <span>CN</span>
       </button>
       <span class="arrow" aria-hidden="true" />
     </aside>
@@ -158,11 +176,25 @@ onMounted(async () => {
 }
 
 .word {
+  display: block;
+  width: fit-content;
+  max-width: 100%;
   margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
   color: #b4452e;
+  font-family: inherit;
   font-size: 1.35rem;
   font-weight: 800;
   line-height: 1.2;
+  text-align: left;
+  cursor: pointer;
+}
+
+.word[aria-pressed='true'] {
+  text-decoration: underline;
+  text-underline-offset: 3px;
 }
 
 .meaning {
@@ -177,25 +209,46 @@ onMounted(async () => {
   margin-top: 0;
 }
 
-.replay,
-.close {
-  border: 3px solid #2f3f3b;
+.chip {
+  padding: 8px 12px;
+  border: 0;
+  border-radius: 999px;
+  background: rgba(31, 138, 128, 0.12);
+  color: var(--teal-dark);
   font-family: inherit;
+  font-size: 0.92rem;
   font-weight: 700;
 }
 
-.replay {
-  min-height: 44px;
-  min-width: 44px;
-  padding: 8px 14px;
-  border-radius: 999px;
-  background: var(--coral);
-  color: white;
-  font-size: 1rem;
+.chip.tap {
+  min-height: 40px;
 }
 
-.replay[aria-pressed='true'] {
-  box-shadow: 0 3px 0 #2f3f3b;
+.chip.zh.open,
+.chip.zh[aria-pressed='true'] {
+  background: rgba(31, 138, 128, 0.28);
+  box-shadow: 0 0 0 3px rgba(31, 138, 128, 0.28);
+}
+
+.side-chip {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  width: 44px;
+  min-width: 44px;
+  min-height: 48px;
+  padding: 6px 4px 5px;
+  font-size: 0.7rem;
+  line-height: 1;
+  letter-spacing: 0.02em;
+}
+
+.side-icon {
+  display: block;
+  width: 16px;
+  height: 16px;
 }
 
 .close {
@@ -208,10 +261,13 @@ onMounted(async () => {
   width: 44px;
   height: 44px;
   padding: 0;
+  border: 3px solid #2f3f3b;
   border-radius: 14px;
   background: var(--paper);
   color: var(--ink);
+  font-family: inherit;
   font-size: 1.15rem;
+  font-weight: 700;
   line-height: 1;
 }
 

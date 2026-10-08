@@ -70,7 +70,6 @@ export function parseStoryMarkdown(md, slug, source) {
       image: existingPageImage(slug, index),
       audioEn: existingAudio(slug, id, 'en'),
       audioZh: existingAudio(slug, id, 'zh'),
-      audioWord: primary?.audioWord ?? null,
     })
   }
 
@@ -98,15 +97,6 @@ function stripLabel(text, label) {
 /** @param {string} slug @param {string} pageId @param {'en' | 'zh'} lang */
 export function pageAudioRel(slug, pageId, lang) {
   return `audio/${slug}/${String(pageId).toLowerCase()}-${lang}.mp3`
-}
-
-/** @param {string} slug @param {string} word */
-export function wordAudioRel(slug, word) {
-  const key = String(word ?? '')
-    .toLowerCase()
-    .replace(/[^a-z0-9]+/g, '-')
-    .replace(/^-|-$/g, '')
-  return key ? `audio/${slug}/word-${key}.mp3` : ''
 }
 
 /**
@@ -213,12 +203,6 @@ function existingAudio(slug, pageId, lang) {
 }
 
 /** @param {string} slug @param {string} word */
-function existingWordAudio(slug, word) {
-  const rel = wordAudioRel(slug, word)
-  return rel ? existingRel(rel) : null
-}
-
-/** @param {string} slug @param {string} word */
 function existingWordImage(slug, word) {
   const key = String(word ?? '')
     .toLowerCase()
@@ -240,10 +224,10 @@ function applyExistingMedia(story) {
     page.audioEn = existingAudio(slug, page.id, 'en')
     page.audioZh = existingAudio(slug, page.id, 'zh')
     for (const item of page.learnItems ?? []) {
-      item.audioWord = existingWordAudio(slug, item.word)
       item.image = existingWordImage(slug, item.word)
+      delete item.audioWord
     }
-    page.audioWord = page.learnItems?.[0]?.audioWord ?? existingWordAudio(slug, page.focusWord)
+    delete page.audioWord
   }
 }
 
@@ -291,7 +275,6 @@ function buildLearnItems({ slug, highlights, focusWord, focusRaw, knowledge, exp
       return {
         word,
         gloss,
-        audioWord: existingWordAudio(slug, word),
         image: existingWordImage(slug, word),
       }
     })

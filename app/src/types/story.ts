@@ -1,7 +1,6 @@
 export interface LearnItem {
   word: string
   gloss: string
-  audioWord: string | null
   image: string | null
 }
 
@@ -21,7 +20,6 @@ export interface StoryPage {
   image: string | null
   audioEn: string | null
   audioZh: string | null
-  audioWord: string | null
 }
 
 export interface Story {

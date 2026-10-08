@@ -37,9 +37,7 @@ function pageLookaheadUrls(page: StoryPage): string[] {
 
 function pageWarmUrls(page: StoryPage): string[] {
   const urls = [assetUrl(page.image), assetUrl(page.audioEn), assetUrl(page.audioZh)]
-  for (const item of page.learnItems ?? []) {
-    urls.push(assetUrl(item.image), assetUrl(item.audioWord))
-  }
+  for (const item of page.learnItems ?? []) urls.push(assetUrl(item.image))
   return uniqueUrls(urls)
 }
 

@@ -48,21 +48,20 @@ npm run parse-stories
 | `knowledge` | `string` | 否 | 知识点 |
 | `gloss` | `string` | 否 | 本页主焦点词的中文短义。优先用源稿 `释义:`，否则从辅词括注 / 知识点 / 正文中文推导 |
 | `highlights` | `string[]` | 否 | 从 `en` 里 `**…**` 抽出的词 |
-| `learnItems` | `LearnItem[]` | 否 | 本页可点学的词（加粗词 + 辅词），每项 `{ word, gloss, audioWord, image }` |
+| `learnItems` | `LearnItem[]` | 否 | 本页可点学的词（加粗词 + 辅词），每项 `{ word, gloss, image }` |
 | `image` | `string \| null` | 否 | 插图相对 URL。仓库内有 `images/<story-id>/pNN.webp`（或 png/jpg）时写入路径；否则为 `null`，阅读器回退 16:9 软陶风 SVG 占位。正式画稿必须压缩后再入库，不要提交未压缩原图 |
 | `audioEn` | `string \| null` | 否 | 英文朗读音频相对 URL。仓库内有对应 mp3 时写入路径，否则为 `null` |
 | `audioZh` | `string \| null` | 否 | 中文朗读音频相对 URL。同上 |
-| `audioWord` | `string \| null` | 否 | 主焦点词的词级英文 mp3。仓库内有对应文件时写入路径，否则为 `null` |
 
 相对 URL 约定：
 
 - 插图：`images/<story-id>/p01.webp`（Flag in the Fog 22 页、Spot the Cub 24 页均已接入；缺文件时为 `null`）
 - 英文音频：`audio/<story-id>/p01-en.mp3`（Edge TTS `en-US-AriaNeural`，语速 `-15%`）
 - 中文音频：`audio/<story-id>/p01-zh.mp3`（Edge TTS `zh-CN-XiaoxiaoNeural`）
-- 词级音频：`audio/<story-id>/word-flag.mp3`（同一 Aria 声线，只读单词）
 - 词图：`images/<story-id>/words/map.webp`（有文件时写入 `learnItems[].image`）
+- 单词和句式不写 mp3：点词 / 词卡 / 句式芯片用系统 `speechSynthesis`（英文 `en-US` 默认声，词卡 **CN** 用 `zh-CN` 默认声）。句式列表见 `uploads/phrases.json` / `app/public/phrases.json`
 
-阅读器以 Vite `base`（`/idea6_nb_en_story/`）拼接这些路径。打开故事页（翻页、换故事、续读）时自动先播 `audioEn`，约 0.5 秒后再播 `audioZh`（正常语速）。Settings → **General** 的 **Auto read** 默认开。点喇叭或英文句子（含句中加粗焦点词）播放整句 `audioEn`。点英文句子左侧的 **CN** 弹出本页译文并播放 `audioZh`。点 Slow、单词或句子会立刻停掉自动队列。点辅词芯片在词旁弹出释义气泡（词图 + 短义 + Play again）并读单词。主练句式只展示、不可点。总结页和没有音频的页不自动读。文件缺失时自动朗读静默跳过；手动点读失败时回退 Web Speech。浏览器拦截自动播放时，等第一次点击后再读当前页。
+阅读器以 Vite `base`（`/idea6_nb_en_story/`）拼接这些路径。打开故事页（翻页、换故事、续读）时自动先播 `audioEn`，约 0.5 秒后再播 `audioZh`（正常语速）。Settings → **General** 的 **Auto read** 默认开。点喇叭或英文句子（含句中加粗焦点词）播放整句 `audioEn`。点英文句子左侧的 **CN** 弹出本页译文并播放 `audioZh`。点 Slow、单词或句子会立刻停掉自动队列。点辅词芯片弹出释义气泡（词图 + 短义 + **CN**），打开时用设备英文声读单词，点英文词可再读，点 **CN** 用设备中文声读释义。主练句式可点。总结页 **Sentences** 用 `phrases.json` 列表，可点朗读。总结页和没有音频的页不自动读。页级 mp3 缺失时自动朗读静默跳过；浏览器拦截自动播放时，等第一次点击后再读当前页。
 
 重新生成音频（在 `app/` 下）：`npm run gen-tts`（需 `edge-tts` 与 `ffmpeg`）。`npm run parse-stories` / `dev` / `build` 会根据 `app/public/images/` 与 `app/public/audio/` 里是否已有文件回填路径。
 
@@ -102,7 +101,7 @@ npm run parse-stories
 - 导航与续读：`id`、`pageCount`、`pages[].index`
 - 展示：`en`、`zh`、`pattern`、`focusWord`、`image`（正文显示英文；**CN** 在句子左侧，点开弹层）
 - 朗读：`audioEn`、`audioZh`（打开页自动英→中；点喇叭或英文句子含加粗词播放整句；缺文件回退系统语音）
-- 点词：`learnItems` / `gloss` / `audioWord` / `image`（点辅词芯片弹出词图 + 释义 + Play again；句中加粗词只作高亮标记；句式只展示）
+- 点词：`learnItems` / `gloss` / `image`（点辅词芯片弹出词图 + 释义 + **CN**；句中加粗词只作高亮标记；句式可点，走设备英文声）
 - 总结页：跨页去重 `learnItems`（首次出现顺序）与去重 `pattern`；点词卡复用同一释义气泡；**Read again** 回第 1 页，进度仍夹紧在 `1..pageCount`
 
 `localStorage`（前缀 `idea6_nb_en_story:`，GM Reset all data 会全部清除）：

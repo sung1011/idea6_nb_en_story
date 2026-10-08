@@ -97,6 +97,7 @@ function systemSpeak(
   token: number,
   onDone: () => void,
   rate = 1,
+  device = false,
 ): void {
   if (!window.speechSynthesis || seq !== token) {
     onDone()
@@ -105,12 +106,21 @@ function systemSpeak(
   window.speechSynthesis.cancel()
   const utter = new SpeechSynthesisUtterance(text)
   utter.lang = lang === 'zh' ? 'zh-CN' : 'en-US'
-  const base = lang === 'zh' ? 1 : NORMAL_EN_SPEECH_RATE
-  utter.rate = Math.max(MIN_SPEECH_RATE, base * rate)
-  utter.pitch = 1.12
-  if (lang === 'zh') {
-    const voice = pickZhVoice()
-    if (voice) utter.voice = voice
+  if (device) {
+    utter.rate = Math.max(MIN_SPEECH_RATE, rate)
+    utter.pitch = 1
+    if (lang === 'zh') {
+      const voice = pickZhVoice()
+      if (voice) utter.voice = voice
+    }
+  } else {
+    const base = lang === 'zh' ? 1 : NORMAL_EN_SPEECH_RATE
+    utter.rate = Math.max(MIN_SPEECH_RATE, base * rate)
+    utter.pitch = 1.12
+    if (lang === 'zh') {
+      const voice = pickZhVoice()
+      if (voice) utter.voice = voice
+    }
   }
   const finish = () => {
     if (seq !== token) return
@@ -238,21 +248,20 @@ export function usePageSpeech(page: Ref<StoryPage | undefined>) {
     systemSpeak(text, lang, token, done, speed)
   }
 
-  function playWord(word: string, file?: string | null) {
-    const text = plainSpeakText(word)
-    if (!text) return
+  function playWord(word: string) {
+    playDevice(word, 'en')
+  }
+
+  function playDevice(text: string, lang: SpeechLang) {
+    const spoken = plainSpeakText(text)
+    if (!spoken) return
     stopShared()
     const token = seq
-    playingLang.value = null
-    playingWord.value = text
+    playingLang.value = lang === 'zh' ? 'zh' : null
+    playingWord.value = lang === 'en' ? spoken : null
     playingRate.value = 1
     const done = () => clearPlaying(token)
-    const clip = String(file || '').trim()
-    if (clip) {
-      playFile(clipUrl(clip), text, 'en', token, done, 1)
-      return
-    }
-    systemSpeak(text, 'en', token, done, 1)
+    systemSpeak(spoken, lang, token, done, 1, true)
   }
 
   onMounted(() => {
@@ -280,6 +289,7 @@ export function usePageSpeech(page: Ref<StoryPage | undefined>) {
     playingRate,
     playLine,
     playWord,
+    playDevice,
     stop,
   }
 }

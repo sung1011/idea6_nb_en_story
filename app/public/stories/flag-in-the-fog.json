@@ -28,14 +28,12 @@
         {
           "word": "map",
           "gloss": "地图",
-          "audioWord": "audio/flag-in-the-fog/word-map.mp3",
           "image": "images/flag-in-the-fog/words/map.webp"
         }
       ],
       "image": "images/flag-in-the-fog/p01.webp",
       "audioEn": "audio/flag-in-the-fog/p01-en.mp3",
-      "audioZh": "audio/flag-in-the-fog/p01-zh.mp3",
-      "audioWord": "audio/flag-in-the-fog/word-map.mp3"
+      "audioZh": "audio/flag-in-the-fog/p01-zh.mp3"
     },
     {
       "id": "P02",
@@ -55,14 +53,12 @@
         {
           "word": "flag",
           "gloss": "旗子",
-          "audioWord": "audio/flag-in-the-fog/word-flag.mp3",
           "image": "images/flag-in-the-fog/words/flag.webp"
         }
       ],
       "image": "images/flag-in-the-fog/p02.webp",
       "audioEn": "audio/flag-in-the-fog/p02-en.mp3",
-      "audioZh": "audio/flag-in-the-fog/p02-zh.mp3",
-      "audioWord": "audio/flag-in-the-fog/word-flag.mp3"
+      "audioZh": "audio/flag-in-the-fog/p02-zh.mp3"
     },
     {
       "id": "P03",
@@ -82,14 +78,12 @@
         {
           "word": "fog",
           "gloss": "雾",
-          "audioWord": "audio/flag-in-the-fog/word-fog.mp3",
           "image": "images/flag-in-the-fog/words/fog.webp"
         }
       ],
       "image": "images/flag-in-the-fog/p03.webp",
       "audioEn": "audio/flag-in-the-fog/p03-en.mp3",
-      "audioZh": "audio/flag-in-the-fog/p03-zh.mp3",
-      "audioWord": "audio/flag-in-the-fog/word-fog.mp3"
+      "audioZh": "audio/flag-in-the-fog/p03-zh.mp3"
     },
     {
       "id": "P04",
@@ -109,14 +103,12 @@
         {
           "word": "sand",
           "gloss": "沙子",
-          "audioWord": "audio/flag-in-the-fog/word-sand.mp3",
           "image": "images/flag-in-the-fog/words/sand.webp"
         }
       ],
       "image": "images/flag-in-the-fog/p04.webp",
       "audioEn": "audio/flag-in-the-fog/p04-en.mp3",
-      "audioZh": "audio/flag-in-the-fog/p04-zh.mp3",
-      "audioWord": "audio/flag-in-the-fog/word-sand.mp3"
+      "audioZh": "audio/flag-in-the-fog/p04-zh.mp3"
     },
     {
       "id": "P05",
@@ -136,20 +128,17 @@
         {
           "word": "rock",
           "gloss": "石头",
-          "audioWord": "audio/flag-in-the-fog/word-rock.mp3",
           "image": "images/flag-in-the-fog/words/rock.webp"
         },
         {
           "word": "box",
           "gloss": "盒子",
-          "audioWord": "audio/flag-in-the-fog/word-box.mp3",
           "image": "images/flag-in-the-fog/words/box.webp"
         }
       ],
       "image": "images/flag-in-the-fog/p05.webp",
       "audioEn": "audio/flag-in-the-fog/p05-en.mp3",
-      "audioZh": "audio/flag-in-the-fog/p05-zh.mp3",
-      "audioWord": "audio/flag-in-the-fog/word-rock.mp3"
+      "audioZh": "audio/flag-in-the-fog/p05-zh.mp3"
     },
     {
       "id": "P06",
@@ -169,14 +158,12 @@
         {
           "word": "tin",
           "gloss": "铁盒",
-          "audioWord": "audio/flag-in-the-fog/word-tin.mp3",
           "image": "images/flag-in-the-fog/words/tin.webp"
         }
       ],
       "image": "images/flag-in-the-fog/p06.webp",
       "audioEn": "audio/flag-in-the-fog/p06-en.mp3",
-      "audioZh": "audio/flag-in-the-fog/p06-zh.mp3",
-      "audioWord": "audio/flag-in-the-fog/word-tin.mp3"
+      "audioZh": "audio/flag-in-the-fog/p06-zh.mp3"
     },
     {
       "id": "P07",
@@ -196,14 +183,12 @@
         {
           "word": "rat",
           "gloss": "老鼠",
-          "audioWord": "audio/flag-in-the-fog/word-rat.mp3",
           "image": "images/flag-in-the-fog/words/rat.webp"
         }
       ],
       "image": "images/flag-in-the-fog/p07.webp",
       "audioEn": "audio/flag-in-the-fog/p07-en.mp3",
-      "audioZh": "audio/flag-in-the-fog/p07-zh.mp3",
-      "audioWord": "audio/flag-in-the-fog/word-rat.mp3"
+      "audioZh": "audio/flag-in-the-fog/p07-zh.mp3"
     },
     {
       "id": "P08",
@@ -223,20 +208,17 @@
         {
           "word": "bag",
           "gloss": "袋子",
-          "audioWord": "audio/flag-in-the-fog/word-bag.mp3",
           "image": "images/flag-in-the-fog/words/bag.webp"
         },
         {
           "word": "tin",
           "gloss": "铁盒",
-          "audioWord": "audio/flag-in-the-fog/word-tin.mp3",
           "image": "images/flag-in-the-fog/words/tin.webp"
         }
       ],
       "image": "images/flag-in-the-fog/p08.webp",
       "audioEn": "audio/flag-in-the-fog/p08-en.mp3",
-      "audioZh": "audio/flag-in-the-fog/p08-zh.mp3",
-      "audioWord": "audio/flag-in-the-fog/word-bag.mp3"
+      "audioZh": "audio/flag-in-the-fog/p08-zh.mp3"
     },
     {
       "id": "P09",
@@ -256,20 +238,17 @@
         {
           "word": "hill",
           "gloss": "小山",
-          "audioWord": "audio/flag-in-the-fog/word-hill.mp3",
           "image": "images/flag-in-the-fog/words/hill.webp"
         },
         {
           "word": "fog",
           "gloss": "雾",
-          "audioWord": "audio/flag-in-the-fog/word-fog.mp3",
           "image": "images/flag-in-the-fog/words/fog.webp"
         }
       ],
       "image": "images/flag-in-the-fog/p09.webp",
       "audioEn": "audio/flag-in-the-fog/p09-en.mp3",
-      "audioZh": "audio/flag-in-the-fog/p09-zh.mp3",
-      "audioWord": "audio/flag-in-the-fog/word-hill.mp3"
+      "audioZh": "audio/flag-in-the-fog/p09-zh.mp3"
     },
     {
       "id": "P10",
@@ -289,14 +268,12 @@
         {
           "word": "den",
           "gloss": "洞穴",
-          "audioWord": "audio/flag-in-the-fog/word-den.mp3",
           "image": "images/flag-in-the-fog/words/den.webp"
         }
       ],
       "image": "images/flag-in-the-fog/p10.webp",
       "audioEn": "audio/flag-in-the-fog/p10-en.mp3",
-      "audioZh": "audio/flag-in-the-fog/p10-zh.mp3",
-      "audioWord": "audio/flag-in-the-fog/word-den.mp3"
+      "audioZh": "audio/flag-in-the-fog/p10-zh.mp3"
     },
     {
       "id": "P11",
@@ -313,8 +290,7 @@
       "learnItems": [],
       "image": "images/flag-in-the-fog/p11.webp",
       "audioEn": "audio/flag-in-the-fog/p11-en.mp3",
-      "audioZh": "audio/flag-in-the-fog/p11-zh.mp3",
-      "audioWord": null
+      "audioZh": "audio/flag-in-the-fog/p11-zh.mp3"
     },
     {
       "id": "P12",
@@ -334,14 +310,12 @@
         {
           "word": "tin",
           "gloss": "铁盒",
-          "audioWord": "audio/flag-in-the-fog/word-tin.mp3",
           "image": "images/flag-in-the-fog/words/tin.webp"
         }
       ],
       "image": "images/flag-in-the-fog/p12.webp",
       "audioEn": "audio/flag-in-the-fog/p12-en.mp3",
-      "audioZh": "audio/flag-in-the-fog/p12-zh.mp3",
-      "audioWord": "audio/flag-in-the-fog/word-tin.mp3"
+      "audioZh": "audio/flag-in-the-fog/p12-zh.mp3"
     },
     {
       "id": "P13",
@@ -361,14 +335,12 @@
         {
           "word": "sack",
           "gloss": "空袋子",
-          "audioWord": "audio/flag-in-the-fog/word-sack.mp3",
           "image": "images/flag-in-the-fog/words/sack.webp"
         }
       ],
       "image": "images/flag-in-the-fog/p13.webp",
       "audioEn": "audio/flag-in-the-fog/p13-en.mp3",
-      "audioZh": "audio/flag-in-the-fog/p13-zh.mp3",
-      "audioWord": "audio/flag-in-the-fog/word-sack.mp3"
+      "audioZh": "audio/flag-in-the-fog/p13-zh.mp3"
     },
     {
       "id": "P14",
@@ -388,20 +360,17 @@
         {
           "word": "tin",
           "gloss": "铁盒",
-          "audioWord": "audio/flag-in-the-fog/word-tin.mp3",
           "image": "images/flag-in-the-fog/words/tin.webp"
         },
         {
           "word": "rat",
           "gloss": "老鼠",
-          "audioWord": "audio/flag-in-the-fog/word-rat.mp3",
           "image": "images/flag-in-the-fog/words/rat.webp"
         }
       ],
       "image": "images/flag-in-the-fog/p14.webp",
       "audioEn": "audio/flag-in-the-fog/p14-en.mp3",
-      "audioZh": "audio/flag-in-the-fog/p14-zh.mp3",
-      "audioWord": "audio/flag-in-the-fog/word-tin.mp3"
+      "audioZh": "audio/flag-in-the-fog/p14-zh.mp3"
     },
     {
       "id": "P15",
@@ -418,8 +387,7 @@
       "learnItems": [],
       "image": "images/flag-in-the-fog/p15.webp",
       "audioEn": "audio/flag-in-the-fog/p15-en.mp3",
-      "audioZh": "audio/flag-in-the-fog/p15-zh.mp3",
-      "audioWord": null
+      "audioZh": "audio/flag-in-the-fog/p15-zh.mp3"
     },
     {
       "id": "P16",
@@ -436,8 +404,7 @@
       "learnItems": [],
       "image": "images/flag-in-the-fog/p16.webp",
       "audioEn": "audio/flag-in-the-fog/p16-en.mp3",
-      "audioZh": "audio/flag-in-the-fog/p16-zh.mp3",
-      "audioWord": null
+      "audioZh": "audio/flag-in-the-fog/p16-zh.mp3"
     },
     {
       "id": "P17",
@@ -457,14 +424,12 @@
         {
           "word": "bun",
           "gloss": "小面包",
-          "audioWord": "audio/flag-in-the-fog/word-bun.mp3",
           "image": "images/flag-in-the-fog/words/bun.webp"
         }
       ],
       "image": "images/flag-in-the-fog/p17.webp",
       "audioEn": "audio/flag-in-the-fog/p17-en.mp3",
-      "audioZh": "audio/flag-in-the-fog/p17-zh.mp3",
-      "audioWord": "audio/flag-in-the-fog/word-bun.mp3"
+      "audioZh": "audio/flag-in-the-fog/p17-zh.mp3"
     },
     {
       "id": "P18",
@@ -482,26 +447,22 @@
         {
           "word": "tin",
           "gloss": "铁盒",
-          "audioWord": "audio/flag-in-the-fog/word-tin.mp3",
           "image": "images/flag-in-the-fog/words/tin.webp"
         },
         {
           "word": "bag",
           "gloss": "袋子",
-          "audioWord": "audio/flag-in-the-fog/word-bag.mp3",
           "image": "images/flag-in-the-fog/words/bag.webp"
         },
         {
           "word": "bun",
           "gloss": "小面包",
-          "audioWord": "audio/flag-in-the-fog/word-bun.mp3",
           "image": "images/flag-in-the-fog/words/bun.webp"
         }
       ],
       "image": "images/flag-in-the-fog/p18.webp",
       "audioEn": "audio/flag-in-the-fog/p18-en.mp3",
-      "audioZh": "audio/flag-in-the-fog/p18-zh.mp3",
-      "audioWord": "audio/flag-in-the-fog/word-tin.mp3"
+      "audioZh": "audio/flag-in-the-fog/p18-zh.mp3"
     },
     {
       "id": "P19",
@@ -519,14 +480,12 @@
         {
           "word": "tin",
           "gloss": "铁盒",
-          "audioWord": "audio/flag-in-the-fog/word-tin.mp3",
           "image": "images/flag-in-the-fog/words/tin.webp"
         }
       ],
       "image": "images/flag-in-the-fog/p19.webp",
       "audioEn": "audio/flag-in-the-fog/p19-en.mp3",
-      "audioZh": "audio/flag-in-the-fog/p19-zh.mp3",
-      "audioWord": "audio/flag-in-the-fog/word-tin.mp3"
+      "audioZh": "audio/flag-in-the-fog/p19-zh.mp3"
     },
     {
       "id": "P20",
@@ -543,8 +502,7 @@
       "learnItems": [],
       "image": "images/flag-in-the-fog/p20.webp",
       "audioEn": "audio/flag-in-the-fog/p20-en.mp3",
-      "audioZh": "audio/flag-in-the-fog/p20-zh.mp3",
-      "audioWord": null
+      "audioZh": "audio/flag-in-the-fog/p20-zh.mp3"
     },
     {
       "id": "P21",
@@ -562,14 +520,12 @@
         {
           "word": "sand",
           "gloss": "沙子",
-          "audioWord": "audio/flag-in-the-fog/word-sand.mp3",
           "image": "images/flag-in-the-fog/words/sand.webp"
         }
       ],
       "image": "images/flag-in-the-fog/p21.webp",
       "audioEn": "audio/flag-in-the-fog/p21-en.mp3",
-      "audioZh": "audio/flag-in-the-fog/p21-zh.mp3",
-      "audioWord": "audio/flag-in-the-fog/word-sand.mp3"
+      "audioZh": "audio/flag-in-the-fog/p21-zh.mp3"
     },
     {
       "id": "P22",
@@ -586,8 +542,7 @@
       "learnItems": [],
       "image": "images/flag-in-the-fog/p22.webp",
       "audioEn": "audio/flag-in-the-fog/p22-en.mp3",
-      "audioZh": "audio/flag-in-the-fog/p22-zh.mp3",
-      "audioWord": null
+      "audioZh": "audio/flag-in-the-fog/p22-zh.mp3"
     }
   ]
 }

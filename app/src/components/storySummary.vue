@@ -9,6 +9,7 @@ const props = defineProps<{
 
 const emit = defineEmits<{
   openWord: [item: LearnItem, event: Event]
+  playPhrase: [pattern: string]
 }>()
 
 function imageSrc(file: string | null) {
@@ -45,7 +46,14 @@ function isOpen(word: string) {
 
     <h2>Sentences</h2>
     <ul class="patterns">
-      <li v-for="pattern in patterns" :key="pattern" class="chip pattern">{{ pattern }}</li>
+      <li v-for="pattern in patterns" :key="pattern">
+        <button
+          type="button"
+          class="chip pattern"
+          :aria-label="`Play phrase ${pattern}`"
+          @click="emit('playPhrase', pattern)"
+        >{{ pattern }}</button>
+      </li>
     </ul>
   </section>
 </template>
@@ -132,12 +140,14 @@ h2 {
 
 .chip {
   padding: 8px 12px;
+  border: 0;
   border-radius: 999px;
   background: rgba(31, 138, 128, 0.12);
   color: var(--teal-dark);
+  font-family: inherit;
   font-size: 0.92rem;
   font-weight: 700;
-  cursor: default;
+  cursor: pointer;
 }
 
 @media (max-width: 720px) {
