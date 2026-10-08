@@ -247,20 +247,41 @@ onUnmounted(() => {
             <button
               v-if="showChinese"
               type="button"
-              class="chip zh tap"
+              class="chip zh tap side-chip"
               :class="{ open: openZh }"
-              aria-label="Show Chinese"
+              aria-label="Chinese translation"
               :aria-expanded="openZh"
               @click="toggleZh"
-            >中文</button>
+            >
+              <svg class="side-icon icon-bubble" viewBox="0 0 24 24" aria-hidden="true">
+                <path
+                  fill="currentColor"
+                  d="M4.4 3.8h15.2A2.8 2.8 0 0 1 22.4 6.6v8.1a2.8 2.8 0 0 1-2.8 2.8h-7.15l-5.35 4.05v-4.05H4.4A2.8 2.8 0 0 1 1.6 14.7V6.6A2.8 2.8 0 0 1 4.4 3.8Z"
+                />
+              </svg>
+              <span>CN</span>
+            </button>
             <button
               type="button"
-              class="chip slow tap"
+              class="chip slow tap side-chip"
               :class="{ playing: slowPlaying }"
               aria-label="Read slowly"
               :aria-pressed="slowPlaying"
               @click="playSlow"
-            >Slow</button>
+            >
+              <svg class="side-icon icon-snail" viewBox="0 0 24 24" aria-hidden="true">
+                <path
+                  fill="currentColor"
+                  fill-rule="evenodd"
+                  d="M9.1 4.2a6.7 6.7 0 0 1 4.7 11.5c1.1.1 2.3.15 3.55.05 2.5-.2 4.55-.75 5.35-1.75.4-.5 1.2-.15 1.05.6-.4 1.7-2.8 2.95-6.15 3.15-2.55.15-5.4-.25-7.5-1.5A6.7 6.7 0 0 1 9.1 4.2Zm0 2.45a4.25 4.25 0 1 0 0 8.5 4.25 4.25 0 0 0 0-8.5Zm0 2.35a1.9 1.9 0 1 1 0 3.8 1.9 1.9 0 0 1 0-3.8Z"
+                />
+                <path
+                  fill="currentColor"
+                  d="M17.4 10.15c.2-1.4 1.15-2.55 2.15-3.1.4-.22.85.28.62.7-.55.95-1.05 1.75-1.18 2.65l-1.59-.25Zm1.82.18c.48-1.15 1.6-1.95 2.58-2.15.48-.1.72.5.38.8-.78.55-1.52 1.15-1.72 2.05l-1.24-.7Z"
+                />
+              </svg>
+              <span>Slow</span>
+            </button>
           </div>
           <div class="line en" :class="{ playing: playingLang === 'en' }">
             <button
@@ -388,14 +409,32 @@ h1 {
 .en-row .chip.zh,
 .en-row .chip.slow {
   margin: 0;
-  min-height: 36px;
-  padding: 6px 10px;
-  font-size: 0.82rem;
+}
+
+.side-chip {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  width: 44px;
+  min-width: 44px;
+  min-height: 48px;
+  padding: 6px 4px 5px;
+  font-size: 0.7rem;
+  line-height: 1;
+  letter-spacing: 0.02em;
+}
+
+.side-icon {
+  display: block;
+  width: 16px;
+  height: 16px;
 }
 
 .chip.slow {
-  background: rgba(47, 63, 59, 0.1);
-  color: var(--ink);
+  background: rgba(31, 138, 128, 0.12);
+  color: var(--teal-dark);
 }
 
 .chip.slow.playing {

@@ -62,7 +62,7 @@ npm run parse-stories
 - 词级音频：`audio/<story-id>/word-flag.mp3`（同一 Aria 声线，只读单词）
 - 词图：`images/<story-id>/words/map.webp`（有文件时写入 `learnItems[].image`）
 
-阅读器以 Vite `base`（`/idea6_nb_en_story/`）拼接这些路径。点喇叭或英文句子（含句中加粗焦点词）播放整句 `audioEn`。点英文句子左侧的 **中文** 弹出本页译文并播放 `audioZh`。点辅词芯片在词旁弹出释义气泡（词图 + 短义 + Play again）并读单词。主练句式只展示、不可点。第 22 页 Next 进入总结页（Words / Sentences），不是第 23 页。文件缺失或播放失败时回退 Web Speech。默认不自动播放。
+阅读器以 Vite `base`（`/idea6_nb_en_story/`）拼接这些路径。点喇叭或英文句子（含句中加粗焦点词）播放整句 `audioEn`。点英文句子左侧的 **CN** 弹出本页译文并播放 `audioZh`。点辅词芯片在词旁弹出释义气泡（词图 + 短义 + Play again）并读单词。主练句式只展示、不可点。第 22 页 Next 进入总结页（Words / Sentences），不是第 23 页。文件缺失或播放失败时回退 Web Speech。默认不自动播放。
 
 重新生成音频（在 `app/` 下）：`npm run gen-tts`（需 `edge-tts` 与 `ffmpeg`）。`npm run parse-stories` / `dev` / `build` 会根据 `app/public/images/` 与 `app/public/audio/` 里是否已有文件回填路径。
 
@@ -100,7 +100,7 @@ npm run parse-stories
 当前 Vue 阅读器实际用到：
 
 - 导航与续读：`id`、`pageCount`、`pages[].index`
-- 展示：`en`、`zh`、`pattern`、`focusWord`、`image`（正文显示英文；**中文** 在句子左侧，点开弹层）
+- 展示：`en`、`zh`、`pattern`、`focusWord`、`image`（正文显示英文；**CN** 在句子左侧，点开弹层）
 - 朗读：`audioEn`、`audioZh`（点喇叭或英文句子含加粗词播放整句；缺文件回退系统语音）
 - 点词：`learnItems` / `gloss` / `audioWord` / `image`（点辅词芯片弹出词图 + 释义 + Play again；句中加粗词只作高亮标记；句式只展示）
 - 总结页：跨页去重 `learnItems`（首次出现顺序）与去重 `pattern`；点词卡复用同一释义气泡；**Read again** 回第 1 页，进度仍夹紧在 `1..pageCount`
