@@ -72,9 +72,9 @@ npm run gen-tts
 - 翻页：大触摸热区的 Prev / Next，Fredoka 字体，平板宽度友好
 - 阅读卡标题行右侧 **Settings** 齿轮：`Version` 看当前构建与摘要，可 **Check for updates**（立刻拉取 `versions.json`）和 **Clear cache**（注销 Service Worker、清空 Cache Storage 后硬刷新，不碰 localStorage）；`GM` 可 **Reset all data**（清空本应用全部 localStorage 后重载）
 - 更新 toast：每 10 秒带 cache-bust 拉取 `versions.json`，若有比已确认版本更新的条目（最多 10 条），在齿轮下方列出并提供 **Update**（硬刷新并标记已读）
-- PWA：可安装到主屏幕（`standalone`）；预缓存阅读器壳 + 故事 JSON。页/词 mp3 与插图 webp 走运行时 Cache First，不进预缓存。`versions.json` 用 Network First，以免挡住更新检测
+- PWA：可安装到主屏幕（`standalone`）；预缓存阅读器壳 + 故事 JSON。页/词 mp3 与插图 webp 走运行时 Cache First，不进预缓存。换插图时 bump `vite.config.ts` 里的 `story-image-cache-first` 缓存名，检查更新并重载后会拉新图。`versions.json` 用 Network First，以免挡住更新检测
 
-进度按本故事写入 `localStorage`。每次有意义的发布请在 `app/public/versions.json` 顶部追加 `{ id, version, date, summary }`（新条目用英文）。当前版本 **0.5.3**。
+进度按本故事写入 `localStorage`。每次有意义的发布请在 `app/public/versions.json` 顶部追加 `{ id, version, date, summary }`（新条目用英文）。当前版本 **0.5.4**。
 
 ## 安装到主屏幕（PWA）
 
