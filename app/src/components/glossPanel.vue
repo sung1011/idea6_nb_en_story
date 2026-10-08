@@ -1,13 +1,15 @@
 <script setup lang="ts">
 import { nextTick, onMounted, ref, watch } from 'vue'
-import type { LearnItem } from '@/types/story'
 
 export type GlossAnchor = Pick<DOMRect, 'top' | 'left' | 'width' | 'height' | 'bottom' | 'right'>
 
 const props = defineProps<{
-  item: LearnItem
+  heading?: string
+  body: string
   playing: boolean
   anchor: GlossAnchor
+  replayLabel?: string
+  ariaLabel?: string
 }>()
 
 const emit = defineEmits<{
@@ -60,7 +62,7 @@ function positionPanel() {
 }
 
 watch(
-  () => [props.item.word, props.anchor.top, props.anchor.left, props.anchor.width, props.anchor.height],
+  () => [props.heading, props.body, props.anchor.top, props.anchor.left, props.anchor.width, props.anchor.height],
   async () => {
     await nextTick()
     positionPanel()
@@ -81,21 +83,21 @@ onMounted(async () => {
       :class="placement"
       :style="panelStyle"
       role="dialog"
-      aria-label="Word meaning"
+      :aria-label="ariaLabel || 'Word meaning'"
       data-gloss-panel
     >
       <button type="button" class="close" aria-label="Close" @click="emit('close')">
         ✕
       </button>
-      <p class="word">{{ item.word }}</p>
-      <p class="meaning">{{ item.gloss }}</p>
+      <p v-if="heading" class="word">{{ heading }}</p>
+      <p class="meaning" :class="{ solo: !heading }">{{ body }}</p>
       <button
         type="button"
         class="replay"
         :aria-pressed="playing"
         @click="emit('replay')"
       >
-        🔊 Play again
+        🔊 {{ replayLabel || 'Play again' }}
       </button>
       <span class="arrow" aria-hidden="true" />
     </aside>
@@ -132,6 +134,10 @@ onMounted(async () => {
   font-size: 1.1rem;
   font-weight: 700;
   line-height: 1.35;
+}
+
+.meaning.solo {
+  margin-top: 0;
 }
 
 .replay,

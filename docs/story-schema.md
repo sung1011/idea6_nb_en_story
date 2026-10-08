@@ -61,7 +61,7 @@ npm run parse-stories
 - 中文音频：`audio/<story-id>/p01-zh.mp3`（Edge TTS `zh-CN-XiaoxiaoNeural`）
 - 词级音频：`audio/<story-id>/word-flag.mp3`（同一 Ana 声线，只读单词）
 
-阅读器以 Vite `base`（`/idea6_nb_en_story/`）拼接这些路径。点喇叭或句子其余部分播放整句 `audioEn` / `audioZh`；点加粗焦点词、辅词芯片或带 `___` 的句式芯片在词旁弹出释义气泡并读单词。文件缺失或播放失败时回退 Web Speech。默认不自动播放。
+阅读器以 Vite `base`（`/idea6_nb_en_story/`）拼接这些路径。点喇叭或英文句子播放整句 `audioEn`。点 **中文** 芯片弹出本页译文并播放 `audioZh`。点加粗焦点词、辅词芯片或带 `___` 的句式芯片在词旁弹出释义气泡并读单词。文件缺失或播放失败时回退 Web Speech。默认不自动播放。
 
 重新生成音频（在 `app/` 下）：`npm run gen-tts`（需 `edge-tts` 与 `ffmpeg`）。`npm run parse-stories` / `dev` / `build` 会根据 `app/public/images/` 与 `app/public/audio/` 里是否已有文件回填路径。
 
@@ -99,7 +99,7 @@ npm run parse-stories
 当前 Vue 阅读器实际用到：
 
 - 导航与续读：`id`、`pageCount`、`pages[].index`
-- 展示：`en`、`zh`、`pattern`、`focusWord`、`image`（始终英文行 + 中文行）
+- 展示：`en`、`zh`、`pattern`、`focusWord`、`image`（正文显示英文；中文在芯片弹层）
 - 朗读：`audioEn`、`audioZh`（点喇叭或句子其余部分播放整句；缺文件回退系统语音）
 - 点词：`learnItems` / `gloss` / `audioWord`（点加粗词、辅词芯片或句式空位，在词旁弹出释义气泡 + Play again）
 

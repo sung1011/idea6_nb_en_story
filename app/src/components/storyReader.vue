@@ -31,6 +31,7 @@ const patternLearn = computed(() => {
   return learnItems.value[0] ?? null
 })
 const openLearn = ref<LearnItem | null>(null)
+const openZh = ref(false)
 const glossAnchor = ref<GlossAnchor | null>(null)
 
 function findLearnItem(word: string): LearnItem | null {
@@ -41,21 +42,47 @@ function findLearnItem(word: string): LearnItem | null {
 function openGloss(word: string, event: Event) {
   const item = findLearnItem(word)
   if (!item) return
+  openZh.value = false
   const target = event.currentTarget as HTMLElement | null
   if (target) glossAnchor.value = target.getBoundingClientRect()
   openLearn.value = item
   playWord(item.word, item.audioWord)
 }
 
-function replayGloss() {
-  const item = openLearn.value
-  if (!item) return
-  playWord(item.word, item.audioWord)
-}
-
 function closeGloss() {
   openLearn.value = null
+  if (!openZh.value) glossAnchor.value = null
+}
+
+function closeZh() {
+  openZh.value = false
+  if (!openLearn.value) glossAnchor.value = null
+}
+
+function closePanels() {
+  openLearn.value = null
+  openZh.value = false
   glossAnchor.value = null
+}
+
+function toggleZh(event: Event) {
+  if (openZh.value) {
+    closeZh()
+    return
+  }
+  openLearn.value = null
+  const target = event.currentTarget as HTMLElement | null
+  if (target) glossAnchor.value = target.getBoundingClientRect()
+  openZh.value = true
+  playLine('zh')
+}
+
+function replayPanel() {
+  if (openLearn.value) {
+    playWord(openLearn.value.word, openLearn.value.audioWord)
+    return
+  }
+  if (openZh.value) playLine('zh')
 }
 
 function isOpenWord(word: string) {
@@ -63,24 +90,24 @@ function isOpenWord(word: string) {
 }
 
 function onPointerDown(event: PointerEvent) {
-  if (!openLearn.value) return
+  if (!openLearn.value && !openZh.value) return
   const target = event.target as HTMLElement | null
   if (!target) return
   if (target.closest('[data-gloss-panel]')) return
   if (target.closest('.tap-word, .chip.tap')) return
-  closeGloss()
+  closePanels()
 }
 
 function onViewportChange() {
-  if (openLearn.value) closeGloss()
+  if (openLearn.value || openZh.value) closePanels()
 }
 
 function onKey(event: KeyboardEvent) {
   const target = event.target as HTMLElement | null
   if (target && ['INPUT', 'TEXTAREA'].includes(target.tagName)) return
-  if (event.key === 'Escape' && openLearn.value) {
+  if (event.key === 'Escape' && (openLearn.value || openZh.value)) {
     event.preventDefault()
-    closeGloss()
+    closePanels()
     return
   }
   if (event.key === 'ArrowRight' || event.key === 'PageDown') {
@@ -101,7 +128,7 @@ function onKey(event: KeyboardEvent) {
 watch(
   () => page.value?.id,
   () => {
-    closeGloss()
+    closePanels()
   },
 )
 
@@ -162,18 +189,6 @@ onUnmounted(() => {
           </template>
         </p>
       </div>
-      <button
-        v-if="showChinese"
-        type="button"
-        class="line zh"
-        :class="{ playing: playingLang === 'zh' }"
-        :aria-pressed="playingLang === 'zh'"
-        aria-label="Play Chinese"
-        @click="playLine('zh')"
-      >
-        <span class="speaker" aria-hidden="true">🔊</span>
-        <span class="line-text">{{ page.zh }}</span>
-      </button>
       <div class="meta">
         <button
           v-if="page.pattern"
@@ -191,6 +206,15 @@ onUnmounted(() => {
           :class="{ open: isOpenWord(item.word) }"
           @click="openGloss(item.word, $event)"
         >{{ item.word }}</button>
+        <button
+          v-if="showChinese"
+          type="button"
+          class="chip zh tap"
+          :class="{ open: openZh }"
+          aria-label="Show Chinese"
+          :aria-expanded="openZh"
+          @click="toggleZh"
+        >中文</button>
       </div>
     </section>
 
@@ -201,12 +225,14 @@ onUnmounted(() => {
     </nav>
 
     <GlossPanel
-      v-if="openLearn && glossAnchor"
-      :item="openLearn"
-      :playing="Boolean(playingWord)"
+      v-if="glossAnchor && (openLearn || openZh)"
+      :heading="openLearn?.word"
+      :body="openLearn ? openLearn.gloss : (page.zh || '')"
+      :playing="openLearn ? Boolean(playingWord) : playingLang === 'zh'"
       :anchor="glossAnchor"
-      @replay="replayGloss"
-      @close="closeGloss"
+      :ariaLabel="openLearn ? 'Word meaning' : 'Chinese translation'"
+      @replay="replayPanel"
+      @close="openLearn ? closeGloss() : closeZh()"
     />
   </article>
 </template>
@@ -275,22 +301,11 @@ h1 {
   font: inherit;
 }
 
-button.line {
-  cursor: pointer;
-}
-
 .line.en {
   font-size: 1.55rem;
   line-height: 1.45;
   font-weight: 500;
   color: var(--ink);
-}
-
-.line.zh {
-  margin-top: 8px;
-  color: var(--muted);
-  font-size: 1.05rem;
-  line-height: 1.5;
 }
 
 .line:hover,
@@ -328,9 +343,15 @@ button.speaker[aria-pressed='true'] {
 }
 
 .line-text {
+  display: block;
+  flex: 1;
   min-width: 0;
   margin: 0;
   cursor: pointer;
+}
+
+.line.en .line-text {
+  min-height: calc(2 * 1.45em);
 }
 
 .hl {
@@ -359,6 +380,11 @@ button.speaker[aria-pressed='true'] {
 .chip.open {
   background: rgba(224, 106, 78, 0.2);
   box-shadow: 0 0 0 3px rgba(224, 106, 78, 0.28);
+}
+
+.chip.zh.open {
+  background: rgba(31, 138, 128, 0.28);
+  box-shadow: 0 0 0 3px rgba(31, 138, 128, 0.28);
 }
 
 .meta {

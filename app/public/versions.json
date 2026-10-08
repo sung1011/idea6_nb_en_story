@@ -24,6 +24,12 @@
     "summary": "Cleaner pictures: removed the keyword and page labels from the image."
   },
   {
+    "id": "v0.6.1-zh-popup",
+    "version": "0.6.1",
+    "date": "2026-10-08",
+    "summary": "Chinese translation moved into a button that shows a popup and reads it aloud."
+  },
+  {
     "id": "v0.6.0",
     "version": "0.6.0",
     "date": "2026-10-08",
