@@ -66,13 +66,13 @@
           "word": "cub",
           "gloss": "小豹子",
           "audioWord": "audio/spot-the-cub/word-cub.mp3",
-          "image": null
+          "image": "images/spot-the-cub/words/cub.webp"
         },
         {
           "word": "log",
           "gloss": "圆木",
           "audioWord": "audio/spot-the-cub/word-log.mp3",
-          "image": null
+          "image": "images/spot-the-cub/words/log.webp"
         }
       ],
       "image": "images/spot-the-cub/p03.webp",
@@ -99,7 +99,7 @@
           "word": "wet",
           "gloss": "湿的",
           "audioWord": "audio/spot-the-cub/word-wet.mp3",
-          "image": null
+          "image": "images/spot-the-cub/words/wet.webp"
         }
       ],
       "image": "images/spot-the-cub/p04.webp",
@@ -126,7 +126,7 @@
           "word": "rug",
           "gloss": "小毯子",
           "audioWord": "audio/spot-the-cub/word-rug.mp3",
-          "image": null
+          "image": "images/spot-the-cub/words/rug.webp"
         }
       ],
       "image": "images/spot-the-cub/p05.webp",
@@ -172,13 +172,13 @@
           "word": "spots",
           "gloss": "斑点",
           "audioWord": "audio/spot-the-cub/word-spots.mp3",
-          "image": null
+          "image": "images/spot-the-cub/words/spots.webp"
         },
         {
           "word": "nap",
           "gloss": "小睡",
           "audioWord": "audio/spot-the-cub/word-nap.mp3",
-          "image": null
+          "image": "images/spot-the-cub/words/nap.webp"
         }
       ],
       "image": "images/spot-the-cub/p07.webp",
@@ -205,7 +205,7 @@
           "word": "mom",
           "gloss": "妈妈",
           "audioWord": "audio/spot-the-cub/word-mom.mp3",
-          "image": null
+          "image": "images/spot-the-cub/words/mom.webp"
         }
       ],
       "image": "images/spot-the-cub/p08.webp",
@@ -250,7 +250,7 @@
           "word": "bug",
           "gloss": "瓢虫",
           "audioWord": "audio/spot-the-cub/word-bug.mp3",
-          "image": null
+          "image": "images/spot-the-cub/words/bug.webp"
         }
       ],
       "image": "images/spot-the-cub/p10.webp",
@@ -296,13 +296,13 @@
           "word": "mug",
           "gloss": "杯子",
           "audioWord": "audio/spot-the-cub/word-mug.mp3",
-          "image": null
+          "image": "images/spot-the-cub/words/mug.webp"
         },
         {
           "word": "dots",
           "gloss": "圆点",
           "audioWord": "audio/spot-the-cub/word-dots.mp3",
-          "image": null
+          "image": "images/spot-the-cub/words/dots.webp"
         }
       ],
       "image": "images/spot-the-cub/p12.webp",
@@ -347,7 +347,7 @@
           "word": "egg",
           "gloss": "蛋",
           "audioWord": "audio/spot-the-cub/word-egg.mp3",
-          "image": null
+          "image": "images/spot-the-cub/words/egg.webp"
         }
       ],
       "image": "images/spot-the-cub/p14.webp",
@@ -375,13 +375,13 @@
           "word": "fish",
           "gloss": "鱼",
           "audioWord": "audio/spot-the-cub/word-fish.mp3",
-          "image": null
+          "image": "images/spot-the-cub/words/fish.webp"
         },
         {
           "word": "river",
           "gloss": "小河",
           "audioWord": "audio/spot-the-cub/word-river.mp3",
-          "image": null
+          "image": "images/spot-the-cub/words/river.webp"
         }
       ],
       "image": "images/spot-the-cub/p15.webp",
@@ -408,7 +408,7 @@
           "word": "fence",
           "gloss": "篱笆",
           "audioWord": "audio/spot-the-cub/word-fence.mp3",
-          "image": null
+          "image": "images/spot-the-cub/words/fence.webp"
         }
       ],
       "image": "images/spot-the-cub/p16.webp",
@@ -544,13 +544,13 @@
           "word": "hug",
           "gloss": "拥抱",
           "audioWord": "audio/spot-the-cub/word-hug.mp3",
-          "image": null
+          "image": "images/spot-the-cub/words/hug.webp"
         },
         {
           "word": "glad",
           "gloss": "开心",
           "audioWord": "audio/spot-the-cub/word-glad.mp3",
-          "image": null
+          "image": "images/spot-the-cub/words/glad.webp"
         }
       ],
       "image": "images/spot-the-cub/p23.webp",
