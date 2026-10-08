@@ -55,6 +55,7 @@ onUnmounted(() => {
       :aria-expanded="open"
       aria-haspopup="dialog"
       aria-controls="settings-panel"
+      aria-label="Settings"
       @click="toggle"
     >
       <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true">
@@ -63,7 +64,6 @@ onUnmounted(() => {
           d="M19.14 12.94c.04-.31.06-.63.06-.94s-.02-.63-.06-.94l2.03-1.58a.5.5 0 0 0 .12-.64l-1.92-3.32a.5.5 0 0 0-.6-.22l-2.39.96a7.07 7.07 0 0 0-1.63-.94l-.36-2.54A.5.5 0 0 0 13.9 2h-3.8a.5.5 0 0 0-.49.42l-.36 2.54c-.59.22-1.14.53-1.63.94l-2.39-.96a.5.5 0 0 0-.6.22L2.71 8.84a.5.5 0 0 0 .12.64L4.86 11.06c-.04.31-.06.63-.06.94s.02.63.06.94L2.83 14.52a.5.5 0 0 0-.12.64l1.92 3.32c.13.22.4.31.64.22l2.39-.96c.49.4 1.04.72 1.63.94l.36 2.54c.05.24.26.42.49.42h3.8c.24 0 .44-.18.49-.42l.36-2.54c.59-.22 1.14-.53 1.63-.94l2.39.96c.24.1.51 0 .64-.22l1.92-3.32a.5.5 0 0 0-.12-.64l-2.03-1.58ZM12 15.5A3.5 3.5 0 1 1 12 8.5a3.5 3.5 0 0 1 0 7Z"
         />
       </svg>
-      <span>设置</span>
     </button>
 
     <div
@@ -78,9 +78,9 @@ onUnmounted(() => {
       id="settings-panel"
       class="panel"
       role="dialog"
-      aria-label="设置"
+      aria-label="Settings"
     >
-      <div class="tabs" role="tablist" aria-label="设置分类">
+      <div class="tabs" role="tablist" aria-label="Settings sections">
         <button
           type="button"
           role="tab"
@@ -88,7 +88,7 @@ onUnmounted(() => {
           :class="{ active: tab === 'version' }"
           @click="tab = 'version'"
         >
-          版本
+          Version
         </button>
         <button
           type="button"
@@ -103,15 +103,15 @@ onUnmounted(() => {
 
       <div v-if="tab === 'version'" class="pane" role="tabpanel">
         <p class="current">
-          当前版本
+          Current version
           <strong>{{ current?.version || '—' }}</strong>
         </p>
         <div class="version-actions">
           <button type="button" class="action" @click="checkUpdate">
-            检查更新
+            Check for updates
           </button>
           <button type="button" class="ghost" @click="clearCaches">
-            清除缓存
+            Clear cache
           </button>
         </div>
         <div class="rows">
@@ -120,25 +120,25 @@ onUnmounted(() => {
             :key="entry.id"
             :entry="entry"
           />
-          <p v-if="!versions.length" class="empty">还没有版本记录</p>
+          <p v-if="!versions.length" class="empty">No version history yet</p>
         </div>
       </div>
 
       <div v-else class="pane" role="tabpanel">
-        <p class="gm-copy">清空本机阅读进度、展示模式和已读版本，然后重新加载。</p>
+        <p class="gm-copy">Clear reading progress and acknowledged versions on this device, then reload.</p>
         <template v-if="!gmConfirming">
           <button type="button" class="danger" @click="gmConfirming = true">
-            初始化
+            Reset all data
           </button>
         </template>
         <div v-else class="confirm">
-          <p>确定清空本地数据？此操作不能撤销。</p>
+          <p>This will erase local data on this device. This cannot be undone.</p>
           <div class="confirm-actions">
             <button type="button" class="ghost" @click="gmConfirming = false">
-              取消
+              Cancel
             </button>
             <button type="button" class="danger" @click="resetLocalState">
-              确定清空
+              Reset all data
             </button>
           </div>
         </div>
@@ -149,7 +149,7 @@ onUnmounted(() => {
       v-else-if="pending.length"
       class="toast"
       aria-live="polite"
-      aria-label="可用更新"
+      aria-label="Available updates"
     >
       <VersionRow
         v-for="entry in pending"
@@ -164,23 +164,9 @@ onUnmounted(() => {
 
 <style scoped>
 .settings {
-  position: fixed;
-  top: 12px;
-  right: 12px;
+  position: relative;
   z-index: 50;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  gap: 8px;
-  width: min(360px, calc(100vw - 24px));
-  pointer-events: none;
-}
-
-.gear,
-.backdrop,
-.panel,
-.toast {
-  pointer-events: auto;
+  flex-shrink: 0;
 }
 
 .gear {
@@ -189,16 +175,16 @@ onUnmounted(() => {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
-  min-height: 52px;
-  padding: 10px 16px;
-  border-radius: 999px;
+  width: 48px;
+  height: 48px;
+  min-width: 44px;
+  min-height: 44px;
+  padding: 0;
+  border-radius: 16px;
   border: 3px solid #2f3f3b;
   background: var(--paper);
   color: var(--ink);
-  font-size: 1.05rem;
-  font-weight: 700;
-  box-shadow: 0 4px 0 #2f3f3b;
+  box-shadow: 0 3px 0 #2f3f3b;
 }
 
 .backdrop {
@@ -210,9 +196,11 @@ onUnmounted(() => {
 
 .panel,
 .toast {
-  position: relative;
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
   z-index: 45;
-  width: 100%;
+  width: min(360px, calc(100vw - 48px));
   max-height: min(70vh, 560px);
   overflow: auto;
   padding: 12px;

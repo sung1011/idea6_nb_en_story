@@ -12,6 +12,17 @@ export function progressKey(storyId: string) {
   return storageKey(`progress:${storyId}`)
 }
 
+export function clearStaleDisplayModeKeys() {
+  if (typeof localStorage === 'undefined') return
+  localStorage.removeItem(DISPLAY_MODE_KEY)
+  const stale: string[] = []
+  for (let i = 0; i < localStorage.length; i += 1) {
+    const key = localStorage.key(i)
+    if (key && key.startsWith(LEGACY_SHOW_ZH_PREFIX)) stale.push(key)
+  }
+  for (const key of stale) localStorage.removeItem(key)
+}
+
 export function clearAppStorage() {
   const keys: string[] = []
   for (let i = 0; i < localStorage.length; i += 1) {

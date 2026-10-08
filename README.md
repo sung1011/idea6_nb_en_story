@@ -64,39 +64,39 @@ npm run gen-tts
 
 ## 阅读器（Stage 6）
 
-- 展示模式：`英文` / `中英对照` / `中文`（`en` \| `en+zh` \| `zh`），默认 `en+zh`，写入 `localStorage`
-- 续读：刷新后夹紧在 1..N 页继续；顶部可「继续阅读」或对本故事「从头读」
+- 始终中英对照：英文标题 + 中文副标题；英文行在上、中文行在下，均可点读
+- 续读：刷新后夹紧在 1..N 页，打开直接回到上次页（无提示条）；Home 键回到第 1 页
 - 插图：各页绑定 `images/flag-in-the-fog/pNN.webp`；缺图时回退 16:9 奶油色软陶风 SVG 占位。画稿需压缩后再入库
 - 朗读：点喇叭或句子其余部分播放整句（英文 Ana / 中文晓晓）；新点击会停掉上一句。默认不自动播放。mp3 缺失或播放失败时回退 Web Speech
-- 点词：点加粗焦点词、辅词芯片或带 `___` 的句式，弹出中文短义 +「再听」词级 Ana；不挡住整句播放
-- 翻页：大触摸热区的上一页 / 下一页，Fredoka 字体，平板宽度友好
-- 右上角 **设置**：`版本` 看当前构建与摘要，可 **检查更新**（立刻拉取 `versions.json`）和 **清除缓存**（注销 Service Worker、清空 Cache Storage 后硬刷新，不碰 localStorage）；`GM` 可初始化（清空本应用全部 localStorage 后重载）
-- 更新 toast：每 10 秒带 cache-bust 拉取 `versions.json`，若有比已确认版本更新的条目（最多 10 条），在设置按钮下方列出并提供 **更新**（硬刷新并标记已读）
+- 点词：点加粗焦点词、辅词芯片或带 `___` 的句式，在词旁弹出释义气泡（中文短义 + Play again）；不挡住整句播放
+- 翻页：大触摸热区的 Prev / Next，Fredoka 字体，平板宽度友好
+- 阅读卡标题行右侧 **Settings** 齿轮：`Version` 看当前构建与摘要，可 **Check for updates**（立刻拉取 `versions.json`）和 **Clear cache**（注销 Service Worker、清空 Cache Storage 后硬刷新，不碰 localStorage）；`GM` 可 **Reset all data**（清空本应用全部 localStorage 后重载）
+- 更新 toast：每 10 秒带 cache-bust 拉取 `versions.json`，若有比已确认版本更新的条目（最多 10 条），在齿轮下方列出并提供 **Update**（硬刷新并标记已读）
 - PWA：可安装到主屏幕（`standalone`）；预缓存阅读器壳 + 故事 JSON。页/词 mp3 与插图 webp 走运行时 Cache First，不进预缓存。`versions.json` 用 Network First，以免挡住更新检测
 
-进度按本故事写入 `localStorage`。展示模式是整站偏好。每次有意义的发布请在 `app/public/versions.json` 顶部追加 `{ id, version, date, summary }`。当前版本 **0.5.2**。
+进度按本故事写入 `localStorage`。每次有意义的发布请在 `app/public/versions.json` 顶部追加 `{ id, version, date, summary }`（新条目用英文）。当前版本 **0.5.3**。
 
 ## 安装到主屏幕（PWA）
 
-站点已是 HTTPS（GitHub Pages），带 Web App Manifest（`name` / `short_name` 为「星词岛故事」）、192/512 PNG 图标和服务 Worker，满足可安装条件。安装后以独立窗口打开，入口为 `/idea6_nb_en_story/`。
+站点已是 HTTPS（GitHub Pages），带 Web App Manifest（`name` 为 Star Word Island，`short_name` 为 Star Words）、192/512 PNG 图标和服务 Worker，满足可安装条件。安装后以独立窗口打开，入口为 `/idea6_nb_en_story/`。
 
 **Chrome / Edge（电脑）**
 
 1. 打开 https://sung1011.github.io/idea6_nb_en_story/
-2. 地址栏右侧点安装图标，或菜单 → **安装星词岛故事** / **将此应用安装到电脑**
+2. 地址栏右侧点安装图标，或菜单 → **Install Star Word Island** / **将此应用安装到电脑**
 3. 确认安装。之后可从应用列表或桌面快捷方式打开，不再显示浏览器工具栏
 
 **Chrome / Edge（Android）**
 
 1. 用 Chrome 或 Edge 打开上面的地址
 2. 菜单 → **安装应用** 或 **添加到主屏幕**
-3. 主屏幕会出现「星词岛故事」图标
+3. 主屏幕会出现 Star Words 图标
 
 **Safari（iPhone / iPad）**
 
 1. 必须用 **Safari** 打开（不要用 Chrome / 微信内置浏览器）
 2. 点底部分享按钮（方框加箭头）
-3. 滑到 **添加到主屏幕**，名称用「星词岛故事」
+3. 滑到 **添加到主屏幕**，名称用 Star Word Island
 4. 点添加。主屏幕图标打开后是无 Safari 地址栏的独立窗口
 
 若没有安装入口：确认打开的是 HTTPS 线上地址（不是 `localhost`），并等页面加载完成以便注册 Service Worker。

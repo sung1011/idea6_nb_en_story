@@ -1,5 +1,11 @@
 [
   {
+    "id": "v0.5.3",
+    "version": "0.5.3",
+    "date": "2026-10-08",
+    "summary": "Remove the resume banner and footer hint; reopen on the last page. Gloss is a floating popover. UI chrome is English. Always show English plus Chinese. Settings gear sits in the reader header."
+  },
+  {
     "id": "v0.5.2",
     "version": "0.5.2",
     "date": "2026-10-07",

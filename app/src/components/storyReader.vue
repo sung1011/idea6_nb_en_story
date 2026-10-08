@@ -1,28 +1,19 @@
 <script setup lang="ts">
 import { computed, onMounted, onUnmounted, ref, watch } from 'vue'
 import type { LearnItem, Story } from '@/types/story'
-import { DISPLAY_MODE_OPTIONS } from '@/types/displayMode'
 import { parseEnSegments } from '@/utils/parseEn'
 import { useStoryProgress } from '@/composables/useStoryProgress'
-import { useDisplayMode } from '@/composables/useDisplayMode'
 import { usePageSpeech } from '@/composables/usePageSpeech'
 import PagePlaceholder from './pagePlaceholder.vue'
-import GlossPanel from './glossPanel.vue'
+import GlossPanel, { type GlossAnchor } from './glossPanel.vue'
+import AppSettings from './appSettings.vue'
 
 const props = defineProps<{
   story: Story
 }>()
 
 const pageCount = computed(() => props.story.pageCount || props.story.pages.length)
-const {
-  pageIndex,
-  resumedFrom,
-  next,
-  prev,
-  dismissResume,
-  restart,
-} = useStoryProgress(props.story.id, pageCount.value)
-const { displayMode } = useDisplayMode()
+const { pageIndex, next, prev, restart } = useStoryProgress(props.story.id, pageCount.value)
 
 const page = computed(() => {
   return props.story.pages.find((item) => item.index === pageIndex.value) ?? props.story.pages[0]
@@ -34,31 +25,24 @@ const learnWords = computed(() => learnItems.value.map((item) => item.word))
 const enSegments = computed(() => parseEnSegments(page.value?.en ?? '', learnWords.value))
 const canPrev = computed(() => pageIndex.value > 1)
 const canNext = computed(() => pageIndex.value < pageCount.value)
-const showEnglish = computed(() => displayMode.value !== 'zh' || !page.value?.zh)
-const showChinese = computed(() => displayMode.value !== 'en' && Boolean(page.value?.zh))
-const heading = computed(() => {
-  if (displayMode.value === 'zh' && props.story.titleZh) return props.story.titleZh
-  return props.story.title
-})
-const subheading = computed(() => {
-  if (displayMode.value === 'zh') return props.story.title
-  if (displayMode.value === 'en+zh') return props.story.titleZh
-  return ''
-})
+const showChinese = computed(() => Boolean(page.value?.zh))
 const patternLearn = computed(() => {
   if (!page.value?.pattern?.includes('___')) return null
   return learnItems.value[0] ?? null
 })
 const openLearn = ref<LearnItem | null>(null)
+const glossAnchor = ref<GlossAnchor | null>(null)
 
 function findLearnItem(word: string): LearnItem | null {
   const key = word.trim().toLowerCase()
   return learnItems.value.find((item) => item.word.toLowerCase() === key) ?? null
 }
 
-function openGloss(word: string) {
+function openGloss(word: string, event: Event) {
   const item = findLearnItem(word)
   if (!item) return
+  const target = event.currentTarget as HTMLElement | null
+  if (target) glossAnchor.value = target.getBoundingClientRect()
   openLearn.value = item
   playWord(item.word, item.audioWord)
 }
@@ -71,10 +55,24 @@ function replayGloss() {
 
 function closeGloss() {
   openLearn.value = null
+  glossAnchor.value = null
 }
 
 function isOpenWord(word: string) {
   return openLearn.value?.word.toLowerCase() === word.trim().toLowerCase()
+}
+
+function onPointerDown(event: PointerEvent) {
+  if (!openLearn.value) return
+  const target = event.target as HTMLElement | null
+  if (!target) return
+  if (target.closest('[data-gloss-panel]')) return
+  if (target.closest('.tap-word, .chip.tap')) return
+  closeGloss()
+}
+
+function onViewportChange() {
+  if (openLearn.value) closeGloss()
 }
 
 function onKey(event: KeyboardEvent) {
@@ -109,10 +107,16 @@ watch(
 
 onMounted(() => {
   window.addEventListener('keydown', onKey)
+  window.addEventListener('pointerdown', onPointerDown)
+  window.addEventListener('scroll', onViewportChange, true)
+  window.addEventListener('resize', onViewportChange)
 })
 
 onUnmounted(() => {
   window.removeEventListener('keydown', onKey)
+  window.removeEventListener('pointerdown', onPointerDown)
+  window.removeEventListener('scroll', onViewportChange, true)
+  window.removeEventListener('resize', onViewportChange)
   stop()
 })
 </script>
@@ -122,39 +126,11 @@ onUnmounted(() => {
     <header class="top">
       <div class="titles">
         <p class="kicker">{{ story.label || 'Story' }}</p>
-        <h1>{{ heading }}</h1>
-        <p v-if="subheading" class="subtitle">{{ subheading }}</p>
+        <h1>{{ story.title }}</h1>
+        <p v-if="story.titleZh" class="subtitle">{{ story.titleZh }}</p>
       </div>
-      <div class="mode-toggle" role="radiogroup" aria-label="Display language">
-        <button
-          v-for="opt in DISPLAY_MODE_OPTIONS"
-          :key="opt.id"
-          type="button"
-          role="radio"
-          :aria-checked="displayMode === opt.id"
-          :aria-label="opt.hint"
-          :class="{ active: displayMode === opt.id }"
-          @click="displayMode = opt.id"
-        >
-          {{ opt.label }}
-        </button>
-      </div>
+      <AppSettings />
     </header>
-
-    <aside v-if="resumedFrom" class="resume" role="status">
-      <p class="resume-copy">
-        上次读到第 {{ resumedFrom }} 页
-        <span class="resume-en">Continue from page {{ resumedFrom }}</span>
-      </p>
-      <div class="resume-actions">
-        <button type="button" class="resume-continue" @click="dismissResume">
-          继续阅读
-        </button>
-        <button type="button" class="resume-restart" @click="restart">
-          从头读
-        </button>
-      </div>
-    </aside>
 
     <PagePlaceholder
       :page-index="page.index"
@@ -163,11 +139,7 @@ onUnmounted(() => {
     />
 
     <section class="copy">
-      <div
-        v-if="showEnglish"
-        class="line en"
-        :class="{ playing: playingLang === 'en' }"
-      >
+      <div class="line en" :class="{ playing: playingLang === 'en' }">
         <button
           type="button"
           class="speaker"
@@ -184,32 +156,24 @@ onUnmounted(() => {
               type="button"
               class="tap-word"
               :class="{ hl: seg.highlight, open: isOpenWord(seg.learnWord) }"
-              @click.stop="openGloss(seg.learnWord)"
+              @click.stop="openGloss(seg.learnWord, $event)"
             >{{ seg.text }}</button>
             <span v-else :class="{ hl: seg.highlight }">{{ seg.text }}</span>
           </template>
         </p>
       </div>
       <button
-        v-if="showChinese && page.zh"
+        v-if="showChinese"
         type="button"
         class="line zh"
-        :class="{ playing: playingLang === 'zh', lead: !showEnglish }"
+        :class="{ playing: playingLang === 'zh' }"
         :aria-pressed="playingLang === 'zh'"
-        aria-label="播放中文"
+        aria-label="Play Chinese"
         @click="playLine('zh')"
       >
         <span class="speaker" aria-hidden="true">🔊</span>
         <span class="line-text">{{ page.zh }}</span>
       </button>
-      <GlossPanel
-        v-if="openLearn"
-        :item="openLearn"
-        :playing="Boolean(playingWord)"
-        @replay="replayGloss"
-        @close="closeGloss"
-      />
-      <p class="hint">点加粗词看意思 · 点喇叭或句子听整句</p>
       <div class="meta">
         <button
           v-if="page.pattern"
@@ -217,7 +181,7 @@ onUnmounted(() => {
           class="chip"
           :class="{ tap: Boolean(patternLearn), open: patternLearn && isOpenWord(patternLearn.word) }"
           :disabled="!patternLearn"
-          @click="patternLearn && openGloss(patternLearn.word)"
+          @click="patternLearn && openGloss(patternLearn.word, $event)"
         >{{ page.pattern }}</button>
         <button
           v-for="item in learnItems"
@@ -225,16 +189,25 @@ onUnmounted(() => {
           type="button"
           class="chip word tap"
           :class="{ open: isOpenWord(item.word) }"
-          @click="openGloss(item.word)"
+          @click="openGloss(item.word, $event)"
         >{{ item.word }}</button>
       </div>
     </section>
 
     <nav class="nav" aria-label="Page navigation">
-      <button type="button" :disabled="!canPrev" @click="prev">上一页</button>
+      <button type="button" :disabled="!canPrev" @click="prev">Prev</button>
       <p class="count">{{ page.index }} / {{ pageCount }}</p>
-      <button type="button" class="next" :disabled="!canNext" @click="next">下一页</button>
+      <button type="button" class="next" :disabled="!canNext" @click="next">Next</button>
     </nav>
+
+    <GlossPanel
+      v-if="openLearn && glossAnchor"
+      :item="openLearn"
+      :playing="Boolean(playingWord)"
+      :anchor="glossAnchor"
+      @replay="replayGloss"
+      @close="closeGloss"
+    />
   </article>
 </template>
 
@@ -251,9 +224,14 @@ onUnmounted(() => {
 .top {
   display: flex;
   justify-content: space-between;
-  gap: 16px;
   align-items: flex-start;
+  gap: 12px;
   margin-bottom: 16px;
+}
+
+.titles {
+  min-width: 0;
+  flex: 1;
 }
 
 .kicker {
@@ -274,88 +252,6 @@ h1 {
 .subtitle {
   margin: 4px 0 0;
   color: var(--muted);
-}
-
-.mode-toggle {
-  display: flex;
-  flex-shrink: 0;
-  gap: 4px;
-  padding: 4px;
-  border-radius: 999px;
-  background: var(--fog);
-  border: 3px solid #2f3f3b;
-}
-
-.mode-toggle button {
-  min-height: 44px;
-  min-width: 56px;
-  padding: 8px 14px;
-  border: 0;
-  border-radius: 999px;
-  background: transparent;
-  color: var(--ink);
-  font-size: 0.95rem;
-  font-weight: 700;
-}
-
-.mode-toggle button.active {
-  background: var(--paper);
-  color: var(--teal-dark);
-  box-shadow: 0 2px 0 rgba(47, 63, 59, 0.18);
-}
-
-.resume {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
-  margin: 0 0 16px;
-  padding: 12px 14px;
-  border-radius: 18px;
-  border: 3px solid #2f3f3b;
-  background: rgba(31, 138, 128, 0.12);
-  color: var(--teal-dark);
-}
-
-.resume-copy {
-  margin: 0;
-  font-weight: 700;
-  font-size: 1.05rem;
-  line-height: 1.3;
-}
-
-.resume-en {
-  display: block;
-  margin-top: 2px;
-  font-size: 0.88rem;
-  font-weight: 500;
-  color: var(--muted);
-}
-
-.resume-actions {
-  display: flex;
-  flex-shrink: 0;
-  gap: 8px;
-}
-
-.resume-actions button {
-  min-height: 48px;
-  padding: 10px 16px;
-  border-radius: 999px;
-  font-size: 1rem;
-  font-weight: 700;
-}
-
-.resume-continue {
-  border: 3px solid #2f3f3b;
-  background: var(--teal);
-  color: white;
-}
-
-.resume-restart {
-  border: 3px solid #2f3f3b;
-  background: var(--paper);
-  color: var(--ink);
 }
 
 .copy {
@@ -393,13 +289,6 @@ button.line {
   color: var(--muted);
   font-size: 1.05rem;
   line-height: 1.5;
-}
-
-.line.zh.lead {
-  margin-top: 0;
-  color: var(--ink);
-  font-size: 1.55rem;
-  font-weight: 500;
 }
 
 .line:hover,
@@ -468,12 +357,6 @@ button.speaker[aria-pressed='true'] {
 .chip.open {
   background: rgba(224, 106, 78, 0.2);
   box-shadow: 0 0 0 3px rgba(224, 106, 78, 0.28);
-}
-
-.hint {
-  margin: 10px 2px 0;
-  color: var(--muted);
-  font-size: 0.88rem;
 }
 
 .meta {
@@ -554,36 +437,12 @@ button.speaker[aria-pressed='true'] {
     border-radius: 20px;
   }
 
-  .top {
-    flex-direction: column;
-  }
-
-  .mode-toggle {
-    width: 100%;
-  }
-
-  .mode-toggle button {
-    flex: 1;
-    min-height: 48px;
-  }
-
   h1 {
     font-size: 1.35rem;
   }
 
-  .line.en,
-  .line.zh.lead {
+  .line.en {
     font-size: 1.28rem;
-  }
-
-  .resume {
-    flex-direction: column;
-    align-items: stretch;
-  }
-
-  .resume-actions {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
   }
 
   .nav button {
@@ -603,8 +462,7 @@ button.speaker[aria-pressed='true'] {
     font-size: 1.9rem;
   }
 
-  .line.en,
-  .line.zh.lead {
+  .line.en {
     font-size: 1.75rem;
   }
 

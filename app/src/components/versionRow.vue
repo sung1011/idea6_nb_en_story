@@ -26,7 +26,7 @@ const emit = defineEmits<{
       class="update"
       @click="emit('update')"
     >
-      更新
+      Update
     </button>
   </article>
 </template>

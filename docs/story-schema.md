@@ -61,7 +61,7 @@ npm run parse-stories
 - 中文音频：`audio/<story-id>/p01-zh.mp3`（Edge TTS `zh-CN-XiaoxiaoNeural`）
 - 词级音频：`audio/<story-id>/word-flag.mp3`（同一 Ana 声线，只读单词）
 
-阅读器以 Vite `base`（`/idea6_nb_en_story/`）拼接这些路径。点喇叭或句子其余部分播放整句 `audioEn` / `audioZh`；点加粗焦点词、辅词芯片或带 `___` 的句式芯片打开释义面板并读单词。文件缺失或播放失败时回退 Web Speech。默认不自动播放。
+阅读器以 Vite `base`（`/idea6_nb_en_story/`）拼接这些路径。点喇叭或句子其余部分播放整句 `audioEn` / `audioZh`；点加粗焦点词、辅词芯片或带 `___` 的句式芯片在词旁弹出释义气泡并读单词。文件缺失或播放失败时回退 Web Speech。默认不自动播放。
 
 重新生成音频（在 `app/` 下）：`npm run gen-tts`（需 `edge-tts` 与 `ffmpeg`）。`npm run parse-stories` / `dev` / `build` 会根据 `app/public/images/` 与 `app/public/audio/` 里是否已有文件回填路径。
 
@@ -98,17 +98,15 @@ npm run parse-stories
 当前 Vue 阅读器实际用到：
 
 - 导航与续读：`id`、`pageCount`、`pages[].index`
-- 展示：`en`、`zh`、`pattern`、`focusWord`、`image`
+- 展示：`en`、`zh`、`pattern`、`focusWord`、`image`（始终英文行 + 中文行）
 - 朗读：`audioEn`、`audioZh`（点喇叭或句子其余部分播放整句；缺文件回退系统语音）
-- 点词：`learnItems` / `gloss` / `audioWord`（点加粗词、辅词芯片或句式空位，弹出中文短义 +「再听」）
-- 展示模式：`en`（只英文）/ `en+zh`（对照，默认）/ `zh`（只中文）
+- 点词：`learnItems` / `gloss` / `audioWord`（点加粗词、辅词芯片或句式空位，在词旁弹出释义气泡 + Play again）
 
-`localStorage`（前缀 `idea6_nb_en_story:`，GM 初始化会全部清除）：
+`localStorage`（前缀 `idea6_nb_en_story:`，GM Reset all data 会全部清除）：
 
 - `idea6_nb_en_story:progress:flag-in-the-fog` → 页码（1-based，读写时夹紧到 `1..pageCount`）
-- `idea6_nb_en_story:displayMode` → `en` \| `en+zh` \| `zh`（整站偏好，默认 `en+zh`）
 - `idea6_nb_en_story:ackedVersion` → 用户已确认的最新版本 `id`（对应 `app/public/versions.json`）
 
-旧键 `idea6_nb_en_story:showZh:<storyId>` 若仍存在，会在首次读取时迁移：`0`/`false` → `en`，其余 → `en+zh`。
+启动时会删除过期键 `idea6_nb_en_story:displayMode` 与 `idea6_nb_en_story:showZh:<storyId>`，不碰阅读进度。
 
-`app/public/versions.json` 为数组，**最新在前**，每项 `{ id, version, date, summary }`。阅读器每 10 秒 cache-bust 拉取；设置 **版本** 页的 **检查更新** 会立刻再拉一次（`cache: no-store`）。比 `ackedVersion` 更新的条目会出现在设置按钮下方的更新 toast（最多 10 条）。点击 **更新** 会写入已确认版本并硬刷新。**清除缓存** 会注销 Service Worker、删除 Cache Storage（故事图/音频/阅读器壳），再带 `_reload` 硬刷新；不清除 `localStorage` / 阅读进度（那只在 GM **初始化**）。
+`app/public/versions.json` 为数组，**最新在前**，每项 `{ id, version, date, summary }`（新条目用英文）。阅读器每 10 秒 cache-bust 拉取；Settings **Version** 页的 **Check for updates** 会立刻再拉一次（`cache: no-store`）。比 `ackedVersion` 更新的条目会出现在齿轮下方的更新 toast（最多 10 条）。点击 **Update** 会写入已确认版本并硬刷新。**Clear cache** 会注销 Service Worker、删除 Cache Storage（故事图/音频/阅读器壳），再带 `_reload` 硬刷新；不清除 `localStorage` / 阅读进度（那只在 GM **Reset all data**）。

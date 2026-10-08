@@ -13,13 +13,10 @@ function readStoredPage(storyId: string, pageCount: number): number {
 
 export function useStoryProgress(storyId: string, pageCount: number) {
   const pageIndex = ref(1)
-  const resumedFrom = ref<number | null>(null)
   const ready = ref(false)
 
   onMounted(() => {
-    const stored = readStoredPage(storyId, pageCount)
-    pageIndex.value = stored
-    if (stored > 1) resumedFrom.value = stored
+    pageIndex.value = readStoredPage(storyId, pageCount)
     ready.value = true
   })
 
@@ -45,23 +42,16 @@ export function useStoryProgress(storyId: string, pageCount: number) {
     goTo(pageIndex.value - 1)
   }
 
-  function dismissResume() {
-    resumedFrom.value = null
-  }
-
   function restart() {
     goTo(1)
-    resumedFrom.value = null
   }
 
   return {
     pageIndex,
-    resumedFrom,
     ready,
     goTo,
     next,
     prev,
-    dismissResume,
     restart,
   }
 }
