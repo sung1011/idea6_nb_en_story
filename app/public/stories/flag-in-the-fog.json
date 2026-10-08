@@ -13,7 +13,7 @@
     {
       "id": "P01",
       "index": 1,
-      "en": "Mia and Ben are at the sea. There is an old **map** by the sand.",
+      "en": "Mia and Ben are by the sea. An old **map** is by the sand.",
       "zh": "米娅和本在海边。沙滩边有一张旧地图。",
       "pattern": "There is a ___ .",
       "focusWord": "map",
@@ -121,8 +121,8 @@
     {
       "id": "P05",
       "index": 5,
-      "en": "“Look!” says Mia. A flag is on a big **rock**. A box is by it. It has a lock.",
-      "zh": "“看！”米娅说。大石头上插着一面旗，旗子旁边有个箱子，上面有一把锁。",
+      "en": "\"Look!\" A flag is on a big **rock**. A box is by it.",
+      "zh": "\"看！\"大石头上有一面旗。旗旁有个箱子。",
       "pattern": "It is on the ___ .",
       "focusWord": "rock / box 道具",
       "focusNote": "第3章 第4课「好多好多」；第2章 第2课词包，不加粗",
@@ -208,8 +208,8 @@
     {
       "id": "P08",
       "index": 8,
-      "en": "Ben puts the tin in his **bag**. Oh no! The rat has my bag!",
-      "zh": "本把铁盒放进袋子。糟了！老鼠叼走了我的袋子！",
+      "en": "Ben puts the tin in his **bag**. Oh no! The rat has it!",
+      "zh": "本把铁盒放进袋子。糟了！老鼠叼走了！",
       "pattern": "___ puts the ___ in the ___ . / He has my ___ !",
       "focusWord": "bag / tin 回调",
       "focusNote": "第2章 第2课",
@@ -241,8 +241,8 @@
     {
       "id": "P09",
       "index": 9,
-      "en": "“Stop!” yells Mia. The fog lifts. Still no bag—only prints to a **hill**.",
-      "zh": "“停下！”米娅大喊。雾散了。还是没有包——只有一串脚印通向小山。",
+      "en": "\"Stop!\" The fog lifts. Prints go to a **hill**.",
+      "zh": "\"停下！\"雾散了。脚印通向一座小山。",
       "pattern": "Stop! / Still no ___ !",
       "focusWord": "fog / hill",
       "focusNote": "回调；第8章 第3课「卡姆和帕特」",
@@ -469,8 +469,8 @@
     {
       "id": "P18",
       "index": 18,
-      "en": "Yes! Here is the tin. Here is the bag. The rat takes the bun.",
-      "zh": "好！铁盒在这儿。袋子在这儿。老鼠接过面包。",
+      "en": "Yes! Here is the tin and the bag. The rat takes the bun.",
+      "zh": "好！铁盒和袋子都在这儿。老鼠接过面包。",
       "pattern": "Here is the ___ . / We can ___ .",
       "focusWord": "tin / bag / bun",
       "focusNote": "",
@@ -506,8 +506,8 @@
     {
       "id": "P19",
       "index": 19,
-      "en": "In the sun, Mia opens the tin. There is a key in the tin!",
-      "zh": "在阳光下，米娅打开铁盒。铁盒里有一把钥匙！",
+      "en": "Mia opens the tin. There is a key in it!",
+      "zh": "米娅打开铁盒。里面有一把钥匙！",
       "pattern": "There is a ___ in the ___ .",
       "focusWord": "tin",
       "focusNote": "",

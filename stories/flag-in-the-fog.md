@@ -7,7 +7,7 @@
 ---
 
 ### P01
-正文: Mia and Ben are at the sea. There is an old **map** by the sand.（米娅和本在海边。沙滩边有一张旧地图。）
+正文: Mia and Ben are by the sea. An old **map** is by the sand.（米娅和本在海边。沙滩边有一张旧地图。）
 主练句式: There is a ___ .
 辅词: map
 知识点: There is 存在句；map 寻宝地图
@@ -40,7 +40,7 @@
 ---
 
 ### P05
-正文: “Look!” says Mia. A flag is on a big **rock**. A box is by it. It has a lock.（“看！”米娅说。大石头上插着一面旗，旗子旁边有个箱子，上面有一把锁。）
+正文: "Look!" A flag is on a big **rock**. A box is by it.（"看！"大石头上有一面旗。旗旁有个箱子。）
 主练句式: It is on the ___ .
 辅词: rock（第3章 第4课「好多好多」）；box 道具（第2章 第2课词包，不加粗）
 知识点: 介词 on；状态 It has…
@@ -64,7 +64,7 @@
 ---
 
 ### P08
-正文: Ben puts the tin in his **bag**. Oh no! The rat has my bag!（本把铁盒放进袋子。糟了！老鼠叼走了我的袋子！）
+正文: Ben puts the tin in his **bag**. Oh no! The rat has it!（本把铁盒放进袋子。糟了！老鼠叼走了！）
 主练句式: ___ puts the ___ in the ___ . / He has my ___ !
 辅词: bag（第2章 第2课）；tin 回调
 知识点: put…in… 紧接失窃；物主 my + has
@@ -72,7 +72,7 @@
 ---
 
 ### P09
-正文: “Stop!” yells Mia. The fog lifts. Still no bag—only prints to a **hill**.（“停下！”米娅大喊。雾散了。还是没有包——只有一串脚印通向小山。）
+正文: "Stop!" The fog lifts. Prints go to a **hill**.（"停下！"雾散了。脚印通向一座小山。）
 主练句式: Stop! / Still no ___ !
 辅词: fog（回调）；hill（第8章 第3课「卡姆和帕特」）
 知识点: 祈使 Stop；Still + 否定；短追
@@ -144,7 +144,7 @@
 ---
 
 ### P18
-正文: Yes! Here is the tin. Here is the bag. The rat takes the bun.（好！铁盒在这儿。袋子在这儿。老鼠接过面包。）
+正文: Yes! Here is the tin and the bag. The rat takes the bun.（好！铁盒和袋子都在这儿。老鼠接过面包。）
 主练句式: Here is the ___ . / We can ___ .
 辅词: tin / bag / bun
 知识点: Here is 交接；交换成交（可见）
@@ -152,7 +152,7 @@
 ---
 
 ### P19
-正文: In the sun, Mia opens the tin. There is a key in the tin!（在阳光下，米娅打开铁盒。铁盒里有一把钥匙！）
+正文: Mia opens the tin. There is a key in it!（米娅打开铁盒。里面有一把钥匙！）
 主练句式: There is a ___ in the ___ .
 辅词: tin
 知识点: There is + 介词短语；开箱前奏

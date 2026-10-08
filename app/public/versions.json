@@ -1,5 +1,11 @@
 [
   {
+    "id": "v0.6.5",
+    "version": "0.6.5",
+    "date": "2026-10-08",
+    "summary": "Shortened six long English sentences so page text fits two lines."
+  },
+  {
     "id": "v0.6.4",
     "version": "0.6.4",
     "date": "2026-10-08",
