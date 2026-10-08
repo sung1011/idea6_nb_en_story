@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed, onMounted, onUnmounted, ref, toRef, watch } from 'vue'
-import type { LearnItem, Story } from '@/types/story'
+import type { LearnItem, Story, StoryPhrase } from '@/types/story'
 import type { StoryIndexEntry } from '@/types/storyIndex'
 import { parseEnSegments } from '@/utils/parseEn'
 import { useStoryProgress } from '@/composables/useStoryProgress'
@@ -31,8 +31,18 @@ const { cacheLabel, cacheFade, nextPageLoading } = useStoryPreload(toRef(props, 
 const page = computed(() => {
   return props.story.pages.find((item) => item.index === pageIndex.value) ?? props.story.pages[0]
 })
-const { playingLang, playingWord, playingRate, followIndex, playLine, playWord, playDevice, stop } =
-  usePageSpeech(page)
+const {
+  playingLang,
+  playingWord,
+  playingRate,
+  followIndex,
+  playingPhrase,
+  playLine,
+  playWord,
+  playDevice,
+  playPhrase,
+  stop,
+} = usePageSpeech(page)
 const { cancelAuto } = useAutoRead(page, onSummary, ready, playLine, stop)
 const { rate: slowRate } = useSlowSpeed()
 const slowPlaying = computed(() => playingLang.value === 'en' && playingRate.value < 1)
@@ -53,23 +63,22 @@ const uniqueWords = computed(() => {
   }
   return items
 })
-const uniquePatterns = computed(() => {
-  const seen = new Set<string>()
-  const patterns: string[] = []
-  for (const storyPage of props.story.pages) {
-    const pattern = storyPage.pattern?.trim()
-    if (!pattern || pattern === '—' || seen.has(pattern)) continue
-    seen.add(pattern)
-    patterns.push(pattern)
-  }
-  return patterns
-})
-const phraseCatalog = ref<Record<string, string[]>>({})
 const summaryPhrases = computed(() => {
-  const fromFile = phraseCatalog.value[props.story.id] ?? []
-  const seen = new Set(fromFile)
-  const extra = uniquePatterns.value.filter((item) => !seen.has(item))
-  return fromFile.length ? [...fromFile, ...extra] : uniquePatterns.value
+  const seen = new Set<string>()
+  const items: StoryPhrase[] = []
+  for (const storyPage of props.story.pages) {
+    const phrase = storyPage.phrase?.trim()
+    if (!phrase) continue
+    const key = phrase.toLowerCase()
+    if (seen.has(key)) continue
+    seen.add(key)
+    items.push({
+      phrase,
+      phraseZh: storyPage.phraseZh ?? '',
+      audioPhrase: storyPage.audioPhrase ?? null,
+    })
+  }
+  return items
 })
 const canPrev = computed(() => onSummary.value || pageIndex.value > 1)
 const canNext = computed(() => !onSummary.value)
@@ -144,11 +153,11 @@ function toggleZh(event: Event) {
   playLine('zh')
 }
 
-function playPhrase(text: string) {
-  const spoken = String(text || '').trim()
-  if (!spoken || spoken === '—') return
+function playPagePhrase(item: { phrase?: string; audioPhrase?: string | null }) {
+  const spoken = String(item.phrase || '').trim()
+  if (!spoken) return
   cancelAuto()
-  playWord(spoken)
+  playPhrase(item.audioPhrase, spoken)
 }
 
 function speakPanelEn() {
@@ -248,14 +257,6 @@ onMounted(() => {
   window.addEventListener('pointerdown', onPointerDown)
   window.addEventListener('scroll', onViewportChange, true)
   window.addEventListener('resize', onViewportChange)
-  void fetch(`${import.meta.env.BASE_URL}phrases.json`)
-    .then((response) => (response.ok ? response.json() : null))
-    .then((data) => {
-      if (data && typeof data === 'object') phraseCatalog.value = data as Record<string, string[]>
-    })
-    .catch(() => {
-      /* keep page patterns */
-    })
 })
 
 onUnmounted(() => {
@@ -355,12 +356,17 @@ onUnmounted(() => {
         </div>
         <div class="meta">
           <button
-            v-if="page.pattern && page.pattern !== '—'"
+            v-if="page.phrase"
             type="button"
-            class="chip pattern tap"
-            :aria-label="`Play phrase ${page.pattern}`"
-            @click="playPhrase(page.pattern)"
-          >{{ page.pattern }}</button>
+            class="chip phrase tap"
+            :class="{ playing: playingPhrase === page.phrase }"
+            :aria-label="`Play phrase ${page.phrase}`"
+            :aria-pressed="playingPhrase === page.phrase"
+            @click="playPagePhrase(page)"
+          >
+            <span class="phrase-en">{{ page.phrase }}</span>
+            <span v-if="page.phraseZh" class="phrase-zh">{{ page.phraseZh }}</span>
+          </button>
           <button
             v-for="item in learnItems"
             :key="`${page.id}-${item.word}`"
@@ -376,10 +382,11 @@ onUnmounted(() => {
     <StorySummary
       v-else
       :words="uniqueWords"
-      :patterns="summaryPhrases"
+      :phrases="summaryPhrases"
+      :playing-phrase="playingPhrase"
       :open-word="openLearn?.word"
       @open-word="openSummaryWord"
-      @play-phrase="playPhrase"
+      @play-phrase="playPagePhrase"
     />
 
     <nav class="nav" aria-label="Page navigation">
@@ -626,9 +633,32 @@ h1 {
   min-height: 40px;
 }
 
-.chip.pattern {
+.chip.phrase {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.35em;
+  max-width: 100%;
   margin: 0;
-  cursor: pointer;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.chip.phrase .phrase-en {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.chip.phrase .phrase-zh {
+  flex-shrink: 0;
+  font-size: 0.62em;
+  font-weight: 500;
+  color: var(--muted);
+}
+
+.chip.phrase.playing {
+  background: rgba(31, 138, 128, 0.28);
+  box-shadow: 0 0 0 3px rgba(31, 138, 128, 0.28);
 }
 
 .chip:disabled {

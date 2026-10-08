@@ -31,7 +31,7 @@ function uniqueUrls(urls: Array<string | null | undefined>): string[] {
 }
 
 export function pageWarmUrls(page: StoryPage): string[] {
-  const urls = [assetUrl(page.image), assetUrl(page.audioEn)]
+  const urls = [assetUrl(page.image), assetUrl(page.audioEn), assetUrl(page.audioPhrase)]
   for (const item of page.learnItems ?? []) urls.push(assetUrl(item.image))
   return uniqueUrls(urls)
 }

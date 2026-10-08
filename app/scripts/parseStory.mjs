@@ -98,6 +98,41 @@ export function pageAudioRel(slug, pageId, lang) {
   return `audio/${slug}/${String(pageId).toLowerCase()}-${lang}.mp3`
 }
 
+/** @param {string} slug @param {string} pageId */
+export function pagePhraseRel(slug, pageId) {
+  return `audio/${slug}/phrase-${String(pageId).toLowerCase()}.mp3`
+}
+
+function loadPhraseTable() {
+  const file = path.join(REPO_ROOT, 'uploads', 'phrases.json')
+  const raw = JSON.parse(fs.readFileSync(file, 'utf8'))
+  if (!raw || typeof raw !== 'object') throw new Error('uploads/phrases.json is missing')
+  return raw
+}
+
+function writePublicPhrases(table) {
+  const out = path.join(APP_ROOT, 'public', 'phrases.json')
+  fs.writeFileSync(out, `${JSON.stringify(table, null, 2)}\n`)
+}
+
+/** @param {{ id: string, pages: Array<Record<string, unknown>> }} story */
+function applyPhraseFields(story) {
+  const table = loadPhraseTable()
+  const byPage = table[story.id]
+  if (!byPage || typeof byPage !== 'object' || Array.isArray(byPage)) {
+    throw new Error(`No phrase table for ${story.id}`)
+  }
+  for (const page of story.pages ?? []) {
+    const pair = byPage[page.id]
+    const phrase = Array.isArray(pair) ? String(pair[0] ?? '').trim() : ''
+    const phraseZh = Array.isArray(pair) ? String(pair[1] ?? '').trim() : ''
+    if (!phrase) throw new Error(`Missing phrase for ${story.id} ${page.id}`)
+    page.phrase = phrase
+    page.phraseZh = phraseZh
+    page.audioPhrase = existingRel(pagePhraseRel(story.id, page.id))
+  }
+}
+
 /**
  * Short zh glosses derived from Flag in the Fog 正文中文 / 辅词 / 知识点.
  * Used only when the page has no 释义: and notes do not already give a meaning.
@@ -228,6 +263,7 @@ function applyExistingMedia(story) {
     delete page.audioWord
     delete page.audioZh
   }
+  applyPhraseFields(story)
 }
 
 /** @param {string} rel */
@@ -413,10 +449,12 @@ export function parseAndWriteStories() {
       }
       applyExistingMedia(saved)
     }
+    applyPhraseFields(saved)
     fs.writeFileSync(outFile, `${JSON.stringify(saved, null, 2)}\n`)
     catalog.push(saved)
     written.push({ slug, pageCount: saved.pageCount, outFile })
   }
+  writePublicPhrases(loadPhraseTable())
   writeStoriesIndex(catalog)
   return written
 }

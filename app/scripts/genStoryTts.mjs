@@ -1,7 +1,7 @@
 import { spawn } from 'node:child_process'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
-import { pageAudioRel, parseAndWriteStories, plainSpeakText } from './parseStory.mjs'
+import { pageAudioRel, pagePhraseRel, parseAndWriteStories, plainSpeakText } from './parseStory.mjs'
 import fs from 'node:fs'
 
 const APP_ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..')
@@ -29,6 +29,15 @@ for (const item of written) {
         rate: EN_RATE,
       })
     }
+    const phrase = plainSpeakText(page.phrase)
+    if (phrase) {
+      clips.push({
+        file: pagePhraseRel(story.id, page.id),
+        text: phrase,
+        voice: EN_VOICE,
+        rate: EN_RATE,
+      })
+    }
   }
 }
 
@@ -51,4 +60,4 @@ const code = await new Promise((resolve) => {
 if (code !== 0) process.exit(code ?? 1)
 
 parseAndWriteStories()
-console.log('updated story JSON with audioEn paths')
+console.log('updated story JSON with audioEn / audioPhrase paths')

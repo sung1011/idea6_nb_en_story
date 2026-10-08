@@ -1,15 +1,16 @@
 <script setup lang="ts">
-import type { LearnItem } from '@/types/story'
+import type { LearnItem, StoryPhrase } from '@/types/story'
 
 const props = defineProps<{
   words: LearnItem[]
-  patterns: string[]
+  phrases: StoryPhrase[]
+  playingPhrase?: string | null
   openWord?: string | null
 }>()
 
 const emit = defineEmits<{
   openWord: [item: LearnItem, event: Event]
-  playPhrase: [pattern: string]
+  playPhrase: [item: StoryPhrase]
 }>()
 
 function imageSrc(file: string | null) {
@@ -45,14 +46,19 @@ function isOpen(word: string) {
     </div>
 
     <h2>Sentences</h2>
-    <ul class="patterns">
-      <li v-for="pattern in patterns" :key="pattern">
+    <ul class="phrases">
+      <li v-for="item in phrases" :key="item.phrase">
         <button
           type="button"
-          class="chip pattern"
-          :aria-label="`Play phrase ${pattern}`"
-          @click="emit('playPhrase', pattern)"
-        >{{ pattern }}</button>
+          class="chip phrase"
+          :class="{ playing: playingPhrase === item.phrase }"
+          :aria-label="`Play phrase ${item.phrase}`"
+          :aria-pressed="playingPhrase === item.phrase"
+          @click="emit('playPhrase', item)"
+        >
+          <span class="phrase-en">{{ item.phrase }}</span>
+          <span v-if="item.phraseZh" class="phrase-zh">{{ item.phraseZh }}</span>
+        </button>
       </li>
     </ul>
   </section>
@@ -129,7 +135,7 @@ h2 {
   line-height: 1.2;
 }
 
-.patterns {
+.phrases {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
@@ -148,6 +154,33 @@ h2 {
   font-size: 0.92rem;
   font-weight: 700;
   cursor: pointer;
+}
+
+.chip.phrase {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.35em;
+  max-width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.chip.phrase .phrase-en {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.chip.phrase .phrase-zh {
+  flex-shrink: 0;
+  font-size: 0.62em;
+  font-weight: 500;
+  color: var(--muted);
+}
+
+.chip.phrase.playing {
+  background: rgba(31, 138, 128, 0.28);
+  box-shadow: 0 0 0 3px rgba(31, 138, 128, 0.28);
 }
 
 @media (max-width: 720px) {

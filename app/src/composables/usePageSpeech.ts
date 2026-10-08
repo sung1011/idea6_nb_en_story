@@ -237,6 +237,7 @@ export function usePageSpeech(page: Ref<StoryPage | undefined>) {
   const playingWord = ref<string | null>(null)
   const playingRate = ref(1)
   const followIndex = ref<number | null>(null)
+  const playingPhrase = ref<string | null>(null)
 
   function clearFollow() {
     cancelFollowLoop()
@@ -264,6 +265,7 @@ export function usePageSpeech(page: Ref<StoryPage | undefined>) {
     playingLang.value = null
     playingWord.value = null
     playingRate.value = 1
+    playingPhrase.value = null
   }
 
   function stop() {
@@ -272,6 +274,7 @@ export function usePageSpeech(page: Ref<StoryPage | undefined>) {
     playingLang.value = null
     playingWord.value = null
     playingRate.value = 1
+    playingPhrase.value = null
   }
 
   function playLine(lang: SpeechLang, rate = 1, options: PlayOptions = {}) {
@@ -286,6 +289,7 @@ export function usePageSpeech(page: Ref<StoryPage | undefined>) {
     playingWord.value = null
     playingRate.value = speed
     followIndex.value = null
+    playingPhrase.value = null
     const done = () => {
       clearPlaying(token)
       options.onEnded?.()
@@ -342,8 +346,28 @@ export function usePageSpeech(page: Ref<StoryPage | undefined>) {
     playingWord.value = lang === 'en' ? spoken : null
     playingRate.value = 1
     followIndex.value = null
+    playingPhrase.value = null
     const done = () => clearPlaying(token)
     systemSpeak(spoken, lang, token, done, 1, true)
+  }
+
+  function playPhrase(file: string | null | undefined, text: string) {
+    const spoken = plainSpeakText(text)
+    if (!spoken) return
+    stopShared()
+    const token = seq
+    playingLang.value = null
+    playingWord.value = null
+    playingRate.value = 1
+    followIndex.value = null
+    playingPhrase.value = spoken
+    const done = () => clearPlaying(token)
+    const src = String(file || '').trim()
+    if (src) {
+      playFile(clipUrl(src), spoken, 'en', token, done, 1)
+      return
+    }
+    systemSpeak(spoken, 'en', token, done, 1, true)
   }
 
   onMounted(() => {
@@ -370,9 +394,11 @@ export function usePageSpeech(page: Ref<StoryPage | undefined>) {
     playingWord,
     playingRate,
     followIndex,
+    playingPhrase,
     playLine,
     playWord,
     playDevice,
+    playPhrase,
     stop,
   }
 }
