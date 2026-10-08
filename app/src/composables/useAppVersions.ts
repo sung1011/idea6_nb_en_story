@@ -59,12 +59,6 @@ export function useAppVersions() {
     }
   }
 
-  function applyUpdate() {
-    const newest = versions.value[0]
-    if (newest) writeAcked(newest.id)
-    hardReload()
-  }
-
   async function clearCaches() {
     try {
       if ('serviceWorker' in navigator) {
@@ -79,6 +73,16 @@ export function useAppVersions() {
       // still reload so the shell and story assets refetch
     }
     hardReload()
+  }
+
+  async function applyUpdate() {
+    const newest = versions.value[0]
+    if (newest) writeAcked(newest.id)
+    try {
+      await clearCaches()
+    } catch {
+      hardReload()
+    }
   }
 
   let timer = 0

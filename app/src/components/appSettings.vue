@@ -119,6 +119,8 @@ onUnmounted(() => {
             v-for="entry in versions"
             :key="entry.id"
             :entry="entry"
+            :show-update="pending.some((item) => item.id === entry.id)"
+            @update="applyUpdate"
           />
           <p v-if="!versions.length" class="empty">No version history yet</p>
         </div>

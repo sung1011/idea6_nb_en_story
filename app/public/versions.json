@@ -1,5 +1,11 @@
 [
   {
+    "id": "v0.5.5",
+    "version": "0.5.5",
+    "date": "2026-10-08",
+    "summary": "Update now also clears the cache so new art and audio show right away"
+  },
+  {
     "id": "v0.5.4",
     "version": "0.5.4",
     "date": "2026-10-08",
