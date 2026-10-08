@@ -139,7 +139,7 @@
 ---
 
 ### P17
-正文: It is not Mom. It is a big rug. Bug is sad.（不是妈妈，是晾在篱笆上的一块大花毯。小瓢虫很难过。）
+正文: It is not Mom. It is a big rug. The cub is sad.（不是妈妈，是晾在篱笆上的一块大花毯。小豹很难过。）
 场景: 同一院子，大花毯晾在篱笆上
 主练句式: It is not ___ . It is a ___ .
 辅词: —（rug 回调，词卡复用）
