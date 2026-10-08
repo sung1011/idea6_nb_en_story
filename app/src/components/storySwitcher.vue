@@ -35,7 +35,6 @@ function close() {
 
 function pick(id: string) {
   close()
-  if (id === props.currentId) return
   emit('select', id)
 }
 
