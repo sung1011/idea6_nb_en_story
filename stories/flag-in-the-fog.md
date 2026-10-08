@@ -49,7 +49,7 @@
 
 ### P06
 正文: A little **tin** goes ding! Ding!（小铁盒叮咚！叮咚！）
-主练句式: There is a ___ . / 听辨
+主练句式: There is a ___ .
 辅词: tin（第2章 第2课「回收小书」）
 知识点: 单拍聚焦响声（偷因之一）
 
