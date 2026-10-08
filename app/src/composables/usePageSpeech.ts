@@ -21,6 +21,8 @@ let sharedAudio: HTMLAudioElement | null = null
 let unlocked = false
 let seq = 0
 let followRaf = 0
+let phraseGapTimer = 0
+const PHRASE_GAP_MS = 300
 const timingsByUrl = new Map<string, Promise<Record<string, WordCue[]> | null>>()
 
 function cancelFollowLoop() {
@@ -89,9 +91,16 @@ function applyPlaybackRate(el: HTMLAudioElement, rate: number) {
   pitched.mozPreservesPitch = true
 }
 
+function cancelPhraseGap() {
+  if (!phraseGapTimer) return
+  window.clearTimeout(phraseGapTimer)
+  phraseGapTimer = 0
+}
+
 function stopShared(): void {
   seq += 1
   cancelFollowLoop()
+  cancelPhraseGap()
   window.speechSynthesis?.cancel()
   if (sharedAudio) {
     sharedAudio.onended = null
@@ -351,23 +360,31 @@ export function usePageSpeech(page: Ref<StoryPage | undefined>) {
     systemSpeak(spoken, lang, token, done, 1, true)
   }
 
-  function playPhrase(file: string | null | undefined, text: string) {
-    const spoken = plainSpeakText(text)
-    if (!spoken) return
+  function playPhrase(en: string, zh?: string | null) {
+    const spokenEn = plainSpeakText(en)
+    if (!spokenEn) return
     stopShared()
     const token = seq
     playingLang.value = null
     playingWord.value = null
     playingRate.value = 1
     followIndex.value = null
-    playingPhrase.value = spoken
+    playingPhrase.value = spokenEn
     const done = () => clearPlaying(token)
-    const src = String(file || '').trim()
-    if (src) {
-      playFile(clipUrl(src), spoken, 'en', token, done, 1)
-      return
+    const spokenZh = plainSpeakText(zh || '')
+    const afterEn = () => {
+      if (seq !== token) return
+      if (!spokenZh) {
+        done()
+        return
+      }
+      phraseGapTimer = window.setTimeout(() => {
+        phraseGapTimer = 0
+        if (seq !== token) return
+        systemSpeak(spokenZh, 'zh', token, done, 1, true)
+      }, PHRASE_GAP_MS)
     }
-    systemSpeak(spoken, 'en', token, done, 1, true)
+    systemSpeak(spokenEn, 'en', token, afterEn, 1, true)
   }
 
   onMounted(() => {

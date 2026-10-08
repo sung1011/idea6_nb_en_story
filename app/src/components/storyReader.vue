@@ -153,11 +153,11 @@ function toggleZh(event: Event) {
   playLine('zh')
 }
 
-function playPagePhrase(item: { phrase?: string; audioPhrase?: string | null }) {
+function playPagePhrase(item: { phrase?: string; phraseZh?: string }) {
   const spoken = String(item.phrase || '').trim()
   if (!spoken) return
   cancelAuto()
-  playPhrase(item.audioPhrase, spoken)
+  playPhrase(spoken, item.phraseZh)
 }
 
 function speakPanelEn() {

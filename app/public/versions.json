@@ -1,5 +1,11 @@
 [
   {
+    "id": "v0.6.22",
+    "version": "0.6.22",
+    "date": "2026-10-08",
+    "summary": "Tapping a phrase now reads it in English, then Chinese."
+  },
+  {
     "id": "v0.6.21",
     "version": "0.6.21",
     "date": "2026-10-08",
