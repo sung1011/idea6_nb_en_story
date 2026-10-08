@@ -1,4 +1,4 @@
-"""Generate story-page mp3s with Edge TTS (Ana / 晓晓), then shrink for a kids app."""
+"""Generate story-page mp3s with Edge TTS (Aria -15% / 晓晓), then shrink for a kids app."""
 
 from __future__ import annotations
 

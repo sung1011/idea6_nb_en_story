@@ -14,12 +14,21 @@ const STORIES_DIR = path.join(APP_ROOT, 'public', 'stories')
 const PUBLIC_DIR = path.join(APP_ROOT, 'public')
 const PYTHON = path.join(APP_ROOT, 'scripts', 'genStoryTts.py')
 
-const EN_VOICE = 'en-US-AnaNeural'
+const EN_VOICE = 'en-US-AriaNeural'
 const ZH_VOICE = 'zh-CN-XiaoxiaoNeural'
-const EN_RATE = '-12%'
+const EN_RATE = '-15%'
 const ZH_RATE = '+0%'
 
 const force = process.argv.includes('--force')
+
+function storyHasAudio(slug) {
+  const dir = path.join(PUBLIC_DIR, 'audio', slug)
+  try {
+    return fs.readdirSync(dir).some((name) => name.endsWith('.mp3'))
+  } catch {
+    return false
+  }
+}
 
 const written = parseAndWriteStories()
 const clips = []
@@ -27,6 +36,7 @@ const clips = []
 const wordSeen = new Set()
 
 for (const item of written) {
+  if (!storyHasAudio(item.slug)) continue
   const story = JSON.parse(fs.readFileSync(path.join(STORIES_DIR, `${item.slug}.json`), 'utf8'))
   for (const page of story.pages ?? []) {
     const en = plainSpeakText(page.en)

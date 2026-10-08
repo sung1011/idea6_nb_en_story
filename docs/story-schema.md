@@ -57,9 +57,9 @@ npm run parse-stories
 相对 URL 约定：
 
 - 插图：`images/<story-id>/p01.webp`（Flag in the Fog 22 页均已接入；缺文件时为 `null`）
-- 英文音频：`audio/<story-id>/p01-en.mp3`（Edge TTS `en-US-AnaNeural`，语速 `-12%`）
+- 英文音频：`audio/<story-id>/p01-en.mp3`（Edge TTS `en-US-AriaNeural`，语速 `-15%`）
 - 中文音频：`audio/<story-id>/p01-zh.mp3`（Edge TTS `zh-CN-XiaoxiaoNeural`）
-- 词级音频：`audio/<story-id>/word-flag.mp3`（同一 Ana 声线，只读单词）
+- 词级音频：`audio/<story-id>/word-flag.mp3`（同一 Aria 声线，只读单词）
 - 词图：`images/<story-id>/words/map.webp`（有文件时写入 `learnItems[].image`）
 
 阅读器以 Vite `base`（`/idea6_nb_en_story/`）拼接这些路径。点喇叭或英文句子（含句中加粗焦点词）播放整句 `audioEn`。点英文句子左侧的 **中文** 弹出本页译文并播放 `audioZh`。点辅词芯片在词旁弹出释义气泡（词图 + 短义 + Play again）并读单词。主练句式只展示、不可点。第 22 页 Next 进入总结页（Words / Sentences），不是第 23 页。文件缺失或播放失败时回退 Web Speech。默认不自动播放。
