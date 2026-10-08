@@ -124,6 +124,12 @@ function playEnglish() {
   playLine('en')
 }
 
+function onLineTextKey(event: KeyboardEvent) {
+  if (event.key !== 'Enter' && event.key !== ' ') return
+  event.preventDefault()
+  playEnglish()
+}
+
 function toggleZh(event: Event) {
   cancelAuto()
   if (openZh.value) {
@@ -325,16 +331,15 @@ onUnmounted(() => {
             </button>
           </div>
           <div class="line en" :class="{ playing: playingLang === 'en' }">
-            <button
-              type="button"
-              class="speaker"
-              :aria-pressed="playingLang === 'en'"
+            <p
+              class="line-text"
+              role="button"
+              tabindex="0"
               aria-label="Play English"
+              :aria-pressed="playingLang === 'en'"
               @click="playEnglish"
+              @keydown="onLineTextKey"
             >
-              🔊
-            </button>
-            <p class="line-text" @click="playEnglish">
               <template v-for="(seg, i) in enSegments" :key="`${page.id}-${i}`">
                 <span :class="{ hl: seg.highlight }">{{ seg.text }}</span>
               </template>
@@ -514,6 +519,7 @@ h1 {
 }
 
 .line.en {
+  display: block;
   font-size: 1.55rem;
   line-height: 1.45;
   font-weight: 500;
@@ -532,34 +538,17 @@ h1 {
   box-shadow: 0 3px 0 rgba(47, 63, 59, 0.16);
 }
 
-.speaker {
-  flex-shrink: 0;
-  margin-top: 0.05em;
-  padding: 0;
-  border: 0;
-  background: transparent;
-  font-size: 0.72em;
-  line-height: 1;
-  opacity: 0.72;
-}
-
-button.speaker {
-  min-width: 44px;
-  min-height: 44px;
-  border-radius: 14px;
-}
-
-.line.playing .speaker,
-button.speaker[aria-pressed='true'] {
-  opacity: 1;
-}
-
 .line-text {
   display: block;
-  flex: 1;
   min-width: 0;
   margin: 0;
   cursor: pointer;
+}
+
+.line-text:focus-visible {
+  outline: 3px solid rgba(31, 138, 128, 0.55);
+  outline-offset: 2px;
+  border-radius: 8px;
 }
 
 .line.en .line-text {

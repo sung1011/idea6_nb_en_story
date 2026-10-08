@@ -1,5 +1,6 @@
 import { nextTick, onMounted, onUnmounted, watch, type Ref } from 'vue'
 import type { Story, StoryPage } from '@/types/story'
+import { useZhVoice } from '@/composables/useZhVoice'
 
 const WARM_CONCURRENCY = 2
 const LOOKAHEAD_PAGES = 2
@@ -29,14 +30,16 @@ function uniqueUrls(urls: Array<string | null | undefined>): string[] {
   return list
 }
 
-function pageLookaheadUrls(page: StoryPage): string[] {
-  const urls = [assetUrl(page.image), assetUrl(page.audioEn), assetUrl(page.audioZh)]
+function pageLookaheadUrls(page: StoryPage, includeZh: boolean): string[] {
+  const urls = [assetUrl(page.image), assetUrl(page.audioEn)]
+  if (includeZh) urls.push(assetUrl(page.audioZh))
   for (const item of page.learnItems ?? []) urls.push(assetUrl(item.image))
   return uniqueUrls(urls)
 }
 
-function pageWarmUrls(page: StoryPage): string[] {
-  const urls = [assetUrl(page.image), assetUrl(page.audioEn), assetUrl(page.audioZh)]
+function pageWarmUrls(page: StoryPage, includeZh: boolean): string[] {
+  const urls = [assetUrl(page.image), assetUrl(page.audioEn)]
+  if (includeZh) urls.push(assetUrl(page.audioZh))
   for (const item of page.learnItems ?? []) urls.push(assetUrl(item.image))
   return uniqueUrls(urls)
 }
@@ -125,12 +128,14 @@ function orderedWarmPages(story: Story, pageIndex: number): StoryPage[] {
 }
 
 export function useStoryPreload(story: Ref<Story>, pageIndex: Ref<number>) {
+  const { isDevice: zhDevice } = useZhVoice()
   let warmAbort: AbortController | null = null
   let idleHandle = 0
 
   function preloadAhead() {
+    const includeZh = !zhDevice.value
     const pages = upcomingPages(story.value, pageIndex.value)
-    const urls = uniqueUrls(pages.flatMap(pageLookaheadUrls))
+    const urls = uniqueUrls(pages.flatMap((page) => pageLookaheadUrls(page, includeZh)))
     void runQueue(urls, undefined, LOOKAHEAD_PAGES)
   }
 
@@ -141,7 +146,10 @@ export function useStoryPreload(story: Ref<Story>, pageIndex: Ref<number>) {
     warmAbort?.abort()
     warmAbort = new AbortController()
     const signal = warmAbort.signal
-    const urls = uniqueUrls(orderedWarmPages(story.value, pageIndex.value).flatMap(pageWarmUrls))
+    const includeZh = !zhDevice.value
+    const urls = uniqueUrls(
+      orderedWarmPages(story.value, pageIndex.value).flatMap((page) => pageWarmUrls(page, includeZh)),
+    )
     void runQueue(urls, signal, WARM_CONCURRENCY).then(() => {
       if (signal.aborted) {
         warmingStories.delete(id)
@@ -153,7 +161,7 @@ export function useStoryPreload(story: Ref<Story>, pageIndex: Ref<number>) {
   }
 
   watch(
-    () => [story.value.id, pageIndex.value] as const,
+    () => [story.value.id, pageIndex.value, zhDevice.value] as const,
     () => {
       preloadAhead()
     },

@@ -110,6 +110,7 @@ npm run parse-stories
 - `idea6_nb_en_story:ackedVersion` → 用户已确认的最新版本 `id`（对应 `app/public/versions.json`）
 - `idea6_nb_en_story:slowSpeed` → Slow 语速百分比（30–90，默认 60）
 - `idea6_nb_en_story:autoRead` → 自动朗读（`1`/`0`，缺省为开）
+- `idea6_nb_en_story:zhVoice` → 页级中文声（`xiaoxiao` / `device`，缺省 Xiaoxiao）
 
 启动时会删除过期键 `idea6_nb_en_story:displayMode` 与 `idea6_nb_en_story:showZh:<storyId>`，不碰阅读进度。
 

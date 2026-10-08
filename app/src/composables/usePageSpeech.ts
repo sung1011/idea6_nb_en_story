@@ -1,5 +1,6 @@
 import { onMounted, onUnmounted, ref, watch, type Ref } from 'vue'
 import type { StoryPage } from '@/types/story'
+import { useZhVoice } from '@/composables/useZhVoice'
 
 export type SpeechLang = 'en' | 'zh'
 
@@ -192,6 +193,7 @@ function playFile(
 }
 
 export function usePageSpeech(page: Ref<StoryPage | undefined>) {
+  const { isDevice: zhDevice } = useZhVoice()
   const playingLang = ref<SpeechLang | null>(null)
   const playingWord = ref<string | null>(null)
   const playingRate = ref(1)
@@ -221,7 +223,10 @@ export function usePageSpeech(page: Ref<StoryPage | undefined>) {
     playingLang.value = lang
     playingWord.value = null
     playingRate.value = speed
-    const file = String((lang === 'zh' ? current.audioZh : current.audioEn) || '').trim()
+    const useDeviceZh = lang === 'zh' && zhDevice.value
+    const file = useDeviceZh
+      ? ''
+      : String((lang === 'zh' ? current.audioZh : current.audioEn) || '').trim()
     const done = () => {
       clearPlaying(token)
       options.onEnded?.()
@@ -241,11 +246,11 @@ export function usePageSpeech(page: Ref<StoryPage | undefined>) {
       })
       return
     }
-    if (options.silent) {
+    if (options.silent && !useDeviceZh) {
       skip()
       return
     }
-    systemSpeak(text, lang, token, done, speed)
+    systemSpeak(text, lang, token, done, speed, useDeviceZh)
   }
 
   function playWord(word: string) {
