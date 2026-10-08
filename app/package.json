@@ -1,14 +1,15 @@
 {
   "name": "idea6-nb-en-story",
   "private": true,
-  "version": "0.6.17",
+  "version": "0.6.18",
   "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "vue-tsc --noEmit && vite build",
     "preview": "vite preview",
     "parse-stories": "node scripts/parseStory.mjs",
-    "gen-tts": "node scripts/genStoryTts.mjs"
+    "gen-tts": "node scripts/genStoryTts.mjs",
+    "gen-en-timings": "node scripts/genEnTimings.mjs"
   },
   "dependencies": {
     "@fontsource/fredoka": "^5.2.8",

@@ -31,7 +31,8 @@ const { cacheLabel, cacheFade, nextPageLoading } = useStoryPreload(toRef(props, 
 const page = computed(() => {
   return props.story.pages.find((item) => item.index === pageIndex.value) ?? props.story.pages[0]
 })
-const { playingLang, playingWord, playingRate, playLine, playWord, playDevice, stop } = usePageSpeech(page)
+const { playingLang, playingWord, playingRate, followIndex, playLine, playWord, playDevice, stop } =
+  usePageSpeech(page)
 const { cancelAuto } = useAutoRead(page, onSummary, ready, playLine, stop)
 const { rate: slowRate } = useSlowSpeed()
 const slowPlaying = computed(() => playingLang.value === 'en' && playingRate.value < 1)
@@ -341,7 +342,13 @@ onUnmounted(() => {
               @keydown="onLineTextKey"
             >
               <template v-for="(seg, i) in enSegments" :key="`${page.id}-${i}`">
-                <span :class="{ hl: seg.highlight }">{{ seg.text }}</span>
+                <span
+                  :class="{
+                    hl: seg.highlight,
+                    word: seg.wordIndex != null,
+                    follow: followIndex === seg.wordIndex,
+                  }"
+                >{{ seg.text }}</span>
               </template>
             </p>
           </div>
@@ -565,6 +572,22 @@ h1 {
 .hl {
   color: var(--coral);
   font-weight: 700;
+}
+
+.line.en .word {
+  background-color: transparent;
+  border-radius: 0.18em;
+  transition: background-color 120ms ease;
+}
+
+.line.en .word.follow {
+  background-color: rgba(31, 138, 128, 0.16);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .line.en .word {
+    transition: none;
+  }
 }
 
 .chip.open {

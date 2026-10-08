@@ -1,5 +1,11 @@
 [
   {
+    "id": "v0.6.18",
+    "version": "0.6.18",
+    "date": "2026-10-08",
+    "summary": "Slow read now softly highlights the spoken word. Next button now just dims slightly while the next page loads."
+  },
+  {
     "id": "v0.6.17",
     "version": "0.6.17",
     "date": "2026-10-08",

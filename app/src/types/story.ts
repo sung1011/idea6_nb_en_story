@@ -40,4 +40,5 @@ export interface EnSegment {
   text: string
   highlight: boolean
   learnWord?: string
+  wordIndex?: number
 }

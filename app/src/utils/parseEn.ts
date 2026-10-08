@@ -20,6 +20,38 @@ function splitPlainByLearnWords(text: string, learnWords: string[]): EnSegment[]
     })
 }
 
+const SPEAK_WORD = /[A-Za-z0-9']+/g
+
+export function speakWords(text: string): string[] {
+  return String(text ?? '').match(SPEAK_WORD) ?? []
+}
+
+function splitForFollow(chunk: EnSegment, startIndex: number): { parts: EnSegment[]; next: number } {
+  const parts: EnSegment[] = []
+  let index = startIndex
+  const text = chunk.text
+  let last = 0
+  const re = new RegExp(SPEAK_WORD.source, 'g')
+  let match: RegExpExecArray | null
+  while ((match = re.exec(text))) {
+    if (match.index > last) {
+      parts.push({ text: text.slice(last, match.index), highlight: chunk.highlight })
+    }
+    parts.push({
+      text: match[0],
+      highlight: chunk.highlight,
+      learnWord: chunk.learnWord,
+      wordIndex: index,
+    })
+    index += 1
+    last = match.index + match[0].length
+  }
+  if (last < text.length) {
+    parts.push({ text: text.slice(last), highlight: chunk.highlight })
+  }
+  return { parts, next: index }
+}
+
 export function parseEnSegments(en: string, learnWords: string[] = []): EnSegment[] {
   const chunks = en
     .split(/(\*\*[^*]+\*\*)/g)
@@ -34,5 +66,12 @@ export function parseEnSegments(en: string, learnWords: string[] = []): EnSegmen
       }
       return splitPlainByLearnWords(part, learnWords)
     })
-  return chunks
+  let wordIndex = 0
+  const out: EnSegment[] = []
+  for (const chunk of chunks) {
+    const split = splitForFollow(chunk, wordIndex)
+    out.push(...split.parts)
+    wordIndex = split.next
+  }
+  return out
 }

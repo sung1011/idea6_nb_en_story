@@ -1,6 +1,7 @@
 import { onMounted, onUnmounted, ref, watch, type Ref } from 'vue'
 import type { StoryPage } from '@/types/story'
 import { useZhVoice } from '@/composables/useZhVoice'
+import { asWordCues, followWordAt, type WordCue } from '@/utils/followCue'
 
 export type SpeechLang = 'en' | 'zh'
 
@@ -10,6 +11,7 @@ export type PlayOptions = {
   deferAutoplay?: boolean
   onBlocked?: () => void
   onSilentFail?: () => void
+  onPlaying?: () => void
 }
 
 /** One silent wav so the first tap can unlock audio on iOS. */
@@ -19,6 +21,14 @@ const SILENT_WAV =
 let sharedAudio: HTMLAudioElement | null = null
 let unlocked = false
 let seq = 0
+let followRaf = 0
+const timingsByUrl = new Map<string, Promise<Record<string, WordCue[]> | null>>()
+
+function cancelFollowLoop() {
+  if (!followRaf) return
+  cancelAnimationFrame(followRaf)
+  followRaf = 0
+}
 
 function element(): HTMLAudioElement {
   if (!sharedAudio) {
@@ -82,6 +92,7 @@ function applyPlaybackRate(el: HTMLAudioElement, rate: number) {
 
 function stopShared(): void {
   seq += 1
+  cancelFollowLoop()
   window.speechSynthesis?.cancel()
   if (sharedAudio) {
     sharedAudio.onended = null
@@ -90,6 +101,35 @@ function stopShared(): void {
     sharedAudio.pause()
     applyPlaybackRate(sharedAudio, 1)
   }
+}
+
+function timingsPathFromAudio(audioEn: string): string {
+  const clean = audioEn.replace(/^\//, '')
+  const slash = clean.lastIndexOf('/')
+  if (slash <= 0) return ''
+  return `${clean.slice(0, slash)}/timings.json`
+}
+
+function loadTimings(path: string): Promise<Record<string, WordCue[]> | null> {
+  if (!path) return Promise.resolve(null)
+  const url = clipUrl(path)
+  let pending = timingsByUrl.get(url)
+  if (!pending) {
+    pending = fetch(url)
+      .then((response) => (response.ok ? response.json() : null))
+      .then((data) => {
+        if (!data || typeof data !== 'object') return null
+        const mapped: Record<string, WordCue[]> = {}
+        for (const [pageId, raw] of Object.entries(data as Record<string, unknown>)) {
+          const cues = asWordCues(raw)
+          if (cues.length) mapped[pageId] = cues
+        }
+        return mapped
+      })
+      .catch(() => null)
+    timingsByUrl.set(url, pending)
+  }
+  return pending
 }
 
 function systemSpeak(
@@ -189,6 +229,7 @@ function playFile(
   void el.play().then(() => {
     if (seq !== token) return
     applyPlaybackRate(el, rate)
+    options.onPlaying?.()
   }).catch((error) => fail(error))
 }
 
@@ -197,9 +238,31 @@ export function usePageSpeech(page: Ref<StoryPage | undefined>) {
   const playingLang = ref<SpeechLang | null>(null)
   const playingWord = ref<string | null>(null)
   const playingRate = ref(1)
+  const followIndex = ref<number | null>(null)
+
+  function clearFollow() {
+    cancelFollowLoop()
+    followIndex.value = null
+  }
+
+  function startFollow(token: number, cues: WordCue[]) {
+    cancelFollowLoop()
+    const el = element()
+    const tick = () => {
+      if (seq !== token || el.ended || el.paused) {
+        followIndex.value = null
+        followRaf = 0
+        return
+      }
+      followIndex.value = followWordAt(cues, el.currentTime * 1000)
+      followRaf = requestAnimationFrame(tick)
+    }
+    tick()
+  }
 
   function clearPlaying(token: number) {
     if (seq !== token) return
+    clearFollow()
     playingLang.value = null
     playingWord.value = null
     playingRate.value = 1
@@ -207,6 +270,7 @@ export function usePageSpeech(page: Ref<StoryPage | undefined>) {
 
   function stop() {
     stopShared()
+    clearFollow()
     playingLang.value = null
     playingWord.value = null
     playingRate.value = 1
@@ -223,6 +287,7 @@ export function usePageSpeech(page: Ref<StoryPage | undefined>) {
     playingLang.value = lang
     playingWord.value = null
     playingRate.value = speed
+    followIndex.value = null
     const useDeviceZh = lang === 'zh' && zhDevice.value
     const file = useDeviceZh
       ? ''
@@ -238,11 +303,23 @@ export function usePageSpeech(page: Ref<StoryPage | undefined>) {
     const skip = () => {
       clearPlaying(token)
     }
+    const wantFollow = lang === 'en' && speed < 1 && Boolean(file)
     if (file) {
       playFile(clipUrl(file), text, lang, token, done, speed, {
         ...options,
         onBlocked: blocked,
         onSilentFail: skip,
+        onPlaying: wantFollow
+          ? () => {
+              void loadTimings(timingsPathFromAudio(file)).then((data) => {
+                const el = element()
+                if (seq !== token || !data || el.paused || el.ended) return
+                const cues = data[current.id]
+                if (!cues?.length) return
+                startFollow(token, cues)
+              })
+            }
+          : undefined,
       })
       return
     }
@@ -265,6 +342,7 @@ export function usePageSpeech(page: Ref<StoryPage | undefined>) {
     playingLang.value = lang === 'zh' ? 'zh' : null
     playingWord.value = lang === 'en' ? spoken : null
     playingRate.value = 1
+    followIndex.value = null
     const done = () => clearPlaying(token)
     systemSpeak(spoken, lang, token, done, 1, true)
   }
@@ -292,6 +370,7 @@ export function usePageSpeech(page: Ref<StoryPage | undefined>) {
     playingLang,
     playingWord,
     playingRate,
+    followIndex,
     playLine,
     playWord,
     playDevice,

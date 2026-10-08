@@ -73,6 +73,7 @@ export default defineConfig({
           'manifest.json',
           '**/*.{js,css,woff,woff2}',
           'stories/**/*.json',
+          'audio/**/timings.json',
         ],
         globIgnores: ['**/*.{mp3,ogg,m4a,wav}'],
         navigateFallback: 'index.html',
