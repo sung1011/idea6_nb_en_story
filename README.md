@@ -74,13 +74,13 @@ npm run gen-tts
 - 续读：刷新后夹紧在 1..N 页，打开直接回到上次页（无提示条）；Home 键回到第 1 页
 - 插图：各页绑定 `images/flag-in-the-fog/pNN.webp`；缺图时回退 16:9 奶油色软陶风 SVG 占位。画稿上不叠关键词或页码。画稿需压缩后再入库
 - 朗读：点喇叭或英文句子播放 Ana；点句子左侧 **中文** 弹出译文并播晓晓。新点击会停掉上一句。默认不自动播放。mp3 缺失或播放失败时回退 Web Speech
-- 点词：句中加粗焦点词只作标记，点击句子任意处（含加粗词）播放整句英文；点辅词芯片或带 `___` 的句式，在词旁弹出释义气泡（中文短义 + Play again）
-- 翻页：大触摸热区的 Prev / Next，Fredoka 字体，平板宽度友好
+- 点词：句中加粗焦点词只作标记，点击句子任意处（含加粗词）播放整句英文；点辅词芯片弹出释义气泡（词图 + 中文短义 + Play again）。主练句式只展示、不可点
+- 翻页：大触摸热区的 Prev / Next，Fredoka 字体，平板宽度友好。第 22 页再点 Next 进入本课总结（不是第 23 页；页码仍为 Summary，进度停在 22）。总结页 **Words** 网格为 13 个去重关键词（首次出现顺序），点卡片打开与阅读器相同的释义气泡；**Sentences** 列出去重句式，只展示。**Read again** 回到第 1 页，Prev 回到第 22 页
 - 阅读卡标题行右侧 **Settings** 齿轮：`Version` 看当前构建与摘要，可 **Check for updates**（立刻拉取 `versions.json`，无新版本 toast **You're up to date.**，有则 **Update available**）和 **Clear cache**（toast **Cache cleared.** 约 2 秒后注销 Service Worker、清空 Cache Storage 并硬刷新，不碰 localStorage）；有待更新时面板顶部只显示一个 **Update**，版本行只作历史；`GM` 可 **Reset all data**（清空本应用全部 localStorage 后重载）
 - 更新 toast：每 10 秒带 cache-bust 拉取 `versions.json`，若有比已确认版本更新的条目，齿轮关闭时在下方显示 **Update available** 和一个 **Update**（先走与 **Clear cache** 相同的清缓存流程，再硬刷新并标记已读；阅读进度保留）
 - PWA：可安装到主屏幕（`standalone`）；预缓存阅读器壳 + 故事 JSON。页/词 mp3 与插图 webp 走运行时 Cache First，不进预缓存。换插图时 bump `vite.config.ts` 里的 `story-image-cache-first` 缓存名，换朗读时 bump `story-audio-cache-first` 缓存名，检查更新并重载后会拉新资源。`versions.json` 用 Network First，以免挡住更新检测
 
-进度按本故事写入 `localStorage`。每次有意义的发布请在 `app/public/versions.json` 顶部追加 `{ id, version, date, summary }`（新条目用英文）。当前版本 **0.6.2**。
+进度按本故事写入 `localStorage`。每次有意义的发布请在 `app/public/versions.json` 顶部追加 `{ id, version, date, summary }`（新条目用英文）。当前版本 **0.6.3**。
 
 ## 安装到主屏幕（PWA）
 

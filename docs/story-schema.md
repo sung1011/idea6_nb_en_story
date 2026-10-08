@@ -48,7 +48,7 @@ npm run parse-stories
 | `knowledge` | `string` | 否 | 知识点 |
 | `gloss` | `string` | 否 | 本页主焦点词的中文短义。优先用源稿 `释义:`，否则从辅词括注 / 知识点 / 正文中文推导 |
 | `highlights` | `string[]` | 否 | 从 `en` 里 `**…**` 抽出的词 |
-| `learnItems` | `LearnItem[]` | 否 | 本页可点学的词（加粗词 + 辅词），每项 `{ word, gloss, audioWord }` |
+| `learnItems` | `LearnItem[]` | 否 | 本页可点学的词（加粗词 + 辅词），每项 `{ word, gloss, audioWord, image }` |
 | `image` | `string \| null` | 否 | 插图相对 URL。仓库内有 `images/<story-id>/pNN.webp`（或 png/jpg）时写入路径；否则为 `null`，阅读器回退 16:9 软陶风 SVG 占位。正式画稿必须压缩后再入库，不要提交未压缩原图 |
 | `audioEn` | `string \| null` | 否 | 英文朗读音频相对 URL。仓库内有对应 mp3 时写入路径，否则为 `null` |
 | `audioZh` | `string \| null` | 否 | 中文朗读音频相对 URL。同上 |
@@ -60,8 +60,9 @@ npm run parse-stories
 - 英文音频：`audio/<story-id>/p01-en.mp3`（Edge TTS `en-US-AnaNeural`，语速 `-12%`）
 - 中文音频：`audio/<story-id>/p01-zh.mp3`（Edge TTS `zh-CN-XiaoxiaoNeural`）
 - 词级音频：`audio/<story-id>/word-flag.mp3`（同一 Ana 声线，只读单词）
+- 词图：`images/<story-id>/words/map.webp`（有文件时写入 `learnItems[].image`）
 
-阅读器以 Vite `base`（`/idea6_nb_en_story/`）拼接这些路径。点喇叭或英文句子（含句中加粗焦点词）播放整句 `audioEn`。点英文句子左侧的 **中文** 弹出本页译文并播放 `audioZh`。点辅词芯片或带 `___` 的句式芯片在词旁弹出释义气泡并读单词。文件缺失或播放失败时回退 Web Speech。默认不自动播放。
+阅读器以 Vite `base`（`/idea6_nb_en_story/`）拼接这些路径。点喇叭或英文句子（含句中加粗焦点词）播放整句 `audioEn`。点英文句子左侧的 **中文** 弹出本页译文并播放 `audioZh`。点辅词芯片在词旁弹出释义气泡（词图 + 短义 + Play again）并读单词。主练句式只展示、不可点。第 22 页 Next 进入总结页（Words / Sentences），不是第 23 页。文件缺失或播放失败时回退 Web Speech。默认不自动播放。
 
 重新生成音频（在 `app/` 下）：`npm run gen-tts`（需 `edge-tts` 与 `ffmpeg`）。`npm run parse-stories` / `dev` / `build` 会根据 `app/public/images/` 与 `app/public/audio/` 里是否已有文件回填路径。
 
@@ -101,7 +102,8 @@ npm run parse-stories
 - 导航与续读：`id`、`pageCount`、`pages[].index`
 - 展示：`en`、`zh`、`pattern`、`focusWord`、`image`（正文显示英文；**中文** 在句子左侧，点开弹层）
 - 朗读：`audioEn`、`audioZh`（点喇叭或英文句子含加粗词播放整句；缺文件回退系统语音）
-- 点词：`learnItems` / `gloss` / `audioWord`（点辅词芯片或句式空位，在词旁弹出释义气泡 + Play again；句中加粗词只作高亮标记）
+- 点词：`learnItems` / `gloss` / `audioWord` / `image`（点辅词芯片弹出词图 + 释义 + Play again；句中加粗词只作高亮标记；句式只展示）
+- 总结页：跨页去重 `learnItems`（首次出现顺序）与去重 `pattern`；点词卡复用同一释义气泡；**Read again** 回第 1 页，进度仍夹紧在 `1..pageCount`
 
 `localStorage`（前缀 `idea6_nb_en_story:`，GM Reset all data 会全部清除）：
 

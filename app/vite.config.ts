@@ -82,7 +82,7 @@ export default defineConfig({
             urlPattern: /\/images\/.*\.(?:webp|png|jpe?g)$/i,
             handler: 'CacheFirst',
             options: {
-              cacheName: 'story-image-cache-first-v0.6.1',
+              cacheName: 'story-image-cache-first-v0.6.3',
               expiration: {
                 maxEntries: 80,
                 maxAgeSeconds: 60 * 60 * 24 * 30,

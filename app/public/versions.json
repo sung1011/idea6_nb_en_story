@@ -1,5 +1,23 @@
 [
   {
+    "id": "v0.6.3-summary",
+    "version": "0.6.3",
+    "date": "2026-10-08",
+    "summary": "New story summary with key words and sentences after the last page."
+  },
+  {
+    "id": "v0.6.3-art",
+    "version": "0.6.3",
+    "date": "2026-10-08",
+    "summary": "Word popups now show a picture."
+  },
+  {
+    "id": "v0.6.3",
+    "version": "0.6.3",
+    "date": "2026-10-08",
+    "summary": "Key sentences are display-only."
+  },
+  {
     "id": "v0.6.2-toast",
     "version": "0.6.2",
     "date": "2026-10-08",

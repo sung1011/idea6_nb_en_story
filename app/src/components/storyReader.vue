@@ -7,6 +7,7 @@ import { usePageSpeech } from '@/composables/usePageSpeech'
 import PagePlaceholder from './pagePlaceholder.vue'
 import GlossPanel, { type GlossAnchor } from './glossPanel.vue'
 import AppSettings from './appSettings.vue'
+import StorySummary from './storySummary.vue'
 
 const props = defineProps<{
   story: Story
@@ -14,6 +15,7 @@ const props = defineProps<{
 
 const pageCount = computed(() => props.story.pageCount || props.story.pages.length)
 const { pageIndex, next, prev, restart } = useStoryProgress(props.story.id, pageCount.value)
+const onSummary = ref(false)
 
 const page = computed(() => {
   return props.story.pages.find((item) => item.index === pageIndex.value) ?? props.story.pages[0]
@@ -23,20 +25,40 @@ const { playingLang, playingWord, playLine, playWord, stop } = usePageSpeech(pag
 const learnItems = computed(() => page.value?.learnItems ?? [])
 const learnWords = computed(() => learnItems.value.map((item) => item.word))
 const enSegments = computed(() => parseEnSegments(page.value?.en ?? '', learnWords.value))
-const canPrev = computed(() => pageIndex.value > 1)
-const canNext = computed(() => pageIndex.value < pageCount.value)
-const showChinese = computed(() => Boolean(page.value?.zh))
-const patternLearn = computed(() => {
-  if (!page.value?.pattern?.includes('___')) return null
-  return learnItems.value[0] ?? null
+const uniqueWords = computed(() => {
+  const seen = new Set<string>()
+  const items: LearnItem[] = []
+  for (const storyPage of props.story.pages) {
+    for (const item of storyPage.learnItems ?? []) {
+      const key = item.word.toLowerCase()
+      if (seen.has(key)) continue
+      seen.add(key)
+      items.push(item)
+    }
+  }
+  return items
 })
+const uniquePatterns = computed(() => {
+  const seen = new Set<string>()
+  const patterns: string[] = []
+  for (const storyPage of props.story.pages) {
+    const pattern = storyPage.pattern?.trim()
+    if (!pattern || seen.has(pattern)) continue
+    seen.add(pattern)
+    patterns.push(pattern)
+  }
+  return patterns
+})
+const canPrev = computed(() => onSummary.value || pageIndex.value > 1)
+const canNext = computed(() => !onSummary.value)
+const showChinese = computed(() => Boolean(page.value?.zh))
 const openLearn = ref<LearnItem | null>(null)
 const openZh = ref(false)
 const glossAnchor = ref<GlossAnchor | null>(null)
 
 function findLearnItem(word: string): LearnItem | null {
   const key = word.trim().toLowerCase()
-  return learnItems.value.find((item) => item.word.toLowerCase() === key) ?? null
+  return uniqueWords.value.find((item) => item.word.toLowerCase() === key) ?? null
 }
 
 function openGloss(word: string, event: Event) {
@@ -47,6 +69,10 @@ function openGloss(word: string, event: Event) {
   if (target) glossAnchor.value = target.getBoundingClientRect()
   openLearn.value = item
   playWord(item.word, item.audioWord)
+}
+
+function openSummaryWord(item: LearnItem, event: Event) {
+  openGloss(item.word, event)
 }
 
 function closeGloss() {
@@ -94,7 +120,7 @@ function onPointerDown(event: PointerEvent) {
   const target = event.target as HTMLElement | null
   if (!target) return
   if (target.closest('[data-gloss-panel]')) return
-  if (target.closest('.chip.tap')) return
+  if (target.closest('.chip.tap, .word-card')) return
   closePanels()
 }
 
@@ -112,17 +138,43 @@ function onKey(event: KeyboardEvent) {
   }
   if (event.key === 'ArrowRight' || event.key === 'PageDown') {
     event.preventDefault()
-    next()
+    goNext()
   } else if (event.key === 'ArrowLeft' || event.key === 'PageUp') {
     event.preventDefault()
-    prev()
+    goPrev()
   } else if (event.key === 'Home') {
     event.preventDefault()
-    restart()
+    goRestart()
   } else if (event.key === 'End') {
     event.preventDefault()
+    onSummary.value = false
     pageIndex.value = pageCount.value
   }
+}
+
+function goNext() {
+  if (onSummary.value) return
+  if (pageIndex.value >= pageCount.value) {
+    closePanels()
+    onSummary.value = true
+    return
+  }
+  next()
+}
+
+function goPrev() {
+  if (onSummary.value) {
+    closePanels()
+    onSummary.value = false
+    return
+  }
+  prev()
+}
+
+function goRestart() {
+  closePanels()
+  onSummary.value = false
+  restart()
 }
 
 watch(
@@ -160,69 +212,82 @@ onUnmounted(() => {
       <AppSettings />
     </header>
 
-    <PagePlaceholder
-      :page-index="page.index"
-      :image="page.image"
+    <template v-if="!onSummary">
+      <PagePlaceholder
+        :page-index="page.index"
+        :image="page.image"
+      />
+
+      <section class="copy">
+        <div class="en-row">
+          <button
+            v-if="showChinese"
+            type="button"
+            class="chip zh tap"
+            :class="{ open: openZh }"
+            aria-label="Show Chinese"
+            :aria-expanded="openZh"
+            @click="toggleZh"
+          >中文</button>
+          <div class="line en" :class="{ playing: playingLang === 'en' }">
+            <button
+              type="button"
+              class="speaker"
+              :aria-pressed="playingLang === 'en'"
+              aria-label="Play English"
+              @click="playLine('en')"
+            >
+              🔊
+            </button>
+            <p class="line-text" @click="playLine('en')">
+              <template v-for="(seg, i) in enSegments" :key="`${page.id}-${i}`">
+                <span :class="{ hl: seg.highlight }">{{ seg.text }}</span>
+              </template>
+            </p>
+          </div>
+        </div>
+        <div class="meta">
+          <p v-if="page.pattern" class="chip pattern">{{ page.pattern }}</p>
+          <button
+            v-for="item in learnItems"
+            :key="`${page.id}-${item.word}`"
+            type="button"
+            class="chip word tap"
+            :class="{ open: isOpenWord(item.word) }"
+            @click="openGloss(item.word, $event)"
+          >{{ item.word }}</button>
+        </div>
+      </section>
+    </template>
+
+    <StorySummary
+      v-else
+      :words="uniqueWords"
+      :patterns="uniquePatterns"
+      :open-word="openLearn?.word"
+      @open-word="openSummaryWord"
     />
 
-    <section class="copy">
-      <div class="en-row">
-        <button
-          v-if="showChinese"
-          type="button"
-          class="chip zh tap"
-          :class="{ open: openZh }"
-          aria-label="Show Chinese"
-          :aria-expanded="openZh"
-          @click="toggleZh"
-        >中文</button>
-        <div class="line en" :class="{ playing: playingLang === 'en' }">
-          <button
-            type="button"
-            class="speaker"
-            :aria-pressed="playingLang === 'en'"
-            aria-label="Play English"
-            @click="playLine('en')"
-          >
-            🔊
-          </button>
-          <p class="line-text" @click="playLine('en')">
-            <template v-for="(seg, i) in enSegments" :key="`${page.id}-${i}`">
-              <span :class="{ hl: seg.highlight }">{{ seg.text }}</span>
-            </template>
-          </p>
-        </div>
-      </div>
-      <div class="meta">
-        <button
-          v-if="page.pattern"
-          type="button"
-          class="chip"
-          :class="{ tap: Boolean(patternLearn), open: patternLearn && isOpenWord(patternLearn.word) }"
-          :disabled="!patternLearn"
-          @click="patternLearn && openGloss(patternLearn.word, $event)"
-        >{{ page.pattern }}</button>
-        <button
-          v-for="item in learnItems"
-          :key="`${page.id}-${item.word}`"
-          type="button"
-          class="chip word tap"
-          :class="{ open: isOpenWord(item.word) }"
-          @click="openGloss(item.word, $event)"
-        >{{ item.word }}</button>
-      </div>
-    </section>
-
     <nav class="nav" aria-label="Page navigation">
-      <button type="button" :disabled="!canPrev" @click="prev">Prev</button>
-      <p class="count">{{ page.index }} / {{ pageCount }}</p>
-      <button type="button" class="next" :disabled="!canNext" @click="next">Next</button>
+      <button type="button" :disabled="!canPrev" @click="goPrev">Prev</button>
+      <p v-if="!onSummary" class="count">{{ page.index }} / {{ pageCount }}</p>
+      <p v-else class="count">Summary</p>
+      <button type="button" class="next" :disabled="!canNext" @click="goNext">Next</button>
     </nav>
+    <button
+      v-if="onSummary"
+      type="button"
+      class="again"
+      @click="goRestart"
+    >
+      Read again
+    </button>
 
     <GlossPanel
       v-if="glossAnchor && (openLearn || openZh)"
       :heading="openLearn?.word"
       :body="openLearn ? openLearn.gloss : (page.zh || '')"
+      :image="openLearn?.image"
       :playing="openLearn ? Boolean(playingWord) : playingLang === 'zh'"
       :anchor="glossAnchor"
       :ariaLabel="openLearn ? 'Word meaning' : 'Chinese translation'"
@@ -407,6 +472,12 @@ button.speaker[aria-pressed='true'] {
   min-height: 40px;
 }
 
+.chip.pattern {
+  margin: 0;
+  cursor: default;
+  pointer-events: none;
+}
+
 .chip:disabled {
   cursor: default;
 }
@@ -453,6 +524,21 @@ button.speaker[aria-pressed='true'] {
   color: var(--muted);
 }
 
+.again {
+  display: block;
+  width: 100%;
+  min-height: 56px;
+  margin: 4px 0 0;
+  border: 3px solid #2f3f3b;
+  background: var(--coral);
+  color: white;
+  border-radius: 18px;
+  padding: 14px 18px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  box-shadow: 0 4px 0 #2f3f3b;
+}
+
 @media (max-width: 720px) {
   .reader {
     padding: 16px 14px 12px;
@@ -467,7 +553,8 @@ button.speaker[aria-pressed='true'] {
     font-size: 1.28rem;
   }
 
-  .nav button {
+  .nav button,
+  .again {
     min-width: 0;
     width: 100%;
     min-height: 56px;

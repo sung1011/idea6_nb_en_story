@@ -1,16 +1,23 @@
 <script setup lang="ts">
-import { nextTick, onMounted, ref, watch } from 'vue'
+import { computed, nextTick, onMounted, ref, watch } from 'vue'
 
 export type GlossAnchor = Pick<DOMRect, 'top' | 'left' | 'width' | 'height' | 'bottom' | 'right'>
 
 const props = defineProps<{
   heading?: string
   body: string
+  image?: string | null
   playing: boolean
   anchor: GlossAnchor
   replayLabel?: string
   ariaLabel?: string
 }>()
+
+const imageSrc = computed(() => {
+  if (!props.image) return ''
+  const base = import.meta.env.BASE_URL
+  return `${base}${props.image.replace(/^\//, '')}`
+})
 
 const emit = defineEmits<{
   replay: []
@@ -62,7 +69,15 @@ function positionPanel() {
 }
 
 watch(
-  () => [props.heading, props.body, props.anchor.top, props.anchor.left, props.anchor.width, props.anchor.height],
+  () => [
+    props.heading,
+    props.body,
+    props.image,
+    props.anchor.top,
+    props.anchor.left,
+    props.anchor.width,
+    props.anchor.height,
+  ],
   async () => {
     await nextTick()
     positionPanel()
@@ -89,6 +104,9 @@ onMounted(async () => {
       <button type="button" class="close" aria-label="Close" @click="emit('close')">
         ✕
       </button>
+      <div v-if="imageSrc" class="art">
+        <img :src="imageSrc" :alt="heading || body" @load="positionPanel" />
+      </div>
       <p v-if="heading" class="word">{{ heading }}</p>
       <p class="meaning" :class="{ solo: !heading }">{{ body }}</p>
       <button
@@ -118,6 +136,24 @@ onMounted(async () => {
   color: var(--ink);
   box-shadow: var(--shadow);
   font-family: inherit;
+}
+
+.art {
+  width: clamp(120px, 36vw, 160px);
+  height: clamp(120px, 36vw, 160px);
+  margin: 0 0 10px;
+  overflow: hidden;
+  border-radius: 18px;
+  border: 3px solid #2f3f3b;
+  background: #f3ead8;
+  box-shadow: 0 3px 0 rgba(47, 63, 59, 0.16);
+}
+
+.art img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .word {

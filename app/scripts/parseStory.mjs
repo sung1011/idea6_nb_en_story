@@ -202,6 +202,20 @@ function existingWordAudio(slug, word) {
   return rel ? existingRel(rel) : null
 }
 
+/** @param {string} slug @param {string} word */
+function existingWordImage(slug, word) {
+  const key = String(word ?? '')
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-|-$/g, '')
+  if (!key) return null
+  for (const ext of IMAGE_EXTS) {
+    const found = existingRel(`images/${slug}/words/${key}${ext}`)
+    if (found) return found
+  }
+  return null
+}
+
 /** @param {string} rel */
 function existingRel(rel) {
   const abs = path.join(APP_ROOT, 'public', rel)
@@ -247,6 +261,7 @@ function buildLearnItems({ slug, highlights, focusWord, focusRaw, knowledge, exp
         word,
         gloss,
         audioWord: existingWordAudio(slug, word),
+        image: existingWordImage(slug, word),
       }
     })
     .filter((item) => item.gloss)
