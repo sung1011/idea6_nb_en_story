@@ -162,6 +162,28 @@ export const STORY_WORD_GLOSS = {
   fence: '篱笆',
   hug: '拥抱',
   glad: '开心',
+  pup: '小狗',
+  pups: '小狗',
+  cup: '杯子',
+  cups: '杯子',
+  pig: '小猪',
+  wig: '假发',
+  fig: '无花果',
+  figs: '无花果',
+  cat: '小猫',
+  hat: '帽子',
+  hats: '帽子',
+  pen: '彩笔',
+  pens: '彩笔',
+  cot: '小床',
+  pad: '画本',
+  sock: '袜子',
+  pin: '图钉',
+  pins: '图钉',
+  cab: '出租车',
+  rocks: '石头',
+  twig: '小树枝',
+  dot: '圆点',
 }
 
 const META_NOTE =
@@ -391,10 +413,14 @@ function parseFocus(raw) {
   return { focusWord: word, focusNote: notes.join('；'), focusRaw }
 }
 
-const STORY_ORDER = ['flag-in-the-fog', 'spot-the-cub']
+const STORY_ORDER = ['flag-in-the-fog', 'spot-the-cub', 'a-lot-of-dots']
 const STORY_PAGE_COUNTS = {
   'flag-in-the-fog': 22,
   'spot-the-cub': 23,
+  'a-lot-of-dots': 30,
+}
+const STORY_TAGS = {
+  'a-lot-of-dots': 'TODO',
 }
 
 function writeStoriesIndex(stories) {
@@ -403,11 +429,15 @@ function writeStoriesIndex(stories) {
   const ordered = [...STORY_ORDER.filter((id) => byId.has(id)), ...extra]
   const index = ordered.map((id) => {
     const story = byId.get(id)
-    return {
+    const tag = String(STORY_TAGS[id] ?? '').trim()
+    /** @type {{ id: string, title: string, titleZh: string, tag?: string }} */
+    const entry = {
       id: story.id,
       title: story.title,
       titleZh: story.titleZh || '',
     }
+    if (tag) entry.tag = tag
+    return entry
   })
   const outFile = path.join(OUT_DIR, 'index.json')
   fs.writeFileSync(outFile, `${JSON.stringify(index, null, 2)}\n`)

@@ -2,7 +2,7 @@
 
 story-first English learning stories for Star Words App
 
-Vue 3 绘本阅读器，用来翻页阅读 **Flag in the Fog**（雾里的旗，22 页）和 **Spot the Cub**（找小豹，23 页）。
+Vue 3 绘本阅读器，用来翻页阅读 **Flag in the Fog**（雾里的旗，22 页）、**Spot the Cub**（找小豹，23 页）和 **A Lot of Dots!**（点点大乱画，30 页）。
 
 线上地址（启用 GitHub Pages 后）：
 
@@ -10,7 +10,8 @@ https://sung1011.github.io/idea6_nb_en_story/
 
 - First story: [Flag in the Fog / 雾里的旗](stories/flag-in-the-fog.md)（22 pages）
 - Second story: [Spot the Cub / 找小豹](stories/spot-the-cub.md)（23 pages）
-- Character sheets: [角色设定](docs/characters.md)（Mia / Ben / Rat；Cub / Bug / Mom Leopard）
+- Third story: [A Lot of Dots! / 点点大乱画](stories/a-lot-of-dots.md)（30 pages）
+- Character sheets: [角色设定](docs/characters.md)（Mia / Ben / Rat；Cub / Bug / Mom Leopard；Pup / Figgy / Cat）
 
 ## 本地开发
 
@@ -60,6 +61,7 @@ node scripts/genEnTimings.mjs
 |------|------|
 | `stories/flag-in-the-fog.md` | 故事源稿（勿改写正文） |
 | `stories/spot-the-cub.md` | 第二本故事源稿（勿改写正文） |
+| `stories/a-lot-of-dots.md` | 第三本故事源稿（勿改写正文） |
 | `docs/characters.md` | 角色一致性规则、角色表与画图提示前缀 |
 | `docs/characters/` | Mia / Ben / Rat / Cub / Bug / Mom Leopard 角色参考图 |
 | `docs/story-schema.md` | 页字段说明（en / zh / pattern / phrase / image / audioEn 等） |
@@ -69,10 +71,13 @@ node scripts/genEnTimings.mjs
 | `app/scripts/genEnTimings.mjs` | 用 Aria `-15%` 的 WordBoundary 生成 `audio/<story-id>/timings.json` |
 | `app/public/stories/flag-in-the-fog.json` | Flag in the Fog 阅读器 JSON |
 | `app/public/stories/spot-the-cub.json` | Spot the Cub 阅读器 JSON |
+| `app/public/stories/a-lot-of-dots.json` | A Lot of Dots! 阅读器 JSON |
 | `app/public/images/flag-in-the-fog/` | 各页软陶风插图（`p01.webp` … `p22.webp`） |
 | `app/public/images/spot-the-cub/` | Spot the Cub 插图（`p01.webp` … `p23.webp`） |
+| `app/public/images/a-lot-of-dots/` | A Lot of Dots! 插图（`p01.webp` … `p30.webp`）与词图 |
 | `app/public/audio/flag-in-the-fog/` | 预生成页级英文朗读（`p01-en.mp3` …）和 `timings.json` |
 | `app/public/audio/spot-the-cub/` | Spot the Cub 页级英文朗读和 `timings.json` |
+| `app/public/audio/a-lot-of-dots/` | A Lot of Dots! 页级英文朗读（`p01-en.mp3` … `p30-en.mp3`） |
 | `app/public/versions.json` | 版本记录（最新在前）；每次有意义的发布追加一条 |
 | `app/assets/icon-master.png` | 软陶风应用图标母版（1024，不进 public） |
 | `app/scripts/makePwaIcons.py` | 从母版生成 `pwa512` / `pwa192` / `appleTouchIcon` / `favicon.png` |
@@ -85,9 +90,9 @@ node scripts/genEnTimings.mjs
 ## 阅读器（Stage 6）
 
 - 始终中英对照：英文标题后紧跟较小的浅色中文标题（可换行）；正文只显示英文（固定两行高度），**CN** 按钮（气泡图标）在英文句子左侧同一行，点开弹层并朗读
-- 换故事：左上角故事切换器显示 `1. Flag in the Fog`，点开可选 `2. Spot the Cub`（英文标题、目录顺序编号）。从列表点选故事（含当前故事）会从第 1 页开始，并把该故事进度重置为 1
+- 换故事：左上角故事切换器显示 `1. Flag in the Fog`，点开可选 `2. Spot the Cub`、`3. A Lot of Dots!`（英文标题、目录顺序编号；有 `tag` 时标题旁显示小标签，Story 3 现为 TODO）。从列表点选故事（含当前故事）会从第 1 页开始，并把该故事进度重置为 1
 - 续读：刷新或重开应用后夹紧在 1..N 页，打开直接回到**当前故事**上次页（无提示条）；Home 键回到第 1 页
-- 插图：各页绑定 `images/<story-id>/pNN.webp`（两本故事均已接入）；缺图时回退 16:9 奶油色软陶风 SVG 占位。画稿上不叠关键词或页码。画稿需压缩后再入库。两本故事的释义气泡和总结页词卡在有词图时显示软陶小图
+- 插图：各页绑定 `images/<story-id>/pNN.webp`（三本故事均已接入）；缺图时回退 16:9 奶油色软陶风 SVG 占位。画稿上不叠关键词或页码。画稿需压缩后再入库。三本故事的释义气泡和总结页词卡在有词图时显示软陶小图
 - 朗读：打开一页后自动先读英文、停约 0.5 秒再用设备中文声读译文。Settings → **General** 的 **Auto read** 默认开。点英文句子只读英文；**CN** 弹出译文并用系统 `zh-CN` 声朗读；**Slow** 慢读英文，并按 `timings.json` 给当前词加一层很淡的底色（约 120ms 淡入；不改字号、字重或对比；翻页/停止/读完会清掉）。正常语速不跟读。`prefers-reduced-motion` 时底色仍在，只去掉过渡。手动点读或翻页会立刻停掉自动队列。语速在 **Slow speed** 里调 30%–90%。浏览器拦截自动播放时，等第一次点击后再读当前页
 - 点词：句中加粗焦点词只作标记，点击句子任意处（含加粗词）播放整句英文；点辅词芯片弹出释义气泡（词图 + 中文短义 + **CN**）。打开词卡用设备英文声读单词，再点英文词可重读，点 **CN** 用设备中文声读释义。每页一条短句芯片（英文 + 较小浅色中文），点按先用设备英文声读短句，约 300ms 后再读中文释义；整段播放期间芯片保持按下态。新的点按、翻页或其他朗读会立刻停掉这串朗读和自动朗读。短句芯片尽量单行显示
 - 翻页：大触摸热区的 Prev / Next，Fredoka 字体，平板宽度友好。最后一页再点 Next 进入本课总结（页码仍为 Summary，进度停在最后一页）。总结页 **Words** 网格为去重关键词（首次出现顺序），点卡片打开与阅读器相同的释义气泡；**Sentences** 列出去重短句（首次出现顺序），可点朗读。**Read again** 回到第 1 页，Prev 回到最后一页
@@ -95,7 +100,7 @@ node scripts/genEnTimings.mjs
 - 更新弹层：每 10 秒带 cache-bust 拉取 `versions.json`，若有比已安装版本号更新的组，齿轮关闭时在设置外弹出这些版本行，顶部一个 **Update**（写入已确认版本、清缓存、保留进度、硬刷新）。已是最新则不显示弹层
 - PWA：可安装到主屏幕（`standalone`）；预缓存阅读器壳 + 故事 JSON。页级英文 mp3、插图 webp 和 `timings.json` 走运行时 Cache First，不进预缓存。地址带内容哈希 `?v=`，文件改了就会拉新资源，不必清缓存。翻页时后台预取后两页的图和英文 mp3；故事打开后在空闲时低并发把本章资源写入缓存（省流量模式跳过）。`versions.json` 用 Network First，以免挡住更新检测
 
-进度按本故事写入 `localStorage`。每次有意义的发布请在 `app/public/versions.json` 顶部追加 `{ id, version, date, summary }`（新条目用英文）。当前版本 **0.6.29**。
+进度按本故事写入 `localStorage`。每次有意义的发布请在 `app/public/versions.json` 顶部追加 `{ id, version, date, summary }`（新条目用英文）。当前版本 **0.6.30**。
 
 ## 安装到主屏幕（PWA）
 

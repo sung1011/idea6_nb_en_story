@@ -19,10 +19,17 @@ const currentIndex = computed(() => {
   return idx === -1 ? 0 : idx
 })
 
+const currentStory = computed(() => props.stories[currentIndex.value] ?? props.stories[0])
+
 const currentLabel = computed(() => {
-  const story = props.stories[currentIndex.value] ?? props.stories[0]
+  const story = currentStory.value
   if (!story) return 'Story'
   return `${currentIndex.value + 1}. ${story.title}`
+})
+
+const currentTag = computed(() => {
+  const tag = currentStory.value?.tag
+  return typeof tag === 'string' ? tag.trim() : ''
 })
 
 function toggle() {
@@ -79,7 +86,8 @@ onUnmounted(() => {
       aria-label="Choose story"
       @click="toggle"
     >
-      {{ currentLabel }}
+      <span class="label">{{ currentLabel }}</span>
+      <span v-if="currentTag" class="tag">{{ currentTag }}</span>
     </button>
     <ul
       v-if="open"
@@ -97,7 +105,8 @@ onUnmounted(() => {
           :class="{ on: item.id === currentId }"
           @click="pick(item.id)"
         >
-          {{ index + 1 }}. {{ item.title }}
+          <span class="label">{{ index + 1 }}. {{ item.title }}</span>
+          <span v-if="item.tag" class="tag">{{ item.tag }}</span>
         </button>
       </li>
     </ul>
@@ -125,6 +134,7 @@ onUnmounted(() => {
 .current {
   display: inline-flex;
   align-items: center;
+  gap: 6px;
   max-width: 100%;
   padding: 6px 12px;
   border: 3px solid #2f3f3b;
@@ -153,11 +163,31 @@ onUnmounted(() => {
 .option {
   display: flex;
   align-items: center;
+  gap: 8px;
   width: 100%;
   padding: 8px 12px;
   border: 0;
   border-radius: 14px;
   font-size: 1rem;
+}
+
+.label {
+  min-width: 0;
+}
+
+.tag {
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+  padding: 1px 7px;
+  border-radius: 999px;
+  background: rgba(20, 104, 96, 0.12);
+  color: var(--muted);
+  font-family: inherit;
+  font-size: 0.62rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  line-height: 1.25;
 }
 
 .option.on {

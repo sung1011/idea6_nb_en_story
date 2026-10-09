@@ -8,5 +8,11 @@
     "id": "spot-the-cub",
     "title": "Spot the Cub",
     "titleZh": "找小豹"
+  },
+  {
+    "id": "a-lot-of-dots",
+    "title": "A Lot of Dots!",
+    "titleZh": "点点大乱画",
+    "tag": "TODO"
   }
 ]

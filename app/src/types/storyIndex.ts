@@ -2,6 +2,7 @@ export interface StoryIndexEntry {
   id: string
   title: string
   titleZh: string
+  tag?: string
 }
 
 export function isStoryIndexEntry(value: unknown): value is StoryIndexEntry {
@@ -12,9 +13,14 @@ export function isStoryIndexEntry(value: unknown): value is StoryIndexEntry {
 
 export function parseStoryIndex(data: unknown): StoryIndexEntry[] {
   if (!Array.isArray(data)) return []
-  return data.filter(isStoryIndexEntry).map((entry) => ({
-    id: entry.id,
-    title: entry.title,
-    titleZh: typeof entry.titleZh === 'string' ? entry.titleZh : '',
-  }))
+  return data.filter(isStoryIndexEntry).map((entry) => {
+    const mapped: StoryIndexEntry = {
+      id: entry.id,
+      title: entry.title,
+      titleZh: typeof entry.titleZh === 'string' ? entry.titleZh : '',
+    }
+    const tag = typeof entry.tag === 'string' ? entry.tag.trim() : ''
+    if (tag) mapped.tag = tag
+    return mapped
+  })
 }

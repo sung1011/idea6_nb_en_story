@@ -3,7 +3,7 @@
 本仓库以 Markdown 为正文源（`stories/*.md`），构建时解析为 JSON，供阅读器消费。  
 **不要改写故事英文/中文正文**；JSON 只是结构化镜像。
 
-当前故事：`stories/flag-in-the-fog.md` → `app/public/stories/flag-in-the-fog.json`；`stories/spot-the-cub.md` → `app/public/stories/spot-the-cub.json`（画稿与音频尚未入库，JSON 里 image/audio 为空字符串，阅读器回退占位图与系统语音）。目录：`app/public/stories/index.json`。
+当前故事：`stories/flag-in-the-fog.md` → `app/public/stories/flag-in-the-fog.json`；`stories/spot-the-cub.md` → `app/public/stories/spot-the-cub.json`；`stories/a-lot-of-dots.md` → `app/public/stories/a-lot-of-dots.json`。目录：`app/public/stories/index.json`（每项 `{ id, title, titleZh }`，可选 `tag`；Story 3 `a-lot-of-dots` 现为 `"tag": "TODO"`，故事切换器在标题旁显示小标签）。
 
 解析命令（在 `app/` 下）：
 
@@ -28,7 +28,7 @@ npm run parse-stories
 | `structure` | `string` | 否 | 情节结构（来自源稿引用块） |
 | `notes` | `string` | 否 | 篇幅/编写说明（来自源稿引用块） |
 | `source` | `string` | 是 | 源 Markdown 相对仓库根路径 |
-| `pageCount` | `number` | 是 | 页数；Flag in the Fog 为 22，Spot the Cub 为 23 |
+| `pageCount` | `number` | 是 | 页数；Flag in the Fog 为 22，Spot the Cub 为 23，A Lot of Dots! 为 30 |
 | `pages` | `Page[]` | 是 | 按页序排列 |
 
 ---
@@ -56,7 +56,7 @@ npm run parse-stories
 
 相对 URL 约定：
 
-- 插图：`images/<story-id>/p01.webp`（Flag in the Fog 22 页、Spot the Cub 23 页均已接入；缺文件时为 `null`）
+- 插图：`images/<story-id>/p01.webp`（Flag in the Fog 22 页、Spot the Cub 23 页、A Lot of Dots! 30 页均已接入；缺文件时为 `null`）
 - 英文音频：`audio/<story-id>/p01-en.mp3`（Edge TTS `en-US-AriaNeural`，语速 `-15%`）
 - 中文不入库 mp3：页级 **CN**、自动朗读的中文步、词卡 **CN** 都走系统 `speechSynthesis`（`zh-CN` 默认声）
 - 英文逐词时间轴：`audio/<story-id>/timings.json`，紧凑 JSON `{ pageId: [[startMs, endMs, wordIndex], ...] }`。`wordIndex` 与阅读器把英文拆成 `[A-Za-z0-9']+` 后的顺序一致。用与页级英文相同的 Aria `-15%` 文本跑 `WordBoundary`（offset/duration 为 100ns，除以 10000 得毫秒）。新合成 mp3 与现有文件时长差 ≤120ms 时保留旧 mp3，只写入时间轴
