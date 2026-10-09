@@ -28,7 +28,7 @@ npm run parse-stories
 | `structure` | `string` | 否 | 情节结构（来自源稿引用块） |
 | `notes` | `string` | 否 | 篇幅/编写说明（来自源稿引用块） |
 | `source` | `string` | 是 | 源 Markdown 相对仓库根路径 |
-| `pageCount` | `number` | 是 | 页数；Flag in the Fog 为 22，Spot the Cub 为 23，A Lot of Dots! 为 30 |
+| `pageCount` | `number` | 是 | 页数；Flag in the Fog 为 22，Spot the Cub 为 23，A Lot of Dots! 为 29 |
 | `pages` | `Page[]` | 是 | 按页序排列 |
 
 ---
@@ -56,7 +56,7 @@ npm run parse-stories
 
 相对 URL 约定：
 
-- 插图：`images/<story-id>/p01.webp`（Flag in the Fog 22 页、Spot the Cub 23 页、A Lot of Dots! 30 页均已接入；缺文件时为 `null`）
+- 插图：`images/<story-id>/p01.webp`（Flag in the Fog 22 页、Spot the Cub 23 页、A Lot of Dots! 29 页均已接入；缺文件时为 `null`）
 - 英文音频：`audio/<story-id>/p01-en.mp3`（Edge TTS `en-US-AriaNeural`，语速 `-15%`）
 - 中文不入库 mp3：页级 **CN**、自动朗读的中文步、词卡 **CN** 都走系统 `speechSynthesis`（`zh-CN` 默认声）
 - 英文逐词时间轴：`audio/<story-id>/timings.json`，紧凑 JSON `{ pageId: [[startMs, endMs, wordIndex], ...] }`。`wordIndex` 与阅读器把英文拆成 `[A-Za-z0-9']+` 后的顺序一致。用与页级英文相同的 Aria `-15%` 文本跑 `WordBoundary`（offset/duration 为 100ns，除以 10000 得毫秒）。新合成 mp3 与现有文件时长差 ≤120ms 时保留旧 mp3，只写入时间轴

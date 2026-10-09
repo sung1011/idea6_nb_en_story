@@ -3,7 +3,7 @@
 > 场景：晴朗上午的山坡农场集市 → 三个画位（小床当画桌）→ 坡底小黄出租车旁 → 回到画位 → 评奖台（白天 / 描边软陶）  
 > 角色：Mia（唯一的人类主角，服装固定）；小狗 pup（米娅自己的小狗，本章专属：白色，一只棕耳朵，蓝项圈，最爱一只红袜子）；Figgy 菲吉（参赛选手，粉色小猪，黄色蓬松假发）；小猫 cat（参赛选手，真猫，橘色，戴大草帽）。评委只画一只手，观众只画背影帽子，都不算角色。  
 > 结构：立目标 → 小狗闯祸 → 着急 → 选手放下自己的画来帮忙 → 风把画吹到出租车顶（中段事件）→ 叠罗汉，小狗将功补过 → 米娅决定保留点点 → 合作画 → 反转“两只点点狗” → 得奖 → 4 个无花果四个人分（数数互动）  
-> 篇幅：30 页 · 每页英文 6–11 词、≤ 50 字符 · 一般现在时 · 画面不写字 · 颜料只用红、粉、蓝 · 米娅衣服不沾颜料 · 不用 Ch1/Ch2 主打词；find 只出现一次
+> 篇幅：29 页 · 每页英文 6–11 词、≤ 50 字符 · 一般现在时 · 画面不写字 · 颜料只用红、粉、蓝 · 米娅衣服不沾颜料 · 不用 Ch1/Ch2 主打词；find 只出现一次
 
 ---
 
@@ -80,22 +80,14 @@
 ---
 
 ### P10
-正文: Splat! The **cups** tip. Red, pink, blue! Oh no!（啪！颜料杯全翻了。红的、粉的、蓝的！糟了！）
+正文: Splat! The **cups** tip. **Dot**, **dot**, **dot**! Oh no!（啪！颜料杯翻了。点、点、点！糟了！）
 主练句式: The ___ tip.
-辅词: cup（第3章 第2课「字母 C · find」）
-知识点: 拟声 Splat!；颜色词复现
+辅词: cup（第3章 第2课「字母 C · find」）；dot（第3章 第4课「好多好多」）
+知识点: 拟声 Splat!；Dot, dot, dot! 颜料点溅到画上和小狗身上，为反转埋线
 
 ---
 
 ### P11
-正文: Pit-pat! The **pup** runs on the painting. **Dot**, **dot**!（啪嗒啪嗒！小狗从画上跑过去。点、点！）
-主练句式: The ___ runs on the ___.
-辅词: pup（第3章 第3课「字母 P · all out」）；dot（第3章 第4课「好多好多」）
-知识点: 拟声 Pit-pat；painting 作为看图词，全书统一用这个词
-
----
-
-### P12
 正文: Now the **pup** has **dots**, too. A lot of **dots**!（现在小狗身上也全是点点了。好多好多点点！）
 主练句式: A lot of ___!
 辅词: dot（第3章 第4课「好多好多」）
@@ -103,7 +95,7 @@
 
 ---
 
-### P13
+### P12
 正文: "Oh no! Not a lot of time!" says Mia.（米娅说：“糟了！时间不多了！”）
 主练句式: Not a lot of ___!
 辅词: —（a lot of 句式变体）
@@ -111,7 +103,7 @@
 
 ---
 
-### P14
+### P13
 正文: Figgy and the **cat** stop. They run to Mia.（菲吉和小猫停下自己的画，跑到米娅身边。）
 主练句式: ___ and ___ stop.
 辅词: cat（第3章 第2课「字母 C · find」）
@@ -119,7 +111,7 @@
 
 ---
 
-### P15
+### P14
 正文: The **cat** tips her **cup**. All the **pens** are out!（小猫把笔筒一倒，所有彩笔都倒出来了！）
 主练句式: All the ___ are out.
 辅词: cat, cup（第3章 第2课「字母 C · find」）；pen（第3章 第3课「字母 P · all out」）
@@ -127,7 +119,7 @@
 
 ---
 
-### P16
+### P15
 正文: "It is wet," says Mia. "Find the **pin**!"（米娅说：“画太湿了。把图钉拿来！”）
 主练句式: Find the ___.
 辅词: pin（第3章 第3课「字母 P · all out」）
@@ -135,7 +127,7 @@
 
 ---
 
-### P17
+### P16
 正文: Mia **pins** it up. The wind! The **pin** is out!（米娅把画钉起来。起风了！图钉蹦掉了！）
 主练句式: The ___ is out.
 辅词: pin（第3章 第3课「字母 P · all out」）
@@ -143,7 +135,7 @@
 
 ---
 
-### P18
+### P17
 正文: The painting lands on a yellow **cab**. Oh no!（画飘下山坡，落在一辆小黄出租车的车顶上。糟了！）
 主练句式: The ___ lands on a ___.
 辅词: cab（第3章 第2课「字母 C · find」）
@@ -151,7 +143,7 @@
 
 ---
 
-### P19
+### P18
 正文: Mia has a plan. "Figgy, Cat, Pup, hop up!"（米娅想到一个办法：“菲吉、小猫、小狗，叠起来！”）
 主练句式: ___ has a plan. / Hop up!
 辅词: cat, pup（这里当称呼用）
@@ -159,7 +151,7 @@
 
 ---
 
-### P20
+### P19
 正文: Figgy, the **cat**, then the **pup**. Wobble, wobble!（菲吉在下，小猫在中间，小狗在最上面。摇摇晃晃！）
 主练句式: ___, the ___, then the ___.
 辅词: cat（第3章 第2课「字母 C · find」）；pup（第3章 第3课「字母 P · all out」）
@@ -167,7 +159,7 @@
 
 ---
 
-### P21
+### P20
 正文: The **pup** gets it with a **twig**! "Good **pup**!" says Mia.（小狗用小树枝把画勾下来了！米娅说：“好狗狗！”）
 主练句式: ___ gets it with a ___.
 辅词: twig（第3章 第1课「词族肖像」）；pup（第3章 第3课「字母 P · all out」）
@@ -175,7 +167,7 @@
 
 ---
 
-### P22
+### P21
 正文: Mia puts **rocks** on it. A lot of **rocks**!（米娅在画上压了石头。好多好多石头！）
 主练句式: A lot of ___!
 辅词: rock（第3章 第4课「好多好多」）
@@ -183,7 +175,7 @@
 
 ---
 
-### P23
+### P22
 正文: Mia looks at her **pup**. He has **dots**. Hmm...（米娅看看她的小狗。小狗身上有点点。嗯……）
 主练句式: ___ looks at ___.
 辅词: pup（第3章 第3课「字母 P · all out」）；dot（第3章 第4课「好多好多」）
@@ -191,7 +183,7 @@
 
 ---
 
-### P24
+### P23
 正文: "**Dots** on my **pup**? **Dots** on my painting!" says Mia.（米娅说：“小狗身上有点点？那我的画上也要点点！”）
 主练句式: Dots on my ___!
 辅词: pup（第3章 第3课「字母 P · all out」）；dot（第3章 第4课「好多好多」）
@@ -199,7 +191,7 @@
 
 ---
 
-### P25
+### P24
 正文: Figgy pats paint with his **wig**. The **cat** uses **pens**.（菲吉用假发蘸颜料拍点点，小猫用彩笔点点。）
 主练句式: ___ pats ___ with his ___.
 辅词: wig（第3章 第1课「词族肖像」）；cat（第3章 第2课「字母 C · find」）；pen（第3章 第3课「字母 P · all out」）
@@ -207,7 +199,7 @@
 
 ---
 
-### P26
+### P25
 正文: Mia pats with the red **sock**. The **pup** adds paws!（米娅用红袜子拍点点，小狗按上爪印！）
 主练句式: ___ pats with the ___.
 辅词: sock（第3章 第4课「好多好多」）；pup（第3章 第3课「字母 P · all out」）
@@ -215,7 +207,7 @@
 
 ---
 
-### P27
+### P26
 正文: Ding! Time is up. A lot of **hats** come by.（叮！时间到。好多戴帽子的观众来看画。）
 主练句式: A lot of ___!
 辅词: hat（第3章 第4课「好多好多」）
@@ -223,7 +215,7 @@
 
 ---
 
-### P28
+### P27
 正文: Is it a **pup**? Is it the painting? Two **dot** **pups**!（是小狗吗？是画吗？是两只点点狗！）
 主练句式: Is it a ___?
 辅词: pup（第3章 第3课「字母 P · all out」）；dot（第3章 第4课「好多好多」）
@@ -231,7 +223,7 @@
 
 ---
 
-### P29
+### P28
 正文: Mia wins a **cup** of **figs**! "We all win!" she says.（米娅赢得满满一奖杯的无花果！她说：“我们都赢了！”）
 主练句式: We all win!
 辅词: cup（第3章 第2课「字母 C · find」）；fig（第3章 第1课「词族肖像」）
@@ -239,7 +231,7 @@
 
 ---
 
-### P30
+### P29
 正文: All the **figs** are out. Count them with Mia!（无花果全倒出来了。和米娅一起数一数吧！）
 主练句式: All the ___ are out.
 辅词: fig（第3章 第1课「词族肖像」）
@@ -251,10 +243,10 @@
 
 | 课 | 词 | 出现页 | 句式 | 出现页 |
 |---|---|---|---|---|
-| 第3章 第1课「词族肖像」 -ig | pig · fig · twig · wig | pig P03, P06；fig P03, P29, P30；twig P21；wig P03, P25 | Is it a ___? | P06, P28 |
-| 第3章 第2课「字母 C · find」 | cat · cab · cot · cup | cat P04, P14, P15, P20, P25；cab P18；cot P05, P08；cup P02, P05, P10, P15, P29 | Find the ___. | P16（唯一一次） |
-| 第3章 第3课「字母 P · all out」 | pup · pen · pin · pad | pup P01, P07, P09, P11, P12, P20, P21, P23, P24, P26, P28；pen P04, P15, P25；pin P16, P17；pad P06 | The ___ is out. / All the ___ are out. | P01, P09, P17 / P15, P30 |
-| 第3章 第4课「好多好多」 | dot · hat · sock · rock | dot P11, P12, P23, P24, P28；hat P04, P27；sock P08, P09, P26；rock P22 | A lot of ___! | P04, P12, P22, P27（P13 用了变体 Not a lot of） |
+| 第3章 第1课「词族肖像」 -ig | pig · fig · twig · wig | pig P03, P06；fig P03, P28, P29；twig P20；wig P03, P24 | Is it a ___? | P06, P27 |
+| 第3章 第2课「字母 C · find」 | cat · cab · cot · cup | cat P04, P13, P14, P19, P24；cab P17；cot P05, P08；cup P02, P05, P10, P14, P28 | Find the ___. | P15（唯一一次） |
+| 第3章 第3课「字母 P · all out」 | pup · pen · pin · pad | pup P01, P07, P09, P11, P19, P20, P22, P23, P25, P27；pen P04, P14, P24；pin P15, P16；pad P06 | The ___ is out. / All the ___ are out. | P01, P09, P16 / P14, P29 |
+| 第3章 第4课「好多好多」 | dot · hat · sock · rock | dot P10, P11, P22, P23, P27；hat P04, P26；sock P08, P09, P25；rock P21 | A lot of ___! | P04, P11, P21, P26（P12 用了变体 Not a lot of） |
 
 ## 词表（16 个，按首次出现）
 pup · cup · pig · wig · fig · cat · hat · pen · cot · pad · sock · dot · pin · cab · twig · rock

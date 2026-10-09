@@ -6,9 +6,9 @@
   "label": "故事 D",
   "scene": "晴朗上午的山坡农场集市 → 三个画位（小床当画桌）→ 坡底小黄出租车旁 → 回到画位 → 评奖台（白天 / 描边软陶）",
   "structure": "立目标 → 小狗闯祸 → 着急 → 选手放下自己的画来帮忙 → 风把画吹到出租车顶（中段事件）→ 叠罗汉，小狗将功补过 → 米娅决定保留点点 → 合作画 → 反转“两只点点狗” → 得奖 → 4 个无花果四个人分（数数互动）",
-  "notes": "篇幅：30 页 · 每页英文 6–11 词、≤ 50 字符 · 一般现在时 · 画面不写字 · 颜料只用红、粉、蓝 · 米娅衣服不沾颜料 · 不用 Ch1/Ch2 主打词；find 只出现一次",
+  "notes": "篇幅：29 页 · 每页英文 6–11 词、≤ 50 字符 · 一般现在时 · 画面不写字 · 颜料只用红、粉、蓝 · 米娅衣服不沾颜料 · 不用 Ch1/Ch2 主打词；find 只出现一次",
   "source": "stories/a-lot-of-dots.md",
-  "pageCount": 30,
+  "pageCount": 29,
   "pages": [
     {
       "id": "P01",
@@ -306,22 +306,30 @@
     {
       "id": "P10",
       "index": 10,
-      "en": "Splat! The **cups** tip. Red, pink, blue! Oh no!",
-      "zh": "啪！颜料杯全翻了。红的、粉的、蓝的！糟了！",
+      "en": "Splat! The **cups** tip. **Dot**, **dot**, **dot**! Oh no!",
+      "zh": "啪！颜料杯翻了。点、点、点！糟了！",
       "pattern": "The ___ tip.",
-      "focusWord": "cup",
-      "focusNote": "第3章 第2课「字母 C · find」",
-      "focusRaw": "cup（第3章 第2课「字母 C · find」）",
-      "knowledge": "拟声 Splat!；颜色词复现",
+      "focusWord": "cup / dot",
+      "focusNote": "第3章 第2课「字母 C · find」；第3章 第4课「好多好多」",
+      "focusRaw": "cup（第3章 第2课「字母 C · find」）；dot（第3章 第4课「好多好多」）",
+      "knowledge": "拟声 Splat!；Dot, dot, dot! 颜料点溅到画上和小狗身上，为反转埋线",
       "gloss": "杯子",
       "highlights": [
-        "cups"
+        "cups",
+        "Dot",
+        "dot",
+        "dot"
       ],
       "learnItems": [
         {
           "word": "cups",
           "gloss": "杯子",
           "image": "images/a-lot-of-dots/words/cups.webp"
+        },
+        {
+          "word": "dot",
+          "gloss": "圆点",
+          "image": "images/a-lot-of-dots/words/dot.webp"
         },
         {
           "word": "cup",
@@ -337,39 +345,6 @@
     {
       "id": "P11",
       "index": 11,
-      "en": "Pit-pat! The **pup** runs on the painting. **Dot**, **dot**!",
-      "zh": "啪嗒啪嗒！小狗从画上跑过去。点、点！",
-      "pattern": "The ___ runs on the ___.",
-      "focusWord": "pup / dot",
-      "focusNote": "第3章 第3课「字母 P · all out」；第3章 第4课「好多好多」",
-      "focusRaw": "pup（第3章 第3课「字母 P · all out」）；dot（第3章 第4课「好多好多」）",
-      "knowledge": "拟声 Pit-pat；painting 作为看图词，全书统一用这个词",
-      "gloss": "小狗",
-      "highlights": [
-        "pup",
-        "Dot",
-        "dot"
-      ],
-      "learnItems": [
-        {
-          "word": "pup",
-          "gloss": "小狗",
-          "image": "images/a-lot-of-dots/words/pup.webp"
-        },
-        {
-          "word": "dot",
-          "gloss": "圆点",
-          "image": "images/a-lot-of-dots/words/dot.webp"
-        }
-      ],
-      "image": "images/a-lot-of-dots/p11.webp",
-      "audioEn": "audio/a-lot-of-dots/p11-en.mp3",
-      "phrase": "a lot of dots",
-      "phraseZh": "好多点点"
-    },
-    {
-      "id": "P12",
-      "index": 12,
       "en": "Now the **pup** has **dots**, too. A lot of **dots**!",
       "zh": "现在小狗身上也全是点点了。好多好多点点！",
       "pattern": "A lot of ___!",
@@ -400,14 +375,14 @@
           "image": "images/a-lot-of-dots/words/dot.webp"
         }
       ],
-      "image": "images/a-lot-of-dots/p12.webp",
-      "audioEn": "audio/a-lot-of-dots/p12-en.mp3",
+      "image": "images/a-lot-of-dots/p11.webp",
+      "audioEn": "audio/a-lot-of-dots/p11-en.mp3",
       "phrase": "a lot of dots",
       "phraseZh": "好多点点"
     },
     {
-      "id": "P13",
-      "index": 13,
+      "id": "P12",
+      "index": 12,
       "en": "\"Oh no! Not a lot of time!\" says Mia.",
       "zh": "米娅说：“糟了！时间不多了！”",
       "pattern": "Not a lot of ___!",
@@ -418,14 +393,14 @@
       "gloss": "",
       "highlights": [],
       "learnItems": [],
-      "image": "images/a-lot-of-dots/p13.webp",
-      "audioEn": "audio/a-lot-of-dots/p13-en.mp3",
+      "image": "images/a-lot-of-dots/p12.webp",
+      "audioEn": "audio/a-lot-of-dots/p12-en.mp3",
       "phrase": "not a lot of time",
       "phraseZh": "时间不多了"
     },
     {
-      "id": "P14",
-      "index": 14,
+      "id": "P13",
+      "index": 13,
       "en": "Figgy and the **cat** stop. They run to Mia.",
       "zh": "菲吉和小猫停下自己的画，跑到米娅身边。",
       "pattern": "___ and ___ stop.",
@@ -444,14 +419,14 @@
           "image": "images/a-lot-of-dots/words/cat.webp"
         }
       ],
-      "image": "images/a-lot-of-dots/p14.webp",
-      "audioEn": "audio/a-lot-of-dots/p14-en.mp3",
+      "image": "images/a-lot-of-dots/p13.webp",
+      "audioEn": "audio/a-lot-of-dots/p13-en.mp3",
       "phrase": "run to Mia",
       "phraseZh": "跑向米娅"
     },
     {
-      "id": "P15",
-      "index": 15,
+      "id": "P14",
+      "index": 14,
       "en": "The **cat** tips her **cup**. All the **pens** are out!",
       "zh": "小猫把笔筒一倒，所有彩笔都倒出来了！",
       "pattern": "All the ___ are out.",
@@ -487,14 +462,14 @@
           "image": "images/a-lot-of-dots/words/pen.webp"
         }
       ],
-      "image": "images/a-lot-of-dots/p15.webp",
-      "audioEn": "audio/a-lot-of-dots/p15-en.mp3",
+      "image": "images/a-lot-of-dots/p14.webp",
+      "audioEn": "audio/a-lot-of-dots/p14-en.mp3",
       "phrase": "pens are out",
       "phraseZh": "笔都倒出来了"
     },
     {
-      "id": "P16",
-      "index": 16,
+      "id": "P15",
+      "index": 15,
       "en": "\"It is wet,\" says Mia. \"Find the **pin**!\"",
       "zh": "米娅说：“画太湿了。把图钉拿来！”",
       "pattern": "Find the ___.",
@@ -513,14 +488,14 @@
           "image": "images/a-lot-of-dots/words/pin.webp"
         }
       ],
-      "image": "images/a-lot-of-dots/p16.webp",
-      "audioEn": "audio/a-lot-of-dots/p16-en.mp3",
+      "image": "images/a-lot-of-dots/p15.webp",
+      "audioEn": "audio/a-lot-of-dots/p15-en.mp3",
       "phrase": "Find the pin",
       "phraseZh": "找到图钉"
     },
     {
-      "id": "P17",
-      "index": 17,
+      "id": "P16",
+      "index": 16,
       "en": "Mia **pins** it up. The wind! The **pin** is out!",
       "zh": "米娅把画钉起来。起风了！图钉蹦掉了！",
       "pattern": "The ___ is out.",
@@ -545,14 +520,14 @@
           "image": "images/a-lot-of-dots/words/pin.webp"
         }
       ],
-      "image": "images/a-lot-of-dots/p17.webp",
-      "audioEn": "audio/a-lot-of-dots/p17-en.mp3",
+      "image": "images/a-lot-of-dots/p16.webp",
+      "audioEn": "audio/a-lot-of-dots/p16-en.mp3",
       "phrase": "the pin is out",
       "phraseZh": "图钉掉了"
     },
     {
-      "id": "P18",
-      "index": 18,
+      "id": "P17",
+      "index": 17,
       "en": "The painting lands on a yellow **cab**. Oh no!",
       "zh": "画飘下山坡，落在一辆小黄出租车的车顶上。糟了！",
       "pattern": "The ___ lands on a ___.",
@@ -571,14 +546,14 @@
           "image": "images/a-lot-of-dots/words/cab.webp"
         }
       ],
-      "image": "images/a-lot-of-dots/p18.webp",
-      "audioEn": "audio/a-lot-of-dots/p18-en.mp3",
+      "image": "images/a-lot-of-dots/p17.webp",
+      "audioEn": "audio/a-lot-of-dots/p17-en.mp3",
       "phrase": "yellow cab",
       "phraseZh": "黄色出租车"
     },
     {
-      "id": "P19",
-      "index": 19,
+      "id": "P18",
+      "index": 18,
       "en": "Mia has a plan. \"Figgy, Cat, Pup, hop up!\"",
       "zh": "米娅想到一个办法：“菲吉、小猫、小狗，叠起来！”",
       "pattern": "___ has a plan. / Hop up!",
@@ -589,14 +564,14 @@
       "gloss": "",
       "highlights": [],
       "learnItems": [],
-      "image": "images/a-lot-of-dots/p19.webp",
-      "audioEn": "audio/a-lot-of-dots/p19-en.mp3",
+      "image": "images/a-lot-of-dots/p18.webp",
+      "audioEn": "audio/a-lot-of-dots/p18-en.mp3",
       "phrase": "hop up",
       "phraseZh": "跳上去"
     },
     {
-      "id": "P20",
-      "index": 20,
+      "id": "P19",
+      "index": 19,
       "en": "Figgy, the **cat**, then the **pup**. Wobble, wobble!",
       "zh": "菲吉在下，小猫在中间，小狗在最上面。摇摇晃晃！",
       "pattern": "___, the ___, then the ___.",
@@ -621,14 +596,14 @@
           "image": "images/a-lot-of-dots/words/pup.webp"
         }
       ],
-      "image": "images/a-lot-of-dots/p20.webp",
-      "audioEn": "audio/a-lot-of-dots/p20-en.mp3",
+      "image": "images/a-lot-of-dots/p19.webp",
+      "audioEn": "audio/a-lot-of-dots/p19-en.mp3",
       "phrase": "Wobble, wobble!",
       "phraseZh": "摇摇晃晃！"
     },
     {
-      "id": "P21",
-      "index": 21,
+      "id": "P20",
+      "index": 20,
       "en": "The **pup** gets it with a **twig**! \"Good **pup**!\" says Mia.",
       "zh": "小狗用小树枝把画勾下来了！米娅说：“好狗狗！”",
       "pattern": "___ gets it with a ___.",
@@ -654,14 +629,14 @@
           "image": "images/a-lot-of-dots/words/twig.webp"
         }
       ],
-      "image": "images/a-lot-of-dots/p21.webp",
-      "audioEn": "audio/a-lot-of-dots/p21-en.mp3",
+      "image": "images/a-lot-of-dots/p20.webp",
+      "audioEn": "audio/a-lot-of-dots/p20-en.mp3",
       "phrase": "Good pup!",
       "phraseZh": "好棒的小狗！"
     },
     {
-      "id": "P22",
-      "index": 22,
+      "id": "P21",
+      "index": 21,
       "en": "Mia puts **rocks** on it. A lot of **rocks**!",
       "zh": "米娅在画上压了石头。好多好多石头！",
       "pattern": "A lot of ___!",
@@ -686,14 +661,14 @@
           "image": "images/a-lot-of-dots/words/rock.webp"
         }
       ],
-      "image": "images/a-lot-of-dots/p22.webp",
-      "audioEn": "audio/a-lot-of-dots/p22-en.mp3",
+      "image": "images/a-lot-of-dots/p21.webp",
+      "audioEn": "audio/a-lot-of-dots/p21-en.mp3",
       "phrase": "a lot of rocks",
       "phraseZh": "好多石头"
     },
     {
-      "id": "P23",
-      "index": 23,
+      "id": "P22",
+      "index": 22,
       "en": "Mia looks at her **pup**. He has **dots**. Hmm...",
       "zh": "米娅看看她的小狗。小狗身上有点点。嗯……",
       "pattern": "___ looks at ___.",
@@ -723,14 +698,14 @@
           "image": "images/a-lot-of-dots/words/dot.webp"
         }
       ],
-      "image": "images/a-lot-of-dots/p23.webp",
-      "audioEn": "audio/a-lot-of-dots/p23-en.mp3",
+      "image": "images/a-lot-of-dots/p22.webp",
+      "audioEn": "audio/a-lot-of-dots/p22-en.mp3",
       "phrase": "Hmm...",
       "phraseZh": "嗯……"
     },
     {
-      "id": "P24",
-      "index": 24,
+      "id": "P23",
+      "index": 23,
       "en": "\"**Dots** on my **pup**? **Dots** on my painting!\" says Mia.",
       "zh": "米娅说：“小狗身上有点点？那我的画上也要点点！”",
       "pattern": "Dots on my ___!",
@@ -761,14 +736,14 @@
           "image": "images/a-lot-of-dots/words/dot.webp"
         }
       ],
-      "image": "images/a-lot-of-dots/p24.webp",
-      "audioEn": "audio/a-lot-of-dots/p24-en.mp3",
+      "image": "images/a-lot-of-dots/p23.webp",
+      "audioEn": "audio/a-lot-of-dots/p23-en.mp3",
       "phrase": "Dots on my pup",
       "phraseZh": "点点在我的小狗身上"
     },
     {
-      "id": "P25",
-      "index": 25,
+      "id": "P24",
+      "index": 24,
       "en": "Figgy pats paint with his **wig**. The **cat** uses **pens**.",
       "zh": "菲吉用假发蘸颜料拍点点，小猫用彩笔点点。",
       "pattern": "___ pats ___ with his ___.",
@@ -804,14 +779,14 @@
           "image": "images/a-lot-of-dots/words/pen.webp"
         }
       ],
-      "image": "images/a-lot-of-dots/p25.webp",
-      "audioEn": "audio/a-lot-of-dots/p25-en.mp3",
+      "image": "images/a-lot-of-dots/p24.webp",
+      "audioEn": "audio/a-lot-of-dots/p24-en.mp3",
       "phrase": "pats paint",
       "phraseZh": "拍上颜料"
     },
     {
-      "id": "P26",
-      "index": 26,
+      "id": "P25",
+      "index": 25,
       "en": "Mia pats with the red **sock**. The **pup** adds paws!",
       "zh": "米娅用红袜子拍点点，小狗按上爪印！",
       "pattern": "___ pats with the ___.",
@@ -836,14 +811,14 @@
           "image": "images/a-lot-of-dots/words/pup.webp"
         }
       ],
-      "image": "images/a-lot-of-dots/p26.webp",
-      "audioEn": "audio/a-lot-of-dots/p26-en.mp3",
+      "image": "images/a-lot-of-dots/p25.webp",
+      "audioEn": "audio/a-lot-of-dots/p25-en.mp3",
       "phrase": "red sock",
       "phraseZh": "红袜子"
     },
     {
-      "id": "P27",
-      "index": 27,
+      "id": "P26",
+      "index": 26,
       "en": "Ding! Time is up. A lot of **hats** come by.",
       "zh": "叮！时间到。好多戴帽子的观众来看画。",
       "pattern": "A lot of ___!",
@@ -867,14 +842,14 @@
           "image": "images/a-lot-of-dots/words/hat.webp"
         }
       ],
-      "image": "images/a-lot-of-dots/p27.webp",
-      "audioEn": "audio/a-lot-of-dots/p27-en.mp3",
+      "image": "images/a-lot-of-dots/p26.webp",
+      "audioEn": "audio/a-lot-of-dots/p26-en.mp3",
       "phrase": "Time is up",
       "phraseZh": "时间到了"
     },
     {
-      "id": "P28",
-      "index": 28,
+      "id": "P27",
+      "index": 27,
       "en": "Is it a **pup**? Is it the painting? Two **dot** **pups**!",
       "zh": "是小狗吗？是画吗？是两只点点狗！",
       "pattern": "Is it a ___?",
@@ -905,14 +880,14 @@
           "image": "images/a-lot-of-dots/words/pups.webp"
         }
       ],
-      "image": "images/a-lot-of-dots/p28.webp",
-      "audioEn": "audio/a-lot-of-dots/p28-en.mp3",
+      "image": "images/a-lot-of-dots/p27.webp",
+      "audioEn": "audio/a-lot-of-dots/p27-en.mp3",
       "phrase": "two dot pups",
       "phraseZh": "两只点点狗"
     },
     {
-      "id": "P29",
-      "index": 29,
+      "id": "P28",
+      "index": 28,
       "en": "Mia wins a **cup** of **figs**! \"We all win!\" she says.",
       "zh": "米娅赢得满满一奖杯的无花果！她说：“我们都赢了！”",
       "pattern": "We all win!",
@@ -942,14 +917,14 @@
           "image": "images/a-lot-of-dots/words/fig.webp"
         }
       ],
-      "image": "images/a-lot-of-dots/p29.webp",
-      "audioEn": "audio/a-lot-of-dots/p29-en.mp3",
+      "image": "images/a-lot-of-dots/p28.webp",
+      "audioEn": "audio/a-lot-of-dots/p28-en.mp3",
       "phrase": "We all win!",
       "phraseZh": "我们都赢了！"
     },
     {
-      "id": "P30",
-      "index": 30,
+      "id": "P29",
+      "index": 29,
       "en": "All the **figs** are out. Count them with Mia!",
       "zh": "无花果全倒出来了。和米娅一起数一数吧！",
       "pattern": "All the ___ are out.",
@@ -973,8 +948,8 @@
           "image": "images/a-lot-of-dots/words/fig.webp"
         }
       ],
-      "image": "images/a-lot-of-dots/p30.webp",
-      "audioEn": "audio/a-lot-of-dots/p30-en.mp3",
+      "image": "images/a-lot-of-dots/p29.webp",
+      "audioEn": "audio/a-lot-of-dots/p29-en.mp3",
       "phrase": "Count them",
       "phraseZh": "数一数"
     }
