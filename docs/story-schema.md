@@ -100,7 +100,7 @@ npm run parse-stories
 
 当前 Vue 阅读器实际用到：
 
-- 导航与续读：`id`、`pageCount`、`pages[].index`
+- 导航与续读：`id`、`pageCount`、`pages[].index`。点 Prev / Next 翻一页；按住 Prev 约 500ms 回到第 1 页，按住 Next 约 500ms 跳到最后一页正文（不进 Summary）
 - 展示：`en`、`zh`、`pattern`、`focusWord`、`image`（正文显示英文；**CN** 在句子左侧，点开弹层）
 - 朗读：`audioEn`（打开页自动英→中；点英文句子含加粗词播放整句；缺英文文件时自动朗读跳过英文步）。中文始终 `speechSynthesis`。短句点按：`phrase` 英文系统声 → 约 300ms → `phraseZh` 中文系统声。Slow 跟读另拉 `audio/<story-id>/timings.json`
 - 点词：`learnItems` / `gloss` / `image`（点辅词芯片弹出词图 + 释义 + **CN**；句中加粗词只作高亮标记；句式可点，走设备英文声）

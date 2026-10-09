@@ -1,5 +1,11 @@
 [
   {
+    "id": "v0.6.31",
+    "version": "0.6.31",
+    "date": "2026-10-10",
+    "summary": "Hold Prev to jump to the first page, hold Next to jump to the last page."
+  },
+  {
     "id": "v0.6.30",
     "version": "0.6.30",
     "date": "2026-10-10",

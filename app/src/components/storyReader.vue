@@ -214,8 +214,7 @@ function onKey(event: KeyboardEvent) {
     goRestart()
   } else if (event.key === 'End') {
     event.preventDefault()
-    onSummary.value = false
-    pageIndex.value = pageCount.value
+    goLast()
   }
 }
 
@@ -244,6 +243,52 @@ function goRestart() {
   restart()
 }
 
+function goLast() {
+  closePanels()
+  onSummary.value = false
+  pageIndex.value = pageCount.value
+}
+
+const NAV_HOLD_MS = 500
+let navHoldTimer: ReturnType<typeof setTimeout> | null = null
+let navHoldConsumed = false
+
+function clearNavHold() {
+  if (navHoldTimer == null) return
+  clearTimeout(navHoldTimer)
+  navHoldTimer = null
+}
+
+function onNavHoldStart(event: PointerEvent, action: 'prev' | 'next') {
+  if (event.button !== 0) return
+  const enabled = action === 'prev' ? canPrev.value : canNext.value
+  if (!enabled) return
+  clearNavHold()
+  navHoldConsumed = false
+  navHoldTimer = setTimeout(() => {
+    navHoldTimer = null
+    const stillEnabled = action === 'prev' ? canPrev.value : canNext.value
+    if (!stillEnabled) return
+    navHoldConsumed = true
+    if (action === 'prev') goRestart()
+    else goLast()
+  }, NAV_HOLD_MS)
+}
+
+function onNavHoldClear() {
+  clearNavHold()
+}
+
+function onNavClick(event: MouseEvent, action: 'prev' | 'next') {
+  if (navHoldConsumed) {
+    event.preventDefault()
+    navHoldConsumed = false
+    return
+  }
+  if (action === 'prev') goPrev()
+  else goNext()
+}
+
 watch(
   () => page.value?.id,
   () => {
@@ -263,6 +308,7 @@ onUnmounted(() => {
   window.removeEventListener('pointerdown', onPointerDown)
   window.removeEventListener('scroll', onViewportChange, true)
   window.removeEventListener('resize', onViewportChange)
+  clearNavHold()
   stop()
 })
 </script>
@@ -389,7 +435,17 @@ onUnmounted(() => {
     />
 
     <nav class="nav" aria-label="Page navigation">
-      <button type="button" :disabled="!canPrev" @click="goPrev">Prev</button>
+      <button
+        type="button"
+        :disabled="!canPrev"
+        title="Hold to jump to first page"
+        aria-label="Previous page. Hold to jump to first page"
+        @pointerdown="onNavHoldStart($event, 'prev')"
+        @pointerup="onNavHoldClear"
+        @pointercancel="onNavHoldClear"
+        @pointerleave="onNavHoldClear"
+        @click="onNavClick($event, 'prev')"
+      >Prev</button>
       <p v-if="!onSummary" class="count">{{ page.index }} / {{ pageCount }}</p>
       <p v-else class="count">Summary</p>
       <button
@@ -398,7 +454,13 @@ onUnmounted(() => {
         :class="{ loading: nextPageLoading }"
         :disabled="!canNext"
         :aria-busy="nextPageLoading ? true : undefined"
-        @click="goNext"
+        title="Hold to jump to last page"
+        aria-label="Next page. Hold to jump to last page"
+        @pointerdown="onNavHoldStart($event, 'next')"
+        @pointerup="onNavHoldClear"
+        @pointercancel="onNavHoldClear"
+        @pointerleave="onNavHoldClear"
+        @click="onNavClick($event, 'next')"
       >Next</button>
     </nav>
     <button
