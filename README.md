@@ -2,7 +2,7 @@
 
 story-first English learning stories for Star Words App
 
-Vue 3 绘本阅读器，用来翻页阅读 **Flag in the Fog**（雾里的旗，22 页）、**Spot the Cub**（找小豹，23 页）和 **A Lot of Dots!**（点点大乱画，29 页）。
+Vue 3 绘本阅读器，用来翻页阅读 **Flag in the Fog**（雾里的旗，22 页）、**Spot the Cub**（找小豹，23 页）和 **A Lot of Dots!**（点点大乱画，24 页）。
 
 线上地址（启用 GitHub Pages 后）：
 
@@ -10,7 +10,7 @@ https://sung1011.github.io/idea6_nb_en_story/
 
 - First story: [Flag in the Fog / 雾里的旗](stories/flag-in-the-fog.md)（22 pages）
 - Second story: [Spot the Cub / 找小豹](stories/spot-the-cub.md)（23 pages）
-- Third story: [A Lot of Dots! / 点点大乱画](stories/a-lot-of-dots.md)（29 pages）
+- Third story: [A Lot of Dots! / 点点大乱画](stories/a-lot-of-dots.md)（24 pages）
 - Character sheets: [角色设定](docs/characters.md)（Mia / Ben / Rat；Cub / Bug / Mom Leopard；Pup / Figgy / Cat）
 
 ## 本地开发
@@ -74,10 +74,10 @@ node scripts/genEnTimings.mjs
 | `app/public/stories/a-lot-of-dots.json` | A Lot of Dots! 阅读器 JSON |
 | `app/public/images/flag-in-the-fog/` | 各页软陶风插图（`p01.webp` … `p22.webp`） |
 | `app/public/images/spot-the-cub/` | Spot the Cub 插图（`p01.webp` … `p23.webp`） |
-| `app/public/images/a-lot-of-dots/` | A Lot of Dots! 插图（`p01.webp` … `p29.webp`）与词图 |
+| `app/public/images/a-lot-of-dots/` | A Lot of Dots! 插图（`p01.webp` … `p24.webp`）与词图 |
 | `app/public/audio/flag-in-the-fog/` | 预生成页级英文朗读（`p01-en.mp3` …）和 `timings.json` |
 | `app/public/audio/spot-the-cub/` | Spot the Cub 页级英文朗读和 `timings.json` |
-| `app/public/audio/a-lot-of-dots/` | A Lot of Dots! 页级英文朗读（`p01-en.mp3` … `p29-en.mp3`） |
+| `app/public/audio/a-lot-of-dots/` | A Lot of Dots! 页级英文朗读（`p01-en.mp3` … `p24-en.mp3`） |
 | `app/public/versions.json` | 版本记录（最新在前）；每次有意义的发布追加一条 |
 | `app/assets/icon-master.png` | 软陶风应用图标母版（1024，不进 public） |
 | `app/scripts/makePwaIcons.py` | 从母版生成 `pwa512` / `pwa192` / `appleTouchIcon` / `favicon.png` |

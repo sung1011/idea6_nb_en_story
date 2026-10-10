@@ -417,7 +417,7 @@ const STORY_ORDER = ['flag-in-the-fog', 'spot-the-cub', 'a-lot-of-dots']
 const STORY_PAGE_COUNTS = {
   'flag-in-the-fog': 22,
   'spot-the-cub': 23,
-  'a-lot-of-dots': 29,
+  'a-lot-of-dots': 24,
 }
 const STORY_TAGS = {
   'a-lot-of-dots': 'TODO',
