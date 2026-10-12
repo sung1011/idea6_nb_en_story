@@ -75,6 +75,7 @@ function unlockAudio(): void {
 
 const NORMAL_EN_SPEECH_RATE = 0.86
 const MIN_SPEECH_RATE = 0.3
+const PAGE_NARRATE_LOCK_MS = 20_000
 
 function applyPlaybackRate(el: HTMLAudioElement, rate: number) {
   el.playbackRate = rate
@@ -243,6 +244,28 @@ export function usePageSpeech(page: Ref<StoryPage | undefined>) {
   const playingRate = ref(1)
   const followIndex = ref<number | null>(null)
   const playingPhrase = ref<string | null>(null)
+  const pageNarrating = ref(false)
+  let narrateLockTimer = 0
+
+  function clearNarrateLock() {
+    if (narrateLockTimer) {
+      window.clearTimeout(narrateLockTimer)
+      narrateLockTimer = 0
+    }
+    pageNarrating.value = false
+  }
+
+  function startNarrateLock() {
+    if (narrateLockTimer) {
+      window.clearTimeout(narrateLockTimer)
+      narrateLockTimer = 0
+    }
+    pageNarrating.value = true
+    narrateLockTimer = window.setTimeout(() => {
+      narrateLockTimer = 0
+      pageNarrating.value = false
+    }, PAGE_NARRATE_LOCK_MS)
+  }
 
   function clearFollow() {
     cancelFollowLoop()
@@ -267,6 +290,7 @@ export function usePageSpeech(page: Ref<StoryPage | undefined>) {
   function clearPlaying(token: number) {
     if (seq !== token) return
     clearFollow()
+    clearNarrateLock()
     playingLang.value = null
     playingWord.value = null
     playingRate.value = 1
@@ -276,6 +300,7 @@ export function usePageSpeech(page: Ref<StoryPage | undefined>) {
   function stop() {
     stopShared()
     clearFollow()
+    clearNarrateLock()
     playingLang.value = null
     playingWord.value = null
     playingRate.value = 1
@@ -289,6 +314,7 @@ export function usePageSpeech(page: Ref<StoryPage | undefined>) {
     if (!text) return
     const speed = lang === 'en' ? rate : 1
     stopShared()
+    clearNarrateLock()
     const token = seq
     playingLang.value = lang
     playingWord.value = null
@@ -313,6 +339,7 @@ export function usePageSpeech(page: Ref<StoryPage | undefined>) {
     const file = String(current.audioEn || '').trim()
     const wantFollow = speed < 1 && Boolean(file)
     if (file) {
+      startNarrateLock()
       playFile(mediaUrl(file), text, lang, token, done, speed, {
         ...options,
         onBlocked: blocked,
@@ -335,6 +362,7 @@ export function usePageSpeech(page: Ref<StoryPage | undefined>) {
       skip()
       return
     }
+    startNarrateLock()
     systemSpeak(text, lang, token, done, speed)
   }
 
@@ -346,6 +374,7 @@ export function usePageSpeech(page: Ref<StoryPage | undefined>) {
     const spoken = plainSpeakText(text)
     if (!spoken) return
     stopShared()
+    clearNarrateLock()
     const token = seq
     playingLang.value = lang === 'zh' ? 'zh' : null
     playingWord.value = lang === 'en' ? spoken : null
@@ -360,6 +389,7 @@ export function usePageSpeech(page: Ref<StoryPage | undefined>) {
     const spokenEn = plainSpeakText(en)
     if (!spokenEn) return
     stopShared()
+    clearNarrateLock()
     const token = seq
     playingLang.value = null
     playingWord.value = null
@@ -408,6 +438,7 @@ export function usePageSpeech(page: Ref<StoryPage | undefined>) {
     playingRate,
     followIndex,
     playingPhrase,
+    pageNarrating,
     playLine,
     playWord,
     playDevice,

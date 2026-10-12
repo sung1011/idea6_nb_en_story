@@ -37,6 +37,7 @@ const {
   playingRate,
   followIndex,
   playingPhrase,
+  pageNarrating,
   playLine,
   playWord,
   playDevice,
@@ -81,6 +82,8 @@ const summaryPhrases = computed(() => {
 })
 const canPrev = computed(() => onSummary.value || pageIndex.value > 1)
 const canNext = computed(() => !onSummary.value)
+const prevEnabled = computed(() => canPrev.value && !pageNarrating.value)
+const nextEnabled = computed(() => canNext.value && !pageNarrating.value)
 const showChinese = computed(() => Boolean(page.value?.zh))
 const openLearn = ref<LearnItem | null>(null)
 const openZh = ref(false)
@@ -205,21 +208,25 @@ function onKey(event: KeyboardEvent) {
   }
   if (event.key === 'ArrowRight' || event.key === 'PageDown') {
     event.preventDefault()
+    if (pageNarrating.value) return
     goNext()
   } else if (event.key === 'ArrowLeft' || event.key === 'PageUp') {
     event.preventDefault()
+    if (pageNarrating.value) return
     goPrev()
   } else if (event.key === 'Home') {
     event.preventDefault()
+    if (pageNarrating.value) return
     goRestart()
   } else if (event.key === 'End') {
     event.preventDefault()
+    if (pageNarrating.value) return
     goLast()
   }
 }
 
 function goNext() {
-  if (onSummary.value) return
+  if (pageNarrating.value || onSummary.value) return
   if (pageIndex.value >= pageCount.value) {
     closePanels()
     onSummary.value = true
@@ -229,6 +236,7 @@ function goNext() {
 }
 
 function goPrev() {
+  if (pageNarrating.value) return
   if (onSummary.value) {
     closePanels()
     onSummary.value = false
@@ -238,12 +246,14 @@ function goPrev() {
 }
 
 function goRestart() {
+  if (pageNarrating.value) return
   closePanels()
   onSummary.value = false
   restart()
 }
 
 function goLast() {
+  if (pageNarrating.value) return
   closePanels()
   onSummary.value = false
   pageIndex.value = pageCount.value
@@ -261,12 +271,14 @@ function clearNavHold() {
 
 function onNavHoldStart(event: PointerEvent, action: 'prev' | 'next') {
   if (event.button !== 0) return
+  if (pageNarrating.value) return
   const enabled = action === 'prev' ? canPrev.value : canNext.value
   if (!enabled) return
   clearNavHold()
   navHoldConsumed = false
   navHoldTimer = setTimeout(() => {
     navHoldTimer = null
+    if (pageNarrating.value) return
     const stillEnabled = action === 'prev' ? canPrev.value : canNext.value
     if (!stillEnabled) return
     navHoldConsumed = true
@@ -283,6 +295,10 @@ function onNavClick(event: MouseEvent, action: 'prev' | 'next') {
   if (navHoldConsumed) {
     event.preventDefault()
     navHoldConsumed = false
+    return
+  }
+  if (pageNarrating.value) {
+    event.preventDefault()
     return
   }
   if (action === 'prev') goPrev()
@@ -437,7 +453,7 @@ onUnmounted(() => {
     <nav class="nav" aria-label="Page navigation">
       <button
         type="button"
-        :disabled="!canPrev"
+        :disabled="!prevEnabled"
         title="Hold to jump to first page"
         aria-label="Previous page. Hold to jump to first page"
         @pointerdown="onNavHoldStart($event, 'prev')"
@@ -452,7 +468,7 @@ onUnmounted(() => {
         type="button"
         class="next"
         :class="{ loading: nextPageLoading }"
-        :disabled="!canNext"
+        :disabled="!nextEnabled"
         :aria-busy="nextPageLoading ? true : undefined"
         title="Hold to jump to last page"
         aria-label="Next page. Hold to jump to last page"
