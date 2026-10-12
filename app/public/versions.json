@@ -1,5 +1,11 @@
 [
   {
+    "id": "v0.6.34",
+    "version": "0.6.34",
+    "date": "2026-10-12",
+    "summary": "Word cards now always show the base form (pen, not pens)."
+  },
+  {
     "id": "v0.6.33",
     "version": "0.6.33",
     "date": "2026-10-10",

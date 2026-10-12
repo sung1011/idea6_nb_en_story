@@ -48,7 +48,7 @@ npm run parse-stories
 | `knowledge` | `string` | 否 | 知识点 |
 | `gloss` | `string` | 否 | 本页主焦点词的中文短义。优先用源稿 `释义:`，否则从辅词括注 / 知识点 / 正文中文推导 |
 | `highlights` | `string[]` | 否 | 从 `en` 里 `**…**` 抽出的词 |
-| `learnItems` | `LearnItem[]` | 否 | 本页可点学的词（加粗词 + 辅词），每项 `{ word, gloss, image }` |
+| `learnItems` | `LearnItem[]` | 否 | 本页可点学的词（加粗词 + 辅词），每项 `{ word, gloss, image }`。`word` 一律用原形（lemma）：句子里高亮可以是 `pens`，词卡写 `pen`、读 `pen`、图用 `pen.webp`。页内和全书按原形去重 |
 | `image` | `string \| null` | 否 | 插图相对 URL。仓库内有 `images/<story-id>/pNN.webp`（或 png/jpg）时写入路径；否则为 `null`，阅读器回退 16:9 软陶风 SVG 占位。正式画稿必须压缩后再入库，不要提交未压缩原图 |
 | `audioEn` | `string \| null` | 否 | 英文朗读音频相对 URL。仓库内有对应 mp3 时写入路径，否则为 `null` |
 | `phrase` | `string` | 否 | 本页可点短句英文，写在故事 JSON 里，阅读器展示，不展示 `pattern` |

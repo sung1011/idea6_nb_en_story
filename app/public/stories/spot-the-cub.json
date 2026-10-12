@@ -165,9 +165,9 @@
       ],
       "learnItems": [
         {
-          "word": "spots",
+          "word": "spot",
           "gloss": "斑点",
-          "image": "images/spot-the-cub/words/spots.webp"
+          "image": "images/spot-the-cub/words/spot.webp"
         },
         {
           "word": "nap",
@@ -290,9 +290,9 @@
           "image": "images/spot-the-cub/words/mug.webp"
         },
         {
-          "word": "dots",
+          "word": "dot",
           "gloss": "圆点",
-          "image": "images/spot-the-cub/words/dots.webp"
+          "image": "images/spot-the-cub/words/dot.webp"
         }
       ],
       "image": "images/spot-the-cub/p12.webp",

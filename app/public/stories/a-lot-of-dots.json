@@ -91,9 +91,9 @@
           "image": "images/a-lot-of-dots/words/wig.webp"
         },
         {
-          "word": "figs",
+          "word": "fig",
           "gloss": "无花果",
-          "image": "images/a-lot-of-dots/words/figs.webp"
+          "image": "images/a-lot-of-dots/words/fig.webp"
         }
       ],
       "image": "images/a-lot-of-dots/p03.webp",
@@ -129,11 +129,6 @@
           "image": "images/a-lot-of-dots/words/hat.webp"
         },
         {
-          "word": "pens",
-          "gloss": "彩笔",
-          "image": "images/a-lot-of-dots/words/pens.webp"
-        },
-        {
           "word": "pen",
           "gloss": "彩笔",
           "image": "images/a-lot-of-dots/words/pen.webp"
@@ -161,9 +156,9 @@
       ],
       "learnItems": [
         {
-          "word": "cups",
+          "word": "cup",
           "gloss": "杯子",
-          "image": "images/a-lot-of-dots/words/cups.webp"
+          "image": "images/a-lot-of-dots/words/cup.webp"
         },
         {
           "word": "cot",
@@ -271,19 +266,14 @@
       ],
       "learnItems": [
         {
-          "word": "cups",
+          "word": "cup",
           "gloss": "杯子",
-          "image": "images/a-lot-of-dots/words/cups.webp"
+          "image": "images/a-lot-of-dots/words/cup.webp"
         },
         {
           "word": "dot",
           "gloss": "圆点",
           "image": "images/a-lot-of-dots/words/dot.webp"
-        },
-        {
-          "word": "cup",
-          "gloss": "杯子",
-          "image": "images/a-lot-of-dots/words/cup.webp"
         }
       ],
       "image": "images/a-lot-of-dots/p08.webp",
@@ -312,11 +302,6 @@
           "word": "pup",
           "gloss": "小狗",
           "image": "images/a-lot-of-dots/words/pup.webp"
-        },
-        {
-          "word": "dots",
-          "gloss": "圆点",
-          "image": "images/a-lot-of-dots/words/dots.webp"
         },
         {
           "word": "dot",
@@ -383,11 +368,6 @@
           "image": "images/a-lot-of-dots/words/cup.webp"
         },
         {
-          "word": "pens",
-          "gloss": "彩笔",
-          "image": "images/a-lot-of-dots/words/pens.webp"
-        },
-        {
           "word": "pen",
           "gloss": "彩笔",
           "image": "images/a-lot-of-dots/words/pen.webp"
@@ -408,7 +388,7 @@
       "focusNote": "第3章 第3课「字母 P · all out」",
       "focusRaw": "pin（第3章 第3课「字母 P · all out」）",
       "knowledge": "Find the ___.（第3章 第2课句式，全书只出现一次，是米娅说的）；pin 名词和动词同形（pins it up / the pin）；中段事件开始",
-      "gloss": "名词和动词同",
+      "gloss": "图钉",
       "highlights": [
         "pin",
         "pins",
@@ -417,13 +397,8 @@
       "learnItems": [
         {
           "word": "pin",
-          "gloss": "名词和动词同",
-          "image": "images/a-lot-of-dots/words/pin.webp"
-        },
-        {
-          "word": "pins",
           "gloss": "图钉",
-          "image": "images/a-lot-of-dots/words/pins.webp"
+          "image": "images/a-lot-of-dots/words/pin.webp"
         }
       ],
       "image": "images/a-lot-of-dots/p12.webp",
@@ -557,11 +532,6 @@
       ],
       "learnItems": [
         {
-          "word": "rocks",
-          "gloss": "石头",
-          "image": "images/a-lot-of-dots/words/rocks.webp"
-        },
-        {
           "word": "rock",
           "gloss": "石头",
           "image": "images/a-lot-of-dots/words/rock.webp"
@@ -592,11 +562,6 @@
           "word": "pup",
           "gloss": "小狗",
           "image": "images/a-lot-of-dots/words/pup.webp"
-        },
-        {
-          "word": "dots",
-          "gloss": "圆点",
-          "image": "images/a-lot-of-dots/words/dots.webp"
         },
         {
           "word": "dot",
@@ -635,11 +600,6 @@
           "word": "cat",
           "gloss": "小猫",
           "image": "images/a-lot-of-dots/words/cat.webp"
-        },
-        {
-          "word": "pens",
-          "gloss": "彩笔",
-          "image": "images/a-lot-of-dots/words/pens.webp"
         },
         {
           "word": "pen",
@@ -700,11 +660,6 @@
       ],
       "learnItems": [
         {
-          "word": "hats",
-          "gloss": "帽子",
-          "image": "images/a-lot-of-dots/words/hats.webp"
-        },
-        {
           "word": "hat",
           "gloss": "帽子",
           "image": "images/a-lot-of-dots/words/hat.webp"
@@ -741,11 +696,6 @@
           "word": "dot",
           "gloss": "圆点",
           "image": "images/a-lot-of-dots/words/dot.webp"
-        },
-        {
-          "word": "pups",
-          "gloss": "小狗",
-          "image": "images/a-lot-of-dots/words/pups.webp"
         }
       ],
       "image": "images/a-lot-of-dots/p22.webp",
@@ -775,11 +725,6 @@
           "image": "images/a-lot-of-dots/words/cup.webp"
         },
         {
-          "word": "figs",
-          "gloss": "无花果",
-          "image": "images/a-lot-of-dots/words/figs.webp"
-        },
-        {
           "word": "fig",
           "gloss": "无花果",
           "image": "images/a-lot-of-dots/words/fig.webp"
@@ -805,11 +750,6 @@
         "figs"
       ],
       "learnItems": [
-        {
-          "word": "figs",
-          "gloss": "无花果",
-          "image": "images/a-lot-of-dots/words/figs.webp"
-        },
         {
           "word": "fig",
           "gloss": "无花果",

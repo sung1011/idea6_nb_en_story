@@ -151,6 +151,7 @@ export const STORY_WORD_GLOSS = {
   wet: '湿的',
   rug: '小毯子',
   spots: '斑点',
+  spot: '斑点',
   nap: '小睡',
   mom: '妈妈',
   bug: '瓢虫',
@@ -186,6 +187,25 @@ export const STORY_WORD_GLOSS = {
   dot: '圆点',
 }
 
+const IRREGULAR_LEMMAS = {
+  pins: 'pin',
+}
+
+/**
+ * Card / audio / image use the lemma. Sentence highlights stay on the surface form.
+ * @param {string} word
+ */
+export function toLemma(word) {
+  const key = String(word ?? '').trim().toLowerCase()
+  if (!key) return ''
+  if (IRREGULAR_LEMMAS[key]) return IRREGULAR_LEMMAS[key]
+  if (key.length > 3 && key.endsWith('s') && !key.endsWith('ss')) {
+    const stem = key.slice(0, -1)
+    if (Object.prototype.hasOwnProperty.call(STORY_WORD_GLOSS, stem)) return stem
+  }
+  return key
+}
+
 const META_NOTE =
   /第\s*\d+\s*章|第\s*\d+\s*课|回调|不加粗|下页|词包|疑问|存在句|听辨|方位|线索|场景|对比|顶格|复现|同课|请求|商量|和解|礼貌|交接|感叹|收束|发现|闭环/
 
@@ -210,7 +230,7 @@ export function deriveGloss({ word, focusRaw = '', knowledge = '', explicitGloss
   const trimmed = String(explicitGloss ?? '').trim()
   if (trimmed) return trimmed
 
-  const key = String(word ?? '').trim()
+  const key = toLemma(word)
   if (!key) return ''
 
   const fromFocus = glossFromLabeledNote(key, focusRaw)
@@ -222,7 +242,7 @@ export function deriveGloss({ word, focusRaw = '', knowledge = '', explicitGloss
   const fromZh = glossFromPageZh(key, zh)
   if (fromZh) return fromZh
 
-  return STORY_WORD_GLOSS[key.toLowerCase()] ?? ''
+  return STORY_WORD_GLOSS[key] ?? ''
 }
 
 /** Strip markdown bold markers so TTS reads the spoken sentence. */
@@ -306,11 +326,10 @@ function buildLearnItems({ slug, highlights, focusWord, focusRaw, knowledge, exp
   const seen = new Set()
   const words = []
   for (const raw of [...highlights, ...splitFocusWords(focusWord)]) {
-    const word = String(raw ?? '').trim()
-    const key = word.toLowerCase()
-    if (!word || seen.has(key)) continue
-    seen.add(key)
-    words.push(key)
+    const lemma = toLemma(raw)
+    if (!lemma || seen.has(lemma)) continue
+    seen.add(lemma)
+    words.push(lemma)
   }
 
   return words
@@ -329,6 +348,29 @@ function buildLearnItems({ slug, highlights, focusWord, focusRaw, knowledge, exp
       }
     })
     .filter((item) => item.gloss)
+}
+
+/** @param {Record<string, unknown>} story */
+function applyLearnItemLemmas(story) {
+  const slug = String(story.id ?? '')
+  for (const page of story.pages ?? []) {
+    const seen = new Set()
+    const items = []
+    for (const item of page.learnItems ?? []) {
+      const lemma = toLemma(item.word)
+      if (!lemma || seen.has(lemma)) continue
+      seen.add(lemma)
+      const gloss = STORY_WORD_GLOSS[lemma] || String(item.gloss ?? '').trim()
+      if (!gloss) continue
+      items.push({
+        word: lemma,
+        gloss,
+        image: existingWordImage(slug, lemma),
+      })
+    }
+    page.learnItems = items
+    if (items[0]?.gloss) page.gloss = items[0].gloss
+  }
 }
 
 /** @param {string} word @param {string} raw */
@@ -471,8 +513,9 @@ export function parseAndWriteStories() {
       if (!saved?.pages || saved.pages.length !== story.pageCount) {
         throw new Error(`Kept ${slug}.json page count mismatch`)
       }
-      applyExistingMedia(saved)
     }
+    applyLearnItemLemmas(saved)
+    applyExistingMedia(saved)
     applyPhraseFields(saved, existingById)
     fs.writeFileSync(outFile, `${JSON.stringify(saved, null, 2)}\n`)
     catalog.push(saved)
