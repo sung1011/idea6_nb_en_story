@@ -282,13 +282,13 @@
     {
       "id": "P09",
       "index": 9,
-      "en": "Tick, tock! \"Oh no! Not a lot of time!\" cries Mia.",
-      "zh": "嘀嗒嘀嗒！米娅急得大叫：“糟了！时间不多了！”",
-      "pattern": "Not a lot of ___!",
+      "en": "Tick, tock! \"Oh no! No time! No time!\" cries Mia.",
+      "zh": "嘀嗒嘀嗒！米娅急得大叫：“糟了！没时间了！没时间了！”",
+      "pattern": "No time!",
       "focusWord": "",
       "focusNote": "无课纲词",
       "focusRaw": "（无课纲词）",
-      "knowledge": "拟声 Tick, tock!；否定 Not a lot of…（a lot of 句式变体）；cries 表示“大叫”；情绪低谷",
+      "knowledge": "拟声 Tick, tock!；No time! 重复表示着急；cries 表示“大叫”；情绪低谷",
       "gloss": "",
       "highlights": [],
       "learnItems": [],
@@ -300,24 +300,18 @@
     {
       "id": "P10",
       "index": 10,
-      "en": "\"It is OK, **Pup**!\" Figgy and the **cat** run to help.",
-      "zh": "“没关系，小狗！”菲吉和小猫跑来帮忙。",
-      "pattern": "It is OK!",
-      "focusWord": "pup / cat",
-      "focusNote": "第3章 第3课「字母 P · all out」；第3章 第2课「字母 C · find」",
-      "focusRaw": "pup（第3章 第3课「字母 P · all out」）；cat（第3章 第2课「字母 C · find」）",
-      "knowledge": "It is OK 安慰别人（米娅对小狗说）；and 连接两个主语；转折：伙伴来帮忙",
-      "gloss": "小狗",
+      "en": "\"Do not worry!\" Figgy and the **cat** run to help.",
+      "zh": "“别担心！”菲吉和小猫跑来帮忙。",
+      "pattern": "Do not worry!",
+      "focusWord": "cat",
+      "focusNote": "第3章 第2课「字母 C · find」",
+      "focusRaw": "cat（第3章 第2课「字母 C · find」）",
+      "knowledge": "Do not worry! 安慰别人（菲吉和小猫对米娅说）；and 连接两个主语；转折：伙伴来帮忙",
+      "gloss": "小猫",
       "highlights": [
-        "Pup",
         "cat"
       ],
       "learnItems": [
-        {
-          "word": "pup",
-          "gloss": "小狗",
-          "image": "images/a-lot-of-dots/words/pup.webp"
-        },
         {
           "word": "cat",
           "gloss": "小猫",

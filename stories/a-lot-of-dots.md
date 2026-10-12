@@ -72,18 +72,18 @@
 ---
 
 ### P09
-正文: Tick, tock! "Oh no! Not a lot of time!" cries Mia.（嘀嗒嘀嗒！米娅急得大叫：“糟了！时间不多了！”）
-主练句式: Not a lot of ___!
+正文: Tick, tock! "Oh no! No time! No time!" cries Mia.（嘀嗒嘀嗒！米娅急得大叫：“糟了！没时间了！没时间了！”）
+主练句式: No time!
 辅词: （无课纲词）
-知识点: 拟声 Tick, tock!；否定 Not a lot of…（a lot of 句式变体）；cries 表示“大叫”；情绪低谷
+知识点: 拟声 Tick, tock!；No time! 重复表示着急；cries 表示“大叫”；情绪低谷
 
 ---
 
 ### P10
-正文: "It is OK, **Pup**!" Figgy and the **cat** run to help.（“没关系，小狗！”菲吉和小猫跑来帮忙。）
-主练句式: It is OK!
-辅词: pup（第3章 第3课「字母 P · all out」）；cat（第3章 第2课「字母 C · find」）
-知识点: It is OK 安慰别人（米娅对小狗说）；and 连接两个主语；转折：伙伴来帮忙
+正文: "Do not worry!" Figgy and the **cat** run to help.（“别担心！”菲吉和小猫跑来帮忙。）
+主练句式: Do not worry!
+辅词: cat（第3章 第2课「字母 C · find」）
+知识点: Do not worry! 安慰别人（菲吉和小猫对米娅说）；and 连接两个主语；转折：伙伴来帮忙
 
 ---
 
@@ -205,8 +205,8 @@
 |---|---|---|---|---|
 | 第3章 第1课「词族肖像」 -ig | pig · fig · twig · wig | pig P03, P06；fig P03, P23, P24；twig P16；wig P03, P19 | Is it a ___? | P06, P22 |
 | 第3章 第2课「字母 C · find」 | cat · cab · cot · cup | cat P04, P10, P11, P15, P19；cab P13；cot P05, P07；cup P02, P05, P08, P11, P23 | Find the ___. | （P12 改写后全书未用） |
-| 第3章 第3课「字母 P · all out」 | pup · pen · pin · pad | pup P01, P06, P07, P10, P15, P16, P18, P20, P22；pen P04, P11, P19；pin P12；pad P06 | The ___ is out. / All the ___ are out. | P01, P12 / P11, P24 |
-| 第3章 第4课「好多好多」 | dot · hat · sock · rock | dot P08, P18, P22；hat P04, P21；sock P07, P20；rock P17 | A lot of ___! | P04, P08, P17, P21（P09 用了变体 Not a lot of） |
+| 第3章 第3课「字母 P · all out」 | pup · pen · pin · pad | pup P01, P06, P07, P15, P16, P18, P20, P22；pen P04, P11, P19；pin P12；pad P06 | The ___ is out. / All the ___ are out. | P01, P12 / P11, P24 |
+| 第3章 第4课「好多好多」 | dot · hat · sock · rock | dot P08, P18, P22；hat P04, P21；sock P07, P20；rock P17 | A lot of ___! | P04, P08, P17, P21 |
 
 ## 词表（16 个，按首次出现）
 pup · cup · pig · wig · fig · cat · hat · pen · cot · pad · sock · dot · pin · cab · twig · rock
