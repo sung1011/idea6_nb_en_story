@@ -56,34 +56,34 @@
 ---
 
 ### P07
-正文: The red **sock** rolls under the **cot**. The **pup** is out!（红袜子滚到小床底下。小狗跳出来了！）
-主练句式: The ___ is out.
+正文: The red **sock** rolls under the **cot**. The **pup** jumps for it!（红袜子滚到小床底下，小狗扑过去追！）
+主练句式: The ___ rolls under the ___.
 辅词: sock（第3章 第4课「好多好多」）；cot（第3章 第2课「字母 C · find」）；pup（第3章 第3课「字母 P · all out」）
-知识点: 介词 under；The pup is out.（第3章 第3课原句）；闯祸开始
+知识点: 介词 under；jump for it 扑过去追；闯祸开始
 
 ---
 
 ### P08
-正文: Splat! The **cups** tip. **Dot**, **dot**, **dot**! Oh no!（啪！颜料杯翻了。点、点、点！糟了！）
-主练句式: The ___ tip.
+正文: Splat! The **cups** tip. A lot of **dots**! Oh no!（啪！颜料杯翻了。好多点点！糟了！）
+主练句式: A lot of ___!
 辅词: cup（第3章 第2课「字母 C · find」）；dot（第3章 第4课「好多好多」）
-知识点: 拟声 Splat!；Dot, dot, dot! 颜料点溅到画上和小狗身上，为反转埋线
+知识点: 拟声 Splat!；A lot of dots!（第3章 第4课原句）；颜料点溅到画上和小狗身上，为反转埋线
 
 ---
 
 ### P09
-正文: Now the **pup** has **dots**, too. A lot of **dots**!（现在小狗身上也全是点点了。好多好多点点！）
-主练句式: A lot of ___!
-辅词: dot（第3章 第4课「好多好多」）
-知识点: A lot of dots!（第3章 第4课原句）；too 表示“也”；为反转埋线
+正文: Tick, tock! "Oh no! Not a lot of time!" cries Mia.（嘀嗒嘀嗒！米娅急得大叫：“糟了！时间不多了！”）
+主练句式: Not a lot of ___!
+辅词: （无课纲词）
+知识点: 拟声 Tick, tock!；否定 Not a lot of…（a lot of 句式变体）；cries 表示“大叫”；情绪低谷
 
 ---
 
 ### P10
-正文: "Not a lot of time!" Figgy and the **cat** run to Mia.（“时间不多了！”菲吉和小猫跑到米娅身边。）
-主练句式: Not a lot of ___!
-辅词: cat（第3章 第2课「字母 C · find」）
-知识点: 否定 Not a lot of…（a lot of 句式变体），这句是米娅说的；and 连接两个主语；情绪低谷后转折：伙伴来帮忙
+正文: "It is OK, **Pup**!" Figgy and the **cat** run to help.（“没关系，小狗！”菲吉和小猫跑来帮忙。）
+主练句式: It is OK!
+辅词: pup（第3章 第3课「字母 P · all out」）；cat（第3章 第2课「字母 C · find」）
+知识点: It is OK 安慰别人（米娅对小狗说）；and 连接两个主语；转折：伙伴来帮忙
 
 ---
 
@@ -96,10 +96,10 @@
 ---
 
 ### P12
-正文: "Find the **pin**!" Mia **pins** it up. The wind! The **pin** is out!（“把图钉拿来！”米娅把画钉起来。起风了！图钉蹦掉了！）
-主练句式: Find the ___.（全书唯一一次）
+正文: Mia **pins** it up. The wind! The **pin** is out!（米娅把画钉起来。起风了！图钉掉了！）
+主练句式: The ___ is out.
 辅词: pin（第3章 第3课「字母 P · all out」）
-知识点: Find the ___.（第3章 第2课句式，全书只出现一次，是米娅说的）；pin 名词和动词同形（pins it up / the pin）；中段事件开始
+知识点: The pin is out.（第3章 第3课句式）；pin 名词和动词同形（pins it up / the pin）；中段事件开始
 
 ---
 
@@ -204,9 +204,9 @@
 | 课 | 词 | 出现页 | 句式 | 出现页 |
 |---|---|---|---|---|
 | 第3章 第1课「词族肖像」 -ig | pig · fig · twig · wig | pig P03, P06；fig P03, P23, P24；twig P16；wig P03, P19 | Is it a ___? | P06, P22 |
-| 第3章 第2课「字母 C · find」 | cat · cab · cot · cup | cat P04, P10, P11, P15, P19；cab P13；cot P05, P07；cup P02, P05, P08, P11, P23 | Find the ___. | P12（唯一一次） |
-| 第3章 第3课「字母 P · all out」 | pup · pen · pin · pad | pup P01, P06, P07, P09, P15, P16, P18, P20, P22；pen P04, P11, P19；pin P12；pad P06 | The ___ is out. / All the ___ are out. | P01, P07, P12 / P11, P24 |
-| 第3章 第4课「好多好多」 | dot · hat · sock · rock | dot P08, P09, P18, P22；hat P04, P21；sock P07, P20；rock P17 | A lot of ___! | P04, P09, P17, P21（P10 用了变体 Not a lot of） |
+| 第3章 第2课「字母 C · find」 | cat · cab · cot · cup | cat P04, P10, P11, P15, P19；cab P13；cot P05, P07；cup P02, P05, P08, P11, P23 | Find the ___. | （P12 改写后全书未用） |
+| 第3章 第3课「字母 P · all out」 | pup · pen · pin · pad | pup P01, P06, P07, P10, P15, P16, P18, P20, P22；pen P04, P11, P19；pin P12；pad P06 | The ___ is out. / All the ___ are out. | P01, P12 / P11, P24 |
+| 第3章 第4课「好多好多」 | dot · hat · sock · rock | dot P08, P18, P22；hat P04, P21；sock P07, P20；rock P17 | A lot of ___! | P04, P08, P17, P21（P09 用了变体 Not a lot of） |
 
 ## 词表（16 个，按首次出现）
 pup · cup · pig · wig · fig · cat · hat · pen · cot · pad · sock · dot · pin · cab · twig · rock
@@ -219,7 +219,6 @@ painting（全书统一）· yellow · wobble · Figgy（名字）
 - A lot of ___!
 - Is it a ___?
 - All the ___ are out.
-- Find the ___.
 - "___," says Mia.
 - Dots on my ___!
 - ___ pats with the ___.

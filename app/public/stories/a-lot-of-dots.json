@@ -205,20 +205,20 @@
         }
       ],
       "image": "images/a-lot-of-dots/p06.webp",
-      "audioEn": "audio/a-lot-of-dots/p06-en.mp3",
+      "audioEn": null,
       "phrase": "holds up her pad",
       "phraseZh": "举起她的画本"
     },
     {
       "id": "P07",
       "index": 7,
-      "en": "The red **sock** rolls under the **cot**. The **pup** is out!",
-      "zh": "红袜子滚到小床底下。小狗跳出来了！",
-      "pattern": "The ___ is out.",
+      "en": "The red **sock** rolls under the **cot**. The **pup** jumps for it!",
+      "zh": "红袜子滚到小床底下，小狗扑过去追！",
+      "pattern": "The ___ rolls under the ___.",
       "focusWord": "sock / cot / pup",
       "focusNote": "第3章 第4课「好多好多」；第3章 第2课「字母 C · find」；第3章 第3课「字母 P · all out」",
       "focusRaw": "sock（第3章 第4课「好多好多」）；cot（第3章 第2课「字母 C · find」）；pup（第3章 第3课「字母 P · all out」）",
-      "knowledge": "介词 under；The pup is out.（第3章 第3课原句）；闯祸开始",
+      "knowledge": "介词 under；jump for it 扑过去追；闯祸开始",
       "gloss": "袜子",
       "highlights": [
         "sock",
@@ -243,26 +243,24 @@
         }
       ],
       "image": "images/a-lot-of-dots/p07.webp",
-      "audioEn": "audio/a-lot-of-dots/p07-en.mp3",
+      "audioEn": null,
       "phrase": "under the cot",
       "phraseZh": "在小床底下"
     },
     {
       "id": "P08",
       "index": 8,
-      "en": "Splat! The **cups** tip. **Dot**, **dot**, **dot**! Oh no!",
-      "zh": "啪！颜料杯翻了。点、点、点！糟了！",
-      "pattern": "The ___ tip.",
+      "en": "Splat! The **cups** tip. A lot of **dots**! Oh no!",
+      "zh": "啪！颜料杯翻了。好多点点！糟了！",
+      "pattern": "A lot of ___!",
       "focusWord": "cup / dot",
       "focusNote": "第3章 第2课「字母 C · find」；第3章 第4课「好多好多」",
       "focusRaw": "cup（第3章 第2课「字母 C · find」）；dot（第3章 第4课「好多好多」）",
-      "knowledge": "拟声 Splat!；Dot, dot, dot! 颜料点溅到画上和小狗身上，为反转埋线",
+      "knowledge": "拟声 Splat!；A lot of dots!（第3章 第4课原句）；颜料点溅到画上和小狗身上，为反转埋线",
       "gloss": "杯子",
       "highlights": [
         "cups",
-        "Dot",
-        "dot",
-        "dot"
+        "dots"
       ],
       "learnItems": [
         {
@@ -277,25 +275,42 @@
         }
       ],
       "image": "images/a-lot-of-dots/p08.webp",
-      "audioEn": "audio/a-lot-of-dots/p08-en.mp3",
+      "audioEn": null,
       "phrase": "Oh no!",
       "phraseZh": "糟了！"
     },
     {
       "id": "P09",
       "index": 9,
-      "en": "Now the **pup** has **dots**, too. A lot of **dots**!",
-      "zh": "现在小狗身上也全是点点了。好多好多点点！",
-      "pattern": "A lot of ___!",
-      "focusWord": "dot",
-      "focusNote": "第3章 第4课「好多好多」",
-      "focusRaw": "dot（第3章 第4课「好多好多」）",
-      "knowledge": "A lot of dots!（第3章 第4课原句）；too 表示“也”；为反转埋线",
+      "en": "Tick, tock! \"Oh no! Not a lot of time!\" cries Mia.",
+      "zh": "嘀嗒嘀嗒！米娅急得大叫：“糟了！时间不多了！”",
+      "pattern": "Not a lot of ___!",
+      "focusWord": "",
+      "focusNote": "无课纲词",
+      "focusRaw": "（无课纲词）",
+      "knowledge": "拟声 Tick, tock!；否定 Not a lot of…（a lot of 句式变体）；cries 表示“大叫”；情绪低谷",
+      "gloss": "",
+      "highlights": [],
+      "learnItems": [],
+      "image": "images/a-lot-of-dots/p09.webp",
+      "audioEn": null,
+      "phrase": "a lot of dots",
+      "phraseZh": "好多点点"
+    },
+    {
+      "id": "P10",
+      "index": 10,
+      "en": "\"It is OK, **Pup**!\" Figgy and the **cat** run to help.",
+      "zh": "“没关系，小狗！”菲吉和小猫跑来帮忙。",
+      "pattern": "It is OK!",
+      "focusWord": "pup / cat",
+      "focusNote": "第3章 第3课「字母 P · all out」；第3章 第2课「字母 C · find」",
+      "focusRaw": "pup（第3章 第3课「字母 P · all out」）；cat（第3章 第2课「字母 C · find」）",
+      "knowledge": "It is OK 安慰别人（米娅对小狗说）；and 连接两个主语；转折：伙伴来帮忙",
       "gloss": "小狗",
       "highlights": [
-        "pup",
-        "dots",
-        "dots"
+        "Pup",
+        "cat"
       ],
       "learnItems": [
         {
@@ -304,39 +319,13 @@
           "image": "images/a-lot-of-dots/words/pup.webp"
         },
         {
-          "word": "dot",
-          "gloss": "圆点",
-          "image": "images/a-lot-of-dots/words/dot.webp"
-        }
-      ],
-      "image": "images/a-lot-of-dots/p09.webp",
-      "audioEn": "audio/a-lot-of-dots/p09-en.mp3",
-      "phrase": "a lot of dots",
-      "phraseZh": "好多点点"
-    },
-    {
-      "id": "P10",
-      "index": 10,
-      "en": "\"Not a lot of time!\" Figgy and the **cat** run to Mia.",
-      "zh": "“时间不多了！”菲吉和小猫跑到米娅身边。",
-      "pattern": "Not a lot of ___!",
-      "focusWord": "cat",
-      "focusNote": "第3章 第2课「字母 C · find」",
-      "focusRaw": "cat（第3章 第2课「字母 C · find」）",
-      "knowledge": "否定 Not a lot of…（a lot of 句式变体），这句是米娅说的；and 连接两个主语；情绪低谷后转折：伙伴来帮忙",
-      "gloss": "小猫",
-      "highlights": [
-        "cat"
-      ],
-      "learnItems": [
-        {
           "word": "cat",
           "gloss": "小猫",
           "image": "images/a-lot-of-dots/words/cat.webp"
         }
       ],
       "image": "images/a-lot-of-dots/p10.webp",
-      "audioEn": "audio/a-lot-of-dots/p10-en.mp3",
+      "audioEn": null,
       "phrase": "not a lot of time",
       "phraseZh": "时间不多了"
     },
@@ -381,16 +370,15 @@
     {
       "id": "P12",
       "index": 12,
-      "en": "\"Find the **pin**!\" Mia **pins** it up. The wind! The **pin** is out!",
-      "zh": "“把图钉拿来！”米娅把画钉起来。起风了！图钉蹦掉了！",
-      "pattern": "Find the ___.（全书唯一一次）",
+      "en": "Mia **pins** it up. The wind! The **pin** is out!",
+      "zh": "米娅把画钉起来。起风了！图钉掉了！",
+      "pattern": "The ___ is out.",
       "focusWord": "pin",
       "focusNote": "第3章 第3课「字母 P · all out」",
       "focusRaw": "pin（第3章 第3课「字母 P · all out」）",
-      "knowledge": "Find the ___.（第3章 第2课句式，全书只出现一次，是米娅说的）；pin 名词和动词同形（pins it up / the pin）；中段事件开始",
+      "knowledge": "The pin is out.（第3章 第3课句式）；pin 名词和动词同形（pins it up / the pin）；中段事件开始",
       "gloss": "图钉",
       "highlights": [
-        "pin",
         "pins",
         "pin"
       ],
@@ -402,7 +390,7 @@
         }
       ],
       "image": "images/a-lot-of-dots/p12.webp",
-      "audioEn": "audio/a-lot-of-dots/p12-en.mp3",
+      "audioEn": null,
       "phrase": "Find the pin",
       "phraseZh": "找到图钉"
     },
