@@ -174,8 +174,8 @@
     {
       "id": "P06",
       "index": 6,
-      "en": "Mia paints on her **pad**. \"Is it a **pig**?\" \"No, my **pup**!\"",
-      "zh": "米娅在小画本上打草稿。“是小猪吗？”“不是，是我的小狗！”",
+      "en": "Mia holds up her **pad**. \"Is it a **pig**?\" \"No, my **pup**!\"",
+      "zh": "米娅举起她的画本。“是小猪吗？”“不是，是我的小狗！”",
       "pattern": "Is it a ___?",
       "focusWord": "pad / pig / pup",
       "focusNote": "第3章 第3课「字母 P · all out」；第3章 第1课「词族肖像」；第3章 第3课「字母 P · all out」",
@@ -206,8 +206,8 @@
       ],
       "image": "images/a-lot-of-dots/p06.webp",
       "audioEn": "audio/a-lot-of-dots/p06-en.mp3",
-      "phrase": "on her pad",
-      "phraseZh": "在她的小画本上"
+      "phrase": "holds up her pad",
+      "phraseZh": "举起她的画本"
     },
     {
       "id": "P07",
