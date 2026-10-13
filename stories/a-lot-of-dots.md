@@ -16,8 +16,8 @@
 ---
 
 ### P02
-正文: A big gold **cup**! Paint well and win the **cup**!（一只金灿灿的大奖杯！好好画，就能赢得奖杯！）
-主练句式: Paint ___ and win the ___.
+正文: Win the gold **cup**! Paint well and be quick!（赢得金奖杯！好好画，还要快哦！）
+主练句式: Win the ___!
 辅词: cup（第3章 第2课「字母 C · find」）
 知识点: 祈使句 Paint… and win…；HOOK：立下目标（叙述句，没有说话人）
 
@@ -48,7 +48,7 @@
 ---
 
 ### P06
-正文: Mia holds up her **pad**. "Is it a **pig**?" "No, my **pup**!"（米娅举起她的画本。“是小猪吗？”“不是，是我的小狗！”）
+正文: Mia holds up her **pad**. "A **pig**?" "No, my **pup**!"（米娅举起她的画本。“是小猪吗？”“不是，是我的小狗！”）
 主练句式: Is it a ___?
 辅词: pad（第3章 第3课「字母 P · all out」）；pig（第3章 第1课「词族肖像」）；pup（第3章 第3课「字母 P · all out」）
 知识点: 一般疑问句 Is it a…?（第3章 第1课句式）；一问一答：问句是菲吉说的，No, my pup! 是米娅回答的（画面里菲吉指着草稿发问，米娅举起草稿回答）
@@ -56,7 +56,7 @@
 ---
 
 ### P07
-正文: The red **sock** rolls under the **cot**. The **pup** jumps for it!（红袜子滚到小床底下，小狗扑过去追！）
+正文: The red **sock** rolls under the **cot**. **Pup** jumps!（红袜子滚到小床底下，小狗扑过去！）
 主练句式: The ___ rolls under the ___.
 辅词: sock（第3章 第4课「好多好多」）；cot（第3章 第2课「字母 C · find」）；pup（第3章 第3课「字母 P · all out」）
 知识点: 介词 under；jump for it 扑过去追；闯祸开始
@@ -88,7 +88,7 @@
 ---
 
 ### P11
-正文: The **cat** tips her **cup**. All the **pens** are out!（小猫把笔筒一倒，所有彩笔都倒出来了！）
+正文: The **cat** shares. All the **pens** are out for Mia!（小猫来分享。所有彩笔都倒出来给米娅用！）
 主练句式: All the ___ are out.
 辅词: cat, cup（第3章 第2课「字母 C · find」）；pen（第3章 第3课「字母 P · all out」）
 知识点: All the pens are out.（第3章 第3课句式）；分享
@@ -96,7 +96,7 @@
 ---
 
 ### P12
-正文: Mia **pins** it up. The wind! The **pin** is out!（米娅把画钉起来。起风了！图钉掉了！）
+正文: Mia **pins** up her wet **pad**. Whoosh! The **pin** is out!（米娅把湿画本钉起来晾。呼——图钉掉了！）
 主练句式: The ___ is out.
 辅词: pin（第3章 第3课「字母 P · all out」）
 知识点: The pin is out.（第3章 第3课句式）；pin 名词和动词同形（pins it up / the pin）；中段事件开始
@@ -104,7 +104,7 @@
 ---
 
 ### P13
-正文: The painting lands on a yellow **cab**. Oh no!（画飘下山坡，落在一辆小黄出租车的车顶上。糟了！）
+正文: The painting lands on a yellow **cab**. Too high!（画落在小黄出租车顶上。太高了，够不着！）
 主练句式: The ___ lands on a ___.
 辅词: cab（第3章 第2课「字母 C · find」）
 知识点: 介词 on；危机升级，低谷 2
@@ -120,7 +120,7 @@
 ---
 
 ### P15
-正文: Figgy, the **cat**, then the **pup**. Wobble, wobble!（菲吉在下，小猫在中间，小狗在最上面。摇摇晃晃！）
+正文: Figgy, the **cat**, then the **pup**. Get the **twig**, **Pup**!（菲吉、小猫，最后是小狗。小狗，拿树枝！）
 主练句式: ___, the ___, then the ___.
 辅词: cat（第3章 第2课「字母 C · find」）；pup（第3章 第3课「字母 P · all out」）
 知识点: then 表示顺序；拟声 Wobble
@@ -128,15 +128,15 @@
 ---
 
 ### P16
-正文: The **pup** gets it with a **twig**! "Good **pup**!" says Mia.（小狗用小树枝把画勾下来了！米娅说：“好狗狗！”）
-主练句式: ___ gets it with a ___.
+正文: **Pup** pulls it off the **cab** with a **twig**! Good **pup**!（小狗用小树枝把画从车顶勾下来！好狗狗！）
+主练句式: ___ pulls it off the ___ with a ___.
 辅词: twig（第3章 第1课「词族肖像」）；pup（第3章 第3课「字母 P · all out」）
 知识点: with 表示工具；小狗将功补过
 
 ---
 
 ### P17
-正文: Mia puts **rocks** on it. A lot of **rocks**!（米娅在画上压了石头。好多好多石头！）
+正文: No more wind! **Rocks** on it. A lot of **rocks**!（不让风再吹走！压上石头。好多好多石头！）
 主练句式: A lot of ___!
 辅词: rock（第3章 第4课「好多好多」）
 知识点: A lot of rocks!（第3章 第4课原句）；米娅的第二个办法
@@ -144,10 +144,10 @@
 ---
 
 ### P18
-正文: Mia looks at her **pup**. "**Dots** on my painting!"（米娅看看满身点点的小狗。“我的画上也要点点！”）
-主练句式: Dots on my ___!
+正文: Mia looks at her **pup**. "**Dots** are fun! More **dots**!"（米娅看看满身点点的小狗：“点点真好玩！再多点点！”）
+主练句式: ___ are fun! More ___!
 辅词: pup（第3章 第3课「字母 P · all out」）；dot（第3章 第4课「好多好多」）
-知识点: look at；Dots on my painting! 是米娅说的；关键选择：保留点点，把画里的狗也画成点点狗
+知识点: look at；Dots are fun! More dots! 是米娅说的；关键选择：保留点点，把画里的狗也画成点点狗
 
 ---
 
@@ -176,7 +176,7 @@
 ---
 
 ### P22
-正文: Is it a **pup**? Is it the painting? Two **dot** **pups**!（是小狗吗？是画吗？是两只点点狗！）
+正文: Is it a **pup**? Is it a painting? It is two!（是小狗？还是画？两个都是！）
 主练句式: Is it a ___?
 辅词: pup（第3章 第3课「字母 P · all out」）；dot（第3章 第4课「好多好多」）
 知识点: 旁白连问 Is it…?（不是哪个角色在说）；反转
@@ -184,7 +184,7 @@
 ---
 
 ### P23
-正文: Mia wins a **cup** of **figs**! "We all win!" she says.（米娅赢得满满一奖杯的无花果！她说：“我们都赢了！”）
+正文: Mia wins the gold **cup**, full of **figs**! "We all win!"（米娅赢了金奖杯，里面装满无花果！“我们都赢了！”）
 主练句式: We all win!
 辅词: cup（第3章 第2课「字母 C · find」）；fig（第3章 第1课「词族肖像」）
 知识点: all 视觉词（第3章 第3课）；分享功劳
@@ -192,7 +192,7 @@
 ---
 
 ### P24
-正文: All the **figs** are out. Count them with Mia!（无花果全倒出来了。和米娅一起数一数吧！）
+正文: All the **figs** are out. One each! Count with Mia!（无花果全倒出来了。每人一个！和米娅一起数！）
 主练句式: All the ___ are out.
 辅词: fig（第3章 第1课「词族肖像」）
 知识点: All the figs are out.（第3章 第3课句式）；数数 1–4 互动；温暖收尾
@@ -219,7 +219,5 @@ painting（全书统一）· yellow · wobble · Figgy（名字）
 - A lot of ___!
 - Is it a ___?
 - All the ___ are out.
-- "___," says Mia.
-- Dots on my ___!
 - ___ pats with the ___.
 - We all win!
