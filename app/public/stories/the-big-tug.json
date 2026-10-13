@@ -514,12 +514,12 @@
     {
       "id": "P18",
       "index": 18,
-      "en": "Hen is in the hole! Mia makes a **rag** rope.",
-      "zh": "Hen 在洞里！米娅用旧布拧成绳子。",
+      "en": "The lizard runs back in. Hen is in the hole! Mia makes a **rag** rope.",
+      "zh": "沙蜥跑回洞里了。Hen 在洞里！米娅用旧布拧成绳子。",
       "pattern": "Mia makes a ___ rope.",
-      "focusWord": "rag",
-      "focusNote": "第4章 第2课「字母 G」",
-      "focusRaw": "rag（第4章 第2课「字母 G」）",
+      "focusWord": "rag / lizard",
+      "focusNote": "第4章 第2课「字母 G」；看图词",
+      "focusRaw": "rag（第4章 第2课「字母 G」）；lizard（看图词）",
       "knowledge": "名词作修饰：rag rope；救 Hen",
       "gloss": "旧布",
       "highlights": [
@@ -530,6 +530,11 @@
           "word": "rag",
           "gloss": "旧布",
           "image": "images/the-big-tug/words/rag.webp"
+        },
+        {
+          "word": "lizard",
+          "gloss": "沙蜥",
+          "image": "images/the-big-tug/words/lizard.webp"
         }
       ],
       "image": "images/the-big-tug/p18.webp",

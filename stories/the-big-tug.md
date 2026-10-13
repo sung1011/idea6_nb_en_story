@@ -144,9 +144,9 @@
 ---
 
 ### P18
-正文: Hen is in the hole! Mia makes a **rag** rope.（Hen 在洞里！米娅用旧布拧成绳子。）
+正文: The lizard runs back in. Hen is in the hole! Mia makes a **rag** rope.（沙蜥跑回洞里了。Hen 在洞里！米娅用旧布拧成绳子。）
 主练句式: Mia makes a ___ rope.
-辅词: rag（第4章 第2课「字母 G」）
+辅词: rag（第4章 第2课「字母 G」）；lizard（看图词）
 知识点: 名词作修饰：rag rope；救 Hen
 
 ---
@@ -230,7 +230,7 @@ mom · dad · hen · pet · bed · leg · bat · mitt · rag · gift · tag · g
 另有看图词卡 1 个：lizard（沙蜥），不算课纲词。总结页会自动跳过前面故事已出过的词卡（本书为 mom）。
 
 ## 看图词（不在课纲里）
-lizard（有词卡，沙蜥，P04, P14, P16, P17, P19, P22, P23, P26）· bottle · dunes · Hen（名字）
+lizard（有词卡，沙蜥，P04, P14, P16, P17, P18, P19, P22, P23, P26）· bottle · dunes · Hen（名字）
 
 ## 视觉词
 one（P25）· two（P25）· help（P09, P20）；字母 G：P12 礼物标签
