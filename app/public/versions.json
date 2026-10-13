@@ -1,5 +1,11 @@
 [
   {
+    "id": "v0.6.44",
+    "version": "0.6.44",
+    "date": "2026-10-13",
+    "summary": "The CN button now sits at the start of the sentence inside the text box."
+  },
+  {
     "id": "v0.6.43",
     "version": "0.6.43",
     "date": "2026-10-13",

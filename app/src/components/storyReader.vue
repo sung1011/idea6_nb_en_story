@@ -134,6 +134,7 @@ function onLineTextKey(event: KeyboardEvent) {
 }
 
 function toggleZh(event: Event) {
+  event.stopPropagation()
   cancelAuto()
   if (openZh.value) {
     closeZh()
@@ -339,47 +340,43 @@ onUnmounted(() => {
       />
 
       <section class="copy">
-        <div class="en-row">
-          <div class="side-btns">
-            <button
-              v-if="showChinese"
-              type="button"
-              class="chip zh tap side-chip"
-              :class="{ open: openZh }"
-              aria-label="Chinese translation"
-              :aria-expanded="openZh"
-              @click="toggleZh"
-            >
-              <svg class="side-icon icon-bubble" viewBox="0 0 24 24" aria-hidden="true">
-                <path
-                  fill="currentColor"
-                  d="M4.4 3.8h15.2A2.8 2.8 0 0 1 22.4 6.6v8.1a2.8 2.8 0 0 1-2.8 2.8h-7.15l-5.35 4.05v-4.05H4.4A2.8 2.8 0 0 1 1.6 14.7V6.6A2.8 2.8 0 0 1 4.4 3.8Z"
-                />
-              </svg>
-              <span>CN</span>
-            </button>
-          </div>
-          <div class="line en" :class="{ playing: playingLang === 'en' }">
-            <p
-              class="line-text"
-              role="button"
-              tabindex="0"
-              aria-label="Play English"
-              :aria-pressed="playingLang === 'en'"
-              @click="playEnglish"
-              @keydown="onLineTextKey"
-            >
-              <template v-for="(seg, i) in enSegments" :key="`${page.id}-${i}`">
-                <span
-                  :class="{
-                    hl: seg.highlight,
-                    word: seg.wordIndex != null,
-                    follow: followIndex === seg.wordIndex,
-                  }"
-                >{{ seg.text }}</span>
-              </template>
-            </p>
-          </div>
+        <div class="line en" :class="{ playing: playingLang === 'en' }">
+          <button
+            v-if="showChinese"
+            type="button"
+            class="chip zh tap cn-inline"
+            :class="{ open: openZh }"
+            aria-label="Chinese translation"
+            :aria-expanded="openZh"
+            @click.stop="toggleZh"
+          >
+            <svg class="cn-icon" viewBox="0 0 24 24" aria-hidden="true">
+              <path
+                fill="currentColor"
+                d="M4.4 3.8h15.2A2.8 2.8 0 0 1 22.4 6.6v8.1a2.8 2.8 0 0 1-2.8 2.8h-7.15l-5.35 4.05v-4.05H4.4A2.8 2.8 0 0 1 1.6 14.7V6.6A2.8 2.8 0 0 1 4.4 3.8Z"
+              />
+            </svg>
+            <span>CN</span>
+          </button>
+          <p
+            class="line-text"
+            role="button"
+            tabindex="0"
+            aria-label="Play English"
+            :aria-pressed="playingLang === 'en'"
+            @click="playEnglish"
+            @keydown="onLineTextKey"
+          >
+            <template v-for="(seg, i) in enSegments" :key="`${page.id}-${i}`">
+              <span
+                :class="{
+                  hl: seg.highlight,
+                  word: seg.wordIndex != null,
+                  follow: followIndex === seg.wordIndex,
+                }"
+              >{{ seg.text }}</span>
+            </template>
+          </p>
         </div>
         <div class="meta">
           <button
@@ -511,52 +508,6 @@ h1 {
   padding: 18px 4px 8px;
 }
 
-.en-row {
-  display: flex;
-  align-items: flex-start;
-  gap: 8px;
-}
-
-.side-btns {
-  flex-shrink: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: stretch;
-  gap: 6px;
-  margin-top: 12px;
-}
-
-.en-row .chip.zh {
-  margin: 0;
-}
-
-.side-chip {
-  display: inline-flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 2px;
-  width: 44px;
-  min-width: 44px;
-  min-height: 48px;
-  padding: 6px 4px 5px;
-  font-size: 0.7rem;
-  line-height: 1;
-  letter-spacing: 0.02em;
-}
-
-.side-icon {
-  display: block;
-  width: 16px;
-  height: 16px;
-}
-
-.en-row .line {
-  flex: 1;
-  min-width: 0;
-  width: auto;
-}
-
 .line {
   display: flex;
   align-items: flex-start;
@@ -574,10 +525,34 @@ h1 {
 
 .line.en {
   display: block;
+  min-height: calc(2 * 1.45em + 24px);
   font-size: 1.55rem;
   line-height: 1.45;
   font-weight: 500;
   color: var(--ink);
+}
+
+.line.en .cn-inline {
+  display: inline-flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  width: auto;
+  min-width: 0;
+  min-height: 0;
+  margin: 0 0.4em 0 0;
+  padding: 3px 7px 3px 6px;
+  font-size: 0.6rem;
+  line-height: 1;
+  letter-spacing: 0.02em;
+  vertical-align: 0.2em;
+}
+
+.line.en .cn-inline .cn-icon {
+  display: block;
+  width: 11px;
+  height: 11px;
 }
 
 .line:hover,
@@ -606,7 +581,8 @@ h1 {
 }
 
 .line.en .line-text {
-  min-height: calc(2 * 1.45em);
+  display: inline;
+  min-height: 0;
 }
 
 .hl {
