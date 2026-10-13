@@ -176,7 +176,6 @@ export const STORY_WORD_GLOSS = {
   hats: '帽子',
   pen: '彩笔',
   pens: '彩笔',
-  cot: '小床',
   pad: '画本',
   sock: '袜子',
   pin: '图钉',

@@ -1,6 +1,6 @@
 # 故事 D · A Lot of Dots!（点点大乱画）· 第 3 章 · v1 正文
 
-> 场景：晴朗上午的山坡农场集市 → 三个画位（小床当画桌）→ 坡底小黄出租车旁 → 回到画位 → 评奖台（白天 / 描边软陶）  
+> 场景：晴朗上午的山坡农场集市 → 三个画位（各有一张画桌）→ 坡底小黄出租车旁 → 回到画位 → 评奖台（白天 / 描边软陶）  
 > 角色：Mia（唯一的人类主角，服装固定）；小狗 pup（米娅自己的小狗，本章专属：白色，一只棕耳朵，蓝项圈，最爱一只红袜子）；Figgy 菲吉（参赛选手，粉色小猪，黄色蓬松假发）；小猫 cat（参赛选手，真猫，橘色，戴大草帽）。评委只画一只手，观众只画背影帽子，都不算角色。  
 > 结构：立目标 → 小狗闯祸 → 着急 → 选手放下自己的画来帮忙 → 风把画吹到出租车顶（中段事件）→ 叠罗汉，小狗将功补过 → 米娅决定保留点点 → 合作画 → 反转“两只点点狗” → 得奖 → 4 个无花果四个人分（数数互动）  
 > 篇幅：24 页 · 每页英文 6–11 词、≤ 50 字符 · 一般现在时 · 画面不写字 · 颜料只用红、粉、蓝 · 米娅衣服不沾颜料 · 不用 Ch1/Ch2 主打词；find 只出现一次
@@ -40,9 +40,9 @@
 ---
 
 ### P05
-正文: Red, pink, and blue **cups** sit on Mia's **cot**.（红、粉、蓝三杯颜料摆在米娅的小床上。）
+正文: Red, pink, and blue **cups** sit on Mia's table.（红、粉、蓝三杯颜料摆在米娅的桌子上。）
 主练句式: ___ sit on the ___.
-辅词: cup, cot（第3章 第2课「字母 C · find」）
+辅词: cup（第3章 第2课「字母 C · find」）
 知识点: 颜色词 red / pink / blue；所有格 Mia's
 
 ---
@@ -56,9 +56,9 @@
 ---
 
 ### P07
-正文: The red **sock** rolls under the **cot**. **Pup** jumps!（红袜子滚到小床底下，小狗扑过去！）
+正文: The red **sock** rolls under the table. **Pup** jumps!（红袜子滚到桌子底下，小狗扑过去！）
 主练句式: The ___ rolls under the ___.
-辅词: sock（第3章 第4课「好多好多」）；cot（第3章 第2课「字母 C · find」）；pup（第3章 第3课「字母 P · all out」）
+辅词: sock（第3章 第4课「好多好多」）；pup（第3章 第3课「字母 P · all out」）
 知识点: 介词 under；jump for it 扑过去追；闯祸开始
 
 ---
@@ -199,17 +199,17 @@
 
 ---
 
-## 课纲覆盖（第3章 4 课 × 4 词 = 16/16）
+## 课纲覆盖（第3章 4 课 × 4 词 = 15/16，cot 已改为普通词 table）
 
 | 课 | 词 | 出现页 | 句式 | 出现页 |
 |---|---|---|---|---|
 | 第3章 第1课「词族肖像」 -ig | pig · fig · twig · wig | pig P03, P06；fig P03, P23, P24；twig P16；wig P03, P19 | Is it a ___? | P06, P22 |
-| 第3章 第2课「字母 C · find」 | cat · cab · cot · cup | cat P04, P10, P11, P15, P19；cab P13；cot P05, P07；cup P02, P05, P08, P11, P23 | Find the ___. | （P12 改写后全书未用） |
+| 第3章 第2课「字母 C · find」 | cat · cab · cup | cat P04, P10, P11, P15, P19；cab P13；cup P02, P05, P08, P11, P23 | Find the ___. | （P12 改写后全书未用） |
 | 第3章 第3课「字母 P · all out」 | pup · pen · pin · pad | pup P01, P06, P07, P15, P16, P18, P20, P22；pen P04, P11, P19；pin P12；pad P06 | The ___ is out. / All the ___ are out. | P01, P12 / P11, P24 |
 | 第3章 第4课「好多好多」 | dot · hat · sock · rock | dot P08, P18, P22；hat P04, P21；sock P07, P20；rock P17 | A lot of ___! | P04, P08, P17, P21 |
 
-## 词表（16 个，按首次出现）
-pup · cup · pig · wig · fig · cat · hat · pen · cot · pad · sock · dot · pin · cab · twig · rock
+## 词表（15 个，按首次出现）
+pup · cup · pig · wig · fig · cat · hat · pen · pad · sock · dot · pin · cab · twig · rock
 
 ## 看图词（不在课纲里，词卡标成“看图词”）
 painting（全书统一）· yellow · wobble · Figgy（名字）

@@ -4,7 +4,7 @@
   "titleZh": "点点大乱画",
   "version": "",
   "label": "故事 D",
-  "scene": "晴朗上午的山坡农场集市 → 三个画位（小床当画桌）→ 坡底小黄出租车旁 → 回到画位 → 评奖台（白天 / 描边软陶）",
+  "scene": "晴朗上午的山坡农场集市 → 三个画位（各有一张画桌）→ 坡底小黄出租车旁 → 回到画位 → 评奖台（白天 / 描边软陶）",
   "structure": "立目标 → 小狗闯祸 → 着急 → 选手放下自己的画来帮忙 → 风把画吹到出租车顶（中段事件）→ 叠罗汉，小狗将功补过 → 米娅决定保留点点 → 合作画 → 反转“两只点点狗” → 得奖 → 4 个无花果四个人分（数数互动）",
   "notes": "篇幅：24 页 · 每页英文 6–11 词、≤ 50 字符 · 一般现在时 · 画面不写字 · 颜料只用红、粉、蓝 · 米娅衣服不沾颜料 · 不用 Ch1/Ch2 主打词；find 只出现一次",
   "source": "stories/a-lot-of-dots.md",
@@ -59,7 +59,7 @@
       ],
       "image": "images/a-lot-of-dots/p02.webp",
       "audioEn": null,
-      "phrase": "gold cup",
+      "phrase": "the gold cup",
       "phraseZh": "金奖杯"
     },
     {
@@ -141,34 +141,28 @@
     {
       "id": "P05",
       "index": 5,
-      "en": "Red, pink, and blue **cups** sit on Mia's **cot**.",
-      "zh": "红、粉、蓝三杯颜料摆在米娅的小床上。",
+      "en": "Red, pink, and blue **cups** sit on Mia's table.",
+      "zh": "红、粉、蓝三杯颜料摆在米娅的桌子上。",
       "pattern": "___ sit on the ___.",
-      "focusWord": "cup, cot",
+      "focusWord": "cup",
       "focusNote": "第3章 第2课「字母 C · find」",
-      "focusRaw": "cup, cot（第3章 第2课「字母 C · find」）",
+      "focusRaw": "cup（第3章 第2课「字母 C · find」）",
       "knowledge": "颜色词 red / pink / blue；所有格 Mia's",
       "gloss": "杯子",
       "highlights": [
-        "cups",
-        "cot"
+        "cups"
       ],
       "learnItems": [
         {
           "word": "cup",
           "gloss": "杯子",
           "image": "images/a-lot-of-dots/words/cup.webp"
-        },
-        {
-          "word": "cot",
-          "gloss": "小床",
-          "image": "images/a-lot-of-dots/words/cot.webp"
         }
       ],
       "image": "images/a-lot-of-dots/p05.webp",
-      "audioEn": "audio/a-lot-of-dots/p05-en.mp3",
-      "phrase": "on Mia's cot",
-      "phraseZh": "在米娅的小床上"
+      "audioEn": null,
+      "phrase": "on Mia's table",
+      "phraseZh": "在米娅的桌子上"
     },
     {
       "id": "P06",
@@ -211,17 +205,16 @@
     {
       "id": "P07",
       "index": 7,
-      "en": "The red **sock** rolls under the **cot**. **Pup** jumps!",
-      "zh": "红袜子滚到小床底下，小狗扑过去！",
+      "en": "The red **sock** rolls under the table. **Pup** jumps!",
+      "zh": "红袜子滚到桌子底下，小狗扑过去！",
       "pattern": "The ___ rolls under the ___.",
-      "focusWord": "sock / cot / pup",
-      "focusNote": "第3章 第4课「好多好多」；第3章 第2课「字母 C · find」；第3章 第3课「字母 P · all out」",
-      "focusRaw": "sock（第3章 第4课「好多好多」）；cot（第3章 第2课「字母 C · find」）；pup（第3章 第3课「字母 P · all out」）",
+      "focusWord": "sock / pup",
+      "focusNote": "第3章 第4课「好多好多」；第3章 第3课「字母 P · all out」",
+      "focusRaw": "sock（第3章 第4课「好多好多」）；pup（第3章 第3课「字母 P · all out」）",
       "knowledge": "介词 under；jump for it 扑过去追；闯祸开始",
       "gloss": "袜子",
       "highlights": [
         "sock",
-        "cot",
         "Pup"
       ],
       "learnItems": [
@@ -231,11 +224,6 @@
           "image": "images/a-lot-of-dots/words/sock.webp"
         },
         {
-          "word": "cot",
-          "gloss": "小床",
-          "image": "images/a-lot-of-dots/words/cot.webp"
-        },
-        {
           "word": "pup",
           "gloss": "小狗",
           "image": "images/a-lot-of-dots/words/pup.webp"
@@ -243,8 +231,8 @@
       ],
       "image": "images/a-lot-of-dots/p07.webp",
       "audioEn": null,
-      "phrase": "under the cot",
-      "phraseZh": "在小床底下"
+      "phrase": "Pup jumps!",
+      "phraseZh": "小狗扑过去！"
     },
     {
       "id": "P08",
@@ -351,8 +339,8 @@
       ],
       "image": "images/a-lot-of-dots/p11.webp",
       "audioEn": null,
-      "phrase": "pens are out",
-      "phraseZh": "笔都倒出来了"
+      "phrase": "All the pens are out",
+      "phraseZh": "所有彩笔都倒出来"
     },
     {
       "id": "P12",
@@ -384,8 +372,8 @@
       ],
       "image": "images/a-lot-of-dots/p12.webp",
       "audioEn": null,
-      "phrase": "Find the pin",
-      "phraseZh": "找到图钉"
+      "phrase": "The pin is out!",
+      "phraseZh": "图钉掉了！"
     },
     {
       "id": "P13",
@@ -410,8 +398,8 @@
       ],
       "image": "images/a-lot-of-dots/p13.webp",
       "audioEn": null,
-      "phrase": "yellow cab",
-      "phraseZh": "黄色出租车"
+      "phrase": "a yellow cab",
+      "phraseZh": "小黄出租车"
     },
     {
       "id": "P14",
@@ -467,8 +455,8 @@
       ],
       "image": "images/a-lot-of-dots/p15.webp",
       "audioEn": null,
-      "phrase": "Wobble, wobble!",
-      "phraseZh": "摇摇晃晃！"
+      "phrase": "Get the twig, Pup!",
+      "phraseZh": "小狗，拿树枝！"
     },
     {
       "id": "P16",
@@ -506,8 +494,8 @@
       ],
       "image": "images/a-lot-of-dots/p16.webp",
       "audioEn": null,
-      "phrase": "Good pup!",
-      "phraseZh": "好棒的小狗！"
+      "phrase": "with a twig",
+      "phraseZh": "用小树枝"
     },
     {
       "id": "P17",
@@ -533,8 +521,8 @@
       ],
       "image": "images/a-lot-of-dots/p17.webp",
       "audioEn": null,
-      "phrase": "a lot of rocks",
-      "phraseZh": "好多石头"
+      "phrase": "A lot of rocks!",
+      "phraseZh": "好多好多石头！"
     },
     {
       "id": "P18",
@@ -566,8 +554,8 @@
       ],
       "image": "images/a-lot-of-dots/p18.webp",
       "audioEn": null,
-      "phrase": "Dots on my painting!",
-      "phraseZh": "我的画上也要点点！"
+      "phrase": "More dots!",
+      "phraseZh": "再多点点！"
     },
     {
       "id": "P19",
@@ -693,8 +681,8 @@
       ],
       "image": "images/a-lot-of-dots/p22.webp",
       "audioEn": null,
-      "phrase": "two dot pups",
-      "phraseZh": "两只点点狗"
+      "phrase": "Is it a pup?",
+      "phraseZh": "是小狗？"
     },
     {
       "id": "P23",
@@ -725,8 +713,8 @@
       ],
       "image": "images/a-lot-of-dots/p23.webp",
       "audioEn": null,
-      "phrase": "We all win!",
-      "phraseZh": "我们都赢了！"
+      "phrase": "the gold cup",
+      "phraseZh": "金奖杯"
     },
     {
       "id": "P24",
@@ -751,8 +739,8 @@
       ],
       "image": "images/a-lot-of-dots/p24.webp",
       "audioEn": null,
-      "phrase": "Count them",
-      "phraseZh": "数一数"
+      "phrase": "All the figs are out",
+      "phraseZh": "无花果全倒出来了"
     }
   ]
 }
