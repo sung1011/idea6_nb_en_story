@@ -537,22 +537,52 @@ h1 {
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  gap: 2px;
+  gap: 4px;
+  box-sizing: border-box;
   width: auto;
-  min-width: 0;
-  min-height: 0;
-  margin: 0 0.4em 0 0;
-  padding: 3px 7px 3px 6px;
-  font-size: 0.6rem;
+  height: 32px;
+  min-width: 44px;
+  min-height: 32px;
+  margin: 0 0.45em 0 0;
+  padding: 0 11px 0 9px;
+  border: 2px solid var(--outline);
+  border-radius: 999px;
+  background: rgba(31, 138, 128, 0.14);
+  color: var(--teal-dark);
+  font-family: inherit;
+  font-size: 0.82rem;
+  font-weight: 700;
   line-height: 1;
-  letter-spacing: 0.02em;
-  vertical-align: 0.2em;
+  letter-spacing: 0.03em;
+  vertical-align: middle;
+  cursor: pointer;
+  transition: transform 80ms ease, background-color 120ms ease, box-shadow 120ms ease;
+}
+
+.line.en .cn-inline:active {
+  transform: scale(0.94);
+}
+
+.line.en .cn-inline.open,
+.line.en .cn-inline[aria-expanded='true'] {
+  background: rgba(31, 138, 128, 0.3);
+  box-shadow: 0 0 0 3px rgba(31, 138, 128, 0.28);
 }
 
 .line.en .cn-inline .cn-icon {
   display: block;
-  width: 11px;
-  height: 11px;
+  width: 14px;
+  height: 14px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .line.en .cn-inline {
+    transition: none;
+  }
+
+  .line.en .cn-inline:active {
+    transform: none;
+  }
 }
 
 .line:hover,

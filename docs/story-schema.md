@@ -101,7 +101,7 @@ npm run parse-stories
 当前 Vue 阅读器实际用到：
 
 - 导航与续读：`id`、`pageCount`、`pages[].index`。点 Prev / Next 翻一页；按住 Prev 约 500ms 回到第 1 页，按住 Next 约 500ms 跳到最后一页正文（不进 Summary）。整页英文朗读（mp3 或缺文件时的系统英文声，含跟读）期间 Prev / Next 变淡禁用（不隐藏），长按、方向键 / Home / End 与滑动不翻页；词卡、短句不锁。读完 / 出错 / 停止立刻解锁，最长 20 秒
-- 展示：`en`、`zh`、`pattern`、`focusWord`、`image`（正文显示英文；**CN** 在句首行内，点开弹层）
+- 展示：`en`、`zh`、`pattern`、`focusWord`、`image`（正文显示英文；**CN** 在句首约 32px 胶囊按钮，点开弹层）
 - 朗读：`audioEn`（打开页自动英→中；点英文句子含加粗词播放整句；缺英文文件时自动朗读跳过英文步）。整页英文用语速 **Voice speed**。中文始终 `speechSynthesis`。短句点按：`phrase` 英文系统声 → 约 300ms → `phraseZh` 中文系统声。有 mp3 时任意语速跟读都拉 `audio/<story-id>/timings.json`
 - 点词：`learnItems` / `gloss` / `image`（点辅词芯片弹出词图 + 释义，无 **CN**；打开或再点英文词先读英文再读中文释义；句中加粗词只作高亮标记；句式可点，走设备英文声）
 - 总结页：跨页去重 `learnItems`（首次出现顺序）与去重 `phrase`；点词卡复用同一释义气泡；**Read again** 回第 1 页，进度仍夹紧在 `1..pageCount`
