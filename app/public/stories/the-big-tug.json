@@ -514,8 +514,8 @@
     {
       "id": "P18",
       "index": 18,
-      "en": "The lizard runs back in. Hen is in the hole! Mia makes a **rag** rope.",
-      "zh": "沙蜥跑回洞里了。Hen 在洞里！米娅用旧布拧成绳子。",
+      "en": "The lizard hides Hen! Mia makes a **rag** rope.",
+      "zh": "沙蜥把 Hen 藏起来了！米娅用旧布拧成绳子。",
       "pattern": "Mia makes a ___ rope.",
       "focusWord": "rag / lizard",
       "focusNote": "第4章 第2课「字母 G」；看图词",

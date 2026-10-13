@@ -144,7 +144,7 @@
 ---
 
 ### P18
-正文: The lizard runs back in. Hen is in the hole! Mia makes a **rag** rope.（沙蜥跑回洞里了。Hen 在洞里！米娅用旧布拧成绳子。）
+正文: The lizard hides Hen! Mia makes a **rag** rope.（沙蜥把 Hen 藏起来了！米娅用旧布拧成绳子。）
 主练句式: Mia makes a ___ rope.
 辅词: rag（第4章 第2课「字母 G」）；lizard（看图词）
 知识点: 名词作修饰：rag rope；救 Hen
