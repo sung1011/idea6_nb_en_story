@@ -337,7 +337,7 @@ export function usePageSpeech(page: Ref<StoryPage | undefined>) {
       return
     }
     const file = String(current.audioEn || '').trim()
-    const wantFollow = speed < 1 && Boolean(file)
+    const wantFollow = Boolean(file)
     if (file) {
       startNarrateLock()
       playFile(mediaUrl(file), text, lang, token, done, speed, {

@@ -1,5 +1,11 @@
 [
   {
+    "id": "v0.6.40",
+    "version": "0.6.40",
+    "date": "2026-10-13",
+    "summary": "Words now light up one by one during normal-speed narration too, not only in slow read."
+  },
+  {
     "id": "v0.6.39",
     "version": "0.6.39",
     "date": "2026-10-12",
