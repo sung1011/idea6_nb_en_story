@@ -370,6 +370,35 @@ export function usePageSpeech(page: Ref<StoryPage | undefined>) {
     playDevice(word, 'en')
   }
 
+  function playWordThenZh(word: string, zh?: string | null) {
+    const spokenEn = plainSpeakText(word)
+    if (!spokenEn) return
+    stopShared()
+    clearNarrateLock()
+    const token = seq
+    playingLang.value = null
+    playingWord.value = spokenEn
+    playingRate.value = 1
+    followIndex.value = null
+    playingPhrase.value = null
+    const done = () => clearPlaying(token)
+    const spokenZh = plainSpeakText(zh || '')
+    const afterEn = () => {
+      if (seq !== token) return
+      if (!spokenZh) {
+        done()
+        return
+      }
+      phraseGapTimer = window.setTimeout(() => {
+        phraseGapTimer = 0
+        if (seq !== token) return
+        playingLang.value = 'zh'
+        systemSpeak(spokenZh, 'zh', token, done, 1, true)
+      }, PHRASE_GAP_MS)
+    }
+    systemSpeak(spokenEn, 'en', token, afterEn, 1, true)
+  }
+
   function playDevice(text: string, lang: SpeechLang) {
     const spoken = plainSpeakText(text)
     if (!spoken) return
@@ -441,6 +470,7 @@ export function usePageSpeech(page: Ref<StoryPage | undefined>) {
     pageNarrating,
     playLine,
     playWord,
+    playWordThenZh,
     playDevice,
     playPhrase,
     stop,

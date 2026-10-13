@@ -10,6 +10,7 @@ const props = defineProps<{
   image?: string | null
   playingEn?: boolean
   playingZh?: boolean
+  showCn?: boolean
   anchor: GlossAnchor
   ariaLabel?: string
 }>()
@@ -93,7 +94,7 @@ onMounted(async () => {
     <aside
       ref="panelRef"
       class="gloss"
-      :class="placement"
+      :class="[placement, { 'no-cn': !showCn }]"
       :style="panelStyle"
       role="dialog"
       :aria-label="ariaLabel || 'Word meaning'"
@@ -117,6 +118,7 @@ onMounted(async () => {
       </button>
       <p class="meaning" :class="{ solo: !heading }">{{ body }}</p>
       <button
+        v-if="showCn"
         type="button"
         class="chip zh tap side-chip"
         :class="{ open: playingZh }"
@@ -203,6 +205,10 @@ onMounted(async () => {
 
 .meaning.solo {
   margin-top: 0;
+}
+
+.gloss.no-cn .meaning {
+  margin-bottom: 0;
 }
 
 .chip {

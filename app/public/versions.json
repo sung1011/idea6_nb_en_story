@@ -1,5 +1,11 @@
 [
   {
+    "id": "v0.6.41",
+    "version": "0.6.41",
+    "date": "2026-10-13",
+    "summary": "Tapping a word card now plays the English word and then its Chinese meaning; the CN button on word cards is removed."
+  },
+  {
     "id": "v0.6.40",
     "version": "0.6.40",
     "date": "2026-10-13",

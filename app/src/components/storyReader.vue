@@ -39,8 +39,7 @@ const {
   playingPhrase,
   pageNarrating,
   playLine,
-  playWord,
-  playDevice,
+  playWordThenZh,
   playPhrase,
   stop,
 } = usePageSpeech(page)
@@ -102,7 +101,7 @@ function openGloss(word: string, event: Event) {
   const target = event.currentTarget as HTMLElement | null
   if (target) glossAnchor.value = target.getBoundingClientRect()
   openLearn.value = item
-  playWord(item.word)
+  playWordThenZh(item.word, item.gloss)
 }
 
 function openSummaryWord(item: LearnItem, event: Event) {
@@ -110,6 +109,7 @@ function openSummaryWord(item: LearnItem, event: Event) {
 }
 
 function closeGloss() {
+  stop()
   openLearn.value = null
   if (!openZh.value) glossAnchor.value = null
 }
@@ -120,6 +120,7 @@ function closeZh() {
 }
 
 function closePanels() {
+  if (openLearn.value) stop()
   openLearn.value = null
   openZh.value = false
   glossAnchor.value = null
@@ -165,15 +166,11 @@ function playPagePhrase(item: { phrase?: string; phraseZh?: string }) {
 function speakPanelEn() {
   if (!openLearn.value) return
   cancelAuto()
-  playWord(openLearn.value.word)
+  playWordThenZh(openLearn.value.word, openLearn.value.gloss)
 }
 
 function speakPanelZh() {
   cancelAuto()
-  if (openLearn.value) {
-    playDevice(openLearn.value.gloss, 'zh')
-    return
-  }
   if (openZh.value) playLine('zh')
 }
 
@@ -495,6 +492,7 @@ onUnmounted(() => {
       :image="openLearn?.image"
       :playing-en="Boolean(playingWord)"
       :playing-zh="playingLang === 'zh'"
+      :show-cn="!openLearn"
       :anchor="glossAnchor"
       :ariaLabel="openLearn ? 'Word meaning' : 'Chinese translation'"
       @speak-en="speakPanelEn"
