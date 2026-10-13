@@ -13,5 +13,11 @@
     "id": "a-lot-of-dots",
     "title": "A Lot of Dots!",
     "titleZh": "点点大乱画"
+  },
+  {
+    "id": "the-big-tug",
+    "title": "The Big Tug!",
+    "titleZh": "沙漠大拔河",
+    "tag": "TODO"
   }
 ]

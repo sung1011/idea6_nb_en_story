@@ -184,6 +184,20 @@ export const STORY_WORD_GLOSS = {
   rocks: '石头',
   twig: '小树枝',
   dot: '圆点',
+  hen: '母鸡',
+  bed: '小床',
+  pet: '宠物',
+  leg: '腿',
+  gum: '口香糖',
+  tag: '标签',
+  gift: '礼物',
+  rag: '旧布',
+  hit: '击中',
+  bat: '球棒',
+  mitt: '棒球手套',
+  win: '赢',
+  dad: '爸爸',
+  tug: '拉',
 }
 
 const IRREGULAR_LEMMAS = {
@@ -460,7 +474,9 @@ const STORY_PAGE_COUNTS = {
   'spot-the-cub': 23,
   'a-lot-of-dots': 24,
 }
-const STORY_TAGS = {}
+const STORY_TAGS = {
+  'the-big-tug': 'TODO',
+}
 
 function writeStoriesIndex(stories) {
   const byId = new Map(stories.map((story) => [story.id, story]))
