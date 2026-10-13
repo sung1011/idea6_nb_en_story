@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { onMounted, onUnmounted, ref } from 'vue'
 import { hardReload, useAppVersions } from '@/composables/useAppVersions'
-import { useAutoReadSetting } from '@/composables/useAutoRead'
+import { useAutoReadSetting, useReadChineseSetting } from '@/composables/useAutoRead'
 import { VOICE_SPEED_MAX, VOICE_SPEED_MIN, VOICE_SPEED_STEP, useVoiceSpeed } from '@/composables/useVoiceSpeed'
 import { clearAppStorage } from '@/utils/appStorage'
 import {
@@ -24,6 +24,7 @@ const flash = ref('')
 const { installed, history, pending, refresh, applyUpdate, clearCaches } = useAppVersions()
 const { percent: voicePercent, setPercent: setVoicePercent, slower, faster, canSlower, canFaster } = useVoiceSpeed()
 const { enabled: autoRead, toggle: toggleAutoRead, label: autoReadLabel } = useAutoReadSetting()
+const { enabled: readChinese, toggle: toggleReadChinese, label: readChineseLabel } = useReadChineseSetting()
 const hideAddHome = ref(false)
 const addHomeKind = ref<AddToHomeKind>('inApp')
 const addHomeHint = ref<'ios' | 'inApp' | null>(null)
@@ -219,6 +220,19 @@ onUnmounted(() => {
             @click="toggleAutoRead"
           >
             {{ autoReadLabel }}
+          </button>
+        </div>
+        <div class="auto-read">
+          <p class="setting-label">Read Chinese</p>
+          <button
+            type="button"
+            class="switch"
+            role="switch"
+            :aria-checked="readChinese"
+            aria-label="Read Chinese"
+            @click="toggleReadChinese"
+          >
+            {{ readChineseLabel }}
           </button>
         </div>
         <div class="voice-speed">

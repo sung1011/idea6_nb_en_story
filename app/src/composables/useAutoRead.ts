@@ -1,5 +1,5 @@
 import { computed, onMounted, onUnmounted, ref, watch, type Ref } from 'vue'
-import { AUTO_READ_KEY } from '@/utils/appStorage'
+import { AUTO_READ_KEY, READ_CHINESE_KEY } from '@/utils/appStorage'
 import type { StoryPage } from '@/types/story'
 import { plainSpeakText, type PlayOptions, type SpeechLang } from '@/composables/usePageSpeech'
 
@@ -39,6 +39,40 @@ export function useAutoReadSetting() {
   }
 }
 
+const READ_CHINESE_DEFAULT = true
+const readChinese = ref(readChineseStored())
+
+function readChineseStored(): boolean {
+  if (typeof localStorage === 'undefined') return READ_CHINESE_DEFAULT
+  const stored = localStorage.getItem(READ_CHINESE_KEY)
+  if (stored == null || stored === '') return READ_CHINESE_DEFAULT
+  if (stored === '0' || stored === 'false') return false
+  if (stored === '1' || stored === 'true') return true
+  return READ_CHINESE_DEFAULT
+}
+
+function persistReadChinese(value: boolean) {
+  try {
+    localStorage.setItem(READ_CHINESE_KEY, value ? '1' : '0')
+  } catch {
+    /* ignore quota / private mode */
+  }
+}
+
+export function useReadChineseSetting() {
+  function setEnabled(next: boolean) {
+    readChinese.value = next
+    persistReadChinese(next)
+  }
+
+  return {
+    enabled: readChinese,
+    setEnabled,
+    toggle: () => setEnabled(!readChinese.value),
+    label: computed(() => (readChinese.value ? 'On' : 'Off')),
+  }
+}
+
 export function useAutoRead(
   page: Ref<StoryPage | undefined>,
   onSummary: Ref<boolean>,
@@ -64,7 +98,7 @@ export function useAutoRead(
     const current = page.value
     if (!current) return
     const hasEn = Boolean(String(current.audioEn || '').trim())
-    const hasZh = Boolean(plainSpeakText(current.zh))
+    const hasZh = readChinese.value && Boolean(plainSpeakText(current.zh))
     if (!hasEn && !hasZh) return
 
     const token = generation
@@ -91,7 +125,7 @@ export function useAutoRead(
         onBlocked: () => {
           if (token === generation) waitingGesture = true
         },
-        onEnded: afterEn,
+        onEnded: hasZh ? afterEn : undefined,
       })
       return
     }
@@ -107,7 +141,7 @@ export function useAutoRead(
   }
 
   watch(
-    () => [page.value?.id, onSummary.value, enabled.value, ready.value] as const,
+    () => [page.value?.id, onSummary.value, enabled.value, readChinese.value, ready.value] as const,
     () => {
       if (!ready.value) return
       cancelAuto()

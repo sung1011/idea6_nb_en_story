@@ -1,5 +1,11 @@
 [
   {
+    "id": "v0.6.47",
+    "version": "0.6.47",
+    "date": "2026-10-13",
+    "summary": "New Read Chinese setting: turn it off to have pages read in English only."
+  },
+  {
     "id": "v0.6.46",
     "version": "0.6.46",
     "date": "2026-10-13",

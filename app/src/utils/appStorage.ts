@@ -5,6 +5,7 @@ export const SELECTED_STORY_KEY = `${STORAGE_PREFIX}selectedStory`
 export const VOICE_SPEED_KEY = `${STORAGE_PREFIX}voiceSpeed`
 export const STALE_SLOW_SPEED_KEY = `${STORAGE_PREFIX}slowSpeed`
 export const AUTO_READ_KEY = `${STORAGE_PREFIX}autoRead`
+export const READ_CHINESE_KEY = `${STORAGE_PREFIX}readChinese`
 export const ZH_VOICE_KEY = `${STORAGE_PREFIX}zhVoice`
 export const DISPLAY_MODE_KEY = `${STORAGE_PREFIX}displayMode`
 export const LEGACY_SHOW_ZH_PREFIX = `${STORAGE_PREFIX}showZh:`
