@@ -107,13 +107,19 @@
       "en": "Pop! A fat lizard! Zip! It grabs bottles and bags.",
       "zh": "嘭！一只胖沙蜥！嗖！它卷走了水瓶和包。",
       "pattern": "Pop! A fat ___!",
-      "focusWord": "",
-      "focusNote": "",
-      "focusRaw": "—",
+      "focusWord": "lizard",
+      "focusNote": "看图词",
+      "focusRaw": "lizard（看图词）",
       "knowledge": "拟声 Pop! Zip!；沙蜥登场卷走水和包",
-      "gloss": "",
+      "gloss": "沙蜥",
       "highlights": [],
-      "learnItems": [],
+      "learnItems": [
+        {
+          "word": "lizard",
+          "gloss": "沙蜥",
+          "image": "images/the-big-tug/words/lizard.webp"
+        }
+      ],
       "image": "images/the-big-tug/p04.webp",
       "audioEn": null,
       "phrase": "A fat lizard!",
@@ -387,13 +393,19 @@
       "en": "Rumble! The lizard pops out. Its tongue zips!",
       "zh": "轰隆隆！沙蜥冒出来了，舌头嗖地伸出来！",
       "pattern": "The ___ pops out.",
-      "focusWord": "",
-      "focusNote": "",
-      "focusRaw": "—",
+      "focusWord": "lizard",
+      "focusNote": "看图词",
+      "focusRaw": "lizard（看图词）",
       "knowledge": "拟声 Rumble! Zips!；悬念",
-      "gloss": "",
+      "gloss": "沙蜥",
       "highlights": [],
-      "learnItems": [],
+      "learnItems": [
+        {
+          "word": "lizard",
+          "gloss": "沙蜥",
+          "image": "images/the-big-tug/words/lizard.webp"
+        }
+      ],
       "image": "images/the-big-tug/p14.webp",
       "audioEn": null,
       "phrase": "The lizard pops out.",
@@ -434,12 +446,12 @@
     {
       "id": "P16",
       "index": 16,
-      "en": "Sand balls fly! Mia swings the **bat**. A big **hit**!",
-      "zh": "沙球飞来！米娅挥棒，好一记大击球！",
+      "en": "The lizard kicks sand balls at Mia! Mia swings the **bat**. A big **hit**!",
+      "zh": "沙蜥把沙球踢向米娅！米娅挥棒，好一记大击球！",
       "pattern": "A big ___!",
-      "focusWord": "bat / hit",
-      "focusNote": "第4章 第3课「大力一击」；第4章 第3课「大力一击」",
-      "focusRaw": "bat（第4章 第3课「大力一击」）；hit（第4章 第3课「大力一击」）",
+      "focusWord": "bat / hit / lizard",
+      "focusNote": "第4章 第3课「大力一击」；第4章 第3课「大力一击」；看图词",
+      "focusRaw": "bat（第4章 第3课「大力一击」）；hit（第4章 第3课「大力一击」）；lizard（看图词）",
       "knowledge": "A big hit!（第4章 第3课句式）；挥棒打散沙球",
       "gloss": "球棒",
       "highlights": [
@@ -456,6 +468,11 @@
           "word": "hit",
           "gloss": "击中",
           "image": "images/the-big-tug/words/hit.webp"
+        },
+        {
+          "word": "lizard",
+          "gloss": "沙蜥",
+          "image": "images/the-big-tug/words/lizard.webp"
         }
       ],
       "image": "images/the-big-tug/p16.webp",
@@ -466,12 +483,12 @@
     {
       "id": "P17",
       "index": 17,
-      "en": "A bottle flies up. Mia catches it in the **mitt**!",
-      "zh": "一个水瓶飞了起来。米娅用手套接住了！",
+      "en": "Bonk! A bottle pops off the lizard's pile. Mia catches it in the **mitt**!",
+      "zh": "砰！一个水瓶从沙蜥的那堆东西上弹了起来。米娅用手套接住了！",
       "pattern": "Mia catches it in the ___!",
-      "focusWord": "mitt",
-      "focusNote": "第4章 第3课「大力一击」",
-      "focusRaw": "mitt（第4章 第3课「大力一击」）",
+      "focusWord": "mitt / lizard",
+      "focusNote": "第4章 第3课「大力一击」；看图词",
+      "focusRaw": "mitt（第4章 第3课「大力一击」）；lizard（看图词）",
       "knowledge": "in the mitt 介词 in；手套接水瓶",
       "gloss": "棒球手套",
       "highlights": [
@@ -482,6 +499,11 @@
           "word": "mitt",
           "gloss": "棒球手套",
           "image": "images/the-big-tug/words/mitt.webp"
+        },
+        {
+          "word": "lizard",
+          "gloss": "沙蜥",
+          "image": "images/the-big-tug/words/lizard.webp"
         }
       ],
       "image": "images/the-big-tug/p17.webp",
@@ -521,9 +543,9 @@
       "en": "Mia **tugs**. The lizard sits tight. Oh no!",
       "zh": "米娅拉呀拉，沙蜥坐得稳稳的。哎呀！",
       "pattern": "Mia ___s.",
-      "focusWord": "tug",
-      "focusNote": "第4章 第4课「大胡萝卜」",
-      "focusRaw": "tug（第4章 第4课「大胡萝卜」）",
+      "focusWord": "tug / lizard",
+      "focusNote": "第4章 第4课「大胡萝卜」；看图词",
+      "focusRaw": "tug（第4章 第4课「大胡萝卜」）；lizard（看图词）",
       "knowledge": "tugs 第三人称单数；沙蜥坐得稳（悬念）",
       "gloss": "拉",
       "highlights": [
@@ -534,6 +556,11 @@
           "word": "tug",
           "gloss": "拉",
           "image": "images/the-big-tug/words/tug.webp"
+        },
+        {
+          "word": "lizard",
+          "gloss": "沙蜥",
+          "image": "images/the-big-tug/words/lizard.webp"
         }
       ],
       "image": "images/the-big-tug/p19.webp",
@@ -608,9 +635,9 @@
       "en": "We **win**! But the lizard looks so sad.",
       "zh": "我们赢了！可是沙蜥看起来好难过。",
       "pattern": "We ___!",
-      "focusWord": "win",
-      "focusNote": "第4章 第3课「大力一击」",
-      "focusRaw": "win（第4章 第3课「大力一击」）",
+      "focusWord": "win / lizard",
+      "focusNote": "第4章 第3课「大力一击」；看图词",
+      "focusRaw": "win（第4章 第3课「大力一击」）；lizard（看图词）",
       "knowledge": "We win! 胜利；but 转折：沙蜥难过",
       "gloss": "赢",
       "highlights": [
@@ -621,6 +648,11 @@
           "word": "win",
           "gloss": "赢",
           "image": "images/the-big-tug/words/win.webp"
+        },
+        {
+          "word": "lizard",
+          "gloss": "沙蜥",
+          "image": "images/the-big-tug/words/lizard.webp"
         }
       ],
       "image": "images/the-big-tug/p22.webp",
@@ -634,9 +666,9 @@
       "en": "Peep! A baby lizard in a sand **bed**. So thirsty!",
       "zh": "叽！沙窝小床里有只小沙蜥，好渴呀！",
       "pattern": "A baby ___ in a sand ___.",
-      "focusWord": "bed",
-      "focusNote": "第4章 第1课「六只母鸡会跳」",
-      "focusRaw": "bed（第4章 第1课「六只母鸡会跳」）",
+      "focusWord": "bed / lizard",
+      "focusNote": "第4章 第1课「六只母鸡会跳」；看图词",
+      "focusRaw": "bed（第4章 第1课「六只母鸡会跳」）；lizard（看图词）",
       "knowledge": "回收 P06 伏笔：叽叽声来自小沙蜥",
       "gloss": "小床",
       "highlights": [
@@ -647,6 +679,11 @@
           "word": "bed",
           "gloss": "小床",
           "image": "images/the-big-tug/words/bed.webp"
+        },
+        {
+          "word": "lizard",
+          "gloss": "沙蜥",
+          "image": "images/the-big-tug/words/lizard.webp"
         }
       ],
       "image": "images/the-big-tug/p23.webp",
@@ -699,9 +736,9 @@
       "en": "The lizard is a friend. Hop on! We all **win**!",
       "zh": "沙蜥成了好朋友。跳上来吧！大家都赢啦！",
       "pattern": "We all ___!",
-      "focusWord": "win",
-      "focusNote": "第4章 第3课「大力一击」",
-      "focusRaw": "win（第4章 第3课「大力一击」）",
+      "focusWord": "win / lizard",
+      "focusNote": "第4章 第3课「大力一击」；看图词",
+      "focusRaw": "win（第4章 第3课「大力一击」）；lizard（看图词）",
       "knowledge": "We all win! 温暖收尾；沙蜥成为朋友",
       "gloss": "赢",
       "highlights": [
@@ -712,6 +749,11 @@
           "word": "win",
           "gloss": "赢",
           "image": "images/the-big-tug/words/win.webp"
+        },
+        {
+          "word": "lizard",
+          "gloss": "沙蜥",
+          "image": "images/the-big-tug/words/lizard.webp"
         }
       ],
       "image": "images/the-big-tug/p26.webp",
@@ -719,5 +761,8 @@
       "phrase": "We all win!",
       "phraseZh": "大家都赢啦！"
     }
+  ],
+  "summarySkipWords": [
+    "mom"
   ]
 }

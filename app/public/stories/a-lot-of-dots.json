@@ -742,5 +742,9 @@
       "phrase": "All the figs are out",
       "phraseZh": "无花果全倒出来了"
     }
+  ],
+  "summarySkipWords": [
+    "dot",
+    "rock"
   ]
 }

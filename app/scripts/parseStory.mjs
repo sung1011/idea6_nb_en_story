@@ -198,6 +198,7 @@ export const STORY_WORD_GLOSS = {
   win: '赢',
   dad: '爸爸',
   tug: '拉',
+  lizard: '沙蜥',
 }
 
 const IRREGULAR_LEMMAS = {
@@ -478,10 +479,38 @@ const STORY_TAGS = {
   'the-big-tug': 'TODO',
 }
 
+/** Story ids in index.json order. */
+function orderedStoryIds(stories) {
+  const ids = stories.map((story) => story.id)
+  const extra = ids.filter((id) => !STORY_ORDER.includes(id))
+  return [...STORY_ORDER.filter((id) => ids.includes(id)), ...extra]
+}
+
+/**
+ * summarySkipWords: word-card words (lemmas) a story shares with any EARLIER
+ * story in index order. The summary page hides them; page text still opens them.
+ * @param {Array<{ id: string, pages: Array<{ learnItems?: Array<{ word: string }> }>, summarySkipWords?: string[] }>} stories
+ */
+export function applySummarySkipWords(stories) {
+  const byId = new Map(stories.map((story) => [story.id, story]))
+  const seenBefore = new Set()
+  for (const id of orderedStoryIds(stories)) {
+    const story = byId.get(id)
+    const words = []
+    for (const page of story.pages ?? []) {
+      for (const item of page.learnItems ?? []) {
+        const key = String(item.word ?? '').trim().toLowerCase()
+        if (key && !words.includes(key)) words.push(key)
+      }
+    }
+    story.summarySkipWords = words.filter((word) => seenBefore.has(word))
+    for (const word of words) seenBefore.add(word)
+  }
+}
+
 function writeStoriesIndex(stories) {
   const byId = new Map(stories.map((story) => [story.id, story]))
-  const extra = stories.map((story) => story.id).filter((id) => !STORY_ORDER.includes(id))
-  const ordered = [...STORY_ORDER.filter((id) => byId.has(id)), ...extra]
+  const ordered = orderedStoryIds(stories)
   const index = ordered.map((id) => {
     const story = byId.get(id)
     const tag = String(STORY_TAGS[id] ?? '').trim()
@@ -530,9 +559,12 @@ export function parseAndWriteStories() {
     applyLearnItemLemmas(saved)
     applyExistingMedia(saved)
     applyPhraseFields(saved, existingById)
-    fs.writeFileSync(outFile, `${JSON.stringify(saved, null, 2)}\n`)
     catalog.push(saved)
     written.push({ slug, pageCount: saved.pageCount, outFile })
+  }
+  applySummarySkipWords(catalog)
+  for (let i = 0; i < catalog.length; i += 1) {
+    fs.writeFileSync(written[i].outFile, `${JSON.stringify(catalog[i], null, 2)}\n`)
   }
   writeStoriesIndex(catalog)
   return written

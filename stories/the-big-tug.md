@@ -34,7 +34,7 @@
 ### P04
 正文: Pop! A fat lizard! Zip! It grabs bottles and bags.（嘭！一只胖沙蜥！嗖！它卷走了水瓶和包。）
 主练句式: Pop! A fat ___!
-辅词: —
+辅词: lizard（看图词）
 知识点: 拟声 Pop! Zip!；沙蜥登场卷走水和包
 
 ---
@@ -114,7 +114,7 @@
 ### P14
 正文: Rumble! The lizard pops out. Its tongue zips!（轰隆隆！沙蜥冒出来了，舌头嗖地伸出来！）
 主练句式: The ___ pops out.
-辅词: —
+辅词: lizard（看图词）
 知识点: 拟声 Rumble! Zips!；悬念
 
 ---
@@ -128,17 +128,17 @@
 ---
 
 ### P16
-正文: Sand balls fly! Mia swings the **bat**. A big **hit**!（沙球飞来！米娅挥棒，好一记大击球！）
+正文: The lizard kicks sand balls at Mia! Mia swings the **bat**. A big **hit**!（沙蜥把沙球踢向米娅！米娅挥棒，好一记大击球！）
 主练句式: A big ___!
-辅词: bat（第4章 第3课「大力一击」）；hit（第4章 第3课「大力一击」）
+辅词: bat（第4章 第3课「大力一击」）；hit（第4章 第3课「大力一击」）；lizard（看图词）
 知识点: A big hit!（第4章 第3课句式）；挥棒打散沙球
 
 ---
 
 ### P17
-正文: A bottle flies up. Mia catches it in the **mitt**!（一个水瓶飞了起来。米娅用手套接住了！）
+正文: Bonk! A bottle pops off the lizard's pile. Mia catches it in the **mitt**!（砰！一个水瓶从沙蜥的那堆东西上弹了起来。米娅用手套接住了！）
 主练句式: Mia catches it in the ___!
-辅词: mitt（第4章 第3课「大力一击」）
+辅词: mitt（第4章 第3课「大力一击」）；lizard（看图词）
 知识点: in the mitt 介词 in；手套接水瓶
 
 ---
@@ -154,7 +154,7 @@
 ### P19
 正文: Mia **tugs**. The lizard sits tight. Oh no!（米娅拉呀拉，沙蜥坐得稳稳的。哎呀！）
 主练句式: Mia ___s.
-辅词: tug（第4章 第4课「大胡萝卜」）
+辅词: tug（第4章 第4课「大胡萝卜」）；lizard（看图词）
 知识点: tugs 第三人称单数；沙蜥坐得稳（悬念）
 
 ---
@@ -178,7 +178,7 @@
 ### P22
 正文: We **win**! But the lizard looks so sad.（我们赢了！可是沙蜥看起来好难过。）
 主练句式: We ___!
-辅词: win（第4章 第3课「大力一击」）
+辅词: win（第4章 第3课「大力一击」）；lizard（看图词）
 知识点: We win! 胜利；but 转折：沙蜥难过
 
 ---
@@ -186,7 +186,7 @@
 ### P23
 正文: Peep! A baby lizard in a sand **bed**. So thirsty!（叽！沙窝小床里有只小沙蜥，好渴呀！）
 主练句式: A baby ___ in a sand ___.
-辅词: bed（第4章 第1课「六只母鸡会跳」）
+辅词: bed（第4章 第1课「六只母鸡会跳」）；lizard（看图词）
 知识点: 回收 P06 伏笔：叽叽声来自小沙蜥
 
 ---
@@ -210,7 +210,7 @@
 ### P26
 正文: The lizard is a friend. Hop on! We all **win**!（沙蜥成了好朋友。跳上来吧！大家都赢啦！）
 主练句式: We all ___!
-辅词: win（第4章 第3课「大力一击」）
+辅词: win（第4章 第3课「大力一击」）；lizard（看图词）
 知识点: We all win! 温暖收尾；沙蜥成为朋友
 
 ---
@@ -227,8 +227,10 @@
 ## 词表（15 个，按首次出现）
 mom · dad · hen · pet · bed · leg · bat · mitt · rag · gift · tag · gum · hit · tug · win
 
+另有看图词卡 1 个：lizard（沙蜥），不算课纲词。总结页会自动跳过前面故事已出过的词卡（本书为 mom）。
+
 ## 看图词（不在课纲里）
-lizard · bottle · dunes · Hen（名字）
+lizard（有词卡，沙蜥，P04, P14, P16, P17, P19, P22, P23, P26）· bottle · dunes · Hen（名字）
 
 ## 视觉词
 one（P25）· two（P25）· help（P09, P20）；字母 G：P12 礼物标签

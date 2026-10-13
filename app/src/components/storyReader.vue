@@ -59,6 +59,11 @@ const uniqueWords = computed(() => {
   }
   return items
 })
+/** Summary cards skip words already carded in an earlier story; body taps still use uniqueWords. */
+const summaryWords = computed(() => {
+  const skip = new Set((props.story.summarySkipWords ?? []).map((word) => word.toLowerCase()))
+  return uniqueWords.value.filter((item) => !skip.has(item.word.toLowerCase()))
+})
 const summaryPhrases = computed(() => {
   const seen = new Set<string>()
   const items: StoryPhrase[] = []
@@ -405,7 +410,7 @@ onUnmounted(() => {
 
     <StorySummary
       v-else
-      :words="uniqueWords"
+      :words="summaryWords"
       :phrases="summaryPhrases"
       :playing-phrase="playingPhrase"
       :open-word="openLearn?.word"

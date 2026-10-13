@@ -566,5 +566,6 @@
       "phrase": "What a day!",
       "phraseZh": "多棒的一天！"
     }
-  ]
+  ],
+  "summarySkipWords": []
 }

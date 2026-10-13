@@ -40,6 +40,8 @@ export interface Story {
   source: string
   pageCount: number
   pages: StoryPage[]
+  /** Words already carded in an earlier story (index order); hidden on the summary page only. */
+  summarySkipWords?: string[]
 }
 
 export interface EnSegment {
