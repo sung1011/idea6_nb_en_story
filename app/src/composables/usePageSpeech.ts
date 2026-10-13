@@ -45,14 +45,6 @@ export function plainSpeakText(text: string): string {
   return text.replace(/\*\*([^*]+)\*\*/g, '$1').replace(/\s+/g, ' ').trim()
 }
 
-function pickZhVoice(): SpeechSynthesisVoice | undefined {
-  const voices = window.speechSynthesis?.getVoices() ?? []
-  return (
-    voices.find((voice) => /^zh[-_]cn/i.test(voice.lang)) ??
-    voices.find((voice) => /^zh/i.test(voice.lang))
-  )
-}
-
 function unlockAudio(): void {
   if (unlocked) return
   const el = element()
@@ -152,22 +144,18 @@ function systemSpeak(
   }
   window.speechSynthesis.cancel()
   const utter = new SpeechSynthesisUtterance(text)
-  utter.lang = lang === 'zh' ? 'zh-CN' : 'en-US'
-  if (device) {
+  if (lang === 'zh') {
+    utter.lang = 'zh-CN'
+    utter.rate = 1
+    utter.pitch = 1
+  } else if (device) {
+    utter.lang = 'en-US'
     utter.rate = Math.max(MIN_SPEECH_RATE, rate)
     utter.pitch = 1
-    if (lang === 'zh') {
-      const voice = pickZhVoice()
-      if (voice) utter.voice = voice
-    }
   } else {
-    const base = lang === 'zh' ? 1 : NORMAL_EN_SPEECH_RATE
-    utter.rate = Math.max(MIN_SPEECH_RATE, base * rate)
+    utter.lang = 'en-US'
+    utter.rate = Math.max(MIN_SPEECH_RATE, NORMAL_EN_SPEECH_RATE * rate)
     utter.pitch = 1.12
-    if (lang === 'zh') {
-      const voice = pickZhVoice()
-      if (voice) utter.voice = voice
-    }
   }
   const finish = () => {
     if (seq !== token) return
@@ -439,10 +427,6 @@ export function usePageSpeech(page: Ref<StoryPage | undefined>) {
 
   onMounted(() => {
     if (typeof window === 'undefined') return
-    window.speechSynthesis?.getVoices()
-    window.speechSynthesis?.addEventListener('voiceschanged', () => {
-      window.speechSynthesis.getVoices()
-    })
     window.addEventListener('pointerdown', unlockAudio, { capture: true })
   })
 
