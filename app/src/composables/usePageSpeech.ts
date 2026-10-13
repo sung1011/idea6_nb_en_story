@@ -2,6 +2,7 @@ import { onMounted, onUnmounted, ref, watch, type Ref } from 'vue'
 import type { StoryPage } from '@/types/story'
 import { asWordCues, followWordAt, type WordCue } from '@/utils/followCue'
 import { mediaUrl } from '@/utils/mediaUrl'
+import { useVoiceSpeed } from '@/composables/useVoiceSpeed'
 
 export type SpeechLang = 'en' | 'zh'
 
@@ -239,9 +240,9 @@ function playFile(
 }
 
 export function usePageSpeech(page: Ref<StoryPage | undefined>) {
+  const { rate: voiceRate } = useVoiceSpeed()
   const playingLang = ref<SpeechLang | null>(null)
   const playingWord = ref<string | null>(null)
-  const playingRate = ref(1)
   const followIndex = ref<number | null>(null)
   const playingPhrase = ref<string | null>(null)
   const pageNarrating = ref(false)
@@ -293,7 +294,6 @@ export function usePageSpeech(page: Ref<StoryPage | undefined>) {
     clearNarrateLock()
     playingLang.value = null
     playingWord.value = null
-    playingRate.value = 1
     playingPhrase.value = null
   }
 
@@ -303,22 +303,20 @@ export function usePageSpeech(page: Ref<StoryPage | undefined>) {
     clearNarrateLock()
     playingLang.value = null
     playingWord.value = null
-    playingRate.value = 1
     playingPhrase.value = null
   }
 
-  function playLine(lang: SpeechLang, rate = 1, options: PlayOptions = {}) {
+  function playLine(lang: SpeechLang, options: PlayOptions = {}) {
     const current = page.value
     if (!current) return
     const text = plainSpeakText(lang === 'zh' ? current.zh : current.en)
     if (!text) return
-    const speed = lang === 'en' ? rate : 1
+    const speed = lang === 'en' ? voiceRate.value : 1
     stopShared()
     clearNarrateLock()
     const token = seq
     playingLang.value = lang
     playingWord.value = null
-    playingRate.value = speed
     followIndex.value = null
     playingPhrase.value = null
     const done = () => {
@@ -378,7 +376,6 @@ export function usePageSpeech(page: Ref<StoryPage | undefined>) {
     const token = seq
     playingLang.value = null
     playingWord.value = spokenEn
-    playingRate.value = 1
     followIndex.value = null
     playingPhrase.value = null
     const done = () => clearPlaying(token)
@@ -407,7 +404,6 @@ export function usePageSpeech(page: Ref<StoryPage | undefined>) {
     const token = seq
     playingLang.value = lang === 'zh' ? 'zh' : null
     playingWord.value = lang === 'en' ? spoken : null
-    playingRate.value = 1
     followIndex.value = null
     playingPhrase.value = null
     const done = () => clearPlaying(token)
@@ -422,7 +418,6 @@ export function usePageSpeech(page: Ref<StoryPage | undefined>) {
     const token = seq
     playingLang.value = null
     playingWord.value = null
-    playingRate.value = 1
     followIndex.value = null
     playingPhrase.value = spokenEn
     const done = () => clearPlaying(token)
@@ -464,7 +459,6 @@ export function usePageSpeech(page: Ref<StoryPage | undefined>) {
   return {
     playingLang,
     playingWord,
-    playingRate,
     followIndex,
     playingPhrase,
     pageNarrating,

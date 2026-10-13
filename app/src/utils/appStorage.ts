@@ -2,7 +2,8 @@ export const STORAGE_PREFIX = 'idea6_nb_en_story:'
 
 export const ACKED_VERSION_KEY = `${STORAGE_PREFIX}ackedVersion`
 export const SELECTED_STORY_KEY = `${STORAGE_PREFIX}selectedStory`
-export const SLOW_SPEED_KEY = `${STORAGE_PREFIX}slowSpeed`
+export const VOICE_SPEED_KEY = `${STORAGE_PREFIX}voiceSpeed`
+export const STALE_SLOW_SPEED_KEY = `${STORAGE_PREFIX}slowSpeed`
 export const AUTO_READ_KEY = `${STORAGE_PREFIX}autoRead`
 export const ZH_VOICE_KEY = `${STORAGE_PREFIX}zhVoice`
 export const DISPLAY_MODE_KEY = `${STORAGE_PREFIX}displayMode`
@@ -20,6 +21,7 @@ export function clearStaleDisplayModeKeys() {
   if (typeof localStorage === 'undefined') return
   localStorage.removeItem(DISPLAY_MODE_KEY)
   localStorage.removeItem(ZH_VOICE_KEY)
+  localStorage.removeItem(STALE_SLOW_SPEED_KEY)
   const stale: string[] = []
   for (let i = 0; i < localStorage.length; i += 1) {
     const key = localStorage.key(i)

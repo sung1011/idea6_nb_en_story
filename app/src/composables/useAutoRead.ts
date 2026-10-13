@@ -43,7 +43,7 @@ export function useAutoRead(
   page: Ref<StoryPage | undefined>,
   onSummary: Ref<boolean>,
   ready: Ref<boolean>,
-  playLine: (lang: SpeechLang, rate?: number, options?: PlayOptions) => void,
+  playLine: (lang: SpeechLang, options?: PlayOptions) => void,
   stop: () => void,
 ) {
   let generation = 0
@@ -71,7 +71,7 @@ export function useAutoRead(
     const playZh = () => {
       if (token !== generation || onSummary.value) return
       if (!hasZh) return
-      playLine('zh', 1, {
+      playLine('zh', {
         silent: true,
         deferAutoplay: true,
         onBlocked: () => {
@@ -85,7 +85,7 @@ export function useAutoRead(
     }
 
     if (hasEn) {
-      playLine('en', 1, {
+      playLine('en', {
         silent: true,
         deferAutoplay: true,
         onBlocked: () => {

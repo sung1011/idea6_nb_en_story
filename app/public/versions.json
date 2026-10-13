@@ -1,5 +1,11 @@
 [
   {
+    "id": "v0.6.42",
+    "version": "0.6.42",
+    "date": "2026-10-13",
+    "summary": "Removed the Slow button. Page narration speed is now set with Voice speed in Settings (50–100%, default 100%)."
+  },
+  {
     "id": "v0.6.41",
     "version": "0.6.41",
     "date": "2026-10-13",

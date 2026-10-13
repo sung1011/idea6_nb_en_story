@@ -5,7 +5,6 @@ import type { StoryIndexEntry } from '@/types/storyIndex'
 import { parseEnSegments } from '@/utils/parseEn'
 import { useStoryProgress } from '@/composables/useStoryProgress'
 import { usePageSpeech } from '@/composables/usePageSpeech'
-import { useSlowSpeed } from '@/composables/useSlowSpeed'
 import { useStoryPreload } from '@/composables/useStoryPreload'
 import { useAutoRead } from '@/composables/useAutoRead'
 import PagePlaceholder from './pagePlaceholder.vue'
@@ -34,7 +33,6 @@ const page = computed(() => {
 const {
   playingLang,
   playingWord,
-  playingRate,
   followIndex,
   playingPhrase,
   pageNarrating,
@@ -44,8 +42,6 @@ const {
   stop,
 } = usePageSpeech(page)
 const { cancelAuto } = useAutoRead(page, onSummary, ready, playLine, stop)
-const { rate: slowRate } = useSlowSpeed()
-const slowPlaying = computed(() => playingLang.value === 'en' && playingRate.value < 1)
 
 const learnItems = computed(() => page.value?.learnItems ?? [])
 const learnWords = computed(() => learnItems.value.map((item) => item.word))
@@ -124,12 +120,6 @@ function closePanels() {
   openLearn.value = null
   openZh.value = false
   glossAnchor.value = null
-}
-
-function playSlow() {
-  cancelAuto()
-  closePanels()
-  playLine('en', slowRate.value)
 }
 
 function playEnglish() {
@@ -368,27 +358,6 @@ onUnmounted(() => {
               </svg>
               <span>CN</span>
             </button>
-            <button
-              type="button"
-              class="chip slow tap side-chip"
-              :class="{ playing: slowPlaying }"
-              aria-label="Read slowly"
-              :aria-pressed="slowPlaying"
-              @click="playSlow"
-            >
-              <svg class="side-icon icon-snail" viewBox="0 0 24 24" aria-hidden="true">
-                <path
-                  fill="currentColor"
-                  fill-rule="evenodd"
-                  d="M9.1 4.2a6.7 6.7 0 0 1 4.7 11.5c1.1.1 2.3.15 3.55.05 2.5-.2 4.55-.75 5.35-1.75.4-.5 1.2-.15 1.05.6-.4 1.7-2.8 2.95-6.15 3.15-2.55.15-5.4-.25-7.5-1.5A6.7 6.7 0 0 1 9.1 4.2Zm0 2.45a4.25 4.25 0 1 0 0 8.5 4.25 4.25 0 0 0 0-8.5Zm0 2.35a1.9 1.9 0 1 1 0 3.8 1.9 1.9 0 0 1 0-3.8Z"
-                />
-                <path
-                  fill="currentColor"
-                  d="M17.4 10.15c.2-1.4 1.15-2.55 2.15-3.1.4-.22.85.28.62.7-.55.95-1.05 1.75-1.18 2.65l-1.59-.25Zm1.82.18c.48-1.15 1.6-1.95 2.58-2.15.48-.1.72.5.38.8-.78.55-1.52 1.15-1.72 2.05l-1.24-.7Z"
-                />
-              </svg>
-              <span>Slow</span>
-            </button>
           </div>
           <div class="line en" :class="{ playing: playingLang === 'en' }">
             <p
@@ -557,8 +526,7 @@ h1 {
   margin-top: 12px;
 }
 
-.en-row .chip.zh,
-.en-row .chip.slow {
+.en-row .chip.zh {
   margin: 0;
 }
 
@@ -581,16 +549,6 @@ h1 {
   display: block;
   width: 16px;
   height: 16px;
-}
-
-.chip.slow {
-  background: rgba(31, 138, 128, 0.12);
-  color: var(--teal-dark);
-}
-
-.chip.slow.playing {
-  background: rgba(31, 138, 128, 0.28);
-  box-shadow: 0 0 0 3px rgba(31, 138, 128, 0.28);
 }
 
 .en-row .line {

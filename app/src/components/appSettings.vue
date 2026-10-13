@@ -2,7 +2,7 @@
 import { onMounted, onUnmounted, ref } from 'vue'
 import { hardReload, useAppVersions } from '@/composables/useAppVersions'
 import { useAutoReadSetting } from '@/composables/useAutoRead'
-import { SLOW_SPEED_MAX, SLOW_SPEED_MIN, SLOW_SPEED_STEP, useSlowSpeed } from '@/composables/useSlowSpeed'
+import { VOICE_SPEED_MAX, VOICE_SPEED_MIN, VOICE_SPEED_STEP, useVoiceSpeed } from '@/composables/useVoiceSpeed'
 import { clearAppStorage } from '@/utils/appStorage'
 import {
   ADD_TO_HOME_COPY,
@@ -22,7 +22,7 @@ const tab = ref<SettingsTab>('general')
 const gmConfirming = ref(false)
 const flash = ref('')
 const { installed, history, pending, refresh, applyUpdate, clearCaches } = useAppVersions()
-const { percent: slowPercent, setPercent: setSlowPercent, slower, faster, canSlower, canFaster } = useSlowSpeed()
+const { percent: voicePercent, setPercent: setVoicePercent, slower, faster, canSlower, canFaster } = useVoiceSpeed()
 const { enabled: autoRead, toggle: toggleAutoRead, label: autoReadLabel } = useAutoReadSetting()
 const hideAddHome = ref(false)
 const addHomeKind = ref<AddToHomeKind>('inApp')
@@ -34,9 +34,9 @@ defineProps<{
   cacheFade?: boolean
 }>()
 
-function onSlowInput(event: Event) {
+function onVoiceInput(event: Event) {
   const value = Number((event.target as HTMLInputElement).value)
-  setSlowPercent(value)
+  setVoicePercent(value)
 }
 
 let flashTimer = 0
@@ -194,7 +194,7 @@ onUnmounted(() => {
         <div v-if="!hideAddHome" class="add-home">
           <div class="add-home-row">
             <div class="add-home-text">
-              <p class="slow-label">{{ addHomeCopy.title }}</p>
+              <p class="setting-label">{{ addHomeCopy.title }}</p>
               <p class="add-home-copy">{{ addHomeCopy.body }}</p>
             </div>
             <button
@@ -209,7 +209,7 @@ onUnmounted(() => {
           <p v-if="addHomeHint === 'inApp'" class="add-home-steps">{{ addHomeCopy.inAppSteps }}</p>
         </div>
         <div class="auto-read">
-          <p class="slow-label">Auto read</p>
+          <p class="setting-label">Auto read</p>
           <button
             type="button"
             class="switch"
@@ -221,33 +221,33 @@ onUnmounted(() => {
             {{ autoReadLabel }}
           </button>
         </div>
-        <div class="slow-speed">
-          <div class="slow-head">
-            <p class="slow-label">Slow speed</p>
-            <p class="slow-value" aria-live="polite">{{ slowPercent }}%</p>
+        <div class="voice-speed">
+          <div class="voice-head">
+            <p class="setting-label">Voice speed</p>
+            <p class="voice-value" aria-live="polite">{{ voicePercent }}%</p>
           </div>
-          <div class="slow-controls">
+          <div class="voice-controls">
             <button
               type="button"
               class="ghost step"
-              aria-label="Decrease slow speed"
+              aria-label="Decrease voice speed"
               :disabled="!canSlower"
               @click="slower"
             >−</button>
             <input
               type="range"
-              class="slow-slider"
-              :min="SLOW_SPEED_MIN"
-              :max="SLOW_SPEED_MAX"
-              :step="SLOW_SPEED_STEP"
-              :value="slowPercent"
-              aria-label="Slow speed"
-              @input="onSlowInput"
+              class="voice-slider"
+              :min="VOICE_SPEED_MIN"
+              :max="VOICE_SPEED_MAX"
+              :step="VOICE_SPEED_STEP"
+              :value="voicePercent"
+              aria-label="Voice speed"
+              @input="onVoiceInput"
             />
             <button
               type="button"
               class="ghost step"
-              aria-label="Increase slow speed"
+              aria-label="Increase voice speed"
               :disabled="!canFaster"
               @click="faster"
             >+</button>
@@ -456,7 +456,7 @@ onUnmounted(() => {
   background: var(--fog);
 }
 
-.auto-read .slow-label {
+.auto-read .setting-label {
   margin: 0;
 }
 
@@ -478,7 +478,7 @@ onUnmounted(() => {
   color: white;
 }
 
-.slow-speed {
+.voice-speed {
   margin: 0;
   padding: 10px 12px 12px;
   border-radius: 18px;
@@ -486,7 +486,7 @@ onUnmounted(() => {
   background: var(--fog);
 }
 
-.slow-head {
+.voice-head {
   display: flex;
   align-items: baseline;
   justify-content: space-between;
@@ -494,25 +494,25 @@ onUnmounted(() => {
   margin-bottom: 8px;
 }
 
-.slow-label,
-.slow-value {
+.setting-label,
+.voice-value {
   margin: 0;
   font-size: 1.05rem;
   font-weight: 700;
 }
 
-.slow-value {
+.voice-value {
   color: var(--teal-dark);
 }
 
-.slow-controls {
+.voice-controls {
   display: grid;
   grid-template-columns: 44px 1fr 44px;
   align-items: center;
   gap: 8px;
 }
 
-.slow-slider {
+.voice-slider {
   width: 100%;
   min-height: 32px;
   accent-color: var(--teal);
