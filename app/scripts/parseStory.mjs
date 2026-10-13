@@ -461,9 +461,7 @@ const STORY_PAGE_COUNTS = {
   'spot-the-cub': 23,
   'a-lot-of-dots': 24,
 }
-const STORY_TAGS = {
-  'a-lot-of-dots': 'TODO',
-}
+const STORY_TAGS = {}
 
 function writeStoriesIndex(stories) {
   const byId = new Map(stories.map((story) => [story.id, story]))
