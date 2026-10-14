@@ -38,7 +38,7 @@
         }
       ],
       "image": "images/the-big-tug/p01.webp",
-      "audioEn": null,
+      "audioEn": "audio/the-big-tug/p01-en.mp3",
       "phrase": "Mom and Dad go",
       "phraseZh": "妈妈、爸爸出发啦"
     },
@@ -71,7 +71,7 @@
         }
       ],
       "image": "images/the-big-tug/p02.webp",
-      "audioEn": null,
+      "audioEn": "audio/the-big-tug/p02-en.mp3",
       "phrase": "my pet hen",
       "phraseZh": "我的宠物母鸡"
     },
@@ -97,7 +97,7 @@
         }
       ],
       "image": "images/the-big-tug/p03.webp",
-      "audioEn": null,
+      "audioEn": "audio/the-big-tug/p03-en.mp3",
       "phrase": "a soft bed",
       "phraseZh": "软软的小床"
     },
@@ -121,7 +121,7 @@
         }
       ],
       "image": "images/the-big-tug/p04.webp",
-      "audioEn": null,
+      "audioEn": "audio/the-big-tug/p04-en.mp3",
       "phrase": "A fat lizard!",
       "phraseZh": "一只胖沙蜥！"
     },
@@ -153,7 +153,7 @@
         }
       ],
       "image": "images/the-big-tug/p05.webp",
-      "audioEn": null,
+      "audioEn": "audio/the-big-tug/p05-en.mp3",
       "phrase": "My pet hen!",
       "phraseZh": "我的宠物母鸡！"
     },
@@ -185,7 +185,7 @@
         }
       ],
       "image": "images/the-big-tug/p06.webp",
-      "audioEn": null,
+      "audioEn": "audio/the-big-tug/p06-en.mp3",
       "phrase": "His leg hurts.",
       "phraseZh": "他的腿受伤了。"
     },
@@ -224,7 +224,7 @@
         }
       ],
       "image": "images/the-big-tug/p07.webp",
-      "audioEn": null,
+      "audioEn": "audio/the-big-tug/p07-en.mp3",
       "phrase": "Mom wraps his leg",
       "phraseZh": "妈妈包好爸爸的腿"
     },
@@ -244,7 +244,7 @@
       ],
       "learnItems": [],
       "image": "images/the-big-tug/p08.webp",
-      "audioEn": null,
+      "audioEn": "audio/the-big-tug/p08-en.mp3",
       "phrase": "I can help!",
       "phraseZh": "我能帮忙！"
     },
@@ -262,7 +262,7 @@
       "highlights": [],
       "learnItems": [],
       "image": "images/the-big-tug/p09.webp",
-      "audioEn": null,
+      "audioEn": "audio/the-big-tug/p09-en.mp3",
       "phrase": "Mia is brave.",
       "phraseZh": "米娅很勇敢"
     },
@@ -300,7 +300,7 @@
         }
       ],
       "image": "images/the-big-tug/p10.webp",
-      "audioEn": null,
+      "audioEn": "audio/the-big-tug/p10-en.mp3",
       "phrase": "A bat, a mitt, a rag!",
       "phraseZh": "球棒、手套、旧布！"
     },
@@ -333,7 +333,7 @@
         }
       ],
       "image": "images/the-big-tug/p11.webp",
-      "audioEn": null,
+      "audioEn": "audio/the-big-tug/p11-en.mp3",
       "phrase": "A gift box with a tag",
       "phraseZh": "一个挂着标签的礼物盒"
     },
@@ -365,7 +365,7 @@
         }
       ],
       "image": "images/the-big-tug/p12.webp",
-      "audioEn": null,
+      "audioEn": "audio/the-big-tug/p12-en.mp3",
       "phrase": "Big pink gum!",
       "phraseZh": "一大块粉色口香糖！"
     },
@@ -389,7 +389,7 @@
         }
       ],
       "image": "images/the-big-tug/p13.webp",
-      "audioEn": null,
+      "audioEn": "audio/the-big-tug/p13-en.mp3",
       "phrase": "The lizard pops out.",
       "phraseZh": "沙蜥冒出来了"
     },
@@ -421,7 +421,7 @@
         }
       ],
       "image": "images/the-big-tug/p14.webp",
-      "audioEn": null,
+      "audioEn": "audio/the-big-tug/p14-en.mp3",
       "phrase": "A hit!",
       "phraseZh": "正中！"
     },
@@ -458,7 +458,7 @@
         }
       ],
       "image": "images/the-big-tug/p15.webp",
-      "audioEn": null,
+      "audioEn": "audio/the-big-tug/p15-en.mp3",
       "phrase": "A big hit!",
       "phraseZh": "好一记大击球！"
     },
@@ -489,7 +489,7 @@
         }
       ],
       "image": "images/the-big-tug/p16.webp",
-      "audioEn": null,
+      "audioEn": "audio/the-big-tug/p16-en.mp3",
       "phrase": "in the mitt",
       "phraseZh": "用手套"
     },
@@ -520,7 +520,7 @@
         }
       ],
       "image": "images/the-big-tug/p17.webp",
-      "audioEn": null,
+      "audioEn": "audio/the-big-tug/p17-en.mp3",
       "phrase": "a rag rope",
       "phraseZh": "用旧布拧成绳子"
     },
@@ -551,7 +551,7 @@
         }
       ],
       "image": "images/the-big-tug/p18.webp",
-      "audioEn": null,
+      "audioEn": "audio/the-big-tug/p18-en.mp3",
       "phrase": "Mia tugs.",
       "phraseZh": "米娅拉呀拉"
     },
@@ -585,7 +585,7 @@
         }
       ],
       "image": "images/the-big-tug/p19.webp",
-      "audioEn": null,
+      "audioEn": "audio/the-big-tug/p19-en.mp3",
       "phrase": "Dad can help!",
       "phraseZh": "爸爸来帮忙！"
     },
@@ -612,7 +612,7 @@
         }
       ],
       "image": "images/the-big-tug/p20.webp",
-      "audioEn": null,
+      "audioEn": "audio/the-big-tug/p20-en.mp3",
       "phrase": "We tug and tug!",
       "phraseZh": "我们拉呀拉！"
     },
@@ -643,7 +643,7 @@
         }
       ],
       "image": "images/the-big-tug/p21.webp",
-      "audioEn": null,
+      "audioEn": "audio/the-big-tug/p21-en.mp3",
       "phrase": "We win!",
       "phraseZh": "我们赢了！"
     },
@@ -674,7 +674,7 @@
         }
       ],
       "image": "images/the-big-tug/p22.webp",
-      "audioEn": null,
+      "audioEn": "audio/the-big-tug/p22-en.mp3",
       "phrase": "in a sand bed",
       "phraseZh": "沙窝小床里"
     },
@@ -692,7 +692,7 @@
       "highlights": [],
       "learnItems": [],
       "image": "images/the-big-tug/p23.webp",
-      "audioEn": null,
+      "audioEn": "audio/the-big-tug/p23-en.mp3",
       "phrase": "water for its baby",
       "phraseZh": "它想要水"
     },
@@ -713,7 +713,7 @@
       ],
       "learnItems": [],
       "image": "images/the-big-tug/p24.webp",
-      "audioEn": null,
+      "audioEn": "audio/the-big-tug/p24-en.mp3",
       "phrase": "one bottle, then two",
       "phraseZh": "一瓶水，又送一瓶"
     },
@@ -744,7 +744,7 @@
         }
       ],
       "image": "images/the-big-tug/p25.webp",
-      "audioEn": null,
+      "audioEn": "audio/the-big-tug/p25-en.mp3",
       "phrase": "We all win!",
       "phraseZh": "大家都赢啦！"
     }

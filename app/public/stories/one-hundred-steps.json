@@ -32,7 +32,7 @@
         }
       ],
       "image": "images/one-hundred-steps/p01.webp",
-      "audioEn": null,
+      "audioEn": "audio/one-hundred-steps/p01-en.mp3",
       "phrase": "Mia and Mom go up the hill",
       "phraseZh": "米娅和妈妈出发爬山啦"
     },
@@ -60,7 +60,7 @@
         }
       ],
       "image": "images/one-hundred-steps/p02.webp",
-      "audioEn": null,
+      "audioEn": "audio/one-hundred-steps/p02-en.mp3",
       "phrase": "A hut is on top",
       "phraseZh": "山顶有座小屋"
     },
@@ -78,7 +78,7 @@
       "highlights": [],
       "learnItems": [],
       "image": "images/one-hundred-steps/p03.webp",
-      "audioEn": null,
+      "audioEn": "audio/one-hundred-steps/p03-en.mp3",
       "phrase": "I can count!",
       "phraseZh": "我会数！"
     },
@@ -96,7 +96,7 @@
       "highlights": [],
       "learnItems": [],
       "image": "images/one-hundred-steps/p04.webp",
-      "audioEn": null,
+      "audioEn": "audio/one-hundred-steps/p04-en.mp3",
       "phrase": "hop, hop, hop!",
       "phraseZh": "蹦、蹦、蹦！"
     },
@@ -124,7 +124,7 @@
         }
       ],
       "image": "images/one-hundred-steps/p05.webp",
-      "audioEn": null,
+      "audioEn": "audio/one-hundred-steps/p05-en.mp3",
       "phrase": "Look at the ants!",
       "phraseZh": "看那些蚂蚁！"
     },
@@ -150,7 +150,7 @@
         }
       ],
       "image": "images/one-hundred-steps/p06.webp",
-      "audioEn": null,
+      "audioEn": "audio/one-hundred-steps/p06-en.mp3",
       "phrase": "The ants go by.",
       "phraseZh": "蚂蚁们走过去了。"
     },
@@ -178,7 +178,7 @@
         }
       ],
       "image": "images/one-hundred-steps/p07.webp",
-      "audioEn": null,
+      "audioEn": "audio/one-hundred-steps/p07-en.mp3",
       "phrase": "Mia is at the deck.",
       "phraseZh": "米娅到了木平台。"
     },
@@ -196,7 +196,7 @@
       "highlights": [],
       "learnItems": [],
       "image": "images/one-hundred-steps/p08.webp",
-      "audioEn": null,
+      "audioEn": "audio/one-hundred-steps/p08-en.mp3",
       "phrase": "Mia rests on Mom's lap",
       "phraseZh": "米娅靠着妈妈歇一会儿"
     },
@@ -214,7 +214,7 @@
       "highlights": [],
       "learnItems": [],
       "image": "images/one-hundred-steps/p09.webp",
-      "audioEn": null,
+      "audioEn": "audio/one-hundred-steps/p09-en.mp3",
       "phrase": "What is that?",
       "phraseZh": "那是什么？"
     },
@@ -234,7 +234,7 @@
       ],
       "learnItems": [],
       "image": "images/one-hundred-steps/p10.webp",
-      "audioEn": null,
+      "audioEn": "audio/one-hundred-steps/p10-en.mp3",
       "phrase": "A red tail",
       "phraseZh": "一条红尾巴"
     },
@@ -262,7 +262,7 @@
         }
       ],
       "image": "images/one-hundred-steps/p11.webp",
-      "audioEn": null,
+      "audioEn": "audio/one-hundred-steps/p11-en.mp3",
       "phrase": "Look at the web!",
       "phraseZh": "看那张蜘蛛网！"
     },
@@ -288,7 +288,7 @@
         }
       ],
       "image": "images/one-hundred-steps/p12.webp",
-      "audioEn": null,
+      "audioEn": "audio/one-hundred-steps/p12-en.mp3",
       "phrase": "to the well",
       "phraseZh": "红毛飘到了水井边"
     },
@@ -314,7 +314,7 @@
         }
       ],
       "image": "images/one-hundred-steps/p13.webp",
-      "audioEn": null,
+      "audioEn": "audio/one-hundred-steps/p13-en.mp3",
       "phrase": "A rat pops up.",
       "phraseZh": "一只小老鼠冒出来"
     },
@@ -341,7 +341,7 @@
         }
       ],
       "image": "images/one-hundred-steps/p14.webp",
-      "audioEn": null,
+      "audioEn": "audio/one-hundred-steps/p14-en.mp3",
       "phrase": "A fox!",
       "phraseZh": "一只狐狸！"
     },
@@ -379,7 +379,7 @@
         }
       ],
       "image": "images/one-hundred-steps/p15.webp",
-      "audioEn": null,
+      "audioEn": "audio/one-hundred-steps/p15-en.mp3",
       "phrase": "The fox winks.",
       "phraseZh": "狐狸眨眨眼"
     },
@@ -399,7 +399,7 @@
       ],
       "learnItems": [],
       "image": "images/one-hundred-steps/p16.webp",
-      "audioEn": null,
+      "audioEn": "audio/one-hundred-steps/p16-en.mp3",
       "phrase": "Mia can not see.",
       "phraseZh": "米娅看不见路。"
     },
@@ -417,7 +417,7 @@
       "highlights": [],
       "learnItems": [],
       "image": "images/one-hundred-steps/p17.webp",
-      "audioEn": null,
+      "audioEn": "audio/one-hundred-steps/p17-en.mp3",
       "phrase": "My legs hurt.",
       "phraseZh": "我腿好疼"
     },
@@ -445,7 +445,7 @@
         }
       ],
       "image": "images/one-hundred-steps/p18.webp",
-      "audioEn": null,
+      "audioEn": "audio/one-hundred-steps/p18-en.mp3",
       "phrase": "Wag, wag!",
       "phraseZh": "摇呀摇！"
     },
@@ -465,7 +465,7 @@
       ],
       "learnItems": [],
       "image": "images/one-hundred-steps/p19.webp",
-      "audioEn": null,
+      "audioEn": "audio/one-hundred-steps/p19-en.mp3",
       "phrase": "Count to ninety!",
       "phraseZh": "数到九十！"
     },
@@ -485,7 +485,7 @@
       ],
       "learnItems": [],
       "image": "images/one-hundred-steps/p20.webp",
-      "audioEn": null,
+      "audioEn": "audio/one-hundred-steps/p20-en.mp3",
       "phrase": "one hundred! The top!",
       "phraseZh": "一百！到山顶啦！"
     },
@@ -511,7 +511,7 @@
         }
       ],
       "image": "images/one-hundred-steps/p21.webp",
-      "audioEn": null,
+      "audioEn": "audio/one-hundred-steps/p21-en.mp3",
       "phrase": "Who lives in the hut?",
       "phraseZh": "谁住在小屋里？"
     },
@@ -544,7 +544,7 @@
         }
       ],
       "image": "images/one-hundred-steps/p22.webp",
-      "audioEn": null,
+      "audioEn": "audio/one-hundred-steps/p22-en.mp3",
       "phrase": "Nan is at the desk.",
       "phraseZh": "奶奶坐在书桌前。"
     },
@@ -570,7 +570,7 @@
         }
       ],
       "image": "images/one-hundred-steps/p23.webp",
-      "audioEn": null,
+      "audioEn": "audio/one-hundred-steps/p23-en.mp3",
       "phrase": "Hot noodles in a wok!",
       "phraseZh": "炒锅里有热面条！"
     },
@@ -602,7 +602,7 @@
         }
       ],
       "image": "images/one-hundred-steps/p24.webp",
-      "audioEn": null,
+      "audioEn": "audio/one-hundred-steps/p24-en.mp3",
       "phrase": "Our tent is up.",
       "phraseZh": "我们的帐篷搭好了。"
     }
