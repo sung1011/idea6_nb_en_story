@@ -241,8 +241,8 @@
     {
       "id": "P11",
       "index": 11,
-      "en": "**Look** **at** the **web**. It shakes!",
-      "zh": "看那张蜘蛛网。它在晃！",
+      "en": "**Look** **at** the **web**! Red fur is on it.",
+      "zh": "看那张蜘蛛网！上面挂着一撮红毛。",
       "pattern": "Look at the ___.",
       "focusWord": "look / at / web",
       "focusNote": "第5章 第4课「字母 W · look」；第5章 第2课「字母 E · at」；第5章 第4课「字母 W · look」",
@@ -263,14 +263,14 @@
       ],
       "image": "images/one-hundred-steps/p11.webp",
       "audioEn": null,
-      "phrase": "Look at the web.",
-      "phraseZh": "看那张蜘蛛网。"
+      "phrase": "Look at the web!",
+      "phraseZh": "看那张蜘蛛网！"
     },
     {
       "id": "P12",
       "index": 12,
-      "en": "Mia is **at** the **well**. Pull, pull, pull!",
-      "zh": "米娅来到水井边。拉呀，拉呀！",
+      "en": "The fur flies to the **well**. Mia runs to it.",
+      "zh": "红毛飘到了水井边。米娅追了过去。",
       "pattern": "Mia is at the ___.",
       "focusWord": "at / well",
       "focusNote": "第5章 第2课「字母 E · at」；第5章 第2课「字母 E · at」",
@@ -278,7 +278,6 @@
       "knowledge": "Ben is at the well. 变体；打水",
       "gloss": "水井",
       "highlights": [
-        "at",
         "well"
       ],
       "learnItems": [
@@ -290,8 +289,8 @@
       ],
       "image": "images/one-hundred-steps/p12.webp",
       "audioEn": null,
-      "phrase": "Mia is at the well.",
-      "phraseZh": "米娅来到水井边。"
+      "phrase": "to the well",
+      "phraseZh": "红毛飘到了水井边"
     },
     {
       "id": "P13",

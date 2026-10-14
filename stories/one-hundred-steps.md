@@ -88,7 +88,7 @@
 ---
 
 ### P11
-正文: **Look** **at** the **web**. It shakes!（看那张蜘蛛网。它在晃！）
+正文: **Look** **at** the **web**! Red fur is on it.（看那张蜘蛛网！上面挂着一撮红毛。）
 主练句式: Look at the ___.
 辅词: look（第5章 第4课「字母 W · look」）；at（第5章 第2课「字母 E · at」）；web（第5章 第4课「字母 W · look」）
 知识点: Look at the web. 原句；有人刚经过
@@ -96,7 +96,7 @@
 ---
 
 ### P12
-正文: Mia is **at** the **well**. Pull, pull, pull!（米娅来到水井边。拉呀，拉呀！）
+正文: The fur flies to the **well**. Mia runs to it.（红毛飘到了水井边。米娅追了过去。）
 主练句式: Mia is at the ___.
 辅词: at（第5章 第2课「字母 E · at」）；well（第5章 第2课「字母 E · at」）
 知识点: Ben is at the well. 变体；打水
