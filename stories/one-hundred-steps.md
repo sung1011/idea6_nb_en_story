@@ -96,7 +96,7 @@
 ---
 
 ### P12
-正文: The fur flies to the **well**. Mia runs to it.（红毛飘到了水井边。米娅追了过去。）
+正文: The fur lands by the **well**. A **rat** pops up!（红毛落在水井边。一只小老鼠冒了出来！）
 主练句式: Mia is at the ___.
 辅词: at（第5章 第2课「字母 E · at」）；well（第5章 第2课「字母 E · at」）
 知识点: Ben is at the well. 变体；打水
@@ -104,7 +104,7 @@
 ---
 
 ### P13
-正文: Squeak! A **rat** pops up. It nods up the hill.（吱吱！一只小老鼠冒出来，朝山上点点头。）
+正文: Mia holds up the fur. The **rat** nods up the hill.（米娅举起红毛问它。小老鼠朝山上点点头。）
 主练句式: A ___ pops up.
 辅词: rat（第5章 第3课「谁住在小屋」；故事B已出）
 知识点: 小老鼠指路（伏笔：山上有人等）

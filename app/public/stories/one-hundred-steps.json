@@ -269,8 +269,8 @@
     {
       "id": "P12",
       "index": 12,
-      "en": "The fur flies to the **well**. Mia runs to it.",
-      "zh": "红毛飘到了水井边。米娅追了过去。",
+      "en": "The fur lands by the **well**. A **rat** pops up!",
+      "zh": "红毛落在水井边。一只小老鼠冒了出来！",
       "pattern": "Mia is at the ___.",
       "focusWord": "at / well",
       "focusNote": "第5章 第2课「字母 E · at」；第5章 第2课「字母 E · at」",
@@ -278,25 +278,31 @@
       "knowledge": "Ben is at the well. 变体；打水",
       "gloss": "水井",
       "highlights": [
-        "well"
+        "well",
+        "rat"
       ],
       "learnItems": [
         {
           "word": "well",
           "gloss": "水井",
           "image": "images/one-hundred-steps/words/well.webp"
+        },
+        {
+          "word": "rat",
+          "gloss": "老鼠",
+          "image": "images/one-hundred-steps/words/rat.webp"
         }
       ],
       "image": "images/one-hundred-steps/p12.webp",
       "audioEn": "audio/one-hundred-steps/p12-en.mp3",
-      "phrase": "to the well",
-      "phraseZh": "红毛飘到了水井边"
+      "phrase": "A rat pops up!",
+      "phraseZh": "一只小老鼠冒了出来！"
     },
     {
       "id": "P13",
       "index": 13,
-      "en": "Squeak! A **rat** pops up. It nods up the hill.",
-      "zh": "吱吱！一只小老鼠冒出来，朝山上点点头。",
+      "en": "Mia holds up the fur. The **rat** nods up the hill.",
+      "zh": "米娅举起红毛问它。小老鼠朝山上点点头。",
       "pattern": "A ___ pops up.",
       "focusWord": "rat",
       "focusNote": "第5章 第3课「谁住在小屋」；故事B已出",
@@ -315,8 +321,8 @@
       ],
       "image": "images/one-hundred-steps/p13.webp",
       "audioEn": "audio/one-hundred-steps/p13-en.mp3",
-      "phrase": "A rat pops up.",
-      "phraseZh": "一只小老鼠冒出来"
+      "phrase": "The rat nods up the hill.",
+      "phraseZh": "小老鼠朝山上点点头。"
     },
     {
       "id": "P14",

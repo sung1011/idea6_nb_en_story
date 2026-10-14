@@ -489,7 +489,6 @@ const STORY_PAGE_COUNTS = {
   'one-hundred-steps': 24,
 }
 const STORY_TAGS = {
-  'one-hundred-steps': 'TODO',
 }
 
 /** Story ids in index.json order. */
