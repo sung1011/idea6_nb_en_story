@@ -1,0 +1,615 @@
+{
+  "id": "one-hundred-steps",
+  "title": "One Hundred Steps!",
+  "titleZh": "一百级台阶！",
+  "version": "",
+  "label": "故事 5",
+  "scene": "晴天的山路（石阶、木平台 deck、旧水井 well、大石头、蛛网）→ 半山大雾 → 山顶小屋（书桌 desk、炒锅 wok）与日落",
+  "structure": "立目标（自己数完一百级）→ 让路给蚂蚁 → 数到五十歇脚 → 唰唰声、红尾巴、晃动的蛛网（被跟踪？）→ 井边打水，小老鼠指路 → 狐狸露脸眨眼就跑 → 七十级起雾，腿疼想放弃 → 雾里白尾尖带路 → 数到一百登顶 → 谁住在小屋？→ 反转：狐狸是奶奶的带路狐 → 吃锅面、搭帐篷",
+  "notes": "篇幅：24 页 · 每页英文 ≤ 11 词 · 一般现在时 · 画面不写字（路牌只画小屋和数字 100）",
+  "source": "stories/one-hundred-steps.md",
+  "pageCount": 24,
+  "pages": [
+    {
+      "id": "P01",
+      "index": 1,
+      "en": "Mia and **Mom** go up the hill.",
+      "zh": "米娅和妈妈出发爬山啦。",
+      "pattern": "___ go up the ___.",
+      "focusWord": "",
+      "focusNote": "mom 故事4已出",
+      "focusRaw": "—（mom 故事4已出）",
+      "knowledge": "开场：妈妈背着帐篷",
+      "gloss": "妈妈",
+      "highlights": [
+        "Mom"
+      ],
+      "learnItems": [
+        {
+          "word": "mom",
+          "gloss": "妈妈",
+          "image": "images/one-hundred-steps/words/mom.webp"
+        }
+      ],
+      "image": "images/one-hundred-steps/p01.webp",
+      "audioEn": null,
+      "phrase": "Mia and Mom go up the hill",
+      "phraseZh": "米娅和妈妈出发爬山啦"
+    },
+    {
+      "id": "P02",
+      "index": 2,
+      "en": "**Look**! A **hut** is on top. **One hundred** steps!",
+      "zh": "快看！山顶有座小屋。一百级台阶！",
+      "pattern": "Look! A ___ is on top.",
+      "focusWord": "look / hut / one hundred",
+      "focusNote": "第5章 第4课「字母 W · look」；第5章 第3课「谁住在小屋」；第5章 第1课「数字 50–100」",
+      "focusRaw": "look（第5章 第4课「字母 W · look」）；hut（第5章 第3课「谁住在小屋」）；one hundred（第5章 第1课「数字 50–100」）",
+      "knowledge": "路牌画小屋+100；立目标",
+      "gloss": "小屋",
+      "highlights": [
+        "Look",
+        "hut",
+        "One hundred"
+      ],
+      "learnItems": [
+        {
+          "word": "hut",
+          "gloss": "小屋",
+          "image": "images/one-hundred-steps/words/hut.webp"
+        }
+      ],
+      "image": "images/one-hundred-steps/p02.webp",
+      "audioEn": null,
+      "phrase": "A hut is on top",
+      "phraseZh": "山顶有座小屋"
+    },
+    {
+      "id": "P03",
+      "index": 3,
+      "en": "\"I can do it! I can count!\" says Mia.",
+      "zh": "“我能行！我会数！”米娅说。",
+      "pattern": "I can ___!",
+      "focusWord": "",
+      "focusNote": "",
+      "focusRaw": "—",
+      "knowledge": "主角立志自己数到一百",
+      "gloss": "",
+      "highlights": [],
+      "learnItems": [],
+      "image": "images/one-hundred-steps/p03.webp",
+      "audioEn": null,
+      "phrase": "I can count!",
+      "phraseZh": "我会数！"
+    },
+    {
+      "id": "P04",
+      "index": 4,
+      "en": "One, two, three… hop, hop, hop!",
+      "zh": "一、二、三……蹦、蹦、蹦！",
+      "pattern": "One, two, three…",
+      "focusWord": "",
+      "focusNote": "",
+      "focusRaw": "—",
+      "knowledge": "拟声节奏；轻快开局",
+      "gloss": "",
+      "highlights": [],
+      "learnItems": [],
+      "image": "images/one-hundred-steps/p04.webp",
+      "audioEn": null,
+      "phrase": "hop, hop, hop!",
+      "phraseZh": "蹦、蹦、蹦！"
+    },
+    {
+      "id": "P05",
+      "index": 5,
+      "en": "Stop! **Look** **at** the **ant**s!",
+      "zh": "停！看那些蚂蚁！",
+      "pattern": "Look at the ___!",
+      "focusWord": "look / at / ant",
+      "focusNote": "第5章 第4课「字母 W · look」；第5章 第2课「字母 E · at」；第5章 第3课「谁住在小屋」",
+      "focusRaw": "look（第5章 第4课「字母 W · look」）；at（第5章 第2课「字母 E · at」）；ant（第5章 第3课「谁住在小屋」）",
+      "knowledge": "Look at the ___. 句式；难关 1",
+      "gloss": "蚂蚁",
+      "highlights": [
+        "Look",
+        "at",
+        "ant"
+      ],
+      "learnItems": [
+        {
+          "word": "ant",
+          "gloss": "蚂蚁",
+          "image": "images/one-hundred-steps/words/ant.webp"
+        }
+      ],
+      "image": "images/one-hundred-steps/p05.webp",
+      "audioEn": null,
+      "phrase": "Look at the ants!",
+      "phraseZh": "看那些蚂蚁！"
+    },
+    {
+      "id": "P06",
+      "index": 6,
+      "en": "Mia sits and waits. The **ant**s go by.",
+      "zh": "米娅坐下来等。蚂蚁们走过去了。",
+      "pattern": "___ sits and waits.",
+      "focusWord": "ant",
+      "focusNote": "第5章 第3课「谁住在小屋」",
+      "focusRaw": "ant（第5章 第3课「谁住在小屋」）",
+      "knowledge": "善意：不踩蚂蚁",
+      "gloss": "蚂蚁",
+      "highlights": [
+        "ant"
+      ],
+      "learnItems": [
+        {
+          "word": "ant",
+          "gloss": "蚂蚁",
+          "image": "images/one-hundred-steps/words/ant.webp"
+        }
+      ],
+      "image": "images/one-hundred-steps/p06.webp",
+      "audioEn": null,
+      "phrase": "The ants go by.",
+      "phraseZh": "蚂蚁们走过去了。"
+    },
+    {
+      "id": "P07",
+      "index": 7,
+      "en": "**Count to fifty**! Mia is **at** the **deck**.",
+      "zh": "数到五十！米娅到了木平台。",
+      "pattern": "Mia is at the ___.",
+      "focusWord": "fifty / at / deck",
+      "focusNote": "第5章 第1课「数字 50–100」；第5章 第2课「字母 E · at」；第5章 第2课「字母 E · at」",
+      "focusRaw": "fifty（第5章 第1课「数字 50–100」）；at（第5章 第2课「字母 E · at」）；deck（第5章 第2课「字母 E · at」）",
+      "knowledge": "Count to fifty. 原句 + Ben is at the deck. 变体",
+      "gloss": "木平台",
+      "highlights": [
+        "Count to fifty",
+        "at",
+        "deck"
+      ],
+      "learnItems": [
+        {
+          "word": "deck",
+          "gloss": "木平台",
+          "image": "images/one-hundred-steps/words/deck.webp"
+        }
+      ],
+      "image": "images/one-hundred-steps/p07.webp",
+      "audioEn": null,
+      "phrase": "Mia is at the deck.",
+      "phraseZh": "米娅到了木平台。"
+    },
+    {
+      "id": "P08",
+      "index": 8,
+      "en": "Sip, sip. Mia rests on Mom's lap.",
+      "zh": "喝口水，米娅靠着妈妈歇一会儿。",
+      "pattern": "___ naps on the ___.",
+      "focusWord": "",
+      "focusNote": "",
+      "focusRaw": "—",
+      "knowledge": "歇脚；节奏放缓",
+      "gloss": "",
+      "highlights": [],
+      "learnItems": [],
+      "image": "images/one-hundred-steps/p08.webp",
+      "audioEn": null,
+      "phrase": "Mia rests on Mom's lap",
+      "phraseZh": "米娅靠着妈妈歇一会儿"
+    },
+    {
+      "id": "P09",
+      "index": 9,
+      "en": "Swish, swish! What is that?",
+      "zh": "唰唰唰！那是什么？",
+      "pattern": "What is that?",
+      "focusWord": "",
+      "focusNote": "",
+      "focusRaw": "—",
+      "knowledge": "拟声；悬念：有谁跟着？",
+      "gloss": "",
+      "highlights": [],
+      "learnItems": [],
+      "image": "images/one-hundred-steps/p09.webp",
+      "audioEn": null,
+      "phrase": "What is that?",
+      "phraseZh": "那是什么？"
+    },
+    {
+      "id": "P10",
+      "index": 10,
+      "en": "**Look**! A red tail… and then it is gone!",
+      "zh": "快看！一条红尾巴……一下子不见了！",
+      "pattern": "Look! A ___!",
+      "focusWord": "look",
+      "focusNote": "第5章 第4课「字母 W · look」",
+      "focusRaw": "look（第5章 第4课「字母 W · look」）",
+      "knowledge": "悬念升级：只露尾巴",
+      "gloss": "",
+      "highlights": [
+        "Look"
+      ],
+      "learnItems": [],
+      "image": "images/one-hundred-steps/p10.webp",
+      "audioEn": null,
+      "phrase": "A red tail",
+      "phraseZh": "一条红尾巴"
+    },
+    {
+      "id": "P11",
+      "index": 11,
+      "en": "**Look** **at** the **web**. It shakes!",
+      "zh": "看那张蜘蛛网。它在晃！",
+      "pattern": "Look at the ___.",
+      "focusWord": "look / at / web",
+      "focusNote": "第5章 第4课「字母 W · look」；第5章 第2课「字母 E · at」；第5章 第4课「字母 W · look」",
+      "focusRaw": "look（第5章 第4课「字母 W · look」）；at（第5章 第2课「字母 E · at」）；web（第5章 第4课「字母 W · look」）",
+      "knowledge": "Look at the web. 原句；有人刚经过",
+      "gloss": "蜘蛛网",
+      "highlights": [
+        "Look",
+        "at",
+        "web"
+      ],
+      "learnItems": [
+        {
+          "word": "web",
+          "gloss": "蜘蛛网",
+          "image": "images/one-hundred-steps/words/web.webp"
+        }
+      ],
+      "image": "images/one-hundred-steps/p11.webp",
+      "audioEn": null,
+      "phrase": "Look at the web.",
+      "phraseZh": "看那张蜘蛛网。"
+    },
+    {
+      "id": "P12",
+      "index": 12,
+      "en": "Mia is **at** the **well**. Pull, pull, pull!",
+      "zh": "米娅来到水井边。拉呀，拉呀！",
+      "pattern": "Mia is at the ___.",
+      "focusWord": "at / well",
+      "focusNote": "第5章 第2课「字母 E · at」；第5章 第2课「字母 E · at」",
+      "focusRaw": "at（第5章 第2课「字母 E · at」）；well（第5章 第2课「字母 E · at」）",
+      "knowledge": "Ben is at the well. 变体；打水",
+      "gloss": "水井",
+      "highlights": [
+        "at",
+        "well"
+      ],
+      "learnItems": [
+        {
+          "word": "well",
+          "gloss": "水井",
+          "image": "images/one-hundred-steps/words/well.webp"
+        }
+      ],
+      "image": "images/one-hundred-steps/p12.webp",
+      "audioEn": null,
+      "phrase": "Mia is at the well.",
+      "phraseZh": "米娅来到水井边。"
+    },
+    {
+      "id": "P13",
+      "index": 13,
+      "en": "Squeak! A **rat** pops up. It nods up the hill.",
+      "zh": "吱吱！一只小老鼠冒出来，朝山上点点头。",
+      "pattern": "A ___ pops up.",
+      "focusWord": "rat",
+      "focusNote": "第5章 第3课「谁住在小屋」；故事B已出",
+      "focusRaw": "rat（第5章 第3课「谁住在小屋」；故事B已出）",
+      "knowledge": "小老鼠指路（伏笔：山上有人等）",
+      "gloss": "老鼠",
+      "highlights": [
+        "rat"
+      ],
+      "learnItems": [
+        {
+          "word": "rat",
+          "gloss": "老鼠",
+          "image": "images/one-hundred-steps/words/rat.webp"
+        }
+      ],
+      "image": "images/one-hundred-steps/p13.webp",
+      "audioEn": null,
+      "phrase": "A rat pops up.",
+      "phraseZh": "一只小老鼠冒出来"
+    },
+    {
+      "id": "P14",
+      "index": 14,
+      "en": "A **fox**! It is **at** the big rock!",
+      "zh": "一只狐狸！它在大石头那儿！",
+      "pattern": "It is at the ___!",
+      "focusWord": "fox / at",
+      "focusNote": "第5章 第3课「谁住在小屋」；第5章 第2课「字母 E · at」",
+      "focusRaw": "fox（第5章 第3课「谁住在小屋」）；at（第5章 第2课「字母 E · at」）",
+      "knowledge": "红尾巴主人第一次露脸",
+      "gloss": "狐狸",
+      "highlights": [
+        "fox",
+        "at"
+      ],
+      "learnItems": [
+        {
+          "word": "fox",
+          "gloss": "狐狸",
+          "image": "images/one-hundred-steps/words/fox.webp"
+        }
+      ],
+      "image": "images/one-hundred-steps/p14.webp",
+      "audioEn": null,
+      "phrase": "A fox!",
+      "phraseZh": "一只狐狸！"
+    },
+    {
+      "id": "P15",
+      "index": 15,
+      "en": "The **fox** **wink**s. It **wag**s. Then it runs off!",
+      "zh": "狐狸眨眨眼，摇摇尾巴，然后跑了！",
+      "pattern": "The fox ___s.",
+      "focusWord": "fox / wink / wag",
+      "focusNote": "第5章 第3课「谁住在小屋」；第5章 第4课「字母 W · look」；第5章 第4课「字母 W · look」",
+      "focusRaw": "fox（第5章 第3课「谁住在小屋」）；wink（第5章 第4课「字母 W · look」）；wag（第5章 第4课「字母 W · look」）",
+      "knowledge": "中点：它是好是坏？",
+      "gloss": "狐狸",
+      "highlights": [
+        "fox",
+        "wink",
+        "wag"
+      ],
+      "learnItems": [
+        {
+          "word": "fox",
+          "gloss": "狐狸",
+          "image": "images/one-hundred-steps/words/fox.webp"
+        },
+        {
+          "word": "wink",
+          "gloss": "眨眼",
+          "image": "images/one-hundred-steps/words/wink.webp"
+        },
+        {
+          "word": "wag",
+          "gloss": "摇尾巴",
+          "image": "images/one-hundred-steps/words/wag.webp"
+        }
+      ],
+      "image": "images/one-hundred-steps/p15.webp",
+      "audioEn": null,
+      "phrase": "The fox winks.",
+      "phraseZh": "狐狸眨眨眼"
+    },
+    {
+      "id": "P16",
+      "index": 16,
+      "en": "**Seventy**… Oh no! Fog! Mia can not see.",
+      "zh": "七十……哎呀！起雾了！米娅看不见路。",
+      "pattern": "Oh no! ___!",
+      "focusWord": "seventy",
+      "focusNote": "第5章 第1课「数字 50–100」",
+      "focusRaw": "seventy（第5章 第1课「数字 50–100」）",
+      "knowledge": "低谷开始：大雾",
+      "gloss": "",
+      "highlights": [
+        "Seventy"
+      ],
+      "learnItems": [],
+      "image": "images/one-hundred-steps/p16.webp",
+      "audioEn": null,
+      "phrase": "Mia can not see.",
+      "phraseZh": "米娅看不见路。"
+    },
+    {
+      "id": "P17",
+      "index": 17,
+      "en": "\"My legs hurt. I can not go on.\" Mom hugs Mia.",
+      "zh": "“我腿好疼，走不动了。”妈妈抱住米娅。",
+      "pattern": "I can not ___.",
+      "focusWord": "",
+      "focusNote": "",
+      "focusRaw": "—",
+      "knowledge": "低谷：想放弃；hug 故事C已出",
+      "gloss": "",
+      "highlights": [],
+      "learnItems": [],
+      "image": "images/one-hundred-steps/p17.webp",
+      "audioEn": null,
+      "phrase": "My legs hurt.",
+      "phraseZh": "我腿好疼"
+    },
+    {
+      "id": "P18",
+      "index": 18,
+      "en": "**Look**! A white tip on a tail. **Wag**, **wag**!",
+      "zh": "快看！雾里一截白尾巴尖。摇呀摇！",
+      "pattern": "Look! A ___ on a ___.",
+      "focusWord": "look / wag",
+      "focusNote": "第5章 第4课「字母 W · look」；第5章 第4课「字母 W · look」",
+      "focusRaw": "look（第5章 第4课「字母 W · look」）；wag（第5章 第4课「字母 W · look」）",
+      "knowledge": "高潮转机：狐狸在前面带路",
+      "gloss": "摇尾巴",
+      "highlights": [
+        "Look",
+        "Wag",
+        "wag"
+      ],
+      "learnItems": [
+        {
+          "word": "wag",
+          "gloss": "摇尾巴",
+          "image": "images/one-hundred-steps/words/wag.webp"
+        }
+      ],
+      "image": "images/one-hundred-steps/p18.webp",
+      "audioEn": null,
+      "phrase": "Wag, wag!",
+      "phraseZh": "摇呀摇！"
+    },
+    {
+      "id": "P19",
+      "index": 19,
+      "en": "Mia gets up. \"**Count to ninety**!\"",
+      "zh": "米娅站起来。“数到九十！”",
+      "pattern": "Count to ___!",
+      "focusWord": "ninety",
+      "focusNote": "第5章 第1课「数字 50–100」",
+      "focusRaw": "ninety（第5章 第1课「数字 50–100」）",
+      "knowledge": "Count to ninety. 原句；重新出发",
+      "gloss": "",
+      "highlights": [
+        "Count to ninety"
+      ],
+      "learnItems": [],
+      "image": "images/one-hundred-steps/p19.webp",
+      "audioEn": null,
+      "phrase": "Count to ninety!",
+      "phraseZh": "数到九十！"
+    },
+    {
+      "id": "P20",
+      "index": 20,
+      "en": "Up, up, up… **one hundred**! The top!",
+      "zh": "往上、往上、往上……一百！到山顶啦！",
+      "pattern": "Up, up, up…",
+      "focusWord": "one hundred",
+      "focusNote": "第5章 第1课「数字 50–100」",
+      "focusRaw": "one hundred（第5章 第1课「数字 50–100」）",
+      "knowledge": "高潮：自己数完一百级",
+      "gloss": "",
+      "highlights": [
+        "one hundred"
+      ],
+      "learnItems": [],
+      "image": "images/one-hundred-steps/p20.webp",
+      "audioEn": null,
+      "phrase": "one hundred! The top!",
+      "phraseZh": "一百！到山顶啦！"
+    },
+    {
+      "id": "P21",
+      "index": 21,
+      "en": "**Who lives in the hut**? Knock, knock!",
+      "zh": "谁住在小屋里？咚咚咚！",
+      "pattern": "Who lives in the hut?",
+      "focusWord": "hut",
+      "focusNote": "第5章 第3课「谁住在小屋」",
+      "focusRaw": "hut（第5章 第3课「谁住在小屋」）",
+      "knowledge": "第5章 第3课原句；最后悬念",
+      "gloss": "小屋",
+      "highlights": [
+        "Who lives in the hut"
+      ],
+      "learnItems": [
+        {
+          "word": "hut",
+          "gloss": "小屋",
+          "image": "images/one-hundred-steps/words/hut.webp"
+        }
+      ],
+      "image": "images/one-hundred-steps/p21.webp",
+      "audioEn": null,
+      "phrase": "Who lives in the hut?",
+      "phraseZh": "谁住在小屋里？"
+    },
+    {
+      "id": "P22",
+      "index": 22,
+      "en": "Nan is **at** the **desk**. The **fox** is with her!",
+      "zh": "奶奶坐在书桌前。狐狸就在她身边！",
+      "pattern": "Nan is at the ___.",
+      "focusWord": "at / desk / fox",
+      "focusNote": "第5章 第2课「字母 E · at」；第5章 第2课「字母 E · at」；第5章 第3课「谁住在小屋」",
+      "focusRaw": "at（第5章 第2课「字母 E · at」）；desk（第5章 第2课「字母 E · at」）；fox（第5章 第3课「谁住在小屋」）",
+      "knowledge": "反转：守山奶奶 Nan 和狐狸",
+      "gloss": "书桌",
+      "highlights": [
+        "at",
+        "desk",
+        "fox"
+      ],
+      "learnItems": [
+        {
+          "word": "desk",
+          "gloss": "书桌",
+          "image": "images/one-hundred-steps/words/desk.webp"
+        },
+        {
+          "word": "fox",
+          "gloss": "狐狸",
+          "image": "images/one-hundred-steps/words/fox.webp"
+        }
+      ],
+      "image": "images/one-hundred-steps/p22.webp",
+      "audioEn": null,
+      "phrase": "Nan is at the desk.",
+      "phraseZh": "奶奶坐在书桌前。"
+    },
+    {
+      "id": "P23",
+      "index": 23,
+      "en": "\"Red Tip helps kids up!\" Hot noodles in a **wok**!",
+      "zh": "“红尖尖会带小朋友上山！”炒锅里有热面条！",
+      "pattern": "Hot ___ in a ___!",
+      "focusWord": "wok",
+      "focusNote": "第5章 第4课「字母 W · look」",
+      "focusRaw": "wok（第5章 第4课「字母 W · look」）",
+      "knowledge": "真相：狐狸是带路员；暖心招待",
+      "gloss": "炒锅",
+      "highlights": [
+        "wok"
+      ],
+      "learnItems": [
+        {
+          "word": "wok",
+          "gloss": "炒锅",
+          "image": "images/one-hundred-steps/words/wok.webp"
+        }
+      ],
+      "image": "images/one-hundred-steps/p23.webp",
+      "audioEn": null,
+      "phrase": "Hot noodles in a wok!",
+      "phraseZh": "炒锅里有热面条！"
+    },
+    {
+      "id": "P24",
+      "index": 24,
+      "en": "Our **tent** is up. Red Tip **wink**s at Mia.",
+      "zh": "我们的帐篷搭好了。红尖尖冲米娅眨眨眼。",
+      "pattern": "Our ___ is up.",
+      "focusWord": "tent / wink",
+      "focusNote": "第5章 第2课「字母 E · at」；第5章 第4课「字母 W · look」",
+      "focusRaw": "tent（第5章 第2课「字母 E · at」）；wink（第5章 第4课「字母 W · look」）",
+      "knowledge": "结局：山顶日落、搭帐篷；回扣 P15 眨眼",
+      "gloss": "帐篷",
+      "highlights": [
+        "tent",
+        "wink"
+      ],
+      "learnItems": [
+        {
+          "word": "tent",
+          "gloss": "帐篷",
+          "image": "images/one-hundred-steps/words/tent.webp"
+        },
+        {
+          "word": "wink",
+          "gloss": "眨眼",
+          "image": "images/one-hundred-steps/words/wink.webp"
+        }
+      ],
+      "image": "images/one-hundred-steps/p24.webp",
+      "audioEn": null,
+      "phrase": "Our tent is up.",
+      "phraseZh": "我们的帐篷搭好了。"
+    }
+  ],
+  "summarySkipWords": [
+    "mom",
+    "rat"
+  ]
+}

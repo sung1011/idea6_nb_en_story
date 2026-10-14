@@ -199,6 +199,17 @@ export const STORY_WORD_GLOSS = {
   dad: '爸爸',
   tug: '拉',
   lizard: '沙蜥',
+  hut: '小屋',
+  ant: '蚂蚁',
+  deck: '木平台',
+  web: '蜘蛛网',
+  well: '水井',
+  fox: '狐狸',
+  wink: '眨眼',
+  wag: '摇尾巴',
+  desk: '书桌',
+  wok: '炒锅',
+  tent: '帐篷',
 }
 
 const IRREGULAR_LEMMAS = {
@@ -469,14 +480,16 @@ function parseFocus(raw) {
   return { focusWord: word, focusNote: notes.join('；'), focusRaw }
 }
 
-const STORY_ORDER = ['flag-in-the-fog', 'spot-the-cub', 'a-lot-of-dots']
+const STORY_ORDER = ['flag-in-the-fog', 'spot-the-cub', 'a-lot-of-dots', 'the-big-tug', 'one-hundred-steps']
 const STORY_PAGE_COUNTS = {
   'flag-in-the-fog': 22,
   'spot-the-cub': 23,
   'a-lot-of-dots': 24,
+  'the-big-tug': 25,
+  'one-hundred-steps': 24,
 }
 const STORY_TAGS = {
-  'the-big-tug': 'TODO',
+  'one-hundred-steps': 'TODO',
 }
 
 /** Story ids in index.json order. */

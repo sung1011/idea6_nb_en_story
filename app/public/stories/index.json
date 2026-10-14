@@ -17,7 +17,12 @@
   {
     "id": "the-big-tug",
     "title": "The Big Tug!",
-    "titleZh": "沙漠大拔河",
+    "titleZh": "沙漠大拔河"
+  },
+  {
+    "id": "one-hundred-steps",
+    "title": "One Hundred Steps!",
+    "titleZh": "一百级台阶！",
     "tag": "TODO"
   }
 ]
