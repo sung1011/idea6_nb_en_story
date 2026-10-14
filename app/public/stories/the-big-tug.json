@@ -5,10 +5,10 @@
   "version": "",
   "label": "故事 4",
   "scene": "晴朗白天的沙漠（沙丘、仙人掌、绿洲、沙蜥洞口杂物堆）",
-  "structure": "出游 → Hen 睡在包上 → 沙蜥卷走水和包（连 Hen）→ 叽叽声伏笔 → 爸爸伤腿、妈妈留下 → 米娅独自勇敢走向洞口 → 发现杂物堆（礼物盒/球棒/手套/旧布）→ 口香糖粘牙 → 球棒击沙球、手套接水瓶 → 旧布绳拔河，爸妈来帮 → 赢了但沙蜥难过 → 小沙蜥口渴 → 分水成朋友 → 驮全家出沙漠",
-  "notes": "篇幅：26 页 · 每页英文 ≤ 11 词、≤ 50 字符 · 一般现在时 · 画面不写字（礼物标签只印大字母 G）",
+  "structure": "出游 → Hen 睡在包上 → 沙蜥卷走水和包（连 Hen）→ 一家人追赶 → 爸爸伤腿、妈妈留下 → 米娅独自勇敢走向洞口 → 发现杂物堆（礼物盒/球棒/手套/旧布）→ 口香糖粘牙 → 球棒击沙球、手套接水瓶 → 旧布绳拔河，爸妈来帮 → 赢了但沙蜥难过 → 小沙蜥口渴 → 分水成朋友 → 驮全家出沙漠",
+  "notes": "篇幅：25 页 · 每页英文 ≤ 11 词、≤ 50 字符 · 一般现在时 · 画面不写字（礼物标签只印大字母 G）",
   "source": "stories/the-big-tug.md",
-  "pageCount": 26,
+  "pageCount": 25,
   "pages": [
     {
       "id": "P01",
@@ -128,13 +128,13 @@
     {
       "id": "P05",
       "index": 5,
-      "en": "\"My **pet** **hen**!\" Hen is on the bags. Gone!",
-      "zh": "“我的宠物母鸡！”Hen 还在包上，被带走了！",
-      "pattern": "___ is on the ___.",
+      "en": "\"My **pet** **hen**!\" Mia, Mom and Dad run after it.",
+      "zh": "\"我的宠物母鸡！\"米娅和爸爸妈妈追了上去。",
+      "pattern": "My ___ ___!",
       "focusWord": "pet / hen",
       "focusNote": "第4章 第1课「六只母鸡会跳」；第4章 第1课「六只母鸡会跳」",
       "focusRaw": "pet（第4章 第1课「六只母鸡会跳」）；hen（第4章 第1课「六只母鸡会跳」）",
-      "knowledge": "Hen 被一起带走；危机",
+      "knowledge": "沙蜥背着包和 Hen 跑走，一家人追赶",
       "gloss": "宠物",
       "highlights": [
         "pet",
@@ -160,24 +160,6 @@
     {
       "id": "P06",
       "index": 6,
-      "en": "It dives into its hole. Peep, peep! What is that?",
-      "zh": "它钻回洞里。叽叽、叽叽！那是什么声音？",
-      "pattern": "What is that?",
-      "focusWord": "",
-      "focusNote": "",
-      "focusRaw": "—",
-      "knowledge": "拟声 Peep, peep!；伏笔：洞里的小沙蜥",
-      "gloss": "",
-      "highlights": [],
-      "learnItems": [],
-      "image": "images/the-big-tug/p06.webp",
-      "audioEn": null,
-      "phrase": "What is that?",
-      "phraseZh": "那是什么声音？"
-    },
-    {
-      "id": "P07",
-      "index": 7,
       "en": "**Dad** runs and slips. Ouch! His **leg** hurts.",
       "zh": "爸爸跑过去，滑了一跤。哎哟！他的腿受伤了。",
       "pattern": "His ___ hurts.",
@@ -202,14 +184,14 @@
           "image": "images/the-big-tug/words/leg.webp"
         }
       ],
-      "image": "images/the-big-tug/p07.webp",
+      "image": "images/the-big-tug/p06.webp",
       "audioEn": null,
       "phrase": "His leg hurts.",
       "phraseZh": "他的腿受伤了。"
     },
     {
-      "id": "P08",
-      "index": 8,
+      "id": "P07",
+      "index": 7,
       "en": "**Mom** wraps his **leg**. **Mom** stays with **Dad**.",
       "zh": "妈妈包好爸爸的腿，留下来陪着他。",
       "pattern": "___ stays with ___.",
@@ -241,14 +223,14 @@
           "image": "images/the-big-tug/words/dad.webp"
         }
       ],
-      "image": "images/the-big-tug/p08.webp",
+      "image": "images/the-big-tug/p07.webp",
       "audioEn": null,
       "phrase": "Mom wraps his leg",
       "phraseZh": "妈妈包好爸爸的腿"
     },
     {
-      "id": "P09",
-      "index": 9,
+      "id": "P08",
+      "index": 8,
       "en": "\"I can **help**!\" Mia follows the tracks.",
       "zh": "“我能帮忙！”米娅顺着脚印出发。",
       "pattern": "I can help!",
@@ -261,14 +243,14 @@
         "help"
       ],
       "learnItems": [],
-      "image": "images/the-big-tug/p09.webp",
+      "image": "images/the-big-tug/p08.webp",
       "audioEn": null,
       "phrase": "I can help!",
       "phraseZh": "我能帮忙！"
     },
     {
-      "id": "P10",
-      "index": 10,
+      "id": "P09",
+      "index": 9,
       "en": "Step, step. Mia is brave. Her heart goes thump!",
       "zh": "一步，一步。米娅很勇敢，心怦怦跳！",
       "pattern": "Mia is ___.",
@@ -279,14 +261,14 @@
       "gloss": "",
       "highlights": [],
       "learnItems": [],
-      "image": "images/the-big-tug/p10.webp",
+      "image": "images/the-big-tug/p09.webp",
       "audioEn": null,
       "phrase": "Mia is brave.",
       "phraseZh": "米娅很勇敢"
     },
     {
-      "id": "P11",
-      "index": 11,
+      "id": "P10",
+      "index": 10,
       "en": "A pile by its den! A **bat**, a **mitt**, a **rag**!",
       "zh": "洞口有一大堆东西！球棒、手套、旧布！",
       "pattern": "A ___, a ___, a ___!",
@@ -317,14 +299,14 @@
           "image": "images/the-big-tug/words/rag.webp"
         }
       ],
-      "image": "images/the-big-tug/p11.webp",
+      "image": "images/the-big-tug/p10.webp",
       "audioEn": null,
       "phrase": "A bat, a mitt, a rag!",
       "phraseZh": "球棒、手套、旧布！"
     },
     {
-      "id": "P12",
-      "index": 12,
+      "id": "P11",
+      "index": 11,
       "en": "A **gift** box with a **tag**. The **tag** says G.",
       "zh": "一个挂着标签的礼物盒。标签上写着 G。",
       "pattern": "A ___ with a ___.",
@@ -350,14 +332,14 @@
           "image": "images/the-big-tug/words/tag.webp"
         }
       ],
-      "image": "images/the-big-tug/p12.webp",
+      "image": "images/the-big-tug/p11.webp",
       "audioEn": null,
       "phrase": "A gift box with a tag",
       "phraseZh": "一个挂着标签的礼物盒"
     },
     {
-      "id": "P13",
-      "index": 13,
+      "id": "P12",
+      "index": 12,
       "en": "Mia opens the **gift**. Big pink **gum**!",
       "zh": "米娅打开礼物。一大块粉色口香糖！",
       "pattern": "Mia opens the ___.",
@@ -382,14 +364,14 @@
           "image": "images/the-big-tug/words/gum.webp"
         }
       ],
-      "image": "images/the-big-tug/p13.webp",
+      "image": "images/the-big-tug/p12.webp",
       "audioEn": null,
       "phrase": "Big pink gum!",
       "phraseZh": "一大块粉色口香糖！"
     },
     {
-      "id": "P14",
-      "index": 14,
+      "id": "P13",
+      "index": 13,
       "en": "Rumble! The lizard pops out. Its tongue zips!",
       "zh": "轰隆隆！沙蜥冒出来了，舌头嗖地伸出来！",
       "pattern": "The ___ pops out.",
@@ -406,14 +388,14 @@
           "image": "images/the-big-tug/words/lizard.webp"
         }
       ],
-      "image": "images/the-big-tug/p14.webp",
+      "image": "images/the-big-tug/p13.webp",
       "audioEn": null,
       "phrase": "The lizard pops out.",
       "phraseZh": "沙蜥冒出来了"
     },
     {
-      "id": "P15",
-      "index": 15,
+      "id": "P14",
+      "index": 14,
       "en": "Mia tosses the **gum**. A **hit**! Its teeth stick!",
       "zh": "米娅把口香糖扔过去。正中！它的牙被粘住了！",
       "pattern": "Mia tosses the ___.",
@@ -438,14 +420,14 @@
           "image": "images/the-big-tug/words/hit.webp"
         }
       ],
-      "image": "images/the-big-tug/p15.webp",
+      "image": "images/the-big-tug/p14.webp",
       "audioEn": null,
       "phrase": "A hit!",
       "phraseZh": "正中！"
     },
     {
-      "id": "P16",
-      "index": 16,
+      "id": "P15",
+      "index": 15,
       "en": "The lizard kicks sand balls at Mia! Mia swings the **bat**. A big **hit**!",
       "zh": "沙蜥把沙球踢向米娅！米娅挥棒，好一记大击球！",
       "pattern": "A big ___!",
@@ -475,14 +457,14 @@
           "image": "images/the-big-tug/words/lizard.webp"
         }
       ],
-      "image": "images/the-big-tug/p16.webp",
+      "image": "images/the-big-tug/p15.webp",
       "audioEn": null,
       "phrase": "A big hit!",
       "phraseZh": "好一记大击球！"
     },
     {
-      "id": "P17",
-      "index": 17,
+      "id": "P16",
+      "index": 16,
       "en": "Bonk! A bottle pops off the lizard's pile. Mia catches it in the **mitt**!",
       "zh": "砰！一个水瓶从沙蜥的那堆东西上弹了起来。米娅用手套接住了！",
       "pattern": "Mia catches it in the ___!",
@@ -506,14 +488,14 @@
           "image": "images/the-big-tug/words/lizard.webp"
         }
       ],
-      "image": "images/the-big-tug/p17.webp",
+      "image": "images/the-big-tug/p16.webp",
       "audioEn": null,
       "phrase": "in the mitt",
       "phraseZh": "用手套"
     },
     {
-      "id": "P18",
-      "index": 18,
+      "id": "P17",
+      "index": 17,
       "en": "The lizard hides Hen! Mia makes a **rag** rope.",
       "zh": "沙蜥把 Hen 藏起来了！米娅用旧布拧成绳子。",
       "pattern": "Mia makes a ___ rope.",
@@ -537,14 +519,14 @@
           "image": "images/the-big-tug/words/lizard.webp"
         }
       ],
-      "image": "images/the-big-tug/p18.webp",
+      "image": "images/the-big-tug/p17.webp",
       "audioEn": null,
       "phrase": "a rag rope",
       "phraseZh": "用旧布拧成绳子"
     },
     {
-      "id": "P19",
-      "index": 19,
+      "id": "P18",
+      "index": 18,
       "en": "Mia **tugs**. The lizard sits tight. Oh no!",
       "zh": "米娅拉呀拉，沙蜥坐得稳稳的。哎呀！",
       "pattern": "Mia ___s.",
@@ -568,14 +550,14 @@
           "image": "images/the-big-tug/words/lizard.webp"
         }
       ],
-      "image": "images/the-big-tug/p19.webp",
+      "image": "images/the-big-tug/p18.webp",
       "audioEn": null,
       "phrase": "Mia tugs.",
       "phraseZh": "米娅拉呀拉"
     },
     {
-      "id": "P20",
-      "index": 20,
+      "id": "P19",
+      "index": 19,
       "en": "\"**Dad** can **help**!\" **Dad** hops. **Mom** comes too!",
       "zh": "“爸爸来帮忙！”爸爸单脚跳过来，妈妈也来了！",
       "pattern": "Dad can help!",
@@ -602,14 +584,14 @@
           "image": "images/the-big-tug/words/mom.webp"
         }
       ],
-      "image": "images/the-big-tug/p20.webp",
+      "image": "images/the-big-tug/p19.webp",
       "audioEn": null,
       "phrase": "Dad can help!",
       "phraseZh": "爸爸来帮忙！"
     },
     {
-      "id": "P21",
-      "index": 21,
+      "id": "P20",
+      "index": 20,
       "en": "\"We **tug** and **tug**!\" Pop! Out come bags and Hen!",
       "zh": "“我们拉呀拉！”嘭！包和 Hen 都出来了！",
       "pattern": "We tug and tug!",
@@ -629,14 +611,14 @@
           "image": "images/the-big-tug/words/tug.webp"
         }
       ],
-      "image": "images/the-big-tug/p21.webp",
+      "image": "images/the-big-tug/p20.webp",
       "audioEn": null,
       "phrase": "We tug and tug!",
       "phraseZh": "我们拉呀拉！"
     },
     {
-      "id": "P22",
-      "index": 22,
+      "id": "P21",
+      "index": 21,
       "en": "We **win**! But the lizard looks so sad.",
       "zh": "我们赢了！可是沙蜥看起来好难过。",
       "pattern": "We ___!",
@@ -660,21 +642,21 @@
           "image": "images/the-big-tug/words/lizard.webp"
         }
       ],
-      "image": "images/the-big-tug/p22.webp",
+      "image": "images/the-big-tug/p21.webp",
       "audioEn": null,
       "phrase": "We win!",
       "phraseZh": "我们赢了！"
     },
     {
-      "id": "P23",
-      "index": 23,
+      "id": "P22",
+      "index": 22,
       "en": "Peep! A baby lizard in a sand **bed**. So thirsty!",
       "zh": "叽！沙窝小床里有只小沙蜥，好渴呀！",
       "pattern": "A baby ___ in a sand ___.",
       "focusWord": "bed / lizard",
       "focusNote": "第4章 第1课「六只母鸡会跳」；看图词",
       "focusRaw": "bed（第4章 第1课「六只母鸡会跳」）；lizard（看图词）",
-      "knowledge": "回收 P06 伏笔：叽叽声来自小沙蜥",
+      "knowledge": "揭晓：沙蜥抢水是为了洞里口渴的小沙蜥",
       "gloss": "小床",
       "highlights": [
         "bed"
@@ -691,14 +673,14 @@
           "image": "images/the-big-tug/words/lizard.webp"
         }
       ],
-      "image": "images/the-big-tug/p23.webp",
+      "image": "images/the-big-tug/p22.webp",
       "audioEn": null,
       "phrase": "in a sand bed",
       "phraseZh": "沙窝小床里"
     },
     {
-      "id": "P24",
-      "index": 24,
+      "id": "P23",
+      "index": 23,
       "en": "It wants water for its baby!",
       "zh": "它想要水，是为了它的宝宝！",
       "pattern": "It wants ___ for its ___.",
@@ -709,14 +691,14 @@
       "gloss": "",
       "highlights": [],
       "learnItems": [],
-      "image": "images/the-big-tug/p24.webp",
+      "image": "images/the-big-tug/p23.webp",
       "audioEn": null,
       "phrase": "water for its baby",
       "phraseZh": "它想要水"
     },
     {
-      "id": "P25",
-      "index": 25,
+      "id": "P24",
+      "index": 24,
       "en": "Mia gives **one** bottle, then **two**. Glug, glug!",
       "zh": "米娅送出一瓶水，又送一瓶。咕嘟咕嘟！",
       "pattern": "Mia gives one ___, then two.",
@@ -730,14 +712,14 @@
         "two"
       ],
       "learnItems": [],
-      "image": "images/the-big-tug/p25.webp",
+      "image": "images/the-big-tug/p24.webp",
       "audioEn": null,
       "phrase": "one bottle, then two",
       "phraseZh": "一瓶水，又送一瓶"
     },
     {
-      "id": "P26",
-      "index": 26,
+      "id": "P25",
+      "index": 25,
       "en": "The lizard is a friend. Hop on! We all **win**!",
       "zh": "沙蜥成了好朋友。跳上来吧！大家都赢啦！",
       "pattern": "We all ___!",
@@ -761,7 +743,7 @@
           "image": "images/the-big-tug/words/lizard.webp"
         }
       ],
-      "image": "images/the-big-tug/p26.webp",
+      "image": "images/the-big-tug/p25.webp",
       "audioEn": null,
       "phrase": "We all win!",
       "phraseZh": "大家都赢啦！"
