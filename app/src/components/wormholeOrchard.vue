@@ -30,8 +30,13 @@ let shakeTimer: ReturnType<typeof setTimeout> | null = null
 const round = computed(() => chapter.value?.rounds[roundIndex.value] ?? null)
 const item = computed(() => round.value?.items[itemIndex.value] ?? null)
 const isWhole = computed(() => item.value?.mode === 'whole')
-const sceneBg = computed(() => mediaUrl('games/wormhole-orchard/img/sample-ui.webp'))
+const sceneBg = computed(() => mediaUrl('games/wormhole-orchard/img/scene-clean.webp'))
 const leafBg = computed(() => mediaUrl('games/wormhole-orchard/img/leaf.webp'))
+const titleBarBg = computed(() => mediaUrl('games/wormhole-orchard/img/title-bar.webp'))
+const btnBack = computed(() => mediaUrl('games/wormhole-orchard/img/btn-back.webp'))
+const btnSpeaker = computed(() => mediaUrl('games/wormhole-orchard/img/btn-speaker.webp'))
+const starOn = computed(() => mediaUrl('games/wormhole-orchard/img/star-on.webp'))
+const starOff = computed(() => mediaUrl('games/wormhole-orchard/img/star-off.webp'))
 
 function gamesUrl(path: string) {
   return `${import.meta.env.BASE_URL}games/${path}`
@@ -157,22 +162,6 @@ onUnmounted(() => {
 
 <template>
   <section class="orchard">
-    <header class="bar">
-      <button type="button" class="icon-btn tap" aria-label="Back to Games" @click="emit('back')">
-        ←
-      </button>
-      <h1>{{ chapter?.title || 'Worm Hole Orchard' }}</h1>
-      <div class="stars" aria-label="Stars">
-        <span
-          v-for="n in 3"
-          :key="n"
-          class="star"
-          :class="{ on: n <= stars }"
-          aria-hidden="true"
-        >★</span>
-      </div>
-    </header>
-
     <p v-if="error" class="status error">{{ error }}</p>
     <p v-else-if="!chapter" class="status">Loading…</p>
 
@@ -186,11 +175,31 @@ onUnmounted(() => {
 
     <div v-else class="stage" :class="{ bloom }">
       <img class="scene" :src="sceneBg" alt="" draggable="false" />
+
+      <div class="hud" aria-label="Game controls">
+        <img class="title-bar" :src="titleBarBg" alt="" draggable="false" />
+        <button type="button" class="btn-back tap" aria-label="Back to Games" @click="emit('back')">
+          <img :src="btnBack" alt="" draggable="false" />
+        </button>
+        <h1 class="title">{{ chapter?.title || 'Worm Hole Orchard' }}</h1>
+        <div class="stars" aria-label="Stars">
+          <img
+            v-for="n in 3"
+            :key="n"
+            class="star"
+            :src="n <= stars ? starOn : starOff"
+            alt=""
+            draggable="false"
+          />
+        </div>
+      </div>
+
       <div class="hole-wrap" aria-live="polite">
         <div class="hole">
           <span class="hole-text" :class="{ whole: isWhole }">{{ item?.hole }}</span>
         </div>
       </div>
+
       <button
         type="button"
         class="speaker tap"
@@ -198,8 +207,9 @@ onUnmounted(() => {
         title="Listen again"
         @click="replay"
       >
-        🔊
+        <img :src="btnSpeaker" alt="" draggable="false" />
       </button>
+
       <div class="choices" :class="{ shake: shaking }">
         <button
           v-for="choice in shuffled"
@@ -215,6 +225,7 @@ onUnmounted(() => {
           <span class="leaf-text">{{ choice }}</span>
         </button>
       </div>
+
       <p v-if="bloom" class="bloom-note">Fruit bloom! Next round…</p>
     </div>
   </section>
@@ -224,64 +235,18 @@ onUnmounted(() => {
 .orchard {
   max-width: 920px;
   margin: 0 auto;
-  background: var(--paper);
-  border-radius: 28px;
-  box-shadow: var(--shadow);
-  padding: 14px 14px 18px;
+  background: transparent;
+  padding: 0;
   overflow: hidden;
-}
-
-.bar {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin-bottom: 10px;
-}
-
-.bar h1 {
-  flex: 1;
-  margin: 0;
-  text-align: center;
-  font-size: 1.2rem;
-  color: #6b3f1f;
-}
-
-.icon-btn,
-.speaker {
-  width: 48px;
-  height: 48px;
-  min-width: 48px;
-  border: 0;
-  border-radius: 50%;
-  background: #3f9d4a;
-  color: #fff;
-  font-size: 1.25rem;
-  font-weight: 700;
-  box-shadow: 0 4px 0 rgba(47, 63, 59, 0.2);
-}
-
-.stars {
-  display: flex;
-  gap: 4px;
-  min-width: 84px;
-  justify-content: flex-end;
-}
-
-.star {
-  font-size: 1.35rem;
-  color: rgba(47, 63, 59, 0.22);
-  line-height: 1;
-}
-
-.star.on {
-  color: #f0b429;
-  text-shadow: 0 1px 0 rgba(120, 70, 0, 0.25);
 }
 
 .status {
   text-align: center;
   color: var(--muted);
   padding: 40px 12px;
+  background: var(--paper);
+  border-radius: 28px;
+  box-shadow: var(--shadow);
 }
 
 .error {
@@ -294,6 +259,7 @@ onUnmounted(() => {
   overflow: hidden;
   aspect-ratio: 16 / 9;
   background: #9fd0ef;
+  box-shadow: var(--shadow);
 }
 
 .stage.bloom .scene {
@@ -309,10 +275,87 @@ onUnmounted(() => {
   user-select: none;
 }
 
+.hud {
+  position: absolute;
+  left: 50%;
+  top: 2.5%;
+  transform: translateX(-50%);
+  width: min(92%, 640px);
+  height: clamp(48px, 12%, 72px);
+  z-index: 5;
+  pointer-events: none;
+}
+
+.title-bar {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
+  pointer-events: none;
+}
+
+.btn-back {
+  position: absolute;
+  left: 1.5%;
+  top: 50%;
+  transform: translateY(-50%);
+  width: clamp(40px, 11%, 58px);
+  height: clamp(40px, 90%, 58px);
+  padding: 0;
+  border: 0;
+  background: transparent;
+  pointer-events: auto;
+}
+
+.btn-back img,
+.speaker img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  pointer-events: none;
+}
+
+.title {
+  position: absolute;
+  left: 14%;
+  right: 22%;
+  top: 50%;
+  transform: translateY(-50%);
+  margin: 0;
+  text-align: center;
+  font-size: clamp(0.85rem, 2.4vw, 1.25rem);
+  font-weight: 800;
+  color: #6b3f1f;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.35);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  pointer-events: none;
+}
+
+.stars {
+  position: absolute;
+  right: 3%;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  gap: clamp(2px, 0.6vw, 6px);
+  align-items: center;
+  pointer-events: none;
+}
+
+.star {
+  width: clamp(22px, 5.5vw, 34px);
+  height: clamp(22px, 5.5vw, 34px);
+  object-fit: contain;
+}
+
 .hole-wrap {
   position: absolute;
   left: 50%;
-  top: 38%;
+  top: 42%;
   transform: translate(-50%, -50%);
   z-index: 2;
 }
@@ -326,7 +369,7 @@ onUnmounted(() => {
   place-items: center;
   box-shadow:
     inset 0 8px 16px rgba(0, 0, 0, 0.45),
-    0 0 0 6px rgba(190, 40, 40, 0.35);
+    0 0 0 5px rgba(190, 40, 40, 0.28);
 }
 
 .hole-text {
@@ -344,19 +387,24 @@ onUnmounted(() => {
 
 .speaker {
   position: absolute;
-  left: 3%;
-  bottom: 18%;
-  z-index: 3;
+  left: 3.5%;
+  bottom: 14%;
+  z-index: 4;
+  width: clamp(56px, 11vw, 78px);
+  height: clamp(56px, 11vw, 78px);
+  padding: 0;
+  border: 0;
+  background: transparent;
 }
 
 .choices {
   position: absolute;
   left: 50%;
-  bottom: 4%;
+  bottom: 5%;
   transform: translateX(-50%);
   display: flex;
-  gap: clamp(8px, 2vw, 18px);
-  z-index: 3;
+  gap: clamp(10px, 2.4vw, 22px);
+  z-index: 4;
 }
 
 .choices.shake {
@@ -364,8 +412,8 @@ onUnmounted(() => {
 }
 
 .leaf {
-  width: clamp(64px, 14vw, 96px);
-  height: clamp(52px, 11vw, 78px);
+  width: clamp(68px, 14vw, 100px);
+  height: clamp(56px, 11.5vw, 82px);
   min-width: 48px;
   min-height: 48px;
   border: 0;
@@ -380,7 +428,7 @@ onUnmounted(() => {
 }
 
 .leaf.whole {
-  width: clamp(88px, 18vw, 120px);
+  width: clamp(92px, 18vw, 128px);
 }
 
 .leaf:disabled {
@@ -388,6 +436,15 @@ onUnmounted(() => {
 }
 
 .leaf:not(:disabled):active {
+  transform: scale(0.94);
+}
+
+.btn-back:active,
+.speaker:active {
+  transform: translateY(-50%) scale(0.94);
+}
+
+.speaker:active {
   transform: scale(0.94);
 }
 
@@ -404,7 +461,7 @@ onUnmounted(() => {
 .bloom-note {
   position: absolute;
   left: 50%;
-  top: 12%;
+  top: 18%;
   transform: translateX(-50%);
   margin: 0;
   padding: 8px 16px;
@@ -412,7 +469,7 @@ onUnmounted(() => {
   background: rgba(255, 253, 247, 0.92);
   color: #6b3f1f;
   font-weight: 700;
-  z-index: 4;
+  z-index: 6;
   box-shadow: var(--shadow);
 }
 
@@ -421,6 +478,9 @@ onUnmounted(() => {
   display: grid;
   place-items: center;
   padding: 24px;
+  background: var(--paper);
+  border-radius: 28px;
+  box-shadow: var(--shadow);
 }
 
 .done-card {
@@ -474,21 +534,36 @@ onUnmounted(() => {
 }
 
 @media (max-width: 640px) {
-  .orchard {
-    padding: 10px;
+  .stage {
+    aspect-ratio: 4 / 5;
     border-radius: 18px;
   }
 
-  .stage {
-    aspect-ratio: 4 / 5;
+  .hud {
+    top: 2%;
+    width: 94%;
+    height: clamp(44px, 10%, 58px);
+  }
+
+  .title {
+    font-size: clamp(0.78rem, 3.4vw, 1rem);
+    left: 16%;
+    right: 24%;
   }
 
   .hole-wrap {
-    top: 34%;
+    top: 38%;
   }
 
   .speaker {
-    bottom: 22%;
+    left: 4%;
+    bottom: 18%;
+    width: clamp(52px, 16vw, 68px);
+    height: clamp(52px, 16vw, 68px);
+  }
+
+  .choices {
+    bottom: 6%;
   }
 }
 

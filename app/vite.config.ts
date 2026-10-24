@@ -154,7 +154,7 @@ export default defineConfig({
             urlPattern: /\/games\/.*\.(?:webp|png|jpe?g|mp3|json)(?:\?|$)/i,
             handler: 'CacheFirst',
             options: {
-              cacheName: 'games-media-cache-first-v0.6.63',
+              cacheName: 'games-media-cache-first-v0.6.64',
               expiration: {
                 maxEntries: 200,
                 maxAgeSeconds: 60 * 60 * 24 * 30,
