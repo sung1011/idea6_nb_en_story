@@ -22,6 +22,8 @@ const phase = ref<Phase>('listen')
 const shuffled = ref<string[]>([])
 const shaking = ref(false)
 const bloom = ref(false)
+const pickedChoice = ref<string | null>(null)
+const pulseStar = ref(0)
 
 let audio: HTMLAudioElement | null = null
 let advanceTimer: ReturnType<typeof setTimeout> | null = null
@@ -81,6 +83,8 @@ function enterItem(next: OrchardItem) {
   clearTimers()
   shaking.value = false
   bloom.value = false
+  pickedChoice.value = null
+  pulseStar.value = 0
   shuffled.value = shuffleChoices(next.choices)
   phase.value = 'listen'
   playHear(next.hear)
@@ -102,6 +106,8 @@ function goNext() {
     return
   }
   if (roundIndex.value + 1 < rounds.length) {
+    pickedChoice.value = null
+    pulseStar.value = 0
     bloom.value = true
     phase.value = 'bloom'
     advanceTimer = setTimeout(() => {
@@ -114,14 +120,22 @@ function goNext() {
     }, 1100)
     return
   }
+  pickedChoice.value = null
+  pulseStar.value = 0
   phase.value = 'done'
 }
 
 function choose(choice: string) {
   if (phase.value !== 'choose' || !item.value) return
   if (choice === item.value.answer) {
+    pickedChoice.value = choice
+    if (stars.value < 3) {
+      stars.value += 1
+      pulseStar.value = stars.value
+    } else {
+      pulseStar.value = 0
+    }
     phase.value = 'correct'
-    if (stars.value < 3) stars.value += 1
     advanceTimer = setTimeout(() => goNext(), 650)
     return
   }
@@ -187,6 +201,7 @@ onUnmounted(() => {
             v-for="n in 3"
             :key="n"
             class="star"
+            :class="{ 'star-pulse': pulseStar === n }"
             :src="n <= stars ? starOn : starOff"
             alt=""
             draggable="false"
@@ -198,6 +213,7 @@ onUnmounted(() => {
         <div class="hole">
           <span class="hole-text" :class="{ whole: isWhole }">{{ item?.hole }}</span>
         </div>
+        <p v-if="phase === 'correct'" class="great">Great!</p>
       </div>
 
       <button
@@ -216,7 +232,7 @@ onUnmounted(() => {
           :key="`${round?.id}-${itemIndex}-${choice}`"
           type="button"
           class="leaf tap"
-          :class="{ whole: isWhole }"
+          :class="{ whole: isWhole, 'leaf-correct': phase === 'correct' && pickedChoice === choice }"
           :style="{ backgroundImage: `url(${leafBg})` }"
           :disabled="phase !== 'choose' && phase !== 'wrong'"
           :aria-label="`Choose ${choice}`"
@@ -352,12 +368,34 @@ onUnmounted(() => {
   object-fit: contain;
 }
 
+.star.star-pulse {
+  animation: star-pulse 0.5s ease;
+}
+
 .hole-wrap {
   position: absolute;
   left: 50%;
   top: 42%;
   transform: translate(-50%, -50%);
   z-index: 2;
+}
+
+.great {
+  position: absolute;
+  left: 50%;
+  top: calc(100% + 10px);
+  transform: translateX(-50%);
+  margin: 0;
+  padding: 4px 12px;
+  border-radius: 999px;
+  background: rgba(255, 253, 247, 0.92);
+  color: #1f8a80;
+  font-weight: 800;
+  font-size: clamp(0.95rem, 2.4vw, 1.15rem);
+  white-space: nowrap;
+  box-shadow: var(--shadow);
+  animation: great-in 0.45s ease both;
+  pointer-events: none;
 }
 
 .hole {
@@ -437,6 +475,10 @@ onUnmounted(() => {
 
 .leaf:not(:disabled):active {
   transform: scale(0.94);
+}
+
+.leaf.leaf-correct {
+  animation: leaf-bounce 0.45s ease;
 }
 
 .btn-back:active,
@@ -533,6 +575,44 @@ onUnmounted(() => {
   }
 }
 
+@keyframes leaf-bounce {
+  0% {
+    transform: scale(1);
+  }
+  35% {
+    transform: scale(1.14);
+  }
+  65% {
+    transform: scale(0.96);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes great-in {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, 8px);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+}
+
+@keyframes star-pulse {
+  0% {
+    transform: scale(1);
+  }
+  40% {
+    transform: scale(1.28);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
 @media (max-width: 640px) {
   .stage {
     aspect-ratio: 4 / 5;
@@ -568,8 +648,16 @@ onUnmounted(() => {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .choices.shake {
+  .choices.shake,
+  .leaf.leaf-correct,
+  .star.star-pulse {
     animation: none;
+  }
+
+  .great {
+    animation: none;
+    opacity: 1;
+    transform: translateX(-50%);
   }
 }
 </style>
