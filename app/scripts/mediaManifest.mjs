@@ -35,5 +35,6 @@ export function buildMediaManifest(publicDir) {
 
   walk('images')
   walk('audio')
+  walk('games')
   return manifest
 }

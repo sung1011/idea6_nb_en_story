@@ -20,6 +20,7 @@ const props = defineProps<{
 
 const emit = defineEmits<{
   select: [id: string]
+  practice: []
 }>()
 
 const pageCount = computed(() => props.story.pageCount || props.story.pages.length)
@@ -42,6 +43,12 @@ const {
   stop,
 } = usePageSpeech(page)
 const { cancelAuto } = useAutoRead(page, onSummary, ready, playLine, stop)
+
+function openPractice() {
+  stop()
+  cancelAuto()
+  emit('practice')
+}
 
 const learnItems = computed(() => page.value?.learnItems ?? [])
 const learnWords = computed(() => learnItems.value.map((item) => item.word))
@@ -335,7 +342,12 @@ onUnmounted(() => {
           {{ story.title }}<span v-if="story.titleZh" class="title-zh"> · {{ story.titleZh }}</span>
         </h1>
       </div>
-      <AppSettings :cache-label="cacheLabel" :cache-fade="cacheFade" />
+      <div class="top-actions">
+        <button type="button" class="practice-btn tap" aria-label="Practice Island" @click="openPractice">
+          Practice
+        </button>
+        <AppSettings :cache-label="cacheLabel" :cache-fade="cacheFade" />
+      </div>
     </header>
 
     <template v-if="!onSummary">
@@ -495,6 +507,29 @@ onUnmounted(() => {
   min-width: 0;
   flex: 1;
 }
+.top-actions {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.practice-btn {
+  min-height: 40px;
+  padding: 0 14px;
+  border: 2px solid var(--outline);
+  border-radius: 999px;
+  background: rgba(224, 106, 78, 0.16);
+  color: #b2452f;
+  font: inherit;
+  font-size: 0.92rem;
+  font-weight: 700;
+}
+
+.practice-btn:active {
+  transform: scale(0.96);
+}
+
 
 h1 {
   margin: 0;

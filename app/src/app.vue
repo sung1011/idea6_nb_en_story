@@ -1,14 +1,24 @@
 <script setup lang="ts">
 import { onMounted, ref } from 'vue'
 import StoryReader from './components/storyReader.vue'
+import PracticeHub from './components/practiceHub.vue'
+import PracticeGames from './components/practiceGames.vue'
+import WormholeOrchard from './components/wormholeOrchard.vue'
 import type { Story } from './types/story'
 import { parseStoryIndex, type StoryIndexEntry } from './types/storyIndex'
 import { progressKey, SELECTED_STORY_KEY } from './utils/appStorage'
+
+type Mode = 'story' | 'practice'
+type PracticeView = 'hub' | 'games' | 'orchard'
 
 const catalog = ref<StoryIndexEntry[]>([])
 const story = ref<Story | null>(null)
 const error = ref('')
 const readerGen = ref(0)
+const mode = ref<Mode>('story')
+const practiceView = ref<PracticeView>('hub')
+const practiceStoryId = ref('')
+const orchardStoryId = ref('')
 
 function storiesUrl(file: string) {
   return `${import.meta.env.BASE_URL}stories/${file}`
@@ -46,6 +56,42 @@ async function selectStory(id: string) {
   await openStory(id, true)
 }
 
+function openPractice() {
+  practiceView.value = 'hub'
+  practiceStoryId.value = ''
+  orchardStoryId.value = ''
+  mode.value = 'practice'
+}
+
+function backToStory() {
+  mode.value = 'story'
+  practiceView.value = 'hub'
+  practiceStoryId.value = ''
+  orchardStoryId.value = ''
+}
+
+function pickChapter(storyId: string) {
+  practiceStoryId.value = storyId
+  practiceView.value = 'games'
+}
+
+function backToHub() {
+  practiceView.value = 'hub'
+  practiceStoryId.value = ''
+  orchardStoryId.value = ''
+}
+
+function playGame(gameId: string, storyId: string) {
+  if (gameId !== 'wormhole-orchard') return
+  orchardStoryId.value = storyId
+  practiceView.value = 'orchard'
+}
+
+function backFromOrchard() {
+  practiceView.value = 'games'
+  orchardStoryId.value = ''
+}
+
 onMounted(async () => {
   try {
     const response = await fetch(storiesUrl('index.json'))
@@ -68,6 +114,26 @@ onMounted(async () => {
 <template>
   <main class="shell">
     <p v-if="error" class="status error">{{ error }}</p>
+    <template v-else-if="mode === 'practice'">
+      <PracticeHub
+        v-if="practiceView === 'hub'"
+        :stories="catalog"
+        @back="backToStory"
+        @pick-chapter="pickChapter"
+      />
+      <PracticeGames
+        v-else-if="practiceView === 'games'"
+        :story-id="practiceStoryId"
+        :stories="catalog"
+        @back="backToHub"
+        @play="playGame"
+      />
+      <WormholeOrchard
+        v-else-if="practiceView === 'orchard'"
+        :story-id="orchardStoryId"
+        @back="backFromOrchard"
+      />
+    </template>
     <p v-else-if="!story" class="status">Loading story…</p>
     <StoryReader
       v-else
@@ -75,6 +141,7 @@ onMounted(async () => {
       :story="story"
       :stories="catalog"
       @select="selectStory"
+      @practice="openPractice"
     />
   </main>
 </template>

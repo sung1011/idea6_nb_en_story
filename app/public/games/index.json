@@ -1,0 +1,11 @@
+{
+  "games": [
+    {
+      "id": "wormhole-orchard",
+      "title": "Worm Hole Orchard",
+      "titleZh": "虫洞果园",
+      "cover": "games/wormhole-orchard/img/sample-ui.webp",
+      "openStoryIds": ["one-hundred-steps"]
+    }
+  ]
+}

@@ -1,0 +1,34 @@
+{
+  "storyId": "one-hundred-steps",
+  "title": "Worm Hole Orchard",
+  "titleZh": "虫洞果园",
+  "rounds": [
+    {
+      "id": "r1",
+      "fruit": "red",
+      "items": [
+        { "hole": "_at", "hear": "ant", "answer": "a", "choices": ["a", "e", "o"] },
+        { "hole": "_ox", "hear": "fox", "answer": "f", "choices": ["f", "b", "p"] },
+        { "hole": "_ut", "hear": "hut", "answer": "h", "choices": ["h", "b", "n"] }
+      ]
+    },
+    {
+      "id": "r2",
+      "fruit": "yellow",
+      "items": [
+        { "hole": "w_ll", "hear": "well", "answer": "e", "choices": ["e", "a", "i"] },
+        { "hole": "w_b", "hear": "web", "answer": "e", "choices": ["e", "a", "i"] },
+        { "hole": "w_k", "hear": "wok", "answer": "o", "choices": ["o", "a", "u"] }
+      ]
+    },
+    {
+      "id": "r3",
+      "fruit": "green",
+      "items": [
+        { "hole": "wa_", "hear": "wag", "answer": "g", "choices": ["g", "d", "t"] },
+        { "hole": "win_", "hear": "wink", "answer": "k", "choices": ["k", "t", "p"] },
+        { "hole": "____", "hear": "tent", "answer": "tent", "choices": ["tent", "desk", "deck"], "mode": "whole" }
+      ]
+    }
+  ]
+}
