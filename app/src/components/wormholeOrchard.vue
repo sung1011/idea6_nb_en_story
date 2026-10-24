@@ -158,7 +158,7 @@ onUnmounted(() => {
 <template>
   <section class="orchard">
     <header class="bar">
-      <button type="button" class="icon-btn tap" aria-label="Back to Practice" @click="emit('back')">
+      <button type="button" class="icon-btn tap" aria-label="Back to Games" @click="emit('back')">
         ←
       </button>
       <h1>{{ chapter?.title || 'Worm Hole Orchard' }}</h1>
@@ -180,7 +180,7 @@ onUnmounted(() => {
       <div class="done-card">
         <p class="done-title">You did it!</p>
         <p class="done-sub">All three fruit rounds are complete.</p>
-        <button type="button" class="primary tap" @click="emit('back')">Back to Practice</button>
+        <button type="button" class="primary tap" @click="emit('back')">Back to Games</button>
       </div>
     </div>
 

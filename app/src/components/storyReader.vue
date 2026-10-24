@@ -343,8 +343,8 @@ onUnmounted(() => {
         </h1>
       </div>
       <div class="top-actions">
-        <button type="button" class="practice-btn tap" aria-label="Practice Island" @click="openPractice">
-          Practice
+        <button type="button" class="practice-btn tap" aria-label="Games" @click="openPractice">
+          Games
         </button>
         <AppSettings :cache-label="cacheLabel" :cache-fade="cacheFade" />
       </div>

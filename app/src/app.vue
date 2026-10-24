@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { onMounted, ref } from 'vue'
 import StoryReader from './components/storyReader.vue'
-import PracticeHub from './components/practiceHub.vue'
 import PracticeGames from './components/practiceGames.vue'
 import WormholeOrchard from './components/wormholeOrchard.vue'
 import type { Story } from './types/story'
@@ -9,14 +8,14 @@ import { parseStoryIndex, type StoryIndexEntry } from './types/storyIndex'
 import { progressKey, SELECTED_STORY_KEY } from './utils/appStorage'
 
 type Mode = 'story' | 'practice'
-type PracticeView = 'hub' | 'games' | 'orchard'
+type PracticeView = 'games' | 'orchard'
 
 const catalog = ref<StoryIndexEntry[]>([])
 const story = ref<Story | null>(null)
 const error = ref('')
 const readerGen = ref(0)
 const mode = ref<Mode>('story')
-const practiceView = ref<PracticeView>('hub')
+const practiceView = ref<PracticeView>('games')
 const practiceStoryId = ref('')
 const orchardStoryId = ref('')
 
@@ -57,27 +56,17 @@ async function selectStory(id: string) {
 }
 
 function openPractice() {
-  practiceView.value = 'hub'
-  practiceStoryId.value = ''
+  const id = story.value?.id
+  if (!id) return
+  practiceStoryId.value = id
   orchardStoryId.value = ''
+  practiceView.value = 'games'
   mode.value = 'practice'
 }
 
 function backToStory() {
   mode.value = 'story'
-  practiceView.value = 'hub'
-  practiceStoryId.value = ''
-  orchardStoryId.value = ''
-}
-
-function pickChapter(storyId: string) {
-  practiceStoryId.value = storyId
   practiceView.value = 'games'
-}
-
-function backToHub() {
-  practiceView.value = 'hub'
-  practiceStoryId.value = ''
   orchardStoryId.value = ''
 }
 
@@ -115,17 +104,11 @@ onMounted(async () => {
   <main class="shell">
     <p v-if="error" class="status error">{{ error }}</p>
     <template v-else-if="mode === 'practice'">
-      <PracticeHub
-        v-if="practiceView === 'hub'"
-        :stories="catalog"
-        @back="backToStory"
-        @pick-chapter="pickChapter"
-      />
       <PracticeGames
-        v-else-if="practiceView === 'games'"
+        v-if="practiceView === 'games'"
         :story-id="practiceStoryId"
         :stories="catalog"
-        @back="backToHub"
+        @back="backToStory"
         @play="playGame"
       />
       <WormholeOrchard

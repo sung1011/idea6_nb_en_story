@@ -41,7 +41,7 @@ onMounted(async () => {
 <template>
   <section class="games">
     <header class="bar">
-      <button type="button" class="back tap" aria-label="Back to chapters" @click="emit('back')">
+      <button type="button" class="back tap" aria-label="Back to story" @click="emit('back')">
         ← Back
       </button>
       <div class="titles">
