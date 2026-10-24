@@ -1,5 +1,11 @@
 [
   {
+    "id": "v0.6.65",
+    "version": "0.6.65",
+    "date": "2026-10-24",
+    "summary": "Worm Hole Orchard: transparent leaf choice buttons (no opaque square background)."
+  },
+  {
     "id": "v0.6.64",
     "version": "0.6.64",
     "date": "2026-10-24",
@@ -15,7 +21,7 @@
     "id": "v0.6.62",
     "version": "0.6.62",
     "date": "2026-10-24",
-    "summary": "Practice Island: unlock Worm Hole Orchard for Stories 1–4 with new chapter levels and word audio."
+    "summary": "Practice Island: unlock Worm Hole Orchard for Stories 1\u20134 with new chapter levels and word audio."
   },
   {
     "id": "v0.6.61",
@@ -135,7 +141,7 @@
     "id": "v0.6.42",
     "version": "0.6.42",
     "date": "2026-10-13",
-    "summary": "Removed the Slow button. Page narration speed is now set with Voice speed in Settings (50–100%, default 100%)."
+    "summary": "Removed the Slow button. Page narration speed is now set with Voice speed in Settings (50\u2013100%, default 100%)."
   },
   {
     "id": "v0.6.41",
@@ -165,7 +171,7 @@
     "id": "v0.6.37",
     "version": "0.6.37",
     "date": "2026-10-12",
-    "summary": "Story 3: rewrote pages 7–10 — the pup's accident, Mia's worry, and friends rushing to help; new art for pages 9–10; page 12 shortened to “Mia pins it up. The wind! The pin is out!”. Narration for pages 6–10 and 12 temporarily uses the device voice."
+    "summary": "Story 3: rewrote pages 7\u201310 \u2014 the pup's accident, Mia's worry, and friends rushing to help; new art for pages 9\u201310; page 12 shortened to \u201cMia pins it up. The wind! The pin is out!\u201d. Narration for pages 6\u201310 and 12 temporarily uses the device voice."
   },
   {
     "id": "v0.6.36",
@@ -333,7 +339,7 @@
     "id": "v0.6.9",
     "version": "0.6.9",
     "date": "2026-10-08",
-    "summary": "Slow read: new Slow button under 中文 plays the sentence at a slower speed; set Slow speed in Settings → General (default 60%)"
+    "summary": "Slow read: new Slow button under \u4e2d\u6587 plays the sentence at a slower speed; set Slow speed in Settings \u2192 General (default 60%)"
   },
   {
     "id": "v0.6.8",
@@ -411,7 +417,7 @@
     "id": "v0.6.2-zh",
     "version": "0.6.2",
     "date": "2026-10-08",
-    "summary": "The 中文 button now sits to the left of the English sentence."
+    "summary": "The \u4e2d\u6587 button now sits to the left of the English sentence."
   },
   {
     "id": "v0.6.2",
@@ -495,42 +501,42 @@
     "id": "v0.5.2",
     "version": "0.5.2",
     "date": "2026-10-07",
-    "summary": "设置里可以「检查更新」和「清除缓存」，阅读进度还在"
+    "summary": "\u8bbe\u7f6e\u91cc\u53ef\u4ee5\u300c\u68c0\u67e5\u66f4\u65b0\u300d\u548c\u300c\u6e05\u9664\u7f13\u5b58\u300d\uff0c\u9605\u8bfb\u8fdb\u5ea6\u8fd8\u5728"
   },
   {
     "id": "v0.5.1",
     "version": "0.5.1",
     "date": "2026-10-07",
-    "summary": "接入《雾里的旗》22 页软陶插图；阅读器显示真实画稿，插图运行时 Cache First"
+    "summary": "\u63a5\u5165\u300a\u96fe\u91cc\u7684\u65d7\u300b22 \u9875\u8f6f\u9676\u63d2\u56fe\uff1b\u9605\u8bfb\u5668\u663e\u793a\u771f\u5b9e\u753b\u7a3f\uff0c\u63d2\u56fe\u8fd0\u884c\u65f6 Cache First"
   },
   {
     "id": "v0.5.0",
     "version": "0.5.0",
     "date": "2026-10-07",
-    "summary": "PWA：可安装到主屏幕，预缓存阅读器壳与故事 JSON，音频运行时 Cache First"
+    "summary": "PWA\uff1a\u53ef\u5b89\u88c5\u5230\u4e3b\u5c4f\u5e55\uff0c\u9884\u7f13\u5b58\u9605\u8bfb\u5668\u58f3\u4e0e\u6545\u4e8b JSON\uff0c\u97f3\u9891\u8fd0\u884c\u65f6 Cache First"
   },
   {
     "id": "v0.4.0",
     "version": "0.4.0",
     "date": "2026-10-07",
-    "summary": "Stage 6 点词学习：点加粗焦点词看中文短义，再听词级 Ana；点喇叭或其余句子听整句"
+    "summary": "Stage 6 \u70b9\u8bcd\u5b66\u4e60\uff1a\u70b9\u52a0\u7c97\u7126\u70b9\u8bcd\u770b\u4e2d\u6587\u77ed\u4e49\uff0c\u518d\u542c\u8bcd\u7ea7 Ana\uff1b\u70b9\u5587\u53ed\u6216\u5176\u4f59\u53e5\u5b50\u542c\u6574\u53e5"
   },
   {
     "id": "v0.3.0",
     "version": "0.3.0",
     "date": "2026-10-07",
-    "summary": "Stage 5 TTS：预生成 Ana / 晓晓朗读，点句子播放，缺文件回退系统语音"
+    "summary": "Stage 5 TTS\uff1a\u9884\u751f\u6210 Ana / \u6653\u6653\u6717\u8bfb\uff0c\u70b9\u53e5\u5b50\u64ad\u653e\uff0c\u7f3a\u6587\u4ef6\u56de\u9000\u7cfb\u7edf\u8bed\u97f3"
   },
   {
     "id": "v0.2.0",
     "version": "0.2.0",
     "date": "2026-10-07",
-    "summary": "设置面板：版本记录、更新提示、GM 初始化"
+    "summary": "\u8bbe\u7f6e\u9762\u677f\uff1a\u7248\u672c\u8bb0\u5f55\u3001\u66f4\u65b0\u63d0\u793a\u3001GM \u521d\u59cb\u5316"
   },
   {
     "id": "v0.1.0",
     "version": "0.1.0",
     "date": "2026-10-07",
-    "summary": "绘本阅读器：中英对照、续读、软陶占位图"
+    "summary": "\u7ed8\u672c\u9605\u8bfb\u5668\uff1a\u4e2d\u82f1\u5bf9\u7167\u3001\u7eed\u8bfb\u3001\u8f6f\u9676\u5360\u4f4d\u56fe"
   }
 ]
