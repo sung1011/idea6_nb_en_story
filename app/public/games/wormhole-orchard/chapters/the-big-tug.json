@@ -1,0 +1,116 @@
+{
+  "storyId": "the-big-tug",
+  "title": "Worm Hole Orchard",
+  "titleZh": "虫洞果园",
+  "rounds": [
+    {
+      "id": "r1",
+      "fruit": "red",
+      "items": [
+        {
+          "hole": "_en",
+          "hear": "hen",
+          "answer": "h",
+          "choices": [
+            "h",
+            "p",
+            "d"
+          ]
+        },
+        {
+          "hole": "b_d",
+          "hear": "bed",
+          "answer": "e",
+          "choices": [
+            "e",
+            "a",
+            "i"
+          ]
+        },
+        {
+          "hole": "p_t",
+          "hear": "pet",
+          "answer": "e",
+          "choices": [
+            "e",
+            "a",
+            "o"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "r2",
+      "fruit": "yellow",
+      "items": [
+        {
+          "hole": "g_m",
+          "hear": "gum",
+          "answer": "u",
+          "choices": [
+            "u",
+            "a",
+            "i"
+          ]
+        },
+        {
+          "hole": "t_g",
+          "hear": "tag",
+          "answer": "a",
+          "choices": [
+            "a",
+            "u",
+            "o"
+          ]
+        },
+        {
+          "hole": "r_g",
+          "hear": "rag",
+          "answer": "a",
+          "choices": [
+            "a",
+            "u",
+            "i"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "r3",
+      "fruit": "green",
+      "items": [
+        {
+          "hole": "_at",
+          "hear": "bat",
+          "answer": "b",
+          "choices": [
+            "b",
+            "h",
+            "c"
+          ]
+        },
+        {
+          "hole": "hi_",
+          "hear": "hit",
+          "answer": "t",
+          "choices": [
+            "t",
+            "p",
+            "d"
+          ]
+        },
+        {
+          "hole": "____",
+          "hear": "tug",
+          "answer": "tug",
+          "choices": [
+            "tug",
+            "bat",
+            "hen"
+          ],
+          "mode": "whole"
+        }
+      ]
+    }
+  ]
+}

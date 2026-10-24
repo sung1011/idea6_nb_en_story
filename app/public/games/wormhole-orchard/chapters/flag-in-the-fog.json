@@ -1,0 +1,116 @@
+{
+  "storyId": "flag-in-the-fog",
+  "title": "Worm Hole Orchard",
+  "titleZh": "虫洞果园",
+  "rounds": [
+    {
+      "id": "r1",
+      "fruit": "red",
+      "items": [
+        {
+          "hole": "_ap",
+          "hear": "map",
+          "answer": "m",
+          "choices": [
+            "m",
+            "n",
+            "s"
+          ]
+        },
+        {
+          "hole": "_og",
+          "hear": "fog",
+          "answer": "f",
+          "choices": [
+            "f",
+            "d",
+            "l"
+          ]
+        },
+        {
+          "hole": "_en",
+          "hear": "den",
+          "answer": "d",
+          "choices": [
+            "d",
+            "p",
+            "h"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "r2",
+      "fruit": "yellow",
+      "items": [
+        {
+          "hole": "_ag",
+          "hear": "bag",
+          "answer": "b",
+          "choices": [
+            "b",
+            "r",
+            "t"
+          ]
+        },
+        {
+          "hole": "_in",
+          "hear": "tin",
+          "answer": "t",
+          "choices": [
+            "t",
+            "p",
+            "b"
+          ]
+        },
+        {
+          "hole": "_un",
+          "hear": "bun",
+          "answer": "b",
+          "choices": [
+            "b",
+            "r",
+            "s"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "r3",
+      "fruit": "green",
+      "items": [
+        {
+          "hole": "r_t",
+          "hear": "rat",
+          "answer": "a",
+          "choices": [
+            "a",
+            "e",
+            "i"
+          ]
+        },
+        {
+          "hole": "r_ck",
+          "hear": "rock",
+          "answer": "o",
+          "choices": [
+            "o",
+            "a",
+            "i"
+          ]
+        },
+        {
+          "hole": "____",
+          "hear": "hill",
+          "answer": "hill",
+          "choices": [
+            "hill",
+            "den",
+            "fog"
+          ],
+          "mode": "whole"
+        }
+      ]
+    }
+  ]
+}

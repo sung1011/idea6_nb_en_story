@@ -1,0 +1,116 @@
+{
+  "storyId": "a-lot-of-dots",
+  "title": "Worm Hole Orchard",
+  "titleZh": "虫洞果园",
+  "rounds": [
+    {
+      "id": "r1",
+      "fruit": "red",
+      "items": [
+        {
+          "hole": "_ig",
+          "hear": "pig",
+          "answer": "p",
+          "choices": [
+            "p",
+            "f",
+            "w"
+          ]
+        },
+        {
+          "hole": "_ig",
+          "hear": "fig",
+          "answer": "f",
+          "choices": [
+            "f",
+            "p",
+            "b"
+          ]
+        },
+        {
+          "hole": "_ig",
+          "hear": "wig",
+          "answer": "w",
+          "choices": [
+            "w",
+            "p",
+            "f"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "r2",
+      "fruit": "yellow",
+      "items": [
+        {
+          "hole": "c_t",
+          "hear": "cat",
+          "answer": "a",
+          "choices": [
+            "a",
+            "u",
+            "o"
+          ]
+        },
+        {
+          "hole": "c_p",
+          "hear": "cup",
+          "answer": "u",
+          "choices": [
+            "u",
+            "a",
+            "i"
+          ]
+        },
+        {
+          "hole": "c_b",
+          "hear": "cab",
+          "answer": "a",
+          "choices": [
+            "a",
+            "u",
+            "o"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "r3",
+      "fruit": "green",
+      "items": [
+        {
+          "hole": "pu_",
+          "hear": "pup",
+          "answer": "p",
+          "choices": [
+            "p",
+            "n",
+            "t"
+          ]
+        },
+        {
+          "hole": "pi_",
+          "hear": "pin",
+          "answer": "n",
+          "choices": [
+            "n",
+            "g",
+            "t"
+          ]
+        },
+        {
+          "hole": "____",
+          "hear": "sock",
+          "answer": "sock",
+          "choices": [
+            "sock",
+            "pig",
+            "cup"
+          ],
+          "mode": "whole"
+        }
+      ]
+    }
+  ]
+}

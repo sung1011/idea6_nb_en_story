@@ -5,7 +5,13 @@
       "title": "Worm Hole Orchard",
       "titleZh": "虫洞果园",
       "cover": "games/wormhole-orchard/img/sample-ui.webp",
-      "openStoryIds": ["one-hundred-steps"]
+      "openStoryIds": [
+        "flag-in-the-fog",
+        "spot-the-cub",
+        "a-lot-of-dots",
+        "the-big-tug",
+        "one-hundred-steps"
+      ]
     }
   ]
 }

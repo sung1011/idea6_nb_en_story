@@ -1,0 +1,116 @@
+{
+  "storyId": "spot-the-cub",
+  "title": "Worm Hole Orchard",
+  "titleZh": "虫洞果园",
+  "rounds": [
+    {
+      "id": "r1",
+      "fruit": "red",
+      "items": [
+        {
+          "hole": "_ub",
+          "hear": "cub",
+          "answer": "c",
+          "choices": [
+            "c",
+            "t",
+            "b"
+          ]
+        },
+        {
+          "hole": "_og",
+          "hear": "log",
+          "answer": "l",
+          "choices": [
+            "l",
+            "d",
+            "f"
+          ]
+        },
+        {
+          "hole": "w_t",
+          "hear": "wet",
+          "answer": "e",
+          "choices": [
+            "e",
+            "a",
+            "i"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "r2",
+      "fruit": "yellow",
+      "items": [
+        {
+          "hole": "_ug",
+          "hear": "rug",
+          "answer": "r",
+          "choices": [
+            "r",
+            "b",
+            "m"
+          ]
+        },
+        {
+          "hole": "_ug",
+          "hear": "bug",
+          "answer": "b",
+          "choices": [
+            "b",
+            "r",
+            "h"
+          ]
+        },
+        {
+          "hole": "_ug",
+          "hear": "mug",
+          "answer": "m",
+          "choices": [
+            "m",
+            "b",
+            "r"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "r3",
+      "fruit": "green",
+      "items": [
+        {
+          "hole": "n_p",
+          "hear": "nap",
+          "answer": "a",
+          "choices": [
+            "a",
+            "e",
+            "o"
+          ]
+        },
+        {
+          "hole": "hu_",
+          "hear": "hug",
+          "answer": "g",
+          "choices": [
+            "g",
+            "t",
+            "d"
+          ]
+        },
+        {
+          "hole": "____",
+          "hear": "mom",
+          "answer": "mom",
+          "choices": [
+            "mom",
+            "cub",
+            "bug"
+          ],
+          "mode": "whole"
+        }
+      ]
+    }
+  ]
+}
