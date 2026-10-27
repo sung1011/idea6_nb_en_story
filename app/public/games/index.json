@@ -25,6 +25,19 @@
         "the-big-tug",
         "one-hundred-steps"
       ]
+    },
+    {
+      "id": "wormhole-spotlight",
+      "title": "Wormhole Spotlight",
+      "titleZh": "虫洞探照灯",
+      "cover": "games/wormhole-spotlight/img/sample-ui.webp",
+      "openStoryIds": [
+        "flag-in-the-fog",
+        "spot-the-cub",
+        "a-lot-of-dots",
+        "the-big-tug",
+        "one-hundred-steps"
+      ]
     }
   ]
 }

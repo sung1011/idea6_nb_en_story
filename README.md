@@ -79,6 +79,8 @@ node scripts/genEnTimings.mjs
 | `app/public/audio/spot-the-cub/` | Spot the Cub 页级英文朗读和 `timings.json` |
 | `app/public/audio/a-lot-of-dots/` | A Lot of Dots! 页级英文朗读（`p01-en.mp3` … `p24-en.mp3`） |
 | `app/public/versions.json` | 版本记录（最新在前）；每次有意义的发布追加一条 |
+| `app/public/games/index.json` | Games 目录：虫洞果园、词卡小园、虫洞探照灯 |
+| `app/src/components/wormholeSpotlight.vue` | 虫洞探照灯：听目标词，在可拖动圆形灯光里点 3 张词图之一 |
 | `app/assets/icon-master.png` | 软陶风应用图标母版（1024，不进 public） |
 | `app/scripts/makePwaIcons.py` | 从母版生成 `pwa512` / `pwa192` / `appleTouchIcon` / `favicon.png` |
 | `app/public/pwa192.png` / `pwa512.png` | PWA 安装图标（Mia 软陶风） |
@@ -99,8 +101,9 @@ node scripts/genEnTimings.mjs
 - 阅读卡标题行右侧 **Settings** 齿轮：齿轮上方有淡淡的 `Cached N/M pages`（按页计；该页图、英 mp3 和词图都齐才算一页）。`General` 顶部有 **Add to Home Screen** 卡片（已是独立窗口或安装完成后隐藏；从不自动弹窗）。`General` 里还有 **Auto read**、**Read Chinese**（默认开；关掉后自动朗读跳过中文）和 **Voice speed**（50%–100%，步进 10，默认 100%；只作用于整页英文朗读）。下一页未缓存完时 Next 略微变暗，仍可点。`Version` 显示已安装版本，并始终列出最近 10 个按版本号合并的更新（同号多条摘要合成一行）；可 **Check for updates**（立刻拉取 `versions.json`，无新版本 toast **You're up to date.**，有则 **Update available**）和 **Clear cache**（toast **Cache cleared.** 约 2 秒后注销 Service Worker、清空 Cache Storage 并硬刷新，不碰 localStorage）。Settings 内没有 **Update**。`GM` 可 **Reset all data**（清空本应用全部 localStorage 后重载）
 - 更新弹层：每 10 秒带 cache-bust 拉取 `versions.json`，若有比已安装版本号更新的组，齿轮关闭时在设置外弹出这些版本行，顶部一个 **Update**（写入已确认版本、清缓存、保留进度、硬刷新）。已是最新则不显示弹层
 - PWA：可安装到主屏幕（`standalone`）；预缓存阅读器壳 + 故事 JSON。页级英文 mp3、插图 webp 和 `timings.json` 走运行时 Cache First，不进预缓存。地址带内容哈希 `?v=`，文件改了就会拉新资源，不必清缓存。翻页时后台预取后两页的图和英文 mp3；故事打开后在空闲时低并发把本章资源写入缓存（省流量模式跳过）。`versions.json` 用 Network First，以免挡住更新检测
+- Games：阅读器进入当前故事的游戏列表。已开放 **Worm Hole Orchard / 虫洞果园**、**Word Match Garden / 词卡小园**、**Wormhole Spotlight / 虫洞探照灯**。探照灯听目标词、在可拖动圆形灯光里点 3 张词图之一（1 对 2 错），每轮 6 题；拖动只挪灯，点选才答题
 
-进度按本故事写入 `localStorage`。每次有意义的发布请在 `app/public/versions.json` 顶部追加 `{ id, version, date, summary }`（新条目用英文）。当前版本 **0.6.68**。
+进度按本故事写入 `localStorage`。每次有意义的发布请在 `app/public/versions.json` 顶部追加 `{ id, version, date, summary }`（新条目用英文）。当前版本 **0.6.69**。
 
 ## 安装到主屏幕（PWA）
 
