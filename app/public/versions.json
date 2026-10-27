@@ -1,5 +1,11 @@
 [
   {
+    "id": "v0.6.68",
+    "version": "0.6.68",
+    "date": "2026-10-27",
+    "summary": "Word Match Garden: 3x4 word-picture match for the current story."
+  },
+  {
     "id": "v0.6.67",
     "version": "0.6.67",
     "date": "2026-10-24",

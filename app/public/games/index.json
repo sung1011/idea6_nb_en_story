@@ -12,6 +12,19 @@
         "the-big-tug",
         "one-hundred-steps"
       ]
+    },
+    {
+      "id": "word-match-garden",
+      "title": "Word Match Garden",
+      "titleZh": "词卡小园",
+      "cover": "games/word-match-garden/img/sample-ui.webp",
+      "openStoryIds": [
+        "flag-in-the-fog",
+        "spot-the-cub",
+        "a-lot-of-dots",
+        "the-big-tug",
+        "one-hundred-steps"
+      ]
     }
   ]
 }

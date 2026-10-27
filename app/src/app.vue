@@ -3,12 +3,13 @@ import { onMounted, ref } from 'vue'
 import StoryReader from './components/storyReader.vue'
 import PracticeGames from './components/practiceGames.vue'
 import WormholeOrchard from './components/wormholeOrchard.vue'
+import WordMatchGarden from './components/wordMatchGarden.vue'
 import type { Story } from './types/story'
 import { parseStoryIndex, type StoryIndexEntry } from './types/storyIndex'
 import { progressKey, SELECTED_STORY_KEY } from './utils/appStorage'
 
 type Mode = 'story' | 'practice'
-type PracticeView = 'games' | 'orchard'
+type PracticeView = 'games' | 'orchard' | 'garden'
 
 const catalog = ref<StoryIndexEntry[]>([])
 const story = ref<Story | null>(null)
@@ -18,6 +19,7 @@ const mode = ref<Mode>('story')
 const practiceView = ref<PracticeView>('games')
 const practiceStoryId = ref('')
 const orchardStoryId = ref('')
+const gardenStoryId = ref('')
 
 function storiesUrl(file: string) {
   return `${import.meta.env.BASE_URL}stories/${file}`
@@ -60,6 +62,7 @@ function openPractice() {
   if (!id) return
   practiceStoryId.value = id
   orchardStoryId.value = ''
+  gardenStoryId.value = ''
   practiceView.value = 'games'
   mode.value = 'practice'
 }
@@ -68,17 +71,29 @@ function backToStory() {
   mode.value = 'story'
   practiceView.value = 'games'
   orchardStoryId.value = ''
+  gardenStoryId.value = ''
 }
 
 function playGame(gameId: string, storyId: string) {
-  if (gameId !== 'wormhole-orchard') return
-  orchardStoryId.value = storyId
-  practiceView.value = 'orchard'
+  if (gameId === 'wormhole-orchard') {
+    orchardStoryId.value = storyId
+    practiceView.value = 'orchard'
+    return
+  }
+  if (gameId === 'word-match-garden') {
+    gardenStoryId.value = storyId
+    practiceView.value = 'garden'
+  }
 }
 
 function backFromOrchard() {
   practiceView.value = 'games'
   orchardStoryId.value = ''
+}
+
+function backFromGarden() {
+  practiceView.value = 'games'
+  gardenStoryId.value = ''
 }
 
 onMounted(async () => {
@@ -115,6 +130,11 @@ onMounted(async () => {
         v-else-if="practiceView === 'orchard'"
         :story-id="orchardStoryId"
         @back="backFromOrchard"
+      />
+      <WordMatchGarden
+        v-else-if="practiceView === 'garden'"
+        :story-id="gardenStoryId"
+        @back="backFromGarden"
       />
     </template>
     <p v-else-if="!story" class="status">Loading story…</p>
