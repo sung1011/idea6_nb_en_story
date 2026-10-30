@@ -3,6 +3,7 @@ import { computed, nextTick, onMounted, onUnmounted, ref, watch } from 'vue'
 import hashes from 'virtual:media-manifest'
 import type { LearnItem, Story } from '@/types/story'
 import { mediaUrl } from '@/utils/mediaUrl'
+import { resetSystemTts, speakSystemTts } from '@/utils/systemTts'
 import {
   SPOTLIGHT_MIN_WORDS,
   collectWordCards,
@@ -79,21 +80,18 @@ function stopAudio() {
     audio.pause()
     audio = null
   }
-  if (uttering) {
-    window.speechSynthesis?.cancel()
-    uttering = null
-  }
+  resetSystemTts()
+  uttering = null
 }
 
 function speakFallback(word: string) {
   if (!window.speechSynthesis) return
-  window.speechSynthesis.cancel()
   const utter = new SpeechSynthesisUtterance(word)
   utter.lang = 'en-US'
   utter.rate = 1
   utter.pitch = 1
   uttering = utter
-  window.speechSynthesis.speak(utter)
+  speakSystemTts(utter, () => uttering === utter)
 }
 
 function playWordAudio(word: string) {

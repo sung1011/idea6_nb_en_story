@@ -58,10 +58,10 @@ npm run parse-stories
 
 - 插图：`images/<story-id>/p01.webp`（Flag in the Fog 22 页、Spot the Cub 23 页、A Lot of Dots! 24 页均已接入；缺文件时为 `null`）
 - 英文音频：`audio/<story-id>/p01-en.mp3`（Edge TTS `en-US-AriaNeural`，语速 `-15%`）
-- 中文不入库 mp3：页级 **CN**、自动朗读的中文步、词卡打开后的中文释义都走系统 `speechSynthesis`（只设 `lang=zh-CN`，不指定 `voice`，rate 1 / pitch 1，用设备默认中文声）
+- 中文不入库 mp3：页级 **CN**、自动朗读的中文步、词卡打开后的中文释义都走系统 `speechSynthesis`（只设 `lang=zh-CN`，不指定 `voice`，rate 1 / pitch 1，用设备默认中文声）。`cancel()` 后若引擎 `paused` 会 `resume()`，并短延迟再 `speak()`，避免 Chrome / iOS 取消后静音
 - 英文逐词时间轴：`audio/<story-id>/timings.json`，紧凑 JSON `{ pageId: [[startMs, endMs, wordIndex], ...] }`。`wordIndex` 与阅读器把英文拆成 `[A-Za-z0-9']+` 后的顺序一致。用与页级英文相同的 Aria `-15%` 文本跑 `WordBoundary`（offset/duration 为 100ns，除以 10000 得毫秒）。新合成 mp3 与现有文件时长差 ≤120ms 时保留旧 mp3，只写入时间轴
 - 词图：`images/<story-id>/words/map.webp`（有文件时写入 `learnItems[].image`）
-- 单词不写 mp3：点词 / 词卡用系统 `speechSynthesis`（英文 `en-US` 默认声，约 300ms 后再读中文释义：只设 `lang=zh-CN`，用设备默认中文声）。短句 `phrase` / `phraseZh` 写在故事 JSON 里，点芯片也走系统语音，不生成短句 mp3
+- 单词不写 mp3：点词 / 词卡用系统 `speechSynthesis`（英文 `en-US` 默认声，约 300ms 后再读中文释义：只设 `lang=zh-CN`，用设备默认中文声；与中文相同，cancel 后 resume + 短延迟再 speak）。短句 `phrase` / `phraseZh` 写在故事 JSON 里，点芯片也走系统语音，不生成短句 mp3
 
 阅读器以 Vite `base`（`/idea6_nb_en_story/`）拼接这些路径，并用文件内容哈希加上 `?v=`，这样 Cache First 在文件改了之后会拉新资源。打开故事页（翻页、从切换器进到第 1 页、续读到上次页）时自动先播 `audioEn`，约 0.5 秒后再用系统中文声读 `zh`。Settings → **General** 的 **Auto read** 默认开。**Read Chinese** 默认开；关掉后自动朗读只读英文，页级 **CN** / 词卡 / 短句中文仍可点。点英文句子（含句中加粗焦点词）播放整句 `audioEn`。点英文句子开头约 32px 的胶囊 **CN** 按钮弹出本页译文并用 `speechSynthesis` 读中文（不触发英文朗读；无中文时隐藏）。整页英文朗读（点句子、自动朗读、再点重播）用 Settings **Voice speed**（50%–100%，步进 10，默认 100%）调 Aria mp3 `playbackRate` 或缺文件时的系统英文声；词卡、短句和中文仍是正常语速。有英文 mp3 和 `timings.json` 时，任意语速都按 `audio.currentTime`（不受倍速影响）用 rAF 对照时间轴给当前词加一层很淡的底色（约 120ms 淡入淡出，不改布局/字号/字重/对比）。缺 `audioEn` 走系统英文声时不跟读。停止、翻页、读完会清掉跟读。`prefers-reduced-motion` 时底色仍在、无过渡。点单词或句子会立刻停掉自动队列。点辅词芯片弹出释义气泡（词图 + 短义，词卡无 **CN**），打开或再点英文词时用设备英文声读单词，约 300ms 后再读中文释义；关卡 / 换卡 / 翻页 / 整页朗读会取消。页级译文弹层仍有 **CN**。点本页短句芯片用系统 `speechSynthesis` 先读英文 `phrase`（en-US），约 300ms 后再读 `phraseZh`（zh-CN）；芯片按下态保持到中文读完。新的点按、翻页或其他朗读会取消这串队列。总结页 **Sentences** 列出去重短句，同样可点朗读。总结页和没有英文音频、也没有中文正文的页不自动读。页级英文 mp3 缺失时自动朗读的英文步静默跳过；中文步在有译文时始终走系统语音。浏览器拦截自动播放时，等第一次点击后再读当前页。整页英文朗读（mp3 或缺文件时的系统英文声，含跟读）期间 Prev / Next 变淡禁用（不隐藏），长按、方向键 / Home / End 与滑动不翻页；词卡、短句不锁。读完 / 出错 / 停止立刻解锁，最长 20 秒。下一页未缓存完时 Next 略微变暗（透明度约 0.55，无动画/光晕/圆环），仍可点，缓存好后约 200ms 恢复，并保留 `aria-busy`。缓存按页计：图 + 英 mp3 + 词图。
 

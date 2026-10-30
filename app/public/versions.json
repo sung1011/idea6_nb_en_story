@@ -1,5 +1,11 @@
 [
   {
+    "id": "v0.6.70",
+    "version": "0.6.70",
+    "date": "2026-10-30",
+    "summary": "Fix word-card English and Chinese system voice going silent after cancel or leaving a game."
+  },
+  {
     "id": "v0.6.69",
     "version": "0.6.69",
     "date": "2026-10-27",

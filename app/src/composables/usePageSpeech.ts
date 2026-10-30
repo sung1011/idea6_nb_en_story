@@ -2,6 +2,7 @@ import { onMounted, onUnmounted, ref, watch, type Ref } from 'vue'
 import type { StoryPage } from '@/types/story'
 import { asWordCues, followWordAt, type WordCue } from '@/utils/followCue'
 import { mediaUrl } from '@/utils/mediaUrl'
+import { resetSystemTts, speakSystemTts } from '@/utils/systemTts'
 import { useVoiceSpeed } from '@/composables/useVoiceSpeed'
 
 export type SpeechLang = 'en' | 'zh'
@@ -91,7 +92,7 @@ function stopShared(): void {
   seq += 1
   cancelFollowLoop()
   cancelPhraseGap()
-  window.speechSynthesis?.cancel()
+  resetSystemTts()
   if (sharedAudio) {
     sharedAudio.onended = null
     sharedAudio.onerror = null
@@ -142,7 +143,6 @@ function systemSpeak(
     onDone()
     return
   }
-  window.speechSynthesis.cancel()
   const utter = new SpeechSynthesisUtterance(text)
   if (lang === 'zh') {
     utter.lang = 'zh-CN'
@@ -163,7 +163,7 @@ function systemSpeak(
   }
   utter.onend = finish
   utter.onerror = finish
-  window.speechSynthesis.speak(utter)
+  speakSystemTts(utter, () => seq === token)
 }
 
 function isAutoplayBlocked(error: unknown): boolean {
