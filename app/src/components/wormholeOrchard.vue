@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { computed, onMounted, onUnmounted, ref, watch } from 'vue'
+import GameWinBanner from '@/components/gameWinBanner.vue'
 import type { OrchardChapter, OrchardItem } from '@/types/games'
 import { mediaUrl } from '@/utils/mediaUrl'
 import { pickPraiseLine } from '@/utils/praiseLine'
@@ -94,8 +95,20 @@ function enterItem(next: OrchardItem) {
 }
 
 function replay() {
-  if (!item.value) return
+  if (phase.value === 'done' || !item.value) return
   playHear(item.value.hear)
+}
+
+function playAgain() {
+  const first = chapter.value?.rounds[0]?.items[0]
+  if (!first) return
+  stopAudio()
+  clearTimers()
+  roundIndex.value = 0
+  itemIndex.value = 0
+  stars.value = 0
+  praise.value = ''
+  enterItem(first)
 }
 
 function goNext() {
@@ -182,20 +195,18 @@ onUnmounted(() => {
     <p v-if="error" class="status error">{{ error }}</p>
     <p v-else-if="!chapter" class="status">Loading…</p>
 
-    <div v-else-if="phase === 'done'" class="done">
-      <div class="done-card">
-        <p class="done-title">You did it!</p>
-        <p class="done-sub">All three fruit rounds are complete.</p>
-        <button type="button" class="primary tap" @click="emit('back')">Back to Games</button>
-      </div>
-    </div>
-
     <div v-else class="stage" :class="{ bloom }">
       <img class="scene" :src="sceneBg" alt="" draggable="false" />
 
       <div class="hud" aria-label="Game controls">
         <img class="title-bar" :src="titleBarBg" alt="" draggable="false" />
-        <button type="button" class="btn-back tap" aria-label="Back to Games" @click="emit('back')">
+        <button
+          type="button"
+          class="btn-back tap"
+          aria-label="Back to Games"
+          :disabled="phase === 'done'"
+          @click="emit('back')"
+        >
           <img :src="btnBack" alt="" draggable="false" />
         </button>
         <h1 class="title">{{ chapter?.title || 'Worm Hole Orchard' }}</h1>
@@ -224,6 +235,7 @@ onUnmounted(() => {
         class="speaker tap"
         aria-label="Listen again"
         title="Listen again"
+        :disabled="phase === 'done'"
         @click="replay"
       >
         <img :src="btnSpeaker" alt="" draggable="false" />
@@ -237,7 +249,7 @@ onUnmounted(() => {
           class="leaf tap"
           :class="{ whole: isWhole, 'leaf-correct': phase === 'correct' && pickedChoice === choice }"
           :style="{ backgroundImage: `url(${leafBg})` }"
-          :disabled="phase !== 'choose' && phase !== 'wrong'"
+          :disabled="phase === 'done' || (phase !== 'choose' && phase !== 'wrong')"
           :aria-label="`Choose ${choice}`"
           @click="choose(choice)"
         >
@@ -246,6 +258,14 @@ onUnmounted(() => {
       </div>
 
       <p v-if="bloom" class="bloom-note">Fruit bloom! Next round…</p>
+
+      <GameWinBanner
+        v-if="phase === 'done'"
+        sub="All three fruit rounds are complete."
+        :stars="stars"
+        @play-again="playAgain"
+        @back="emit('back')"
+      />
     </div>
   </section>
 </template>
@@ -325,6 +345,10 @@ onUnmounted(() => {
   border: 0;
   background: transparent;
   pointer-events: auto;
+}
+
+.btn-back:disabled {
+  pointer-events: none;
 }
 
 .btn-back img,
@@ -516,43 +540,6 @@ onUnmounted(() => {
   font-weight: 700;
   z-index: 6;
   box-shadow: var(--shadow);
-}
-
-.done {
-  min-height: 360px;
-  display: grid;
-  place-items: center;
-  padding: 24px;
-  background: var(--paper);
-  border-radius: 28px;
-  box-shadow: var(--shadow);
-}
-
-.done-card {
-  text-align: center;
-  max-width: 360px;
-}
-
-.done-title {
-  margin: 0 0 8px;
-  font-size: 2rem;
-  color: var(--teal-dark);
-}
-
-.done-sub {
-  margin: 0 0 22px;
-  color: var(--muted);
-}
-
-.primary {
-  min-height: 48px;
-  padding: 0 22px;
-  border: 2px solid var(--outline);
-  border-radius: 999px;
-  background: rgba(31, 138, 128, 0.18);
-  color: var(--teal-dark);
-  font: inherit;
-  font-weight: 700;
 }
 
 .tap {

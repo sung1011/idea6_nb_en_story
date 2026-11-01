@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { computed, onMounted, onUnmounted, ref } from 'vue'
 import hashes from 'virtual:media-manifest'
+import GameWinBanner from '@/components/gameWinBanner.vue'
 import type { LearnItem, Story } from '@/types/story'
 import { mediaUrl } from '@/utils/mediaUrl'
 import { resetSystemTts, speakSystemTts } from '@/utils/systemTts'
@@ -44,6 +45,7 @@ let niceTimer: ReturnType<typeof setTimeout> | null = null
 let uttering: SpeechSynthesisUtterance | null = null
 
 const remaining = computed(() => tiles.value.filter((tile) => !cleared.value.has(tile.id)).length)
+const pairCount = computed(() => Math.floor(tiles.value.length / 2))
 
 function storiesUrl(file: string) {
   return `${import.meta.env.BASE_URL}stories/${file}`
@@ -218,7 +220,15 @@ onUnmounted(() => {
 <template>
   <section class="garden">
     <header class="bar">
-      <button type="button" class="back tap" aria-label="Back to Games" @click="emit('back')">
+      <button
+        type="button"
+        class="back tap"
+        :class="{ idle: phase === 'done' }"
+        aria-label="Back to Games"
+        :disabled="phase === 'done'"
+        :tabindex="phase === 'done' ? -1 : undefined"
+        @click="emit('back')"
+      >
         ← Back
       </button>
       <div class="titles">
@@ -230,17 +240,6 @@ onUnmounted(() => {
 
     <p v-if="error" class="status error">{{ error }}</p>
     <p v-else-if="loading" class="status">Loading…</p>
-
-    <div v-else-if="phase === 'done'" class="done">
-      <div class="done-card">
-        <p class="done-title">You did it!</p>
-        <p class="done-sub">Every word found its picture.</p>
-        <div class="done-actions">
-          <button type="button" class="primary tap" @click="dealRound">Play again</button>
-          <button type="button" class="ghost tap" @click="emit('back')">Back to Games</button>
-        </div>
-      </div>
-    </div>
 
     <div v-else class="stage">
       <p v-if="storyTitle" class="story">{{ storyTitle }}</p>
@@ -256,10 +255,10 @@ onUnmounted(() => {
                 selected: isSelected(tile.id),
                 shake: isShaking(tile.id),
                 matching: isMatching(tile.id),
-                cleared: isCleared(tile.id),
+                cleared: isCleared(tile.id) && phase !== 'done',
               },
             ]"
-            :disabled="isCleared(tile.id)"
+            :disabled="isCleared(tile.id) || phase === 'done'"
             :aria-label="tile.kind === 'word' ? `Word ${tile.word}` : `Picture ${tile.word}`"
             :aria-pressed="isSelected(tile.id)"
             @click="tapTile(tile)"
@@ -276,6 +275,13 @@ onUnmounted(() => {
         </li>
       </ul>
       <p class="hint">{{ remaining }} tiles left · tap a word and its picture</p>
+      <GameWinBanner
+        v-if="phase === 'done'"
+        sub="Every word found its picture."
+        :count="pairCount ? `${pairCount} pairs` : ''"
+        @play-again="dealRound"
+        @back="emit('back')"
+      />
     </div>
   </section>
 </template>
@@ -323,6 +329,11 @@ onUnmounted(() => {
   color: var(--teal-dark);
   font: inherit;
   font-weight: 700;
+}
+
+.back.idle {
+  visibility: hidden;
+  pointer-events: none;
 }
 
 .spacer {
@@ -451,57 +462,6 @@ onUnmounted(() => {
   text-align: center;
   color: var(--muted);
   font-size: 0.9rem;
-}
-
-.done {
-  min-height: 280px;
-  display: grid;
-  place-items: center;
-  padding: 18px 8px 8px;
-}
-
-.done-card {
-  text-align: center;
-  max-width: 360px;
-}
-
-.done-title {
-  margin: 0 0 8px;
-  font-size: 2rem;
-  color: var(--teal-dark);
-}
-
-.done-sub {
-  margin: 0 0 22px;
-  color: var(--muted);
-}
-
-.done-actions {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  align-items: center;
-}
-
-.primary,
-.ghost {
-  min-height: 48px;
-  min-width: 180px;
-  padding: 0 22px;
-  border: 2px solid var(--outline);
-  border-radius: 999px;
-  font: inherit;
-  font-weight: 700;
-}
-
-.primary {
-  background: rgba(31, 138, 128, 0.18);
-  color: var(--teal-dark);
-}
-
-.ghost {
-  background: #fff;
-  color: var(--ink);
 }
 
 .tap {

@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { computed, nextTick, onMounted, onUnmounted, ref, watch } from 'vue'
 import hashes from 'virtual:media-manifest'
+import GameWinBanner from '@/components/gameWinBanner.vue'
 import type { LearnItem, Story } from '@/types/story'
 import { mediaUrl } from '@/utils/mediaUrl'
 import { resetSystemTts, speakSystemTts } from '@/utils/systemTts'
@@ -320,7 +321,15 @@ onUnmounted(() => {
 <template>
   <section class="spotlight">
     <header class="bar">
-      <button type="button" class="back tap" aria-label="Back to Games" @click="emit('back')">
+      <button
+        type="button"
+        class="back tap"
+        :class="{ idle: phase === 'done' }"
+        aria-label="Back to Games"
+        :disabled="phase === 'done'"
+        :tabindex="phase === 'done' ? -1 : undefined"
+        @click="emit('back')"
+      >
         ← Back
       </button>
       <div class="titles">
@@ -333,17 +342,6 @@ onUnmounted(() => {
     <p v-if="error" class="status error">{{ error }}</p>
     <p v-else-if="loading" class="status">Loading…</p>
 
-    <div v-else-if="phase === 'done'" class="done">
-      <div class="done-card">
-        <p class="done-title">You did it!</p>
-        <p class="done-sub">Six pictures found in the light.</p>
-        <div class="done-actions">
-          <button type="button" class="primary tap" @click="dealRound">Play again</button>
-          <button type="button" class="ghost tap" @click="emit('back')">Back to Games</button>
-        </div>
-      </div>
-    </div>
-
     <div v-else class="play">
       <div class="meta">
         <p v-if="storyTitle" class="story">{{ storyTitle }}</p>
@@ -353,6 +351,7 @@ onUnmounted(() => {
           class="speaker tap"
           aria-label="Listen again"
           title="Listen again"
+          :disabled="phase === 'done'"
           @click="replay"
         >
           <img v-if="speakerSrc" :src="speakerSrc" alt="" draggable="false" />
@@ -387,6 +386,13 @@ onUnmounted(() => {
         <p v-if="showNice" class="nice" :key="niceTick">{{ praise }}</p>
       </div>
       <p class="hint">Drag the light. Tap a picture inside it.</p>
+      <GameWinBanner
+        v-if="phase === 'done'"
+        sub="Six pictures found in the light."
+        :count="questions.length ? `${questions.length} pictures` : ''"
+        @play-again="dealRound"
+        @back="emit('back')"
+      />
     </div>
   </section>
 </template>
@@ -434,6 +440,15 @@ onUnmounted(() => {
   color: var(--teal-dark);
   font: inherit;
   font-weight: 700;
+}
+
+.back.idle {
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.play {
+  position: relative;
 }
 
 .spacer {
@@ -581,57 +596,6 @@ onUnmounted(() => {
   text-align: center;
   color: var(--muted);
   font-size: 0.9rem;
-}
-
-.done {
-  min-height: 280px;
-  display: grid;
-  place-items: center;
-  padding: 18px 8px 8px;
-}
-
-.done-card {
-  text-align: center;
-  max-width: 360px;
-}
-
-.done-title {
-  margin: 0 0 8px;
-  font-size: 2rem;
-  color: var(--teal-dark);
-}
-
-.done-sub {
-  margin: 0 0 22px;
-  color: var(--muted);
-}
-
-.done-actions {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  align-items: center;
-}
-
-.primary,
-.ghost {
-  min-height: 48px;
-  min-width: 180px;
-  padding: 0 22px;
-  border: 2px solid var(--outline);
-  border-radius: 999px;
-  font: inherit;
-  font-weight: 700;
-}
-
-.primary {
-  background: rgba(31, 138, 128, 0.18);
-  color: var(--teal-dark);
-}
-
-.ghost {
-  background: #fff;
-  color: var(--ink);
 }
 
 .tap {
