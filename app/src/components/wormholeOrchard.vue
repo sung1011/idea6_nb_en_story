@@ -2,6 +2,7 @@
 import { computed, onMounted, onUnmounted, ref, watch } from 'vue'
 import type { OrchardChapter, OrchardItem } from '@/types/games'
 import { mediaUrl } from '@/utils/mediaUrl'
+import { pickPraiseLine } from '@/utils/praiseLine'
 
 const props = defineProps<{
   storyId: string
@@ -24,6 +25,7 @@ const shaking = ref(false)
 const bloom = ref(false)
 const pickedChoice = ref<string | null>(null)
 const pulseStar = ref(0)
+const praise = ref('')
 
 let audio: HTMLAudioElement | null = null
 let advanceTimer: ReturnType<typeof setTimeout> | null = null
@@ -135,6 +137,7 @@ function choose(choice: string) {
     } else {
       pulseStar.value = 0
     }
+    praise.value = pickPraiseLine()
     phase.value = 'correct'
     advanceTimer = setTimeout(() => goNext(), 650)
     return
@@ -213,7 +216,7 @@ onUnmounted(() => {
         <div class="hole">
           <span class="hole-text" :class="{ whole: isWhole }">{{ item?.hole }}</span>
         </div>
-        <p v-if="phase === 'correct'" class="great">Great!</p>
+        <p v-if="phase === 'correct'" class="great">{{ praise }}</p>
       </div>
 
       <button

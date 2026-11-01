@@ -4,6 +4,7 @@ import hashes from 'virtual:media-manifest'
 import type { LearnItem, Story } from '@/types/story'
 import { mediaUrl } from '@/utils/mediaUrl'
 import { resetSystemTts, speakSystemTts } from '@/utils/systemTts'
+import { pickPraiseLine } from '@/utils/praiseLine'
 import {
   SPOTLIGHT_MIN_WORDS,
   collectWordCards,
@@ -33,6 +34,7 @@ const phase = ref<Phase>('play')
 const shakingWord = ref('')
 const niceTick = ref(0)
 const showNice = ref(false)
+const praise = ref('')
 const spot = ref({ x: 0.5, y: 0.42 })
 const stageW = ref(320)
 const stageH = ref(240)
@@ -189,6 +191,7 @@ function pickCard(word: string) {
   if (word.toLowerCase() === current.value.target.toLowerCase()) {
     shakingWord.value = ''
     phase.value = 'correct'
+    praise.value = pickPraiseLine()
     niceTick.value += 1
     showNice.value = true
     if (niceTimer) clearTimeout(niceTimer)
@@ -381,7 +384,7 @@ onUnmounted(() => {
         </div>
         <div class="veil" :style="veilStyle" aria-hidden="true" />
         <div class="beam" aria-hidden="true" />
-        <p v-if="showNice" class="nice" :key="niceTick">Nice!</p>
+        <p v-if="showNice" class="nice" :key="niceTick">{{ praise }}</p>
       </div>
       <p class="hint">Drag the light. Tap a picture inside it.</p>
     </div>

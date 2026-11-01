@@ -4,6 +4,7 @@ import hashes from 'virtual:media-manifest'
 import type { LearnItem, Story } from '@/types/story'
 import { mediaUrl } from '@/utils/mediaUrl'
 import { resetSystemTts, speakSystemTts } from '@/utils/systemTts'
+import { pickPraiseLine } from '@/utils/praiseLine'
 import {
   WORD_MATCH_MIN_PAIRS,
   collectWordCards,
@@ -34,6 +35,7 @@ const matchingIds = ref<string[]>([])
 const phase = ref<Phase>('play')
 const niceTick = ref(0)
 const showNice = ref(false)
+const praise = ref('')
 
 let audio: HTMLAudioElement | null = null
 let shakeTimer: ReturnType<typeof setTimeout> | null = null
@@ -139,6 +141,7 @@ function tileById(id: string | null) {
 
 function finishMatch(first: GardenTile, second: GardenTile) {
   matchingIds.value = [first.id, second.id]
+  praise.value = pickPraiseLine()
   niceTick.value += 1
   showNice.value = true
   if (niceTimer) clearTimeout(niceTimer)
@@ -241,7 +244,7 @@ onUnmounted(() => {
 
     <div v-else class="stage">
       <p v-if="storyTitle" class="story">{{ storyTitle }}</p>
-      <p v-if="showNice" class="nice" :key="niceTick">Nice!</p>
+      <p v-if="showNice" class="nice" :key="niceTick">{{ praise }}</p>
       <ul class="board" aria-label="Word and picture tiles">
         <li v-for="tile in tiles" :key="tile.id">
           <button
