@@ -1,0 +1,689 @@
+{
+  "id": "mia-can-cook",
+  "title": "Mia Can Cook!",
+  "titleZh": "Mia 会做饭了！",
+  "version": "",
+  "label": "故事 6",
+  "scene": "日间厨房（果酱罐、大 jug、吐司、果汁）→ 袋破 jam 洒 → 朋友各加一点救场 → 小宴 → jog 送 Nan",
+  "structure": "第一次做饭请朋友吃果酱吐司 → Cap 教 tap 计时 → 袋 rip、sad → 石头汤式每人加一点 → jam jet 揭盖 → clap glad → jog 送 Nan",
+  "notes": "篇幅：24 页 · 每页英文 ≤ 11 词 · 一般现在时 · 画面不写字",
+  "source": "stories/mia-can-cook.md",
+  "pageCount": 24,
+  "pages": [
+    {
+      "id": "P01",
+      "index": 1,
+      "en": "Mia cooks for the first time!",
+      "zh": "米娅第一次做饭啦。",
+      "pattern": "___ cooks for the first time!",
+      "focusWord": "",
+      "focusNote": "",
+      "focusRaw": "—",
+      "knowledge": "开场：第一次下厨",
+      "gloss": "",
+      "highlights": [],
+      "learnItems": [],
+      "image": "images/mia-can-cook/p01.webp",
+      "audioEn": "audio/mia-can-cook/p01-en.mp3",
+      "phrase": "Mia cooks for the first time!",
+      "phraseZh": "米娅第一次做饭啦"
+    },
+    {
+      "id": "P02",
+      "index": 2,
+      "en": "Friends come for **jam** toast.",
+      "zh": "朋友们来吃果酱吐司。",
+      "pattern": "Friends come for ___ toast.",
+      "focusWord": "jam",
+      "focusNote": "第6章 第3课",
+      "focusRaw": "jam（第6章 第3课）",
+      "knowledge": "立目标：请朋友吃 jam toast",
+      "gloss": "果酱",
+      "highlights": [
+        "jam"
+      ],
+      "learnItems": [
+        {
+          "word": "jam",
+          "gloss": "果酱",
+          "image": "images/mia-can-cook/words/jam.webp"
+        }
+      ],
+      "image": "images/mia-can-cook/p02.webp",
+      "audioEn": "audio/mia-can-cook/p02-en.mp3",
+      "phrase": "Friends come for jam toast.",
+      "phraseZh": "朋友们来吃果酱吐司"
+    },
+    {
+      "id": "P03",
+      "index": 3,
+      "en": "Mia gets a red **jam** jar.",
+      "zh": "米娅拿出红色果酱罐。",
+      "pattern": "Mia gets a red ___ jar.",
+      "focusWord": "jam",
+      "focusNote": "第6章 第3课",
+      "focusRaw": "jam（第6章 第3课）",
+      "knowledge": "道具：红 jam 罐",
+      "gloss": "果酱",
+      "highlights": [
+        "jam"
+      ],
+      "learnItems": [
+        {
+          "word": "jam",
+          "gloss": "果酱",
+          "image": "images/mia-can-cook/words/jam.webp"
+        }
+      ],
+      "image": "images/mia-can-cook/p03.webp",
+      "audioEn": "audio/mia-can-cook/p03-en.mp3",
+      "phrase": "Mia gets a red jam jar.",
+      "phraseZh": "米娅拿出红色果酱罐"
+    },
+    {
+      "id": "P04",
+      "index": 4,
+      "en": "A big **jug** sits by the cups.",
+      "zh": "大罐子摆在杯子旁。",
+      "pattern": "A big ___ sits by the cups.",
+      "focusWord": "jug",
+      "focusNote": "第6章 第3课",
+      "focusRaw": "jug（第6章 第3课）",
+      "knowledge": "道具：jug",
+      "gloss": "罐子",
+      "highlights": [
+        "jug"
+      ],
+      "learnItems": [
+        {
+          "word": "jug",
+          "gloss": "罐子",
+          "image": "images/mia-can-cook/words/jug.webp"
+        }
+      ],
+      "image": "images/mia-can-cook/p04.webp",
+      "audioEn": "audio/mia-can-cook/p04-en.mp3",
+      "phrase": "A big jug sits by the cups.",
+      "phraseZh": "大罐子摆在杯子旁"
+    },
+    {
+      "id": "P05",
+      "index": 5,
+      "en": "**Dip**, dip! Mia dips in the **jam**.",
+      "zh": "蘸一蘸！米娅蘸果酱。",
+      "pattern": "Dip, dip!",
+      "focusWord": "dip / jam",
+      "focusNote": "第6章 第1课；第6章 第3课",
+      "focusRaw": "dip（第6章 第1课）；jam（第6章 第3课）",
+      "knowledge": "Can you dip it?",
+      "gloss": "蘸",
+      "highlights": [
+        "Dip",
+        "jam"
+      ],
+      "learnItems": [
+        {
+          "word": "dip",
+          "gloss": "蘸",
+          "image": "images/mia-can-cook/words/dip.webp"
+        },
+        {
+          "word": "jam",
+          "gloss": "果酱",
+          "image": "images/mia-can-cook/words/jam.webp"
+        }
+      ],
+      "image": "images/mia-can-cook/p05.webp",
+      "audioEn": "audio/mia-can-cook/p05-en.mp3",
+      "phrase": "Dip, dip!",
+      "phraseZh": "蘸一蘸！"
+    },
+    {
+      "id": "P06",
+      "index": 6,
+      "en": "**Tip** the **jug**. **Sip**, sip!",
+      "zh": "倾斜罐子。啜一口！",
+      "pattern": "Tip the ___. Sip, sip!",
+      "focusWord": "tip · sip / jug",
+      "focusNote": "第6章 第1课；第6章 第3课",
+      "focusRaw": "tip · sip（第6章 第1课）；jug（第6章 第3课）",
+      "knowledge": "tip / sip",
+      "gloss": "倾斜",
+      "highlights": [
+        "Tip",
+        "jug",
+        "Sip"
+      ],
+      "learnItems": [
+        {
+          "word": "tip",
+          "gloss": "倾斜",
+          "image": "images/mia-can-cook/words/tip.webp"
+        },
+        {
+          "word": "jug",
+          "gloss": "罐子",
+          "image": "images/mia-can-cook/words/jug.webp"
+        },
+        {
+          "word": "sip",
+          "gloss": "啜",
+          "image": "images/mia-can-cook/words/sip.webp"
+        }
+      ],
+      "image": "images/mia-can-cook/p06.webp",
+      "audioEn": "audio/mia-can-cook/p06-en.mp3",
+      "phrase": "Tip the jug. Sip, sip!",
+      "phraseZh": "倾斜罐子。啜一口！"
+    },
+    {
+      "id": "P07",
+      "index": 7,
+      "en": "A little cook in a **cap** helps.",
+      "zh": "戴帽子的小厨师来帮忙。",
+      "pattern": "A little cook in a ___.",
+      "focusWord": "cap",
+      "focusNote": "第6章 第2课",
+      "focusRaw": "cap（第6章 第2课）",
+      "knowledge": "新角色 Cap 出场",
+      "gloss": "帽子",
+      "highlights": [
+        "cap"
+      ],
+      "learnItems": [
+        {
+          "word": "cap",
+          "gloss": "帽子",
+          "image": "images/mia-can-cook/words/cap.webp"
+        }
+      ],
+      "image": "images/mia-can-cook/p07.webp",
+      "audioEn": "audio/mia-can-cook/p07-en.mp3",
+      "phrase": "A little cook in a cap",
+      "phraseZh": "戴帽子的小厨师"
+    },
+    {
+      "id": "P08",
+      "index": 8,
+      "en": "\"**Tap**, tap for time,\" says **Cap**.",
+      "zh": "“点点计时。”帽帽说。",
+      "pattern": "Tap, tap for time.",
+      "focusWord": "tap · cap",
+      "focusNote": "第6章 第2课",
+      "focusRaw": "tap · cap（第6章 第2课）",
+      "knowledge": "Cap 教计时",
+      "gloss": "点",
+      "highlights": [
+        "Tap",
+        "Cap"
+      ],
+      "learnItems": [
+        {
+          "word": "tap",
+          "gloss": "点",
+          "image": "images/mia-can-cook/words/tap.webp"
+        },
+        {
+          "word": "cap",
+          "gloss": "帽子",
+          "image": "images/mia-can-cook/words/cap.webp"
+        }
+      ],
+      "image": "images/mia-can-cook/p08.webp",
+      "audioEn": "audio/mia-can-cook/p08-en.mp3",
+      "phrase": "Tap, tap for time.",
+      "phraseZh": "点点计时。"
+    },
+    {
+      "id": "P09",
+      "index": 9,
+      "en": "**Tap**! The toast is **hot**.",
+      "zh": "点！吐司热乎乎。",
+      "pattern": "The toast is ___.",
+      "focusWord": "tap / hot",
+      "focusNote": "第6章 第2课；第6章 第4课",
+      "focusRaw": "tap（第6章 第2课）；hot（第6章 第4课）",
+      "knowledge": "hot toast",
+      "gloss": "点",
+      "highlights": [
+        "Tap",
+        "hot"
+      ],
+      "learnItems": [
+        {
+          "word": "tap",
+          "gloss": "点",
+          "image": "images/mia-can-cook/words/tap.webp"
+        },
+        {
+          "word": "hot",
+          "gloss": "热",
+          "image": "images/mia-can-cook/words/hot.webp"
+        }
+      ],
+      "image": "images/mia-can-cook/p09.webp",
+      "audioEn": "audio/mia-can-cook/p09-en.mp3",
+      "phrase": "The toast is hot.",
+      "phraseZh": "吐司热乎乎。"
+    },
+    {
+      "id": "P10",
+      "index": 10,
+      "en": "Oh no! The bag **rip**s. **Rip**!",
+      "zh": "糟了！袋子破了。撕裂！",
+      "pattern": "The bag rips.",
+      "focusWord": "rip",
+      "focusNote": "第6章 第1课",
+      "focusRaw": "rip（第6章 第1课）",
+      "knowledge": "软挫折：袋破",
+      "gloss": "撕破",
+      "highlights": [
+        "rip",
+        "Rip"
+      ],
+      "learnItems": [
+        {
+          "word": "rip",
+          "gloss": "撕破",
+          "image": "images/mia-can-cook/words/rip.webp"
+        }
+      ],
+      "image": "images/mia-can-cook/p10.webp",
+      "audioEn": "audio/mia-can-cook/p10-en.mp3",
+      "phrase": "The bag rips.",
+      "phraseZh": "袋子破了。"
+    },
+    {
+      "id": "P11",
+      "index": 11,
+      "en": "**Jam** drops. Mia is **sad**.",
+      "zh": "果酱掉了。米娅好难过。",
+      "pattern": "Mia is ___.",
+      "focusWord": "jam / sad",
+      "focusNote": "第6章 第3课；第6章 第4课",
+      "focusRaw": "jam（第6章 第3课）；sad（第6章 第4课）",
+      "knowledge": "sad",
+      "gloss": "果酱",
+      "highlights": [
+        "Jam",
+        "sad"
+      ],
+      "learnItems": [
+        {
+          "word": "jam",
+          "gloss": "果酱",
+          "image": "images/mia-can-cook/words/jam.webp"
+        },
+        {
+          "word": "sad",
+          "gloss": "难过",
+          "image": "images/mia-can-cook/words/sad.webp"
+        }
+      ],
+      "image": "images/mia-can-cook/p11.webp",
+      "audioEn": "audio/mia-can-cook/p11-en.mp3",
+      "phrase": "Mia is sad.",
+      "phraseZh": "米娅好难过。"
+    },
+    {
+      "id": "P12",
+      "index": 12,
+      "en": "**Wet** **jam** on the floor. Oh!",
+      "zh": "地上湿湿的果酱。哎呀！",
+      "pattern": "Wet ___ on the floor.",
+      "focusWord": "wet / jam",
+      "focusNote": "第6章 第4课；第6章 第3课",
+      "focusRaw": "wet（第6章 第4课）；jam（第6章 第3课）",
+      "knowledge": "wet jam",
+      "gloss": "湿的",
+      "highlights": [
+        "Wet",
+        "jam"
+      ],
+      "learnItems": [
+        {
+          "word": "wet",
+          "gloss": "湿的",
+          "image": "images/mia-can-cook/words/wet.webp"
+        },
+        {
+          "word": "jam",
+          "gloss": "果酱",
+          "image": "images/mia-can-cook/words/jam.webp"
+        }
+      ],
+      "image": "images/mia-can-cook/p12.webp",
+      "audioEn": "audio/mia-can-cook/p12-en.mp3",
+      "phrase": "Wet jam on the floor.",
+      "phraseZh": "地上湿湿的果酱。"
+    },
+    {
+      "id": "P13",
+      "index": 13,
+      "en": "A mouse peeks near a **trap**.",
+      "zh": "小老鼠在捕鼠器旁偷看。",
+      "pattern": "A mouse peeks near a ___.",
+      "focusWord": "trap",
+      "focusNote": "第6章 第2课",
+      "focusRaw": "trap（第6章 第2课）",
+      "knowledge": "软惊吓：trap（不伤）",
+      "gloss": "捕鼠器",
+      "highlights": [
+        "trap"
+      ],
+      "learnItems": [
+        {
+          "word": "trap",
+          "gloss": "捕鼠器",
+          "image": "images/mia-can-cook/words/trap.webp"
+        }
+      ],
+      "image": "images/mia-can-cook/p13.webp",
+      "audioEn": "audio/mia-can-cook/p13-en.mp3",
+      "phrase": "A mouse peeks near a trap.",
+      "phraseZh": "小老鼠在捕鼠器旁偷看。"
+    },
+    {
+      "id": "P14",
+      "index": 14,
+      "en": "Each friend adds a little!",
+      "zh": "每人加一点！",
+      "pattern": "Each friend adds a little!",
+      "focusWord": "",
+      "focusNote": "",
+      "focusRaw": "—",
+      "knowledge": "石头汤呼喊：救场",
+      "gloss": "",
+      "highlights": [],
+      "learnItems": [],
+      "image": "images/mia-can-cook/p14.webp",
+      "audioEn": "audio/mia-can-cook/p14-en.mp3",
+      "phrase": "Each friend adds a little!",
+      "phraseZh": "每人加一点！"
+    },
+    {
+      "id": "P15",
+      "index": 15,
+      "en": "Friends **tip** in **jam** and bread.",
+      "zh": "朋友们倒进果酱和面包。",
+      "pattern": "Friends tip in ___.",
+      "focusWord": "tip / jam",
+      "focusNote": "第6章 第1课；第6章 第3课",
+      "focusRaw": "tip（第6章 第1课）；jam（第6章 第3课）",
+      "knowledge": "众人加法",
+      "gloss": "倾斜",
+      "highlights": [
+        "tip",
+        "jam"
+      ],
+      "learnItems": [
+        {
+          "word": "tip",
+          "gloss": "倾斜",
+          "image": "images/mia-can-cook/words/tip.webp"
+        },
+        {
+          "word": "jam",
+          "gloss": "果酱",
+          "image": "images/mia-can-cook/words/jam.webp"
+        }
+      ],
+      "image": "images/mia-can-cook/p15.webp",
+      "audioEn": "audio/mia-can-cook/p15-en.mp3",
+      "phrase": "Friends tip in jam and bread.",
+      "phraseZh": "朋友们倒进果酱和面包。"
+    },
+    {
+      "id": "P16",
+      "index": 16,
+      "en": "**Cap** **tap**s. **Dip** the toast!",
+      "zh": "帽帽点点。蘸吐司！",
+      "pattern": "Dip the toast!",
+      "focusWord": "cap · tap / dip",
+      "focusNote": "第6章 第2课；第6章 第1课",
+      "focusRaw": "cap · tap（第6章 第2课）；dip（第6章 第1课）",
+      "knowledge": "重来：dip toast",
+      "gloss": "帽子",
+      "highlights": [
+        "Cap",
+        "tap",
+        "Dip"
+      ],
+      "learnItems": [
+        {
+          "word": "cap",
+          "gloss": "帽子",
+          "image": "images/mia-can-cook/words/cap.webp"
+        },
+        {
+          "word": "tap",
+          "gloss": "点",
+          "image": "images/mia-can-cook/words/tap.webp"
+        },
+        {
+          "word": "dip",
+          "gloss": "蘸",
+          "image": "images/mia-can-cook/words/dip.webp"
+        }
+      ],
+      "image": "images/mia-can-cook/p16.webp",
+      "audioEn": "audio/mia-can-cook/p16-en.mp3",
+      "phrase": "Dip the toast!",
+      "phraseZh": "蘸吐司！"
+    },
+    {
+      "id": "P17",
+      "index": 17,
+      "en": "Lift the lid. A **jam** **jet**!",
+      "zh": "揭开盖子。果酱香气小喷！",
+      "pattern": "A jam jet!",
+      "focusWord": "jam · jet",
+      "focusNote": "第6章 第3课",
+      "focusRaw": "jam · jet（第6章 第3课）",
+      "knowledge": "jet＝揭盖香气小喷",
+      "gloss": "果酱",
+      "highlights": [
+        "jam",
+        "jet"
+      ],
+      "learnItems": [
+        {
+          "word": "jam",
+          "gloss": "果酱",
+          "image": "images/mia-can-cook/words/jam.webp"
+        },
+        {
+          "word": "jet",
+          "gloss": "喷射",
+          "image": "images/mia-can-cook/words/jet.webp"
+        }
+      ],
+      "image": "images/mia-can-cook/p17.webp",
+      "audioEn": "audio/mia-can-cook/p17-en.mp3",
+      "phrase": "A jam jet!",
+      "phraseZh": "果酱香气小喷！"
+    },
+    {
+      "id": "P18",
+      "index": 18,
+      "en": "**Hot** toast. **Sip** the juice!",
+      "zh": "热吐司。啜一口果汁！",
+      "pattern": "Sip the juice!",
+      "focusWord": "hot / sip",
+      "focusNote": "第6章 第4课；第6章 第1课",
+      "focusRaw": "hot（第6章 第4课）；sip（第6章 第1课）",
+      "knowledge": "hot / sip",
+      "gloss": "热",
+      "highlights": [
+        "Hot",
+        "Sip"
+      ],
+      "learnItems": [
+        {
+          "word": "hot",
+          "gloss": "热",
+          "image": "images/mia-can-cook/words/hot.webp"
+        },
+        {
+          "word": "sip",
+          "gloss": "啜",
+          "image": "images/mia-can-cook/words/sip.webp"
+        }
+      ],
+      "image": "images/mia-can-cook/p18.webp",
+      "audioEn": "audio/mia-can-cook/p18-en.mp3",
+      "phrase": "Sip the juice!",
+      "phraseZh": "啜一口果汁！"
+    },
+    {
+      "id": "P19",
+      "index": 19,
+      "en": "The feast is ready. Yum!",
+      "zh": "宴席好了。好吃！",
+      "pattern": "The feast is ready.",
+      "focusWord": "",
+      "focusNote": "",
+      "focusRaw": "—",
+      "knowledge": "小宴就绪",
+      "gloss": "",
+      "highlights": [],
+      "learnItems": [],
+      "image": "images/mia-can-cook/p19.webp",
+      "audioEn": "audio/mia-can-cook/p19-en.mp3",
+      "phrase": "The feast is ready.",
+      "phraseZh": "宴席好了。"
+    },
+    {
+      "id": "P20",
+      "index": 20,
+      "en": "**Clap**, clap! Friends clap for Mia.",
+      "zh": "拍手拍手！朋友们为米娅鼓掌。",
+      "pattern": "Clap, clap!",
+      "focusWord": "clap",
+      "focusNote": "第6章 第2课",
+      "focusRaw": "clap（第6章 第2课）",
+      "knowledge": "clap",
+      "gloss": "拍手",
+      "highlights": [
+        "Clap"
+      ],
+      "learnItems": [
+        {
+          "word": "clap",
+          "gloss": "拍手",
+          "image": "images/mia-can-cook/words/clap.webp"
+        }
+      ],
+      "image": "images/mia-can-cook/p20.webp",
+      "audioEn": "audio/mia-can-cook/p20-en.mp3",
+      "phrase": "Clap, clap!",
+      "phraseZh": "拍手拍手！"
+    },
+    {
+      "id": "P21",
+      "index": 21,
+      "en": "Mia is **glad**. She can cook!",
+      "zh": "米娅好开心。她会做饭了！",
+      "pattern": "Mia is glad.",
+      "focusWord": "glad",
+      "focusNote": "第6章 第4课",
+      "focusRaw": "glad（第6章 第4课）",
+      "knowledge": "glad；点题 can cook",
+      "gloss": "开心",
+      "highlights": [
+        "glad"
+      ],
+      "learnItems": [
+        {
+          "word": "glad",
+          "gloss": "开心",
+          "image": "images/mia-can-cook/words/glad.webp"
+        }
+      ],
+      "image": "images/mia-can-cook/p21.webp",
+      "audioEn": "audio/mia-can-cook/p21-en.mp3",
+      "phrase": "Mia is glad.",
+      "phraseZh": "米娅好开心。"
+    },
+    {
+      "id": "P22",
+      "index": 22,
+      "en": "Mia packs a share for Nan.",
+      "zh": "米娅给奶奶打包一份。",
+      "pattern": "Mia packs a share for ___.",
+      "focusWord": "",
+      "focusNote": "Nan 第5章",
+      "focusRaw": "—（Nan 第5章）",
+      "knowledge": "打包给 Nan",
+      "gloss": "",
+      "highlights": [],
+      "learnItems": [],
+      "image": "images/mia-can-cook/p22.webp",
+      "audioEn": "audio/mia-can-cook/p22-en.mp3",
+      "phrase": "Mia packs a share for Nan.",
+      "phraseZh": "米娅给奶奶打包一份。"
+    },
+    {
+      "id": "P23",
+      "index": 23,
+      "en": "**Jog**, jog! Mia jogs to Nan.",
+      "zh": "跑跑跑！米娅慢跑去奶奶家。",
+      "pattern": "Jog, jog!",
+      "focusWord": "jog",
+      "focusNote": "第6章 第3课",
+      "focusRaw": "jog（第6章 第3课）",
+      "knowledge": "jog",
+      "gloss": "慢跑",
+      "highlights": [
+        "Jog"
+      ],
+      "learnItems": [
+        {
+          "word": "jog",
+          "gloss": "慢跑",
+          "image": "images/mia-can-cook/words/jog.webp"
+        }
+      ],
+      "image": "images/mia-can-cook/p23.webp",
+      "audioEn": "audio/mia-can-cook/p23-en.mp3",
+      "phrase": "Jog, jog!",
+      "phraseZh": "跑跑跑！"
+    },
+    {
+      "id": "P24",
+      "index": 24,
+      "en": "Nan is **glad**. Share the **jam**!",
+      "zh": "奶奶好开心。一起分果酱！",
+      "pattern": "Share the jam!",
+      "focusWord": "glad / jam",
+      "focusNote": "第6章 第4课；第6章 第3课",
+      "focusRaw": "glad（第6章 第4课）；jam（第6章 第3课）",
+      "knowledge": "收束：分享",
+      "gloss": "开心",
+      "highlights": [
+        "glad",
+        "jam"
+      ],
+      "learnItems": [
+        {
+          "word": "glad",
+          "gloss": "开心",
+          "image": "images/mia-can-cook/words/glad.webp"
+        },
+        {
+          "word": "jam",
+          "gloss": "果酱",
+          "image": "images/mia-can-cook/words/jam.webp"
+        }
+      ],
+      "image": "images/mia-can-cook/p24.webp",
+      "audioEn": "audio/mia-can-cook/p24-en.mp3",
+      "phrase": "Share the jam!",
+      "phraseZh": "一起分果酱！"
+    }
+  ],
+  "summarySkipWords": [
+    "wet",
+    "glad"
+  ]
+}

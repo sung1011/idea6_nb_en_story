@@ -3,7 +3,7 @@
 本仓库以 Markdown 为正文源（`stories/*.md`），构建时解析为 JSON，供阅读器消费。  
 **不要改写故事英文/中文正文**；JSON 只是结构化镜像。
 
-当前故事：`stories/flag-in-the-fog.md` → `app/public/stories/flag-in-the-fog.json`；`stories/spot-the-cub.md` → `app/public/stories/spot-the-cub.json`；`stories/a-lot-of-dots.md` → `app/public/stories/a-lot-of-dots.json`。目录：`app/public/stories/index.json`（每项 `{ id, title, titleZh }`，可选 `tag`；有 `tag` 时故事切换器在标题旁显示小标签）。
+当前故事：`stories/flag-in-the-fog.md` → `app/public/stories/flag-in-the-fog.json`；`stories/spot-the-cub.md` → `app/public/stories/spot-the-cub.json`；`stories/a-lot-of-dots.md` → `app/public/stories/a-lot-of-dots.json`；`stories/the-big-tug.md` → `app/public/stories/the-big-tug.json`；`stories/one-hundred-steps.md` → `app/public/stories/one-hundred-steps.json`；`stories/mia-can-cook.md` → `app/public/stories/mia-can-cook.json`。目录：`app/public/stories/index.json`（每项 `{ id, title, titleZh }`，可选 `tag`；有 `tag` 时故事切换器在标题旁显示小标签）。
 
 解析命令（在 `app/` 下）：
 
@@ -28,7 +28,7 @@ npm run parse-stories
 | `structure` | `string` | 否 | 情节结构（来自源稿引用块） |
 | `notes` | `string` | 否 | 篇幅/编写说明（来自源稿引用块） |
 | `source` | `string` | 是 | 源 Markdown 相对仓库根路径 |
-| `pageCount` | `number` | 是 | 页数；Flag in the Fog 为 22，Spot the Cub 为 23，A Lot of Dots! 为 24 |
+| `pageCount` | `number` | 是 | 页数；Flag in the Fog 为 22，Spot the Cub 为 23，A Lot of Dots! / One Hundred Steps! / Mia Can Cook! 为 24，The Big Tug! 为 25 |
 | `pages` | `Page[]` | 是 | 按页序排列 |
 
 ---

@@ -2,7 +2,7 @@
 
 story-first English learning stories for Star Words App
 
-Vue 3 绘本阅读器，用来翻页阅读 **Flag in the Fog**（雾里的旗，22 页）、**Spot the Cub**（找小豹，23 页）和 **A Lot of Dots!**（点点大乱画，24 页）。
+Vue 3 绘本阅读器，用来翻页阅读 **Flag in the Fog**（雾里的旗，22 页）、**Spot the Cub**（找小豹，23 页）、**A Lot of Dots!**（点点大乱画，24 页）、**The Big Tug!**（沙漠大拔河，25 页）、**One Hundred Steps!**（一百级台阶！，24 页）和 **Mia Can Cook!**（Mia 会做饭了！，24 页）。
 
 线上地址（启用 GitHub Pages 后）：
 
@@ -11,7 +11,10 @@ https://sung1011.github.io/idea6_nb_en_story/
 - First story: [Flag in the Fog / 雾里的旗](stories/flag-in-the-fog.md)（22 pages）
 - Second story: [Spot the Cub / 找小豹](stories/spot-the-cub.md)（23 pages）
 - Third story: [A Lot of Dots! / 点点大乱画](stories/a-lot-of-dots.md)（24 pages）
-- Character sheets: [角色设定](docs/characters.md)（Mia / Ben / Rat；Cub / Bug / Mom Leopard；Pup / Figgy / Cat）
+- Fourth story: [The Big Tug! / 沙漠大拔河](stories/the-big-tug.md)（25 pages）
+- Fifth story: [One Hundred Steps! / 一百级台阶！](stories/one-hundred-steps.md)（24 pages）
+- Sixth story: [Mia Can Cook! / Mia 会做饭了！](stories/mia-can-cook.md)（24 pages）
+- Character sheets: [角色设定](docs/characters.md)（Mia / Ben / Rat；Cub / Bug / Mom Leopard；Pup / Figgy / Cat；Cap / Nan）
 
 ## 本地开发
 
@@ -104,7 +107,7 @@ node scripts/genEnTimings.mjs
 - PWA：可安装到主屏幕（`standalone`）；预缓存阅读器壳 + 故事 JSON。页级英文 mp3、插图 webp 和 `timings.json` 走运行时 Cache First，不进预缓存。地址带内容哈希 `?v=`，文件改了就会拉新资源，不必清缓存。翻页时后台预取后两页的图和英文 mp3；故事打开后在空闲时低并发把本章资源写入缓存（省流量模式跳过）。`versions.json` 用 Network First，以免挡住更新检测
 - Games：阅读器进入当前故事的游戏列表。已开放 **Worm Hole Orchard / 虫洞果园**、**Word Match Garden / 词卡小园**、**Wormhole Spotlight / 虫洞探照灯**。探照灯听目标词、在可拖动圆形灯光里点 3 张词图之一（1 对 2 错），每轮 6 题；拖动只挪灯，点选才答题。三个游戏答对时随机弹出英文表扬（短词与短句混合）。整局结束后场景仍留在下面，上面叠一条庆祝条（随机表扬作标题、Play again、Back to Games），不再换成整页纸卡
 
-进度按本故事写入 `localStorage`。每次有意义的发布请在 `app/public/versions.json` 顶部追加 `{ id, version, date, summary }`（新条目用英文）。当前版本 **0.6.72**。
+进度按本故事写入 `localStorage`。每次有意义的发布请在 `app/public/versions.json` 顶部追加 `{ id, version, date, summary }`（新条目用英文）。当前版本 **0.6.73**。
 
 ## 安装到主屏幕（PWA）
 

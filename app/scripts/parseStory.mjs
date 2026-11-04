@@ -118,8 +118,8 @@ function applyPhraseFields(story, existingById = new Map()) {
   for (const page of story.pages ?? []) {
     delete page.audioPhrase
     const fromExisting = existingById.get(page.id) ?? {}
-    const phrase = String(page.phrase ?? fromExisting.phrase ?? '').trim()
-    const phraseZh = String(page.phraseZh ?? fromExisting.phraseZh ?? '').trim()
+    const phrase = String(page.phrase ?? fromExisting.phrase ?? plainSpeakText(page.en) ?? '').trim()
+    const phraseZh = String(page.phraseZh ?? fromExisting.phraseZh ?? page.zh ?? '').trim()
     if (!phrase) throw new Error(`Missing phrase for ${story.id} ${page.id}`)
     page.phrase = phrase
     page.phraseZh = phraseZh
@@ -210,6 +210,20 @@ export const STORY_WORD_GLOSS = {
   desk: '书桌',
   wok: '炒锅',
   tent: '帐篷',
+  jam: '果酱',
+  jug: '罐子',
+  dip: '蘸',
+  tip: '倾斜',
+  sip: '啜',
+  cap: '帽子',
+  tap: '点',
+  hot: '热',
+  rip: '撕破',
+  sad: '难过',
+  trap: '捕鼠器',
+  jet: '喷射',
+  clap: '拍手',
+  jog: '慢跑',
 }
 
 const IRREGULAR_LEMMAS = {
@@ -480,13 +494,14 @@ function parseFocus(raw) {
   return { focusWord: word, focusNote: notes.join('；'), focusRaw }
 }
 
-const STORY_ORDER = ['flag-in-the-fog', 'spot-the-cub', 'a-lot-of-dots', 'the-big-tug', 'one-hundred-steps']
+const STORY_ORDER = ['flag-in-the-fog', 'spot-the-cub', 'a-lot-of-dots', 'the-big-tug', 'one-hundred-steps', 'mia-can-cook']
 const STORY_PAGE_COUNTS = {
   'flag-in-the-fog': 22,
   'spot-the-cub': 23,
   'a-lot-of-dots': 24,
   'the-big-tug': 25,
   'one-hundred-steps': 24,
+  'mia-can-cook': 24,
 }
 const STORY_TAGS = {
 }

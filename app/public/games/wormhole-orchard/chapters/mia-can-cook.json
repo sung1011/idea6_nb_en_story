@@ -1,0 +1,116 @@
+{
+  "storyId": "mia-can-cook",
+  "title": "Worm Hole Orchard",
+  "titleZh": "\u866b\u6d1e\u679c\u56ed",
+  "rounds": [
+    {
+      "id": "r1",
+      "fruit": "red",
+      "items": [
+        {
+          "hole": "_ip",
+          "hear": "dip",
+          "answer": "d",
+          "choices": [
+            "d",
+            "s",
+            "t"
+          ]
+        },
+        {
+          "hole": "_ip",
+          "hear": "sip",
+          "answer": "s",
+          "choices": [
+            "s",
+            "d",
+            "r"
+          ]
+        },
+        {
+          "hole": "_ip",
+          "hear": "tip",
+          "answer": "t",
+          "choices": [
+            "t",
+            "r",
+            "d"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "r2",
+      "fruit": "yellow",
+      "items": [
+        {
+          "hole": "_ap",
+          "hear": "cap",
+          "answer": "c",
+          "choices": [
+            "c",
+            "t",
+            "m"
+          ]
+        },
+        {
+          "hole": "_ap",
+          "hear": "tap",
+          "answer": "t",
+          "choices": [
+            "t",
+            "c",
+            "n"
+          ]
+        },
+        {
+          "hole": "cl__",
+          "hear": "clap",
+          "answer": "ap",
+          "choices": [
+            "ap",
+            "ip",
+            "op"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "r3",
+      "fruit": "green",
+      "items": [
+        {
+          "hole": "j__",
+          "hear": "jam",
+          "answer": "am",
+          "choices": [
+            "am",
+            "et",
+            "ug"
+          ]
+        },
+        {
+          "hole": "_ug",
+          "hear": "jug",
+          "answer": "j",
+          "choices": [
+            "j",
+            "b",
+            "m"
+          ]
+        },
+        {
+          "hole": "____",
+          "hear": "glad",
+          "answer": "glad",
+          "choices": [
+            "glad",
+            "sad",
+            "hot"
+          ],
+          "mode": "whole"
+        }
+      ]
+    }
+  ]
+}
